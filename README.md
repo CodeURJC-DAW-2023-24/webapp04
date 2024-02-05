@@ -128,7 +128,7 @@ Users will receive periodic notifications informing them whether or not their sp
 
 <h2 id="extra_info">ℹ️ Extra information ℹ️</h2>
 
-- [Trello](https://trello.com/invite/b/PW1FfBkP/ATTId4a806084d0f2dd12b2aadb8a2c63124254B3C8F/daw-grupo-4)
+- [Trello]([https://trello.com/invite/b/PW1FfBkP/ATTId4a806084d0f2dd12b2aadb8a2c63124254B3C8F/daw-grupo-4](https://trello.com/b/PW1FfBkP/daw-grupo-4))
 
 ---
 
