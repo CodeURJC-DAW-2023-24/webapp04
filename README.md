@@ -1,6 +1,6 @@
 # URJC Bank
 
-![URJC Bank logo](URL_de_la_imagen)
+![URJC Bank logo](pics/extra/URJC_bank.png)
 
 
 <h2>Index</h2>
