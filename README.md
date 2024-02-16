@@ -129,6 +129,8 @@ Users will receive periodic notifications informing them whether or not their sp
 <h2 id="extra_info">ℹ️ Extra information ℹ️</h2>
 
 - [Trello](https://trello.com/b/PW1FfBkP/daw-grupo-4)
+---
+  ![Relations Diagram](pics/phase_1/DiagramaDAW.JPG)
 
 ---
 
