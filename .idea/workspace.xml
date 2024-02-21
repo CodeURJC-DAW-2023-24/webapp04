@@ -1,0 +1,191 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="072cea6f-8d20-4292-b10f-19e0c5f1ef3e" name="Changes" comment="DBInitializer update 2&#10;- Solved all data insertion related issues" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Class" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_BRANCH_BY_REPOSITORY">
+      <map>
+        <entry key="$PROJECT_DIR$" value="main" />
+      </map>
+    </option>
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
+  </component>
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 1
+}</component>
+  <component name="ProjectId" id="2cciiHNqwZ0Y9I6qWSTHY8q97oA" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "ASKED_ADD_EXTERNAL_FILES": "true",
+    "ASKED_SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "Application.BackendApplication.executor": "Run",
+    "Application.main.controller.BackendApplication.executor": "Run",
+    "Application.webapp4.main.BackendApplication.executor": "Run",
+    "JUnit.CSVReaderTest.executor": "Run",
+    "JUnit.CSVReaderTest.getFirstElementTest.executor": "Run",
+    "JUnit.CSVReaderTest.nonNullListTest.executor": "Run",
+    "JUnit.CSVReaderTest.readerTest.executor": "Run",
+    "JUnit.CSVTest.myTest.executor": "Run",
+    "JUnit.DBInitializerTest.csvIsFoundTest.executor": "Run",
+    "JUnit.DBInitializerTest.executor": "Run",
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "git-widget-placeholder": "database",
+    "kotlin-language-version-configured": "true",
+    "last_opened_file_path": "/home/cris/Documents/3GIS - Desarrollo de Aplicaciones Web/DAW-Repo"
+  }
+}]]></component>
+  <component name="RunManager" selected="Application.BackendApplication">
+    <configuration name="BackendApplication" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="webapp4.main.BackendApplication" />
+      <module name="backend" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="webapp4.main.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="CSVReaderTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="backend" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="main.backend.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="main.backend" />
+      <option name="MAIN_CLASS_NAME" value="main.backend.CSVReaderTest" />
+      <option name="TEST_OBJECT" value="class" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="CSVReaderTest.getFirstElementTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="backend" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="main.backend.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="main.backend" />
+      <option name="MAIN_CLASS_NAME" value="main.backend.CSVReaderTest" />
+      <option name="METHOD_NAME" value="getFirstElementTest" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="CSVReaderTest.nonNullListTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="backend" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="main.backend.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="main.backend" />
+      <option name="MAIN_CLASS_NAME" value="main.backend.CSVReaderTest" />
+      <option name="METHOD_NAME" value="nonNullListTest" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="DBInitializerTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="backend" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="main.backend.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="main.backend" />
+      <option name="MAIN_CLASS_NAME" value="main.backend.DBInitializerTest" />
+      <option name="TEST_OBJECT" value="class" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Application.BackendApplication" />
+        <item itemvalue="JUnit.CSVReaderTest.getFirstElementTest" />
+        <item itemvalue="JUnit.CSVReaderTest" />
+        <item itemvalue="JUnit.CSVReaderTest.nonNullListTest" />
+        <item itemvalue="JUnit.DBInitializerTest" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="SharedIndexes">
+    <attachedChunks>
+      <set>
+        <option value="jdk-21.0.1-openjdk-21.0.1-8336523bb0d9-cc9f59e6" />
+      </set>
+    </attachedChunks>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="072cea6f-8d20-4292-b10f-19e0c5f1ef3e" name="Changes" comment="" />
+      <created>1708417392682</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1708417392682</updated>
+    </task>
+    <task id="LOCAL-00001" summary="DBInitializer update&#10;- Non-functional version of the project&#10;Some errors regarding db data insertion are still unsolved">
+      <option name="closed" value="true" />
+      <created>1708521873973</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1708521873973</updated>
+    </task>
+    <task id="LOCAL-00002" summary="DBInitializer update 2&#10;- Solved all data insertion related issues">
+      <option name="closed" value="true" />
+      <created>1708548038593</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1708548038593</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
+    <servers />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
+    <MESSAGE value="DBInitializer update&#10;- Non-functional version of the project&#10;Some errors regarding db data insertion are still unsolved" />
+    <MESSAGE value="DBInitializer update 2&#10;- Solved all data insertion related issues" />
+    <option name="LAST_COMMIT_MESSAGE" value="DBInitializer update 2&#10;- Solved all data insertion related issues" />
+  </component>
+</project>
