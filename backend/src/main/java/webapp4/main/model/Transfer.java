@@ -60,4 +60,8 @@ public class Transfer {
     public void setTransferType(String transferType) {
         this.transferType = transferType;
     }
+
+    public Long getTransfer_id() {
+        return transfer_id;
+    }
 }
