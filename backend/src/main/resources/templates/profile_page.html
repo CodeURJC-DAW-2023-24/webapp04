@@ -16,8 +16,8 @@
               <article class="tile">
                 <div class="tile-header">
                 <h3>
-                  <span>ES66 2100 0418 4012 3456 7891</span>
-                  <span>Vlad, Cristian Andrei</span>
+                  <span>{{client_iban}}</span>
+                  <span>{{client_name}}</span>
                 </h3>
               </div>
             </article>
@@ -29,72 +29,34 @@
               <h2>Latest transfers</h2>
             </div>
             <div class="transfers">
+              {{#transfer_list}}
               <div class="transfer">
                 <div class="transfer-logo">
                   <img src="https://assets.codepen.io/285131/apple.svg" />
                 </div>
                 <dl class="transfer-details">
                   <div>
-                    <dt>Apple Inc.</dt>
-                    <dd>Apple ID Payment</dd>
+                    <dt>{{senderIBAN}}</dt>
+                    <dd>Sender</dd>
                   </div>
                   <div>
-                    <dt>4012</dt>
-                    <dd>Last four digits</dd>
+                    <dt>{{receiverIBAN}}</dt>
+                    <dd>Receiver</dd>
                   </div>
                   <div>
-                    <dt>28 Oct. 21</dt>
+                    <dt>{{date}}</dt>
                     <dd>Date payment</dd>
+                  </div>
+                  <div>
+                    <dt>{{transferType}}</dt>
+                    <dd>T Type</dd>
                   </div>
                 </dl>
                 <div class="transfer-number">
-                  - $ 550
+                    {{amount}} €
                 </div>
               </div>
-              <div class="transfer">
-                <div class="transfer-logo">
-                  <img src="https://assets.codepen.io/285131/pinterest.svg" />
-                </div>
-                <dl class="transfer-details">
-                  <div>
-                    <dt>Pinterest</dt>
-                    <dd>2 year subscription</dd>
-                  </div>
-                  <div>
-                    <dt>5214</dt>
-                    <dd>Last four digits</dd>
-                  </div>
-                  <div>
-                    <dt>26 Oct. 21</dt>
-                    <dd>Date payment</dd>
-                  </div>
-                </dl>
-                <div class="transfer-number">
-                  - $ 120
-                </div>
-              </div>
-              <div class="transfer">
-                <div class="transfer-logo">
-                  <img src="https://assets.codepen.io/285131/warner-bros.svg" />
-                </div>
-                <dl class="transfer-details">
-                  <div>
-                    <dt>Warner Bros.</dt>
-                    <dd>Cinema</dd>
-                  </div>
-                  <div>
-                    <dt>2228</dt>
-                    <dd>Last four digits</dd>
-                  </div>
-                  <div>
-                    <dt>22 Oct. 21</dt>
-                    <dd>Date payment</dd>
-                  </div>
-                </dl>
-                <div class="transfer-number">
-                  - $ 70
-                </div>
-              </div>
+              {{/transfer_list}}
             </div>
           </section>
         </div>
