@@ -1,0 +1,136 @@
+.app {
+  display: flex;
+  justify-content: space-evenly;
+}
+
+.tiles{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.tile {
+  width: 90%;
+  padding: 1.5rem;
+  border-radius: 6px;
+  background-color: #cc1616;
+  min-height: 250px;
+  transition: 0.25s ease;
+}
+
+.tile:hover {
+  transform: translateY(-5px);
+}
+
+.tile-header h3 {
+  display: flex;
+  flex-direction: column;
+  line-height: 1.375;
+}
+
+.transfer-section-header {
+  width: 100%;
+  padding-bottom: 0.75rem;
+  border-bottom: 1px solid rgb(0, 0, 0);
+}
+
+.transfer-section-header h2 {
+  font-size: 1.5rem;
+}
+
+.transfer {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  width: 100%;
+  font-size: 0.875rem;
+  border-bottom: #d6d6d6 2px solid;
+  padding: 1rem;
+}
+
+.transfer-logo {
+  width: 50px;
+  height: 50px;
+  padding: 1rem;
+}
+
+.transfer-logo img {
+  width: 100%;
+}
+
+.transfer-details {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  flex: 1;
+  margin-bottom: 0px;
+}
+
+.transfer-details div+div {
+  margin-left: 1rem;
+}
+
+.transfer-details > div > dd{
+  margin: 0px;
+}
+
+.transfer-number {
+  font-size: 1.125rem;
+  flex-shrink: 0;
+  width: 15%;
+  display: flex;
+  justify-content: center;
+  color: #cc1616;
+}
+
+.app-body-main-content {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}
+
+.tile-header>h3 {
+  color: white;
+}
+
+.service-section{
+  padding-top: 4rem;
+  padding-bottom: 1rem;
+}
+
+@media (max-width: 1000px) {
+  .transfer-details {
+    flex-wrap: wrap;
+    margin-left: 0;
+    margin-top: 1rem;
+  }
+
+  .transfer-details div {
+    width: 100%;
+  }
+
+  .transfer-details div+div {
+    margin-left: 0;
+    margin-top: 1rem;
+  }
+
+  .transfer-number {
+    margin-left: auto;
+    margin-top: 1.25rem	;
+    width: 100%;
+    justify-content: center;
+  }
+
+  .transfer {
+    display: flex;
+    text-align: center;
+    flex-direction: column;
+  }
+
+  .transfer-section {
+    border: 2px solid black;
+    border-radius: 6px;
+    padding: 10px;
+    margin-bottom: 1rem;
+  }
+} 
