@@ -1,53 +1,46 @@
-package security;
+package webapp4.main.security;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.security.config.annotation.SecurityConfigurerAdapter;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
-import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
-import org.springframework.security.core.userdetails.UserDetailsService;
+import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
-import org.springframework.security.web.DefaultSecurityFilterChain;
+
+import java.security.SecureRandom;
 
 @Configuration
-@EnableWebSecurity
-public class WebSecurityConfig {
+public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Autowired
-    private UserDetailsService userDetailsService;
+    RepositoryUserDetailsService userDetailsService;
 
-    @Bean
     public PasswordEncoder passwordEncoder() {
-        return new BCryptPasswordEncoder(10);
+        return new BCryptPasswordEncoder(10, new SecureRandom());
     }
 
-    @Autowired
-    public void configureGlobal(AuthenticationManagerBuilder auth) throws Exception {
+    @Override
+    protected void configure(AuthenticationManagerBuilder auth) throws Exception {
+
         auth.userDetailsService(userDetailsService).passwordEncoder(passwordEncoder());
     }
 
-    @Configuration
-    public static class SecurityConfig extends SecurityConfigurerAdapter<DefaultSecurityFilterChain, HttpSecurity> {
+    @Override
+    protected void configure(HttpSecurity http) throws Exception {
 
-        @Override
-        public void configure(HttpSecurity http) throws Exception {
-            http
-                    .authorizeRequests()
-                    .requestMatchers("/", "/login", "/loginerror", "/logout").permitAll()
-                    .requestMatchers("/newbook").hasAnyRole("USER")
-                    .requestMatchers("/editbook/*").hasAnyRole("USER")
-                    .requestMatchers("//*").hasAnyRole("ADMIN")
-                    .and()
-                    .formLogin(formLogin ->
-                    formLogin
-                            .loginPage("/login")
-                            .usernameParameter("username")
-                            .passwordParameter("password")
-                            .permitAll()
-                    );
-        }
+        // Public pages
+        http.authorizeRequests().antMatchers("/").permitAll();
+        http.authorizeRequests().antMatchers("/login").permitAll();
+        http.authorizeRequests().antMatchers("/loginerror").permitAll();
+        http.authorizeRequests().antMatchers("/logout").permitAll();
+
+        // Private pages
+
+        // Login form
+
+
+        // Logout
+
     }
 }

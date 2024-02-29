@@ -1,9 +1,7 @@
-package model;
-
+package webapp4.main.model;
 
 import java.util.List;
 
-import javax.accessibility.*;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
