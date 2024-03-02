@@ -1442,3 +1442,7 @@ section {
     height: auto;
 }
 
+.login_error{
+    color: #FF0000;
+}
+
