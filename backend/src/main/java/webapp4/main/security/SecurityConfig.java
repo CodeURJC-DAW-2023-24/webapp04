@@ -1,34 +1,35 @@
 package webapp4.main.security;
 
+
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
+import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
+import webapp4.main.service.UserDetailsServiceImp;
 
 import java.security.SecureRandom;
 
 @Configuration
-public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
-
+@EnableWebSecurity
+public class SecurityConfig extends WebSecurityConfigurerAdapter {
     @Autowired
-    RepositoryUserDetailsService userDetailsService;
+    private UserDetailsServiceImp userDetailsService;
 
+    @Bean
     public PasswordEncoder passwordEncoder() {
         return new BCryptPasswordEncoder(10, new SecureRandom());
     }
-
     @Override
     protected void configure(AuthenticationManagerBuilder auth) throws Exception {
-
         auth.userDetailsService(userDetailsService).passwordEncoder(passwordEncoder());
     }
-
     @Override
     protected void configure(HttpSecurity https) throws Exception {
-
         // Public pages
         https.authorizeRequests().antMatchers("/").permitAll();
         https.authorizeRequests().antMatchers("/login").permitAll();
@@ -41,10 +42,6 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
         https.authorizeRequests().antMatchers("/error_404").permitAll();
         https.authorizeRequests().antMatchers("/error_403").permitAll();
 
-
-
-
-
         // Private pages
         https.authorizeRequests().antMatchers("/profile").hasAnyRole("USER");
         https.authorizeRequests().antMatchers("/transfers").hasAnyRole("USER");
@@ -54,7 +51,6 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
         https.authorizeRequests().antMatchers("/validation").hasAnyRole("ADMIN");
         https.authorizeRequests().antMatchers("/charge").hasAnyRole("ADMIN");
         https.authorizeRequests().antMatchers("/admin_profile").hasAnyRole("ADMIN");
-
 
         // Login form
         https.formLogin().loginPage("/login");
@@ -66,6 +62,5 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
         // Logout
         https.logout().logoutUrl("/logout");
         https.logout().logoutSuccessUrl("/login");
-
     }
 }

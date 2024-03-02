@@ -1,30 +1,28 @@
 package webapp4.main.service;
 
-import jakarta.annotation.PostConstruct;
+import javax.annotation.PostConstruct;
 
-import org.hibernate.engine.jdbc.BlobProxy;
 import org.jetbrains.annotations.NotNull;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.core.io.ClassPathResource;
-import org.springframework.core.io.Resource;
 import org.springframework.stereotype.Service;
 
 import java.io.FileInputStream;
-import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.net.URISyntaxException;
-import java.sql.Blob;
 import java.sql.SQLException;
 import java.util.List;
 
 import webapp4.main.csv_editor.CSVReader;
+
 import webapp4.main.repository.AccountRepository;
 import webapp4.main.repository.LoanRepository;
 import webapp4.main.repository.TransferRepository;
+import webapp4.main.repository.UserDataRepository;
 
 import webapp4.main.model.Account;
 import webapp4.main.model.Loan;
 import webapp4.main.model.Transfer;
+import webapp4.main.model.UserData;
 
 import javax.sql.rowset.serial.SerialBlob;
 
@@ -36,6 +34,8 @@ public class DBInitializer {
     private TransferRepository transferRepository;
     @Autowired
     private AccountRepository accountRepository;
+    @Autowired
+    private UserDataRepository userDataRepository;
     @PostConstruct
     public void init() throws IOException, URISyntaxException {
 
@@ -96,6 +96,22 @@ public class DBInitializer {
             transfer.setDate(transRecords.get(i).get(4));
             transfer.setTransferType(transRecords.get(i).get(5));
             transferRepository.save(transfer);
+        }
+
+        System.out.println("--------------");
+        System.out.println("4th CHECKPOINT");
+        System.out.println("--------------");
+
+        /* UPLOADING TRANSFERS DATA */
+        String userDataPath = "backend/src/main/resources/static/data/client_credentials.csv";
+        CSVReader userDataCsvReader = new CSVReader(userDataPath);
+        List<List<String>> userDataRecords = userDataCsvReader.readLines();
+        for (int i = 1; i < userDataRecords.size(); i++) {
+            UserData userData = new UserData();
+            userData.setUsername(userDataRecords.get(i).get(1));
+            userData.setPassword(userDataRecords.get(i).get(2));
+            userData.setRole("USER");
+            userDataRepository.save(userData);
         }
     }
     private void setClientImage(@NotNull Account bankClient, String imagePath){
