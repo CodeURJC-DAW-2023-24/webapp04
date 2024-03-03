@@ -1,6 +1,6 @@
 package webapp4.main.model;
 
-import jakarta.persistence.*;
+import javax.persistence.*;
 
 import java.sql.Blob;
 

@@ -1,0 +1,35 @@
+
+h	java:S112ƒ"FDefine and throw a dedicated exception instead of using a generic one.(Ò‚Òéüÿÿÿÿ8äŠŸà1
+q
+java:S1192-"ODefine a constant instead of duplicating this literal "--------------" 8 times.(†·§ÿÿÿÿÿ8æŠŸà1
+{	java:S120"ZRename this package name to match the regular expression '^[a-z_]+(\.[a-z_][a-z0-9_]*)*$'.(”³ÎÁúÿÿÿÿ8éŠŸà1
+o
+java:S2095~"MUse try-with-resources or close this "FileInputStream" in a "finally" clause.(¢Ë€Íıÿÿÿÿ8ˆ¡ŠŸà1
+_
+java:S6813""BRemove this field injection and use constructor injection instead.(êæÄŞ8Š¡ŠŸà1
+_
+java:S6813$"BRemove this field injection and use constructor injection instead.(êæÄŞ8Š¡ŠŸà1
+_
+java:S6813&"BRemove this field injection and use constructor injection instead.(êæÄŞ8Š¡ŠŸà1
+_
+java:S6813("BRemove this field injection and use constructor injection instead.(êæÄŞ8Š¡ŠŸà1
+‰
+java:S1130+"lRemove the declaration of thrown exception 'java.io.IOException', as it cannot be thrown from method's body.(¹§»œ8‘¡ŠŸà1
+‘
+java:S1130+"tRemove the declaration of thrown exception 'java.net.URISyntaxException', as it cannot be thrown from method's body.(¹§»œ8’¡ŠŸà1
+L	java:S106-"+Replace this use of System.out by a logger.(†·§ÿÿÿÿÿ8”¡ŠŸà1
+G	java:S106."+Replace this use of System.out by a logger.(ë™Î§8•¡ŠŸà1
+L	java:S106/"+Replace this use of System.out by a logger.(†·§ÿÿÿÿÿ8–¡ŠŸà1
+L	java:S106@"+Replace this use of System.out by a logger.(†·§ÿÿÿÿÿ8¡ŠŸà1
+G	java:S106A"+Replace this use of System.out by a logger.(“éÉ†8¡ŠŸà1
+L	java:S106B"+Replace this use of System.out by a logger.(†·§ÿÿÿÿÿ8Ÿ¡ŠŸà1
+L	java:S106K"+Replace this use of System.out by a logger.(ïí»ùÿÿÿÿ8®¡ŠŸà1
+G	java:S106M"+Replace this use of System.out by a logger.(¬…ù†8°¡ŠŸà1
+L	java:S106O"+Replace this use of System.out by a logger.(¤æéşÿÿÿÿ8±¡ŠŸà1
+L	java:S106Q"+Replace this use of System.out by a logger.(İşá¥üÿÿÿÿ8³¡ŠŸà1
+L	java:S106V"+Replace this use of System.out by a logger.(†·§ÿÿÿÿÿ8µ¡ŠŸà1
+L	java:S106W"+Replace this use of System.out by a logger.(¼–ëƒşÿÿÿÿ8µ¡ŠŸà1
+L	java:S106X"+Replace this use of System.out by a logger.(†·§ÿÿÿÿÿ8¶¡ŠŸà1
+L	java:S106h"+Replace this use of System.out by a logger.(†·§ÿÿÿÿÿ8º¡ŠŸà1
+L	java:S106i"+Replace this use of System.out by a logger.(Ÿ´ÙŞıÿÿÿÿ8»¡ŠŸà1
+L	java:S106j"+Replace this use of System.out by a logger.(†·§ÿÿÿÿÿ8¼¡ŠŸà1
