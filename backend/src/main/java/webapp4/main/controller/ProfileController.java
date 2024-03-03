@@ -50,7 +50,7 @@ public class ProfileController {
                 // --- Setting client's balance ---
                 model.addAttribute("client_balance", balance);
             } else {
-                System.out.println("ESE USUARIO NO EXISTE");
+                System.out.println("USER NOT FOUND");
             }
         } else {
             model.addAttribute("logged", false);
