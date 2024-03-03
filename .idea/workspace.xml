@@ -4,19 +4,18 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="072cea6f-8d20-4292-b10f-19e0c5f1ef3e" name="Changes" comment="Major update&#10;- Added unmerged content">
-      <change afterPath="$PROJECT_DIR$/backend/src/main/resources/static/public/js/loan.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/backend/src/main/resources/templates/loan_visualizer_page.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/index.pb" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/index.pb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/securityhotspotstore/index.pb" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sonarlint/securityhotspotstore/index.pb" afterDir="false" />
+    <list default="true" id="072cea6f-8d20-4292-b10f-19e0c5f1ef3e" name="Changes" comment="CALCULATE LOAN&#10;Changes:&#10;- Updated nav bar&#10;- Added charts to loan page&#10;- Added AJAX to loan page">
+      <change afterPath="$PROJECT_DIR$/backend/src/main/resources/static/public/assets/img/friendly.jpeg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/backend/src/main/resources/static/public/assets/img/rectorado.jpeg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/backend/src/main/resources/static/public/assets/img/relax.jpeg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/backend/src/main/resources/static/public/assets/img/respect.jpeg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/backend/src/main/resources/static/public/js/profile_ajax.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/src/main/java/webapp4/main/controller/DynamicContentController.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/java/webapp4/main/controller/DynamicContentController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/backend/src/main/java/webapp4/main/controller/LoanRequestController.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/java/webapp4/main/controller/LoanRequestController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/backend/src/main/java/webapp4/main/controller/ProfileController.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/java/webapp4/main/controller/ProfileController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/src/main/java/webapp4/main/repository/TransferRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/java/webapp4/main/repository/TransferRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/src/main/java/webapp4/main/security/SecurityConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/java/webapp4/main/security/SecurityConfig.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/src/main/resources/static/profile_header.html" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/resources/static/profile_header.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/backend/src/main/resources/templates/loan_request_page.html" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/resources/templates/loan_request_page.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/src/main/resources/templates/loan_visualizer_page.html" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/resources/templates/loan_visualizer_page.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/src/main/resources/templates/profile_page.html" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/resources/templates/profile_page.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -74,10 +73,13 @@
     "SONARLINT_PRECOMMIT_ANALYSIS": "true",
     "git-widget-placeholder": "Cristian",
     "kotlin-language-version-configured": "true",
-    "last_opened_file_path": "/home/cris/Documents/3GIS - Desarrollo de Aplicaciones Web/DAW-Repo"
+    "last_opened_file_path": "/home/cris/Documents/3GIS - Desarrollo de Aplicaciones Web/webapp04/backend/src/main/resources/static/public/assets/img"
   }
 }]]></component>
   <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/backend/src/main/resources/static/public/assets/img" />
+    </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/backend/src/main/resources/static" />
     </key>
@@ -232,7 +234,15 @@
       <option name="project" value="LOCAL" />
       <updated>1709484467094</updated>
     </task>
-    <option name="localTasksCounter" value="7" />
+    <task id="LOCAL-00007" summary="CALCULATE LOAN&#10;Changes:&#10;- Updated nav bar&#10;- Added charts to loan page&#10;- Added AJAX to loan page">
+      <option name="closed" value="true" />
+      <created>1709495437915</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1709495437915</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
@@ -244,6 +254,7 @@
     <MESSAGE value="TRANSFERS&#10;Several details added to profile page&#10;- Added client's current balance&#10;- Sorted client's transaction history&#10;- Updated navigation bar from private area&#10;- Added logic on tranfer page" />
     <MESSAGE value="Major update" />
     <MESSAGE value="Major update&#10;- Added unmerged content" />
-    <option name="LAST_COMMIT_MESSAGE" value="Major update&#10;- Added unmerged content" />
+    <MESSAGE value="CALCULATE LOAN&#10;Changes:&#10;- Updated nav bar&#10;- Added charts to loan page&#10;- Added AJAX to loan page" />
+    <option name="LAST_COMMIT_MESSAGE" value="CALCULATE LOAN&#10;Changes:&#10;- Updated nav bar&#10;- Added charts to loan page&#10;- Added AJAX to loan page" />
   </component>
 </project>

@@ -30,36 +30,9 @@
               <h2>Latest transfers</h2>
             </div>
             <div class="transfers">
-              {{#transfer_list}}
-              <div class="transfer">
-                <div class="transfer-logo">
-                  <img src="https://assets.codepen.io/285131/apple.svg" />
-                </div>
-                <dl class="transfer-details">
-                  <div>
-                    <dt>{{senderIBAN}}</dt>
-                    <dd>Sender</dd>
-                  </div>
-                  <div>
-                    <dt>{{receiverIBAN}}</dt>
-                    <dd>Receiver</dd>
-                  </div>
-                  <div>
-                    <dt>{{date}}</dt>
-                    <dd>Date payment</dd>
-                  </div>
-                  <div>
-                    <dt>{{transferType}}</dt>
-                    <dd>T Type</dd>
-                  </div>
-                </dl>
-                <div class="transfer-number">
-                    {{amount}} €
-                </div>
-              </div>
-              {{/transfer_list}}
-              <button id="profile_button">Load more</button>
+
             </div>
+            <button id="profile_button">Load more</button>
           </section>
         </div>
       </div>
@@ -76,7 +49,7 @@
   <script src="public/assets/vendor/isotope-layout/isotope.pkgd.min.js"></script>
   <script src="public/assets/vendor/swiper/swiper-bundle.min.js"></script>
   <script src="public/assets/vendor/php-email-form/validate.js"></script>
-  <script src="public/js/ajax.js"></script>
+  <script src="public/js/profile_ajax.js"></script>
 </body>
 
 

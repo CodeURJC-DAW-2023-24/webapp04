@@ -18,7 +18,7 @@ public class LoanRequestController {
     };
     private int amount;
     private int installments;
-    private float interestRate = 2.5f;
+    private final float interestRate = 7.5f;
     @GetMapping("/loan_request")
     public String loanRequest(Model model, HttpSession session){
         return "loan_request_page";
@@ -28,6 +28,8 @@ public class LoanRequestController {
         amount = Integer.parseInt(inputAmount);
         installments = Integer.parseInt(inputInstallments);
         model.addAttribute("reason", loanTypes[Integer.parseInt(inputExpenseType)]);
+        model.addAttribute("amount", amount);
+        model.addAttribute("interest", interestRate);
         return "loan_visualizer_page";
     }
     @GetMapping("/data")
