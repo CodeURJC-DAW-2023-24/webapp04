@@ -1,4 +1,4 @@
-package webapp4.main.service;
+package webapp4.main.security;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.GrantedAuthority;
