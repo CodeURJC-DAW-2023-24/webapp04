@@ -4,9 +4,17 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="072cea6f-8d20-4292-b10f-19e0c5f1ef3e" name="Changes" comment="ProfileController update&#10;- Error 405 still not solved">
+    <list default="true" id="072cea6f-8d20-4292-b10f-19e0c5f1ef3e" name="Changes" comment="Fixed error 405 while login&#10;- Updated ProfileController">
+      <change afterPath="$PROJECT_DIR$/backend/src/main/java/webapp4/main/controller/CustomErrorController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/index.pb" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/index.pb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/securityhotspotstore/index.pb" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sonarlint/securityhotspotstore/index.pb" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/backend/src/main/java/webapp4/main/controller/ProfileController.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/java/webapp4/main/controller/ProfileController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/src/main/java/webapp4/main/controller/TransferController.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/java/webapp4/main/controller/TransferController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/src/main/java/webapp4/main/repository/TransferRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/java/webapp4/main/repository/TransferRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/src/main/resources/static/profile_header.html" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/resources/static/profile_header.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/src/main/resources/templates/profile_page.html" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/resources/templates/profile_page.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/src/main/resources/templates/transfer_page.html" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/resources/templates/transfer_page.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -16,8 +24,8 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="Class" />
         <option value="HTML File" />
+        <option value="Class" />
       </list>
     </option>
   </component>
@@ -193,7 +201,15 @@
       <option name="project" value="LOCAL" />
       <updated>1709464097114</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="Fixed error 405 while login&#10;- Updated ProfileController">
+      <option name="closed" value="true" />
+      <created>1709466866768</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1709466866768</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
@@ -201,6 +217,7 @@
     <MESSAGE value="DBInitializer update&#10;- Non-functional version of the project&#10;Some errors regarding db data insertion are still unsolved" />
     <MESSAGE value="DBInitializer update 2&#10;- Solved all data insertion related issues" />
     <MESSAGE value="ProfileController update&#10;- Error 405 still not solved" />
-    <option name="LAST_COMMIT_MESSAGE" value="ProfileController update&#10;- Error 405 still not solved" />
+    <MESSAGE value="Fixed error 405 while login&#10;- Updated ProfileController" />
+    <option name="LAST_COMMIT_MESSAGE" value="Fixed error 405 while login&#10;- Updated ProfileController" />
   </component>
 </project>
