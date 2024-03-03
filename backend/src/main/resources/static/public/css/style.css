@@ -1436,3 +1436,11 @@ section {
     margin: -20px 0 30px 0;
   }
 }
+#img_error{
+    width: 400px;
+    height: auto;
+}
+
+.login_error{
+    color: #FF0000;
+}

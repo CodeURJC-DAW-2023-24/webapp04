@@ -27,3 +27,9 @@ p
 @src/main/java/webapp4/main/controller/CustomErrorController.java,0/e/0eb5c2b90d408ab1fe126a37b73465eb1478ce3c
 ;
 start_db.sh,b/b/bb1ba6d7cb3c6cc786affdeaa2b91f53816767f3
+s
+Csrc/main/java/webapp4/main/controller/DinamicContentController.java,4/4/44bd8c7f4f2340fe7705f5ae08629acbd6b1e570
+s
+Csrc/main/java/webapp4/main/controller/DynamicContentController.java,6/7/672a61b9cbe6858c4ca83b6ee0d54ab7ab13f45e
+f
+6src/main/java/webapp4/main/controller/ErrorConfig.java,9/6/962b4444fe873f2ee59f7c83721f40ccd525cda0
