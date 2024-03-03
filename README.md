@@ -130,6 +130,38 @@ Users will receive periodic notifications informing them whether or not their sp
 
 - [Trello](https://trello.com/b/PW1FfBkP/daw-grupo-4)
 
+# PHASE 2
+
+## Navigation
+
+
+<br>
+
+## Implementation instructions
+
+For linux and Java version 17:
+
+1. Clone the repository by typing in the command shell `git clone https://github.com/CodeURJC-DAW-2023-24/webapp04`
+2. Create a database in MySQL called *urjc_bank*
+3. Run BackendApplication's main function
+4. Open `https://localhost:8443/` in any browser
+<br>
+
+## Diagram with database entities
+
+
+<br>
+
+## Class diagram and templates
+
+
+<br>
+
+## Member participation
+
+
+<br>
+
 ---
 
 © 2024 URJC Bank
