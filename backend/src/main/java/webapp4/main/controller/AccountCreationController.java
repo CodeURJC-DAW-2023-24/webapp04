@@ -13,6 +13,7 @@ import webapp4.main.repository.AccountRepository;
 import webapp4.main.repository.UserDataRepository;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
+import java.util.Random;
 
 
 import java.security.SecureRandom;
@@ -43,7 +44,8 @@ public class AccountCreationController {
             if (inputPassword.equals(confirmPassword)) {
                 Account account = new Account();
                 account.setNIP(inputUser);
-                account.setIBAN("ES12 3456 7890 1234 5678 9012");
+                String iban = generateIBAN();
+                account.setIBAN(iban);
                 account.setName(firstName);
                 account.setSurname(lastName);
                 accountRepository.save(account);
@@ -58,5 +60,18 @@ public class AccountCreationController {
                 return "redirect:/register_page";
             }
         }
+    }
+    private String generateIBAN() {
+        String countryCode = "ES";
+        int ibanLength = 24;
+        StringBuilder ibanBuilder = new StringBuilder(countryCode);
+        Random random = new Random();
+        for (int i = 0; i < ibanLength - countryCode.length(); i++) {
+            if ((ibanLength + 2 - i) % 4 == 0){
+                ibanBuilder.append(" ");
+            }
+            ibanBuilder.append(random.nextInt(10));
+        }
+        return ibanBuilder.toString();
     }
 }
