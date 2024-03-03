@@ -1,6 +1,8 @@
 package webapp4.main.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -32,15 +34,25 @@ public class ProfileController {
         if (principal != null) {
             Optional<Account> accountOptional = accountRepository.findByNIP(principal.getName());
             if (accountOptional.isPresent()) {
+                // --- Setting IBAN ---
                 String accountIBAN = accountOptional.get().getIBAN();
-                List<Transfer> transferList = transferRepository.findBySenderOrReceiverContaining(accountIBAN);
-                ArrayList<ProcessedTransfer> processedTransferList = new ArrayList<>();
-                for (Transfer transfer : transferList) {
-                    processedTransferList.add(new ProcessedTransfer(transfer, accountIBAN));
-                }
                 model.addAttribute("client_iban", accountIBAN);
+                // --- Setting client's name ---
                 model.addAttribute("client_name", accountOptional.get().getName());
+                // --- Setting transfer list ---
+                Pageable pageable = PageRequest.of(0, 10);
+                List<Transfer> transferList = transferRepository.findBySenderOrReceiverContaining(accountIBAN, pageable);
+                ArrayList<ProcessedTransfer> processedTransferList = new ArrayList<>();
+                int balance = 0;
+                for (Transfer transfer : transferList) {
+                    ProcessedTransfer processedTransfer = new ProcessedTransfer(transfer, accountIBAN);
+                    processedTransferList.add(processedTransfer);
+                    balance += processedTransfer.getAmount();
+                }
                 model.addAttribute("transfer_list", processedTransferList);
+                // --- Setting client's balance ---
+
+                model.addAttribute("client_balance", balance);
             } else {
                 System.out.println("ESE USUARIO NO EXISTE");
             }
