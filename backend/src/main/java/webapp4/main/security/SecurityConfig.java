@@ -10,7 +10,6 @@ import org.springframework.security.config.annotation.web.configuration.EnableWe
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
-import org.springframework.security.web.csrf.CookieCsrfTokenRepository;
 
 import java.security.SecureRandom;
 
@@ -48,6 +47,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         https.authorizeRequests().antMatchers("/transfer").hasAnyRole("USER");
         https.authorizeRequests().antMatchers("/data").hasAnyRole("USER");
         https.authorizeRequests().antMatchers("/loan_request").hasAnyRole("USER");
+        https.authorizeRequests().antMatchers("/loan_visualizer").hasAnyRole("USER");
         https.authorizeRequests().antMatchers("/validation").hasAnyRole("ADMIN");
         https.authorizeRequests().antMatchers("/charge").hasAnyRole("ADMIN");
         https.authorizeRequests().antMatchers("/admin_profile").hasAnyRole("ADMIN");
