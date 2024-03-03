@@ -33,3 +33,5 @@ s
 Csrc/main/java/webapp4/main/controller/DynamicContentController.java,6/7/672a61b9cbe6858c4ca83b6ee0d54ab7ab13f45e
 f
 6src/main/java/webapp4/main/controller/ErrorConfig.java,9/6/962b4444fe873f2ee59f7c83721f40ccd525cda0
+p
+@src/main/java/webapp4/main/controller/LoanRequestController.java,9/2/92fc41aa9ea449aef96e677d26783a19904a00ba

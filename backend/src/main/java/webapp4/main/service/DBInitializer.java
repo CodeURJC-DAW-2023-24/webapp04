@@ -72,13 +72,9 @@ public class DBInitializer {
         for (int i = 1; i < accRecords.size(); i++) {
             Account account = new Account();
             account.setNIP(accRecords.get(i).get(0));
-            System.out.println(account.getNIP());
             account.setIBAN(accRecords.get(i).get(1));
-            System.out.println(account.getIBAN());
             account.setName(accRecords.get(i).get(2));
-            System.out.println(account.getName());
             account.setSurname(accRecords.get(i).get(3));
-            System.out.println(account.getSurname());
             setClientImage(account, "backend/src/main/resources/static/Client_profile_pics/" + account.getNIP() + ".jpeg");
             accountRepository.save(account);
         }

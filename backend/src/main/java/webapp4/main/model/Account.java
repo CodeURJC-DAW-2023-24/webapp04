@@ -18,7 +18,6 @@ public class Account {
     @Column(columnDefinition = "TEXT")
     private String surname;
 
-
     @Lob
     private Blob imageFile;
 
