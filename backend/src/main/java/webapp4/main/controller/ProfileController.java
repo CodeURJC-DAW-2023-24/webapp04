@@ -30,11 +30,25 @@ public class ProfileController {
     public void addAttributes(Model model, HttpServletRequest request){
         Principal principal = request.getUserPrincipal();
         if (principal != null) {
-
+            Optional<Account> accountOptional = accountRepository.findByNIP(principal.getName());
+            if (accountOptional.isPresent()) {
+                String accountIBAN = accountOptional.get().getIBAN();
+                List<Transfer> transferList = transferRepository.findBySenderOrReceiverContaining(accountIBAN);
+                ArrayList<ProcessedTransfer> processedTransferList = new ArrayList<>();
+                for (Transfer transfer : transferList) {
+                    processedTransferList.add(new ProcessedTransfer(transfer, accountIBAN));
+                }
+                model.addAttribute("client_iban", accountIBAN);
+                model.addAttribute("client_name", accountOptional.get().getName());
+                model.addAttribute("transfer_list", processedTransferList);
+            } else {
+                System.out.println("ESE USUARIO NO EXISTE");
+            }
+            /*
             model.addAttribute("logged", true);
             model.addAttribute("userName", principal.getName());
             model.addAttribute("admin", request.isUserInRole("ADMIN"));
-
+            */
         } else {
             model.addAttribute("logged", false);
         }
@@ -42,28 +56,6 @@ public class ProfileController {
 
     @GetMapping("/profile")
     public String profile(Model model, HttpSession session) {
-        String inputUser = (String) session.getAttribute("username");
-        String inputPassword = (String) session.getAttribute("password");
-        System.out.println("HOLA GUAPO");
-        if (inputUser == null || inputPassword == null) {
-            System.out.println("O EL USUARIO O LA CONTRASEÑA SON NULOS LOLOLOL");
-        }
-
-        Optional<Account> accountOptional = accountRepository.findByNIP(inputUser);
-        if (accountOptional.isPresent()) {
-            String accountIBAN = accountOptional.get().getIBAN();
-            List<Transfer> transferList = transferRepository.findBySenderOrReceiverContaining(accountIBAN);
-            ArrayList<ProcessedTransfer> processedTransferList = new ArrayList<>();
-            for (Transfer transfer : transferList) {
-                processedTransferList.add(new ProcessedTransfer(transfer, accountIBAN));
-            }
-            model.addAttribute("client_iban", accountIBAN);
-            model.addAttribute("client_name", accountOptional.get().getName());
-            model.addAttribute("transfer_list", processedTransferList);
-            return "profile_page";
-        } else {
-            System.out.println("ESE USUARIO NO EXISTE");
-            return "login_page";
-        }
+        return "profile_page";
     }
 }
