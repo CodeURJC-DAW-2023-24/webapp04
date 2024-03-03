@@ -10,7 +10,7 @@ import org.springframework.security.config.annotation.web.configuration.EnableWe
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
-import webapp4.main.service.UserDetailsServiceImp;
+import org.springframework.security.web.csrf.CookieCsrfTokenRepository;
 
 import java.security.SecureRandom;
 
@@ -62,5 +62,8 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         // Logout
         https.logout().logoutUrl("/logout");
         https.logout().logoutSuccessUrl("/login");
+
+        // Disable csrf
+        https.csrf().disable();
     }
 }

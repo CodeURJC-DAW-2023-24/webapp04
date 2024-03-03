@@ -4,11 +4,14 @@ import javax.annotation.PostConstruct;
 
 import org.jetbrains.annotations.NotNull;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.net.URISyntaxException;
+import java.security.SecureRandom;
 import java.sql.SQLException;
 import java.util.List;
 
@@ -102,17 +105,21 @@ public class DBInitializer {
         System.out.println("4th CHECKPOINT");
         System.out.println("--------------");
 
-        /* UPLOADING TRANSFERS DATA */
+        /* UPLOADING USER DATA */
         String userDataPath = "backend/src/main/resources/static/data/client_credentials.csv";
         CSVReader userDataCsvReader = new CSVReader(userDataPath);
         List<List<String>> userDataRecords = userDataCsvReader.readLines();
+        PasswordEncoder passwordEncoder = passwordEncoder();
         for (int i = 1; i < userDataRecords.size(); i++) {
             UserData userData = new UserData();
             userData.setUsername(userDataRecords.get(i).get(1));
-            userData.setPassword(userDataRecords.get(i).get(2));
+            userData.setPassword(passwordEncoder.encode(userDataRecords.get(i).get(2)));
             userData.setRole("USER");
             userDataRepository.save(userData);
         }
+    }
+    private PasswordEncoder passwordEncoder() {
+        return new BCryptPasswordEncoder(10, new SecureRandom());
     }
     private void setClientImage(@NotNull Account bankClient, String imagePath){
         try {
