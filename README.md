@@ -241,7 +241,14 @@ For this phase I was responsible on making the templates for make the applicatio
 [File3](https://github.com/CodeURJC-DAW-2023-24/webapp04/blob/main/backend/src/main/resources/static/profile_header_manager.html): profile_header_manager.html
 
 [File4](https://github.com/CodeURJC-DAW-2023-24/webapp04/blob/main/backend/src/main/resources/templates/validation_page.html): validation_page.html
-### David Paúl Limaylla Ticlavilca
+### David Paul Limaylla Ticlavilca
+
+[Commit_!]https://github.com/CodeURJC-DAW-2023-24/webapp04/commit/700dbfa5a53a6f9833c400c5cfeb6110825fecce
+[Commit_2]https://github.com/CodeURJC-DAW-2023-24/webapp04/commit/47e09d32d74b389b8459fe7b7db2f9e42df0d535
+[Commit_3]https://github.com/CodeURJC-DAW-2023-24/webapp04/commit/c0f6945cf8a02aa09714832f850a0230f539239a
+[Commit_4]https://github.com/CodeURJC-DAW-2023-24/webapp04/commit/a382119fc56bfd816c8ecf78ab7d2b5b50185156
+
+
 
 
 <br>
