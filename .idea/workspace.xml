@@ -4,18 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="072cea6f-8d20-4292-b10f-19e0c5f1ef3e" name="Changes" comment="CALCULATE LOAN&#10;Changes:&#10;- Updated nav bar&#10;- Added charts to loan page&#10;- Added AJAX to loan page">
-      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/4/4/442292b8a7efeabbe4cc176709b833b1792140ec" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/resources/static/public/js/profile_pic_loader.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/7/7/770258cc1aecc805e2b4b3470a0a90c97520c375" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/index.pb" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/index.pb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/securityhotspotstore/4/4/442292b8a7efeabbe4cc176709b833b1792140ec" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/securityhotspotstore/7/7/770258cc1aecc805e2b4b3470a0a90c97520c375" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/securityhotspotstore/index.pb" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sonarlint/securityhotspotstore/index.pb" afterDir="false" />
+    <list default="true" id="072cea6f-8d20-4292-b10f-19e0c5f1ef3e" name="Changes" comment="Download profile images from DB&#10;- Added js code for requesting the download of profile pics in profile_page.html">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/src/main/java/webapp4/main/controller/ProfileController.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/java/webapp4/main/controller/ProfileController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/src/main/resources/static/public/js/profile_ajax.js" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/resources/static/public/js/profile_ajax.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/src/main/resources/templates/profile_page.html" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/resources/templates/profile_page.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/start_db.sh" beforeDir="false" afterPath="$PROJECT_DIR$/backend/start_db.sh" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/src/main/resources/static/public/css/profile-styles.css" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/resources/static/public/css/profile-styles.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/src/main/resources/static/public/js/profile_pic_loader.js" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/resources/static/public/js/profile_pic_loader.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -242,7 +234,15 @@
       <option name="project" value="LOCAL" />
       <updated>1709495437915</updated>
     </task>
-    <option name="localTasksCounter" value="8" />
+    <task id="LOCAL-00008" summary="Download profile images from DB&#10;- Added js code for requesting the download of profile pics in profile_page.html">
+      <option name="closed" value="true" />
+      <created>1709557880548</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1709557880548</updated>
+    </task>
+    <option name="localTasksCounter" value="9" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
@@ -255,6 +255,7 @@
     <MESSAGE value="Major update" />
     <MESSAGE value="Major update&#10;- Added unmerged content" />
     <MESSAGE value="CALCULATE LOAN&#10;Changes:&#10;- Updated nav bar&#10;- Added charts to loan page&#10;- Added AJAX to loan page" />
-    <option name="LAST_COMMIT_MESSAGE" value="CALCULATE LOAN&#10;Changes:&#10;- Updated nav bar&#10;- Added charts to loan page&#10;- Added AJAX to loan page" />
+    <MESSAGE value="Download profile images from DB&#10;- Added js code for requesting the download of profile pics in profile_page.html" />
+    <option name="LAST_COMMIT_MESSAGE" value="Download profile images from DB&#10;- Added js code for requesting the download of profile pics in profile_page.html" />
   </component>
 </project>
