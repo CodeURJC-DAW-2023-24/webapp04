@@ -43,19 +43,15 @@ URJC Online Bank is a web application which allows their users to receive and tr
 
 🔸 **Users**
 
-Anonymous users, clients, managers and debt collectors.
+Anonymous users, clients, manager.
 
 🔸 **Account**
 
-Checking account, savings account.
 
 🔸 **Transfer**
 
 
-
 🔸 **Charges**
-
-Charge type.
 
 <br>
 
@@ -65,19 +61,18 @@ Bank clients have accounts, which contains a list of transfers and charges.
 
 <h3 id="web_permissons">🔐 User permissions</h3>
 
-| Feature | Unregistered User | Bank client | Manager | Debt Collectors|
+| Feature | Unregistered User | Bank client | Manager |
 |:-:|:-:|:-:|:-:|:--|
-|View information about offers, accounts and cards|✅|✅|✅|✅|
-|View relevant statistics about bank |✅|✅|✅|✅|
-|Ask for account creation|✅|❌|❌|❌|
-|Access the online banking tab|❌|✅|✅|✅|
-|Send and receive money|❌|✅|❌|✅|
-|Modify your profile|❌|✅|✅|✅|
-|View information about deposited and expended money|❌|✅|✅|✅|
-|Apply for a loan|❌|✅|❌|❌|
-|Approve the creation of an account|❌|❌|✅|❌|
-|Block access to an account or the funds in it|❌|❌|✅|❌|
-|Cancel charge|❌|❌|✅|✅|
+|View information about offers, accounts and cards|✅|✅|✅|
+|View relevant statistics about bank |✅|✅|✅|
+|Ask for account creation|✅|❌|❌|
+|Access the online banking tab|❌|✅|✅|
+|Send and receive money|❌|✅|❌|
+|Modify your profile|❌|✅|✅|
+|View information about deposited and expended money|❌|✅|✅|
+|Apply for a loan|❌|✅|❌|
+|Approve the creation of an account|❌|❌|✅|
+|Block access to an account or the funds in it|❌|❌|✅|
 
 
 <hr>
@@ -108,7 +103,7 @@ This is a pie chart that classifies all types of spending and indicates how much
 
 <h3 id="web_comp_tech">🌐 Complementary technology</h3>
 
-🔸 **Expense reports**
+🔸 **map**
 
 Export expense data to excel.
 
@@ -119,10 +114,6 @@ Export expense data to excel.
 🔸 **Charge filter system**
 
 An algorithm will be implemented to allow users to view their expenses filtered by the expense type.
-
-🔸 **Notification system**
-
-Users will receive periodic notifications informing them whether or not their spending objectives are beeing achieved.
 
 <br>
 
@@ -139,7 +130,7 @@ Users will receive periodic notifications informing them whether or not their sp
 
 ## Implementation instructions
 
-For linux and Java version 17:
+For linux distributions and Java version 17:
 
 1. Clone the repository by typing in the command shell `git clone https://github.com/CodeURJC-DAW-2023-24/webapp04`
 2. Create a database in MySQL called *urjc_bank*
