@@ -40,6 +40,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         https.authorizeRequests().antMatchers("/waiting").permitAll();
         https.authorizeRequests().antMatchers("/error_404").permitAll();
         https.authorizeRequests().antMatchers("/error_403").permitAll();
+        https.authorizeRequests().antMatchers("/error_500").permitAll();
 
         // Private pages
         https.authorizeRequests().antMatchers("/profile").hasAnyRole("USER");
