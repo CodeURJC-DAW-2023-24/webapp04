@@ -8,9 +8,6 @@ function loadMoreTransfers(startIndex, chunkSize) {
             data.forEach(transfer => {
                 const transferHtml = `
                     <div class="transfer">
-                        <div class="transfer-logo">
-                            <img src="https://assets.codepen.io/285131/apple.svg" />
-                        </div>
                         <dl class="transfer-details">
                             <div>
                                 <dt>${transfer.senderIBAN}</dt>
