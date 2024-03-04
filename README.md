@@ -152,7 +152,6 @@ For linux distributions and Java version 17:
 
 ## Member participation
 
-### Cristian Andrei Vlad
 
 ### David Cereceda Catalán
 In this phase I have been mainly responsible for registering users and saving them in the database, for correcting things that were missing from the previous phase, and for helping with tasks that my colleagues were developing.
