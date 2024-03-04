@@ -80,12 +80,12 @@ Bank clients have accounts, which contains a list of transfers and charges.
 <h3 id="web_images">🖼️ Images</h3>
 
 🔸 **Main page images**
-
-🔸 **User profile pictures**
+        ![image](https://github.com/CodeURJC-DAW-2023-24/webapp04/assets/116211485/ffca8136-d8c2-432f-bfdb-c73cfbdf07b5)
+🔸 **User profile pictures**    
+    ![image](https://github.com/CodeURJC-DAW-2023-24/webapp04/assets/116211485/8d593fd0-18ea-4963-b14a-667c44be6123)
 
 🔸 **Charge type image**
-
-
+    ![image](https://github.com/CodeURJC-DAW-2023-24/webapp04/assets/116211485/449ab329-5567-4234-b395-40509af1e9ba)
 
 <hr>
 
@@ -105,7 +105,7 @@ This is a pie chart that classifies all types of spending and indicates how much
 
 🔸 **map**
 
-Export expense data to excel.
+show location.
 
 <hr>
 
