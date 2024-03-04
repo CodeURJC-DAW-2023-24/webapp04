@@ -50,13 +50,14 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         https.authorizeRequests().antMatchers("/loan_visualizer").hasAnyRole("USER");
         https.authorizeRequests().antMatchers("/validation").hasAnyRole("ADMIN");
         https.authorizeRequests().antMatchers("/charge").hasAnyRole("ADMIN");
-        https.authorizeRequests().antMatchers("/admin_profile").hasAnyRole("ADMIN");
+        https.authorizeRequests().antMatchers("/validate_account_manager").hasAnyRole("ADMIN");
+
 
         // Login form
         https.formLogin().loginPage("/login");
         https.formLogin().usernameParameter("username");
         https.formLogin().passwordParameter("password");
-        https.formLogin().defaultSuccessUrl("/profile");
+        https.formLogin().defaultSuccessUrl("/profile_forward");
         https.formLogin().failureUrl("/login_error");
 
         // Logout
