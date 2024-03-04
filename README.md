@@ -176,8 +176,53 @@ In this phase I have been mainly responsible for registering users and saving th
 [File 4](https://github.com/CodeURJC-DAW-2023-24/webapp04/blob/main/backend/src/main/resources/static/public/js/profile_ajax.js)
 
 [File 5](https://github.com/CodeURJC-DAW-2023-24/webapp04/blob/main/backend/src/main/resources/templates/profile_page.html)
+### Cristian Andrei Vlad
+I was responsible for the database system with all the .csv, the AJAX part and some pages and most of the controllers
+My 5 most important commits are:
+- [Merge pull request #13 from CodeURJC-DAW-2023-24/Cristian](https://github.com/CodeURJC-DAW-2023-24/webapp04/commit/b0ad2ada02a61f0c00d2563e0322676f77e07b8d)
+  
+- [Merge pull request #10 from CodeURJC-DAW-2023-24/Cristian](https://github.com/CodeURJC-DAW-2023-24/webapp04/commit/b40cb7b0d526177c7f89136c2e14397a751de434)
+  
+- [Merge pull request #4 from CodeURJC-DAW-2023-24/client_private_area](https://github.com/CodeURJC-DAW-2023-24/webapp04/commit/cf1770215e6b37d02fb37466804fcfadeb20abbb)
+  
+- [TRANSFERS](https://github.com/CodeURJC-DAW-2023-24/webapp04/commit/5c317cf3110c426ecdbd5814dcd1a6bd8c651e87)
+  
+- [CALCULATE LOAN](https://github.com/CodeURJC-DAW-2023-24/webapp04/commit/0b1b417641bbb58fd771103ecaf5d12af88a78c5)
+The 5 files in which I participated the most:
+- [DBInitializer.java](https://github.com/CodeURJC-DAW-2023-24/webapp04/blob/main/backend/src/main/java/webapp4/main/service/DBInitializer.java)
+  
+- [ProfileController.java](https://github.com/CodeURJC-DAW-2023-24/webapp04/blob/main/backend/src/main/java/webapp4/main/controller/ProfileController.java)
+  
+- [DynamicContentController.java](https://github.com/CodeURJC-DAW-2023-24/webapp04/blob/main/backend/src/main/java/webapp4/main/controller/DynamicContentController.java)
+  
+- [LoanRequestController.java](https://github.com/CodeURJC-DAW-2023-24/webapp04/blob/main/backend/src/main/java/webapp4/main/controlle/LoanRequestController.java)
+  
+- [StaticResourceConfig.java](https://github.com/CodeURJC-DAW-2023-24/webapp04/blob/main/backend/src/main/java/webapp4/main/controller/StaticResourceConfig.java)
+
 ### Julio del Junco Prieto
 
+I was responsible for the security part of the project, as well as, helping with the controllers logic and all the dependencies of the pom.xml
+My 5 most important commits are:
+- [Merge pull request #9 from CodeURJC-DAW-2023-24/JuliodelJunco-patch-1](https://github.com/CodeURJC-DAW-2023-24/webapp04/commit/696b79e74e0480e11ff62149537fe2dce7aeacf8)
+  
+- [Merge pull request #8 from CodeURJC-DAW-2023-24/Cristian](https://github.com/CodeURJC-DAW-2023-24/webapp04/commit/43fab24b2321f2de4a05c6e5c42b053031780978)
+  
+- [Merge pull request #7 from CodeURJC-DAW-2023-24/JuliodelJunco-patch-1](https://github.com/CodeURJC-DAW-2023-24/webapp04/commit/2d9d3c1ca3631dcb7816e29a8bae37b87f22268a)
+  
+- [Merge pull request #6 from CodeURJC-DAW-2023-24/JuliodelJunco-patch-1](https://github.com/CodeURJC-DAW-2023-24/webapp04/commit/a613ad2bcda27151a82140f3e90923e8a87dcad2)
+  
+- [Merge pull request #5 from CodeURJC-DAW-2023-24/JuliodelJunco-patch-1](https://github.com/CodeURJC-DAW-2023-24/webapp04/commit/bb549998eb3addd4e55d7416722cb760877aa3c2)
+
+The 5 files in which I participated the most:
+- [pom.xml](https://github.com/CodeURJC-DAW-2023-24/webapp04/blob/main/backend/pom.xml)
+  
+- [CSRFHandlerConfiguration.java](https://github.com/CodeURJC-DAW-2023-24/webapp04/blob/main/backend/src/main/java/webapp4/main/security/CSRFHandlerConfiguration.java)
+  
+- [SecurityConfig.java](https://github.com/CodeURJC-DAW-2023-24/webapp04/blob/main/backend/src/main/java/webapp4/main/security/SecurityConfig.java)
+  
+- [UserDetailsServiceImp.java](https://github.com/CodeURJC-DAW-2023-24/webapp04/blob/main/backend/src/main/java/webapp4/main/security/UserDetailsServiceImp.java)
+  
+- [ProfileForwardController.java](https://github.com/CodeURJC-DAW-2023-24/webapp04/blob/main/backend/src/main/java/webapp4/main/controller/ProfileForwardController.java)
 ### Sergio Lopez Cuesta
 For this phase I was responsible on making the templates for make the application dynamic loading.
 
