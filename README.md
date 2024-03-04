@@ -152,6 +152,35 @@ For linux distributions and Java version 17:
 
 ## Member participation
 
+### Cristian Andrei Vlad
+
+### David Cereceda Catalán
+
+[Commit 1](https://github.com/CodeURJC-DAW-2023-24/webapp04/commit/f6ecaafe4bff220c3b386bf406786c87805affd8)
+
+[Commit 2](https://github.com/CodeURJC-DAW-2023-24/webapp04/commit/f38515b384cad46d5ed837f424f9e4759881b5e6)
+
+[Commit 3](https://github.com/CodeURJC-DAW-2023-24/webapp04/commit/c089d723c01f1a90b1815cf6f049d5af7366ea16)
+
+[Commit 4](https://github.com/CodeURJC-DAW-2023-24/webapp04/commit/ed0b45cc0447288a4822ab04bd177740960be0f3)
+
+[Commit 5](https://github.com/CodeURJC-DAW-2023-24/webapp04/commit/d76b21c8bba819a883002c57c349d98c8f1a838b)
+
+[Fichero 1](https://github.com/CodeURJC-DAW-2023-24/webapp04/blob/main/backend/src/main/java/webapp4/main/controller/AccountCreationController.java)
+
+[Fichero 2](https://github.com/CodeURJC-DAW-2023-24/webapp04/blob/main/backend/src/main/resources/templates/register_page.html)
+
+[Fichero 3](https://github.com/CodeURJC-DAW-2023-24/webapp04/blob/main/backend/src/main/java/webapp4/main/security/SecurityConfig.java)
+
+[Fichero 4](https://github.com/CodeURJC-DAW-2023-24/webapp04/blob/main/backend/src/main/resources/static/public/js/profile_ajax.js)
+
+[Fichero 5](https://github.com/CodeURJC-DAW-2023-24/webapp04/blob/main/backend/src/main/resources/templates/profile_page.html)
+### Julio del Junco Prieto
+
+### Sergio Lopez Cuesta
+
+### David Paúl Limaylla Ticlavilca
+
 
 <br>
 
