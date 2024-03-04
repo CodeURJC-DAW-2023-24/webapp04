@@ -155,6 +155,7 @@ For linux distributions and Java version 17:
 ### Cristian Andrei Vlad
 
 ### David Cereceda Catalán
+In this phase I have been mainly responsible for registering users and saving them in the database, for correcting things that were missing from the previous phase, and for helping with tasks that my colleagues were developing.
 
 [Commit 1](https://github.com/CodeURJC-DAW-2023-24/webapp04/commit/f6ecaafe4bff220c3b386bf406786c87805affd8)
 
@@ -178,7 +179,15 @@ For linux distributions and Java version 17:
 ### Julio del Junco Prieto
 
 ### Sergio Lopez Cuesta
+For this phase I was responsible on making the templates for make the application dynamic loading.
 
+[Commit 1](https://github.com/CodeURJC-DAW-2023-24/webapp04/commit/ecd5ec346c7206fe6c88c8cffb98af75d66a4026): Modify profile page style.
+
+[Commit 2](https://github.com/CodeURJC-DAW-2023-24/webapp04/commit/410f15d3a3183a6db733bce7f90b91f1a740ec87): Create loan request screen
+
+[Commit 3](https://github.com/CodeURJC-DAW-2023-24/webapp04/commit/e072c2bc2099c6bc3300481d561c959e06e5f87d): Modify chart page, validation page.
+
+[Commit 4](https://github.com/CodeURJC-DAW-2023-24/webapp04/commit/e072c2bc2099c6bc3300481d561c959e06e5f87d): Create manager_header, modify_profile
 ### David Paúl Limaylla Ticlavilca
 
 
