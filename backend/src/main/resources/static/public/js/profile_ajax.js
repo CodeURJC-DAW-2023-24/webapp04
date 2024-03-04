@@ -1,4 +1,4 @@
-// Función para cargar más transferencias
+
 function loadMoreTransfers(startIndex, chunkSize) {
     fetch(`/profile_data?startIndex=${startIndex}&chunkSize=${chunkSize}`)
         .then(response => response.json())
