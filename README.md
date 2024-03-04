@@ -62,7 +62,7 @@ Bank clients have accounts, which contains a list of transfers and charges.
 <h3 id="web_permissons">🔐 User permissions</h3>
 
 | Feature | Unregistered User | Bank client | Manager |
-|:-:|:-:|:-:|:-:|:--|
+|:-:|:-:|:-:|:--|
 |View information about offers, accounts and cards|✅|✅|✅|
 |View relevant statistics about bank |✅|✅|✅|
 |Ask for account creation|✅|❌|❌|
@@ -124,7 +124,7 @@ An algorithm will be implemented to allow users to view their expenses filtered 
 # PHASE 2
 
 ## Navigation
-
+![Captura desde 2024-03-04 07-29-35](https://github.com/CodeURJC-DAW-2023-24/webapp04/assets/116211485/9a9d19f5-9003-4b11-80e1-ea5370e1d2b7)
 
 <br>
 
@@ -138,13 +138,15 @@ For linux distributions and Java version 17:
 4. Open `https://localhost:8443/` in any browser
 <br>
 
-## Diagram with database entities
+## Diagram database
 
+![image](https://github.com/CodeURJC-DAW-2023-24/webapp04/assets/116211485/00174534-cd6c-4786-bcdd-d3fc31770689)
 
 <br>
 
-## Class diagram and templates
+## Diagram entities
 
+![image](https://github.com/CodeURJC-DAW-2023-24/webapp04/assets/116211485/93a44059-147f-4d57-a645-27299bc1111c)
 
 <br>
 
