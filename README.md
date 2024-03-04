@@ -188,6 +188,14 @@ For this phase I was responsible on making the templates for make the applicatio
 [Commit 3](https://github.com/CodeURJC-DAW-2023-24/webapp04/commit/e072c2bc2099c6bc3300481d561c959e06e5f87d): Modify chart page, validation page.
 
 [Commit 4](https://github.com/CodeURJC-DAW-2023-24/webapp04/commit/e072c2bc2099c6bc3300481d561c959e06e5f87d): Create manager_header, modify_profile
+
+[File1](https://github.com/CodeURJC-DAW-2023-24/webapp04/blob/main/backend/src/main/resources/templates/profile_page.html): profile_page.html
+
+[File2](https://github.com/CodeURJC-DAW-2023-24/webapp04/blob/main/backend/src/main/resources/templates/loan_request_page.html):loan_request-html
+
+[File3](https://github.com/CodeURJC-DAW-2023-24/webapp04/blob/main/backend/src/main/resources/static/profile_header_manager.html): profile_header_manager.html
+
+[File4](https://github.com/CodeURJC-DAW-2023-24/webapp04/blob/main/backend/src/main/resources/templates/validation_page.html): validation_page.html
 ### David Paúl Limaylla Ticlavilca
 
 
