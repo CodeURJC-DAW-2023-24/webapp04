@@ -7,6 +7,6 @@ import org.springframework.web.bind.annotation.GetMapping;
 public class ProfileManagerController {
     @GetMapping("/profile_manager")
     public String password(Model model){
-        return "validate_account_manager";
+        return "profile_manager";
     }
 }
