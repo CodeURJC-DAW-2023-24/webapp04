@@ -65,8 +65,12 @@ public class ProfileController {
     @GetMapping("/profile_data")
     @ResponseBody
     public List<ProcessedTransfer> getTransferData(@RequestParam int startIndex, @RequestParam int chunkSize) {
-        if (startIndex + chunkSize < processedTransferList.size()){
-            return processedTransferList.subList(startIndex, startIndex + chunkSize);
+        if (startIndex <= processedTransferList.size()){
+            if (startIndex + chunkSize <= processedTransferList.size()){
+                return processedTransferList.subList(startIndex, startIndex + chunkSize);
+            } else {
+                return processedTransferList.subList(startIndex, processedTransferList.size());
+            }
         }
         return new ArrayList<>();
     }
