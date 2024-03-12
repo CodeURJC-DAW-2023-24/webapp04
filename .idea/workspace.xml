@@ -4,10 +4,17 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="072cea6f-8d20-4292-b10f-19e0c5f1ef3e" name="Changes" comment="Download profile images from DB&#10;- Added js code for requesting the download of profile pics in profile_page.html">
+    <list default="true" id="072cea6f-8d20-4292-b10f-19e0c5f1ef3e" name="Changes" comment="resize image">
+      <change afterPath="$PROJECT_DIR$/backend/src/main/java/webapp4/main/service/AccountService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/backend/src/main/java/webapp4/main/service/UserDataService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/index.pb" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/index.pb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/securityhotspotstore/index.pb" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sonarlint/securityhotspotstore/index.pb" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/src/main/resources/static/public/css/profile-styles.css" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/resources/static/public/css/profile-styles.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/src/main/resources/static/public/js/profile_pic_loader.js" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/resources/static/public/js/profile_pic_loader.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/src/main/java/webapp4/main/controller/AccountCreationController.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/java/webapp4/main/controller/AccountCreationController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/src/main/java/webapp4/main/service/DBInitializer.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/java/webapp4/main/service/DBInitializer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/src/main/resources/static/public/js/profile_ajax.js" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/resources/static/public/js/profile_ajax.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/src/main/resources/templates/profile_page.html" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/resources/templates/profile_page.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/start_db.sh" beforeDir="false" afterPath="$PROJECT_DIR$/backend/start_db.sh" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -17,8 +24,8 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="Class" />
         <option value="HTML File" />
+        <option value="Class" />
       </list>
     </option>
   </component>
@@ -44,30 +51,30 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "ASKED_ADD_EXTERNAL_FILES": "true",
-    "ASKED_SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "Application.BackendApplication.executor": "Run",
-    "Application.main.controller.BackendApplication.executor": "Run",
-    "Application.webapp4.main.BackendApplication.executor": "Run",
-    "DefaultHtmlFileTemplate": "HTML File",
-    "JUnit.CSVReaderTest.executor": "Run",
-    "JUnit.CSVReaderTest.getFirstElementTest.executor": "Run",
-    "JUnit.CSVReaderTest.nonNullListTest.executor": "Run",
-    "JUnit.CSVReaderTest.readerTest.executor": "Run",
-    "JUnit.CSVTest.myTest.executor": "Run",
-    "JUnit.DBInitializerTest.csvIsFoundTest.executor": "Run",
-    "JUnit.DBInitializerTest.executor": "Run",
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "SONARLINT_PRECOMMIT_ANALYSIS": "true",
-    "git-widget-placeholder": "Cristian",
-    "kotlin-language-version-configured": "true",
-    "last_opened_file_path": "/home/cris/Documents/3GIS - Desarrollo de Aplicaciones Web/webapp04/backend/src/main/resources/static/public/assets/img"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;ASKED_ADD_EXTERNAL_FILES&quot;: &quot;true&quot;,
+    &quot;ASKED_SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
+    &quot;Application.BackendApplication.executor&quot;: &quot;Run&quot;,
+    &quot;Application.main.controller.BackendApplication.executor&quot;: &quot;Run&quot;,
+    &quot;Application.webapp4.main.BackendApplication.executor&quot;: &quot;Run&quot;,
+    &quot;DefaultHtmlFileTemplate&quot;: &quot;HTML File&quot;,
+    &quot;JUnit.CSVReaderTest.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.CSVReaderTest.getFirstElementTest.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.CSVReaderTest.nonNullListTest.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.CSVReaderTest.readerTest.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.CSVTest.myTest.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.DBInitializerTest.csvIsFoundTest.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.DBInitializerTest.executor&quot;: &quot;Run&quot;,
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
+    &quot;SONARLINT_PRECOMMIT_ANALYSIS&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;Cristian&quot;,
+    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;/home/cris/Documents/3GIS - Desarrollo de Aplicaciones Web/webapp04/backend/src/main/resources/static/public/assets/img&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/backend/src/main/resources/static/public/assets/img" />
@@ -242,7 +249,15 @@
       <option name="project" value="LOCAL" />
       <updated>1709557880548</updated>
     </task>
-    <option name="localTasksCounter" value="9" />
+    <task id="LOCAL-00009" summary="resize image">
+      <option name="closed" value="true" />
+      <created>1709559573919</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1709559573919</updated>
+    </task>
+    <option name="localTasksCounter" value="10" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
@@ -256,6 +271,7 @@
     <MESSAGE value="Major update&#10;- Added unmerged content" />
     <MESSAGE value="CALCULATE LOAN&#10;Changes:&#10;- Updated nav bar&#10;- Added charts to loan page&#10;- Added AJAX to loan page" />
     <MESSAGE value="Download profile images from DB&#10;- Added js code for requesting the download of profile pics in profile_page.html" />
-    <option name="LAST_COMMIT_MESSAGE" value="Download profile images from DB&#10;- Added js code for requesting the download of profile pics in profile_page.html" />
+    <MESSAGE value="resize image" />
+    <option name="LAST_COMMIT_MESSAGE" value="resize image" />
   </component>
 </project>

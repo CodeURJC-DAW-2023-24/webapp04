@@ -48,7 +48,6 @@ public class DBInitializer {
         System.out.println("--------------");
 
 
-        /* UPLOADING LOAN DATA */
         String loanData = "backend/src/main/resources/static/data/loans_data.csv";
         CSVReader loanCsvReader = new CSVReader(loanData);
         List<List<String>> records = loanCsvReader.readLines();
@@ -66,7 +65,6 @@ public class DBInitializer {
         System.out.println("2nd CHECKPOINT");
         System.out.println("--------------");
 
-        /* UPLOADING ACCOUNT DATA */
         String accountData = "backend/src/main/resources/static/data/client_data.csv";
         CSVReader accountCsvReader = new CSVReader(accountData);
         List<List<String>> accRecords = accountCsvReader.readLines();
@@ -88,7 +86,6 @@ public class DBInitializer {
         System.out.println("3rd CHECKPOINT");
         System.out.println("--------------");
 
-        /* UPLOADING TRANSFERS DATA */
         String transferData = "backend/src/main/resources/static/data/transfers_data.csv";
         CSVReader transferCsvReader = new CSVReader(transferData);
         List<List<String>> transRecords = transferCsvReader.readLines();
@@ -106,7 +103,6 @@ public class DBInitializer {
         System.out.println("4th CHECKPOINT");
         System.out.println("--------------");
 
-        /* UPLOADING USER DATA */
         String userDataPath = "backend/src/main/resources/static/data/client_credentials.csv";
         CSVReader userDataCsvReader = new CSVReader(userDataPath);
         List<List<String>> userDataRecords = userDataCsvReader.readLines();

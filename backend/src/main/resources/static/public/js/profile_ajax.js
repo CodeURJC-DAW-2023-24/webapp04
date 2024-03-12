@@ -4,7 +4,7 @@ function loadMoreTransfers(startIndex, chunkSize) {
         .then(response => response.json())
         .then(data => {
             const transfersContainer = document.querySelector('.transfers');
-
+            document.getElementById("no_transfers_performed").style.display = "None";
             data.forEach(transfer => {
                 const transferHtml = `
                     <div class="transfer">
