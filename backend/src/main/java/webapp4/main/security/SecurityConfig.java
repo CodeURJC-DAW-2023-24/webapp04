@@ -10,7 +10,6 @@ import org.springframework.security.config.annotation.web.configuration.EnableWe
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
-import org.springframework.security.web.csrf.CookieCsrfTokenRepository;
 
 import java.security.SecureRandom;
 
@@ -41,6 +40,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         https.authorizeRequests().antMatchers("/waiting").permitAll();
         https.authorizeRequests().antMatchers("/error_404").permitAll();
         https.authorizeRequests().antMatchers("/error_403").permitAll();
+        https.authorizeRequests().antMatchers("/error_500").permitAll();
 
         // Private pages
         https.authorizeRequests().antMatchers("/profile").hasAnyRole("USER");
@@ -48,15 +48,17 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         https.authorizeRequests().antMatchers("/transfer").hasAnyRole("USER");
         https.authorizeRequests().antMatchers("/data").hasAnyRole("USER");
         https.authorizeRequests().antMatchers("/loan_request").hasAnyRole("USER");
+        https.authorizeRequests().antMatchers("/loan_visualizer").hasAnyRole("USER");
         https.authorizeRequests().antMatchers("/validation").hasAnyRole("ADMIN");
         https.authorizeRequests().antMatchers("/charge").hasAnyRole("ADMIN");
-        https.authorizeRequests().antMatchers("/admin_profile").hasAnyRole("ADMIN");
+        https.authorizeRequests().antMatchers("/validate_account_manager").hasAnyRole("ADMIN");
+
 
         // Login form
         https.formLogin().loginPage("/login");
         https.formLogin().usernameParameter("username");
         https.formLogin().passwordParameter("password");
-        https.formLogin().defaultSuccessUrl("/profile");
+        https.formLogin().defaultSuccessUrl("/profile_forward");
         https.formLogin().failureUrl("/login_error");
 
         // Logout

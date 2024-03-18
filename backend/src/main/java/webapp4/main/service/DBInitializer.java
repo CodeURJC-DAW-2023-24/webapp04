@@ -14,6 +14,7 @@ import java.net.URISyntaxException;
 import java.security.SecureRandom;
 import java.sql.SQLException;
 import java.util.List;
+import java.util.Objects;
 
 import webapp4.main.csv_editor.CSVReader;
 
@@ -114,7 +115,11 @@ public class DBInitializer {
             UserData userData = new UserData();
             userData.setUsername(userDataRecords.get(i).get(1));
             userData.setPassword(passwordEncoder.encode(userDataRecords.get(i).get(2)));
-            userData.setRole("USER");
+            if(Objects.equals(userData.getUsername(), "00000000A")){
+                userData.setRole("ADMIN");
+            }else {
+                userData.setRole("USER");
+            }
             userDataRepository.save(userData);
         }
     }

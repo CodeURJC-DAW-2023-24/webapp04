@@ -40,7 +40,21 @@
 <body class="sb-nav-fixed">
 
 <!-- ======= Header ======= -->
-{{>../static/profile_header_manager}}
+<!-- ======= Header ======= -->
+<header id="header" class="d-flex align-items-center">
+    <div class="container d-flex align-items-center justify-content-between">
+        <h1 class="logo"><a href="/">URJC Bank</a></h1>
+        <!--<a href="index.html" class="logo"><img src="/URJC_Bank/public/assets/img/URJC_bank.png" alt="" class="img-fluid"></a> -->
+        <nav id="navbar" class="navbar">
+            <ul>
+                <li><a class="nav-link scrollto" href="/profile">Home</a></li>
+                <li><a class="nav-link scrollto" href="/transfers_manager">Transfers</a></li>
+                <li><a class="nav-link scrollto active" href="/charges">Charges</a></li>
+                <li><a class="nav-link scrollto " href="/logout">Log Out</a></li>
+            </ul>
+        </nav>
+    </div>
+</header>
 
 <div id="layoutSidenav">
     <div id="layoutSidenav_content">
@@ -55,20 +69,20 @@
                         <table id="datatablesSimple">
                             <thead>
                             <tr>
-                                <th>Nombre</th>
-                                <th>Cargo</th>
-                                <th>DNI</th>
-                                <th>Edad</th>
-                                <th>Fecha Inicio</th>
+                                <th>Name</th>
+                                <th>Charge</th>
+                                <th>NIE</th>
+                                <th>Age</th>
+                                <th>Date</th>
                             </tr>
                             </thead>
                             <tfoot>
                             <tr>
-                                <th>Nombre</th>
-                                <th>Cargo</th>
-                                <th>DNI</th>
-                                <th>Edad</th>
-                                <th>Fecha Inicio</th>
+                                <th>Name</th>
+                                <th>Charge</th>
+                                <th>NIE</th>
+                                <th>Age</th>
+                                <th>Date</th>
                             </tr>
                             </tfoot>
                             <tbody>

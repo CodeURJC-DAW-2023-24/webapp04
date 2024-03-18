@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+
+{{>../static/head}}
+
+<body>
+
+<!-- ======= Header ======= -->
+<!-- ======= Header ======= -->
+<header id="header" class="d-flex align-items-center">
+    <div class="container d-flex align-items-center justify-content-between">
+
+        <h1 class="logo"><a href="/">URJC Bank</a></h1>
+        <!--<a href="index.html" class="logo"><img src="/URJC_Bank/public/assets/img/URJC_bank.png" alt="" class="img-fluid"></a> -->
+
+        <nav id="navbar" class="navbar">
+            <ul>
+                <li><a class="nav-link scrollto" href="/profile">Home</a></li>
+                <li><a class="nav-link scrollto" href="/transfer">Make a transfer</a></li>
+                <li><a class="nav-link scrollto active" href="/loan_request">Calculate loan</a></li>
+                <li><a class="nav-link scrollto " href="/logout">Log Out</a></li>
+            </ul>
+        </nav>
+    </div>
+</header>
+
+<main id="main">
+    <!-- ======= Breadcrumbs ======= -->
+    <section id="breadcrumbs" class="breadcrumbs">
+        <div class="container">
+            <ol>
+                <li><a href="redirect:/loan_request">Loans</a></li>
+                <li>Calculate a loan</li>
+            </ol>
+            <h2>Calculate a loan</h2>
+        </div>
+    </section> <!-- End Breadcrumbs -->
+
+    <section class="inner-page">
+        <div class="container">
+            <div class="card mb-4">
+                <div class="card-header bg-danger" style="color: white;">
+                    <i class="fas fa-chart-area me-1"></i>
+                    Loan for {{reason}} - Amount {{amount}} € - Interest {{interest}}%
+                </div>
+                <div class="card-body"><canvas id="myChart" width="100%" height="30"></canvas></div>
+            </div>
+            <div id="table-container">
+                <table class="table">
+                    <thead>
+                    <tr>
+                        <th>Period</th>
+                        <th>Principal</th>
+                        <th>Interest</th>
+                        <th>Total Payment</th>
+                        <th>Remaining Amount</th>
+                    </tr>
+                    </thead>
+                    <tbody id="loan-table-body">
+                    </tbody>
+                </table>
+                <button id="loadMoreBtn">Load more</button>
+            </div>
+        </div>
+    </section>
+
+</main> <!-- End #main -->
+
+<!-- ======= Footer ======= -->
+{{>../static/short_footer}}
+
+<a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
+<div id="preloader"></div>
+
+<!-- Vendor JS Files -->
+<script src="public/assets/vendor/aos/aos.js"></script>
+<script src="public/assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+<script src="public/assets/vendor/glightbox/js/glightbox.min.js"></script>
+<script src="public/assets/vendor/isotope-layout/isotope.pkgd.min.js"></script>
+<script src="public/assets/vendor/swiper/swiper-bundle.min.js"></script>
+<script src="public/assets/vendor/php-email-form/validate.js"></script>
+
+<!-- Template Main JS File -->
+<script src="public/js/main.js"></script>
+<!-- Chart JS File -->
+<script src="https://cdn.jsdelivr.net/npm/chart.js" crossorigin="anonymous"></script>
+<script src="public/js/loan.js"></script>
+
+</body>
+
+</html>

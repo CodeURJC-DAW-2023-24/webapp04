@@ -1,12 +1,12 @@
 package webapp4.main.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.domain.PageRequest;
-import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import webapp4.main.model.Account;
 import webapp4.main.model.Transfer;
 import webapp4.main.repository.AccountRepository;
@@ -17,12 +17,11 @@ import java.security.Principal;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Optional;
+import java.util.*;
 
 @Controller
 public class ProfileController {
+    private ArrayList<ProcessedTransfer> processedTransferList;
     @Autowired
     private AccountRepository accountRepository;
     @Autowired
@@ -40,27 +39,19 @@ public class ProfileController {
                 // --- Setting client's name ---
                 model.addAttribute("client_name", accountOptional.get().getName());
                 // --- Setting transfer list ---
-                Pageable pageable = PageRequest.of(0, 10);
-                List<Transfer> transferList = transferRepository.findBySenderOrReceiverContaining(accountIBAN, pageable);
-                ArrayList<ProcessedTransfer> processedTransferList = new ArrayList<>();
+                List<Transfer> transferList = transferRepository.findBySenderOrReceiverContaining(accountIBAN);
+                processedTransferList = new ArrayList<>();
                 int balance = 0;
                 for (Transfer transfer : transferList) {
                     ProcessedTransfer processedTransfer = new ProcessedTransfer(transfer, accountIBAN);
                     processedTransferList.add(processedTransfer);
                     balance += processedTransfer.getAmount();
                 }
-                model.addAttribute("transfer_list", processedTransferList);
                 // --- Setting client's balance ---
-
                 model.addAttribute("client_balance", balance);
             } else {
-                System.out.println("ESE USUARIO NO EXISTE");
+                System.out.println("USER NOT FOUND");
             }
-            /*
-            model.addAttribute("logged", true);
-            model.addAttribute("userName", principal.getName());
-            model.addAttribute("admin", request.isUserInRole("ADMIN"));
-            */
         } else {
             model.addAttribute("logged", false);
         }
@@ -69,5 +60,18 @@ public class ProfileController {
     @GetMapping("/profile")
     public String profile(Model model, HttpSession session) {
         return "profile_page";
+    }
+
+    @GetMapping("/profile_data")
+    @ResponseBody
+    public List<ProcessedTransfer> getTransferData(@RequestParam int startIndex, @RequestParam int chunkSize) {
+        if (startIndex <= processedTransferList.size()){
+            if (startIndex + chunkSize <= processedTransferList.size()){
+                return processedTransferList.subList(startIndex, startIndex + chunkSize);
+            } else {
+                return processedTransferList.subList(startIndex, processedTransferList.size());
+            }
+        }
+        return new ArrayList<>();
     }
 }

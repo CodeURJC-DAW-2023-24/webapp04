@@ -36,19 +36,23 @@ public class TransferController {
         Optional<Account> accountOptional = accountRepository.findByNIP(username);
         if (accountOptional.isPresent()){
             String accountIBAN = accountOptional.get().getIBAN();
-            // Adding to the DB the transaction
-            Transfer transfer = new Transfer();
-            transfer.setSenderIBAN(accountIBAN);
-            transfer.setReceiverIBAN(receiver_iban);
-            transfer.setAmount(Integer.parseInt(amount));
-            transfer.setTransferType("transfer");
-            LocalDateTime currentDateTime = LocalDateTime.now();
-            DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-M-d HH:mm");
-            String formattedDateTime = currentDateTime.format(formatter);
-            transfer.setDate(formattedDateTime);
-            transferRepository.save(transfer);
+            Optional<Account> receiverAccountOptional = accountRepository.findByIBAN(receiver_iban);
+            if ((receiverAccountOptional.isPresent()) && (Integer.parseInt(amount) > 0)){
+                // Adding to the DB the transaction
+                Transfer transfer = new Transfer();
+                transfer.setSenderIBAN(accountIBAN);
+                transfer.setReceiverIBAN(receiver_iban);
+                transfer.setAmount(Integer.parseInt(amount));
+                transfer.setTransferType("transfer");
+                LocalDateTime currentDateTime = LocalDateTime.now();
+                DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-M-d HH:mm");
+                String formattedDateTime = currentDateTime.format(formatter);
+                transfer.setDate(formattedDateTime);
+                transferRepository.save(transfer);
+            } else {
+                return "redirect:/transfer";
+            }
         }
-
         return "redirect:/profile";
     }
 }

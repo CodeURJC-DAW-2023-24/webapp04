@@ -16,14 +16,30 @@
     <!-- Custom background style -->
     <style>
         body {
-            background-image: url("public/assets/img/fondouni.jpg");
+            background-image: url("../public/assets/img/rectorado.jpeg");
             background-size: cover;
             background-position: center;
         }
     </style>
 </head>
 
-{{>../static/profile_header}}
+<!-- ======= Header ======= -->
+<header id="header" class="d-flex align-items-center">
+    <div class="container d-flex align-items-center justify-content-between">
+
+        <h1 class="logo"><a href="/">URJC Bank</a></h1>
+        <!--<a href="index.html" class="logo"><img src="/URJC_Bank/public/assets/img/URJC_bank.png" alt="" class="img-fluid"></a> -->
+
+        <nav id="navbar" class="navbar">
+            <ul>
+                <li><a class="nav-link scrollto" href="/profile">Home</a></li>
+                <li><a class="nav-link scrollto" href="/transfer">Make a transfer</a></li>
+                <li><a class="nav-link scrollto active" href="/loan_request">Calculate loan</a></li>
+                <li><a class="nav-link scrollto " href="/logout">Log Out</a></li>
+            </ul>
+        </nav>
+    </div>
+</header>
 
 <main>
     <div class="container">
@@ -36,24 +52,24 @@
                         </h3>
                     </div>
                     <div class="card-body">
-                        <form id="loanForm">
+                        <form id="loanForm" method='post' action='/loan_visualizer'>
                             <div class="form-floating mb-3">
-                                <input class="form-control" id="inputAmount" type="number"
+                                <input class="form-control" name="inputAmount" id="inputAmount" type="number"
                                        placeholder="Enter loan amount" required />
                                 <label for="inputAmount">Loan Amount to Finance</label>
                             </div>
                             <div class="form-floating mb-3">
-                                <select class="form-select" id="inputExpenseType" required>
+                                <select class="form-select" name="inputExpenseType" id="inputExpenseType" required>
                                     <option value="">Select expense type</option>
-                                    <option value="1">Housing</option>
-                                    <option value="2">Education</option>
-                                    <option value="3">Medical</option>
-                                    <option value="4">Other</option>
+                                    <option value="0">Housing</option>
+                                    <option value="1">Education</option>
+                                    <option value="2">Medical</option>
+                                    <option value="3">Other</option>
                                 </select>
                                 <label for="inputExpenseType">Expense Type</label>
                             </div>
                             <div class="form-floating mb-3">
-                                <input class="form-control" id="inputInstallments" type="number"
+                                <input class="form-control" name="inputInstallments" id="inputInstallments" type="number"
                                        placeholder="Enter number of installments" required />
                                 <label for="inputInstallments">Number of Installments</label>
                             </div>
@@ -72,17 +88,17 @@
                             <div class="col-lg-4">
                                 <h2>COMFORT</h2>
                                 <p>Because you choose the monthly payment, selecting amount and term.</p>
-                                <img src="public/assets/img/comfort.jpg" alt="Placeholder Image" class="img-fluid">
+                                <img src="../public/assets/img/relax.jpeg" alt="Placeholder Image" class="img-fluid">
                             </div>
                             <div class="col-lg-4">
                                 <h2>FLEXIBILITY</h2>
                                 <p>Because you can return it in up to 7 years.</p>
-                                <img src="public/assets/img/flexibility.jpg" alt="Placeholder Image" class="img-fluid">
+                                <img src="../public/assets/img/friendly.jpeg" alt="Placeholder Image" class="img-fluid">
                             </div>
                             <div class="col-lg-4">
                                 <h2>A MAXIMUM AMOUNT OF</h2>
                                 <p>100.000€.</p>
-                                <img src="public/assets/img/confianza.jpg" alt="Placeholder Image" class="img-fluid">
+                                <img src="../public/assets/img/respect.jpeg" alt="Placeholder Image" class="img-fluid">
                             </div>
                         </div>
                     </div>
@@ -98,35 +114,6 @@
             crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.min.js"
             crossorigin="anonymous"></script>
-
-    <script>
-        const INTEREST_RATE = 1; // 1% interest rate per month
-
-        document
-            .getElementById("loanForm")
-            .addEventListener("submit", function (event) {
-                event.preventDefault();
-                var amount = parseFloat(document.getElementById("inputAmount").value);
-                var expenseType = document.getElementById("inputExpenseType").value;
-                var installments = parseInt(
-                    document.getElementById("inputInstallments").value
-                );
-                if (amount > 0 && expenseType !== "" && installments > 0) {
-                    var monthlyInterest = (amount * INTEREST_RATE) / 100;
-                    var totalAmount = amount + monthlyInterest * installments;
-                    var monthlyPayment = totalAmount / installments;
-                    document.getElementById("result").innerHTML =
-                        "<p class='alert alert-success'>Total Interest: $" +
-                        (monthlyInterest * installments).toFixed(2) +
-                        "<br>Monthly Payment: $" +
-                        monthlyPayment.toFixed(2) +
-                        "</p>";
-                } else {
-                    document.getElementById("result").innerHTML =
-                        "<p class='alert alert-danger'>Please enter valid loan amount, select expense type, and enter number of installments.</p>";
-                }
-            });
-    </script>
 </main>
 
 </html>
