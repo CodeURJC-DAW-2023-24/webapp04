@@ -15,7 +15,7 @@ import java.security.SecureRandom;
 
 @Configuration
 @EnableWebSecurity
-public class SecurityConfig extends WebSecurityConfigurerAdapter {
+public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     @Autowired
     private UserDetailsServiceImp userDetailsService;
 
@@ -44,14 +44,13 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
         // Private pages
         https.authorizeRequests().antMatchers("/profile").hasAnyRole("USER");
-        https.authorizeRequests().antMatchers("/transfers").hasAnyRole("USER");
         https.authorizeRequests().antMatchers("/transfer").hasAnyRole("USER");
         https.authorizeRequests().antMatchers("/data").hasAnyRole("USER");
         https.authorizeRequests().antMatchers("/loan_request").hasAnyRole("USER");
         https.authorizeRequests().antMatchers("/loan_visualizer").hasAnyRole("USER");
-        https.authorizeRequests().antMatchers("/validation").hasAnyRole("ADMIN");
-        https.authorizeRequests().antMatchers("/charge").hasAnyRole("ADMIN");
-        https.authorizeRequests().antMatchers("/validate_account_manager").hasAnyRole("ADMIN");
+        https.authorizeRequests().antMatchers("/account").hasAnyRole("ADMIN");
+        https.authorizeRequests().antMatchers("/transfers_manager").hasAnyRole("ADMIN");
+        https.authorizeRequests().antMatchers("/profile_manager").hasAnyRole("ADMIN");
 
 
         // Login form
