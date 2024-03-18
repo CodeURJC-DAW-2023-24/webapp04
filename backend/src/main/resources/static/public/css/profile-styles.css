@@ -141,3 +141,94 @@ body{
   min-height: 100vh;
   justify-content: space-between;
 }
+
+.account-section-header {
+  width: 100%;
+  padding-bottom: 0.75rem;
+  border-bottom: 1px solid rgb(0, 0, 0);
+}
+
+.account-section-header h2 {
+  font-size: 1.5rem;
+}
+
+.account {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  width: 100%;
+  font-size: 0.875rem;
+  border-bottom: #d6d6d6 2px solid;
+  padding: 1rem;
+}
+
+.account-logo {
+  width: 50px;
+  height: 50px;
+  padding: 1rem;
+}
+
+.account-logo img {
+  width: 100%;
+}
+
+.account-details {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  flex: 1;
+  margin-bottom: 0px;
+}
+
+.account-details div+div {
+  margin-left: 1rem;
+}
+
+.account-details > div > dd{
+  margin: 0px;
+}
+
+.account-number {
+  font-size: 1.125rem;
+  flex-shrink: 0;
+  width: 15%;
+  display: flex;
+  justify-content: center;
+  color: #cc1616;
+}
+@media (max-width: 1000px) {
+  .account-details {
+    flex-wrap: wrap;
+    margin-left: 0;
+    margin-top: 1rem;
+  }
+
+  .account-details div {
+    width: 100%;
+  }
+
+  .account-details div+div {
+    margin-left: 0;
+    margin-top: 1rem;
+  }
+
+  .account-number {
+    margin-left: auto;
+    margin-top: 1.25rem	;
+    width: 100%;
+    justify-content: center;
+  }
+
+  .account {
+    display: flex;
+    text-align: center;
+    flex-direction: column;
+  }
+
+  .account-section {
+    border: 2px solid black;
+    border-radius: 6px;
+    padding: 10px;
+    margin-bottom: 1rem;
+  }
+}
