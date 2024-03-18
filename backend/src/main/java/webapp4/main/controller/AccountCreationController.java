@@ -39,7 +39,7 @@ public class AccountCreationController {
         Optional<Account> accountOptional = accountRepository.findByNIP(inputUser);
         if (accountOptional.isPresent()){
             System.out.println("Account already exists");
-            return "redirect:/register_page";
+            return "redirect:/register";
         } else {
             if (inputPassword.equals(confirmPassword)) {
                 Account account = new Account();
