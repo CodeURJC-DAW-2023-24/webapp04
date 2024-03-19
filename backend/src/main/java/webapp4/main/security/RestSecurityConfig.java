@@ -1,4 +1,4 @@
-package es.codeurjc.daw.library.security;
+package webapp4.main.security;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
@@ -14,7 +14,7 @@ import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 
-import es.codeurjc.daw.library.security.jwt.JwtRequestFilter;
+import webapp4.main.security.jwt.JwtRequestFilter;
 
 @Configuration
 @Order(1)
