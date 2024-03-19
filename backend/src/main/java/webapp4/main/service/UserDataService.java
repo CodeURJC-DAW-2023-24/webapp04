@@ -5,11 +5,14 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
+import webapp4.main.csv_editor.CSVReader;
 import webapp4.main.model.Account;
 import webapp4.main.model.UserData;
 import webapp4.main.repository.UserDataRepository;
 
 import java.security.SecureRandom;
+import java.util.List;
+import java.util.Objects;
 import java.util.Optional;
 import java.util.Random;
 
@@ -57,5 +60,21 @@ public class UserDataService {
             ibanBuilder.append(random.nextInt(10));
         }
         return ibanBuilder.toString();
+    }
+    public void loadAllCLientData(String pathToCSV){
+        CSVReader userDataCsvReader = new CSVReader(pathToCSV);
+        List<List<String>> userDataRecords = userDataCsvReader.readLines();
+        PasswordEncoder passwordEncoder = passwordEncoder();
+        for (int i = 1; i < userDataRecords.size(); i++) {
+            UserData userData = new UserData();
+            userData.setUsername(userDataRecords.get(i).get(1));
+            userData.setPassword(passwordEncoder.encode(userDataRecords.get(i).get(2)));
+            if(Objects.equals(userData.getUsername(), "00000000A")){
+                userData.setRole("ADMIN");
+            }else {
+                userData.setRole("USER");
+            }
+            userDataRepository.save(userData);
+        }
     }
 }

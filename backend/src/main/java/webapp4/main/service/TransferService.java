@@ -2,6 +2,7 @@ package webapp4.main.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import webapp4.main.csv_editor.CSVReader;
 import webapp4.main.model.Account;
 import webapp4.main.model.Transfer;
 import webapp4.main.repository.AccountRepository;
@@ -43,6 +44,19 @@ public class TransferService {
             DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-M-d HH:mm");
             String formattedDateTime = currentDateTime.format(formatter);
             transfer.setDate(formattedDateTime);
+            transferRepository.save(transfer);
+        }
+    }
+    public void loadAllTransfers(String pathToCSV){
+        CSVReader transferCsvReader = new CSVReader(pathToCSV);
+        List<List<String>> transRecords = transferCsvReader.readLines();
+        for (int i = 1; i < transRecords.size(); i++) {
+            Transfer transfer = new Transfer();
+            transfer.setSenderIBAN(transRecords.get(i).get(1));
+            transfer.setReceiverIBAN(transRecords.get(i).get(2));
+            transfer.setAmount(Integer.parseInt(transRecords.get(i).get(3)));
+            transfer.setDate(transRecords.get(i).get(4));
+            transfer.setTransferType(transRecords.get(i).get(5));
             transferRepository.save(transfer);
         }
     }
