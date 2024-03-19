@@ -80,7 +80,7 @@ public class RestSecurityConfig extends WebSecurityConfigurerAdapter {
 
         // Logout
         https.logout().logoutUrl("/logout");
-        https.logout().logoutSuccessUrl("/login");
+        https.logout().logoutSuccessUrl("/");
 
 
 		// Disable CSRF protection (it is difficult to implement in REST APIs)
