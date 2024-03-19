@@ -5,16 +5,17 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="072cea6f-8d20-4292-b10f-19e0c5f1ef3e" name="Changes" comment="resize image">
-      <change afterPath="$PROJECT_DIR$/backend/src/main/java/webapp4/main/service/AccountService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/backend/src/main/java/webapp4/main/service/UserDataService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/backend/src/main/java/webapp4/main/service/LoanService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/backend/src/main/java/webapp4/main/service/TransferService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/index.pb" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/index.pb" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/sonarlint/securityhotspotstore/index.pb" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sonarlint/securityhotspotstore/index.pb" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/backend/src/main/java/webapp4/main/controller/AccountCreationController.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/java/webapp4/main/controller/AccountCreationController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/src/main/java/webapp4/main/service/DBInitializer.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/java/webapp4/main/service/DBInitializer.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/src/main/resources/static/public/js/profile_ajax.js" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/resources/static/public/js/profile_ajax.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/src/main/resources/templates/profile_page.html" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/resources/templates/profile_page.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/start_db.sh" beforeDir="false" afterPath="$PROJECT_DIR$/backend/start_db.sh" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/src/main/java/webapp4/main/controller/DynamicContentController.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/java/webapp4/main/controller/DynamicContentController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/src/main/java/webapp4/main/controller/LoanRequestController.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/java/webapp4/main/controller/LoanRequestController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/src/main/java/webapp4/main/controller/ProfileController.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/java/webapp4/main/controller/ProfileController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/src/main/java/webapp4/main/controller/TransferController.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/java/webapp4/main/controller/TransferController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/src/main/java/webapp4/main/service/AccountService.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/java/webapp4/main/service/AccountService.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />

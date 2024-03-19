@@ -1,13 +1,13 @@
 package webapp4.main.controller;
 
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
+import webapp4.main.service.LoanService;
 
 import javax.servlet.http.HttpSession;
-import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -18,7 +18,9 @@ public class LoanRequestController {
     };
     private int amount;
     private int installments;
-    private final float interestRate = 7.5f;
+    private static final float interestRate = 7.5f;
+    @Autowired
+    private LoanService loanService;
     @GetMapping("/loan_request")
     public String loanRequest(Model model, HttpSession session){
         return "loan_request_page";
@@ -35,23 +37,6 @@ public class LoanRequestController {
     @GetMapping("/data")
     @ResponseBody
     public List<Map<String, Float>> getLoanData(@RequestParam int startIndex, @RequestParam int chunkSize) {
-        List<Map<String, Float>> loanPayments = new ArrayList<>();
-        float monthlyInterestRate = interestRate / 100 / 12;
-        float remainingAmount = amount;
-        for (int i = startIndex; i < startIndex + chunkSize; i++) {
-            if (i >= installments) {
-                break;
-            }
-            float interestPayment = remainingAmount * monthlyInterestRate;
-            float principalPayment = amount / installments;
-            Map<String, Float> payment = new HashMap<>();
-            payment.put("period", (float) (i + 1));
-            payment.put("principal", principalPayment);
-            payment.put("interest", interestPayment);
-            payment.put("remainingAmount", remainingAmount);
-            loanPayments.add(payment);
-            remainingAmount -= principalPayment;
-        }
-        return loanPayments;
+        return loanService.getLoanInfo(amount, installments, startIndex, chunkSize);
     }
 }

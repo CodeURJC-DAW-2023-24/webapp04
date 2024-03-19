@@ -14,16 +14,20 @@ import webapp4.main.model.Account;
 import webapp4.main.model.Transfer;
 import webapp4.main.repository.AccountRepository;
 import webapp4.main.repository.TransferRepository;
+import webapp4.main.service.AccountService;
+import webapp4.main.service.TransferService;
 import webapp4.main.transferDataUtils.ProcessedTransfer;
 
-import java.io.IOException;
 import java.security.Principal;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import java.sql.Blob;
 import java.sql.SQLException;
-import java.util.*;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Optional;
+
 
 @Controller
 public class ProfileController {
@@ -33,6 +37,10 @@ public class ProfileController {
     private AccountRepository accountRepository;
     @Autowired
     private TransferRepository transferRepository;
+    @Autowired
+    private TransferService transferService;
+    @Autowired
+    private AccountService accountService;
 
     @ModelAttribute
     public void addAttributes(Model model, HttpServletRequest request){
@@ -74,8 +82,9 @@ public class ProfileController {
     @GetMapping("/profile_data")
     @ResponseBody
     public List<ProcessedTransfer> getTransferData(@RequestParam int startIndex, @RequestParam int chunkSize) {
+        transferService.getProcessedTransfers(accountService.getUserByNIP(clientNIP).get().getIBAN());
         if (startIndex + chunkSize < processedTransferList.size()){
-            return processedTransferList.subList(startIndex, startIndex + chunkSize);
+            return transferService.getProcessedTransfers(accountService.getUserByNIP(clientNIP).get().getIBAN()).subList(startIndex, startIndex + chunkSize);
         }
         return new ArrayList<>();
     }
@@ -83,21 +92,9 @@ public class ProfileController {
     @GetMapping("/image_loader")
     @ResponseBody
     public ResponseEntity<byte[]> downloadImage() {
-        Optional<Account> clientData = accountRepository.findByNIP(clientNIP);
-        if (clientData.isPresent()) {
-            Account account = clientData.get();
-            Blob imageBlob = account.getImageFile();
-            try {
-                byte[] imageData = imageBlob.getBytes(1, (int) imageBlob.length());
-                return ResponseEntity
-                        .ok()
-                        .contentType(MediaType.IMAGE_JPEG)
-                        .body(imageData);
-            } catch (SQLException e) {
-                throw new RuntimeException(e);
-            }
-        } else {
-            return ResponseEntity.status(HttpStatus.NOT_FOUND).body(null);
-        }
+        return ResponseEntity
+                .ok()
+                .contentType(MediaType.IMAGE_JPEG)
+                .body(accountService.getProfilePicBytes(clientNIP));
     }
 }
