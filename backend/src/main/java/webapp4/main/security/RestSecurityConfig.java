@@ -44,9 +44,9 @@ public class RestSecurityConfig extends WebSecurityConfigurerAdapter {
 	}
 
 	@Override
-	protected void configure(HttpSecurity http) throws Exception {
+	protected void configure(HttpSecurity https) throws Exception {
 
-		http.antMatcher("/api/**");
+		https.antMatcher("/api/**");
 		
         https.authorizeRequests().antMatchers("/").permitAll();
         https.authorizeRequests().antMatchers("/login").permitAll();
@@ -84,19 +84,19 @@ public class RestSecurityConfig extends WebSecurityConfigurerAdapter {
 
 
 		// Disable CSRF protection (it is difficult to implement in REST APIs)
-		http.csrf().disable();
+		https.csrf().disable();
 
 		// Disable Http Basic Authentication
-		http.httpBasic().disable();
+		https.httpBasic().disable();
 		
 		// Disable Form login Authentication
-		http.formLogin().disable();
+		https.formLogin().disable();
 
 		// Avoid creating session 
-		http.sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS);
+		https.sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS);
 		
 		// Add JWT Token filter
-		http.addFilterBefore(jwtRequestFilter, UsernamePasswordAuthenticationFilter.class);
+		https.addFilterBefore(jwtRequestFilter, UsernamePasswordAuthenticationFilter.class);
 
 	}
 }
