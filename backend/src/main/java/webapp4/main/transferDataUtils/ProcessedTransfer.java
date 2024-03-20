@@ -33,14 +33,14 @@ public class ProcessedTransfer {
         if (clientIBAN.equals(senderIBAN)){
             return "You";
         }
-        return "**** **** **** **** " + senderIBAN.substring(senderIBAN.length() - 4);
+        return senderIBAN.substring(senderIBAN.length() - 4);
     }
 
     public String getReceiverIBAN() {
         if (clientIBAN.equals(receiverIBAN)){
             return "You";
         }
-        return "**** **** **** **** " + receiverIBAN.substring(receiverIBAN.length() - 4);
+        return receiverIBAN.substring(receiverIBAN.length() - 4);
     }
 
     public int getAmount() {

@@ -74,6 +74,16 @@
   margin: 0px;
 }
 
+.min{
+  width: 50px;
+  text-align: center;
+}
+
+.max{
+  text-align: center;
+  width: 120px;
+}
+transfers_manager
 .transfer-number {
   font-size: 1.125rem;
   flex-shrink: 0;
