@@ -1,6 +1,6 @@
 // Función para cargar más transferencias
 function loadMoreTransfers(startIndex, chunkSize) {
-    fetch(`/transfers_manager?startIndex=${startIndex}&chunkSize=${chunkSize}`)
+    fetch(`/transfers_manager_load?startIndex=${startIndex}&chunkSize=${chunkSize}`)
         .then(response => response.json())
         .then(data => {
             const transfersContainer = document.querySelector('.transfers');
