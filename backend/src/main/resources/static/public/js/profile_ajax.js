@@ -9,24 +9,24 @@ function loadMoreTransfers(startIndex, chunkSize) {
                 const transferHtml = `
                     <div class="transfer">
                         <dl class="transfer-details">
-                            <div>
-                                <dt>${transfer.senderIBAN}</dt>
-                                <dd>Sender</dd>
+                            <div class="min">
+                                <dt>Sender</dt>
+                                <dd>${transfer.senderIBAN}</dd>
                             </div>
-                            <div>
-                                <dt>${transfer.receiverIBAN}</dt>
-                                <dd>Receiver</dd>
+                            <div class="min">
+                                <dt>Receiver</dt>
+                                <dd>${transfer.receiverIBAN}</dd>
                             </div>
-                            <div>
-                                <dt>${transfer.date}</dt>
-                                <dd>Date payment</dd>
+                            <div class="max">
+                                <dt>Date payment</dt>
+                                <dd>${transfer.date}</dd>
                             </div>
-                            <div>
-                                <dt>${transfer.transferType}</dt>
-                                <dd>T Type</dd>
+                            <div class="min">
+                                <dt>T Type</dt>
+                                <dd>${transfer.transferType}</dd>
                             </div>
+                            <div class="transfer-number">${transfer.amount}€</div>
                         </dl>
-                        <div class="transfer-number">${transfer.amount} €</div>
                     </div>`;
                 transfersContainer.insertAdjacentHTML('beforeend', transferHtml);
             });
