@@ -1,4 +1,4 @@
-version: '3.8'
+version: '3.9'
 
 services:
   db:
@@ -13,7 +13,7 @@ services:
       - db_data:/var/lib/mysql
 
   web:
-    build: .
+    image: Cristian1A/urjc_bank
     ports:
       - "8443:8443"
     depends_on:
