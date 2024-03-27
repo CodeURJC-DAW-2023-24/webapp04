@@ -4,9 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="072cea6f-8d20-4292-b10f-19e0c5f1ef3e" name="Changes" comment="Updated DBInitializer">
-      <change beforePath="$PROJECT_DIR$/backend/src/main/java/webapp4/main/controller/ProfileController.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/java/webapp4/main/controller/ProfileController.java" afterDir="false" />
-    </list>
+    <list default="true" id="072cea6f-8d20-4292-b10f-19e0c5f1ef3e" name="Changes" comment="Updated ProfileController&#10;- Added else clause to check if ajax is asking for more transfer data than it exists." />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -264,7 +262,23 @@
       <option name="project" value="LOCAL" />
       <updated>1710841538561</updated>
     </task>
-    <option name="localTasksCounter" value="12" />
+    <task id="LOCAL-00012" summary="Updated ProfileController&#10;- Added else clause to check if ajax is asking for more transfer data than it exists.">
+      <option name="closed" value="true" />
+      <created>1711536275270</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1711536275270</updated>
+    </task>
+    <task id="LOCAL-00013" summary="Updated ProfileController&#10;- Added else clause to check if ajax is asking for more transfer data than it exists.">
+      <option name="closed" value="true" />
+      <created>1711536296928</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1711536296928</updated>
+    </task>
+    <option name="localTasksCounter" value="14" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
@@ -281,6 +295,7 @@
     <MESSAGE value="resize image" />
     <MESSAGE value="Added service classes&#10;- Added TransferService&#10;- Added LoanService&#10;- Updated AccountService" />
     <MESSAGE value="Updated DBInitializer" />
-    <option name="LAST_COMMIT_MESSAGE" value="Updated DBInitializer" />
+    <MESSAGE value="Updated ProfileController&#10;- Added else clause to check if ajax is asking for more transfer data than it exists." />
+    <option name="LAST_COMMIT_MESSAGE" value="Updated ProfileController&#10;- Added else clause to check if ajax is asking for more transfer data than it exists." />
   </component>
 </project>
