@@ -84,8 +84,10 @@ public class ProfileController {
     @ResponseBody
     public List<ProcessedTransfer> getTransferData(@RequestParam int startIndex, @RequestParam int chunkSize) {
         transferService.getProcessedTransfers(accountService.getUserByNIP(clientNIP).get().getIBAN());
-        if (startIndex + chunkSize < processedTransferList.size()){
+        if (startIndex + chunkSize <= processedTransferList.size()){
             return transferService.getProcessedTransfers(accountService.getUserByNIP(clientNIP).get().getIBAN()).subList(startIndex, startIndex + chunkSize);
+        } else if (startIndex + chunkSize > processedTransferList.size()){
+            return transferService.getProcessedTransfers(accountService.getUserByNIP(clientNIP).get().getIBAN()).subList(startIndex, processedTransferList.size());
         }
         return new ArrayList<>();
     }

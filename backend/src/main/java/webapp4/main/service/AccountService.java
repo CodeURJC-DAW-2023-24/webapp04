@@ -2,6 +2,7 @@ package webapp4.main.service;
 
 import org.jetbrains.annotations.NotNull;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.core.io.ClassPathResource;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
@@ -13,6 +14,7 @@ import webapp4.main.repository.AccountRepository;
 import javax.sql.rowset.serial.SerialBlob;
 import java.io.FileInputStream;
 import java.io.IOException;
+import java.io.InputStream;
 import java.sql.Blob;
 import java.sql.SQLException;
 import java.util.List;
@@ -53,14 +55,14 @@ public class AccountService {
             account.setIBAN(accRecords.get(i).get(1));
             account.setName(accRecords.get(i).get(2));
             account.setSurname(accRecords.get(i).get(3));
-            setClientImage(account, "backend/src/main/resources/static/Client_profile_pics/" + account.getNIP() + ".jpeg");
+            setClientImage(account, "static/Client_profile_pics/" + account.getNIP() + ".jpeg");
             accountRepository.save(account);
         }
     }
-    public void setClientImage(@NotNull Account bankClient, String imagePath){
+    public void setClientImage(@NotNull Account bankClient, String imagePath) {
         try {
-            FileInputStream fis = new FileInputStream(imagePath);
-            byte[] imageBin = fis.readAllBytes();
+            InputStream inputStream = new ClassPathResource(imagePath).getInputStream();
+            byte[] imageBin = inputStream.readAllBytes();
             SerialBlob serialBlob = new SerialBlob(imageBin);
             bankClient.setImageFile(serialBlob);
         } catch (IOException | SQLException e) {
