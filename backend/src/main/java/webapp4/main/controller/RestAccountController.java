@@ -8,6 +8,7 @@ import org.springframework.http.ResponseEntity;
 import webapp4.main.model.Account;
 import webapp4.main.repository.AccountRepository;
 import webapp4.main.service.UserDataService;
+import java.util.Optional;
 
 import java.net.URI;
 
@@ -39,6 +40,17 @@ public class RestAccountController {
             } else{
                 return ResponseEntity.badRequest().body("Error with confirm Password");
             }
+        }
+    }
+
+    @GetMapping("/api/accounts/{id}")
+    public ResponseEntity<Account> getAccount(@PathVariable String id){
+        Optional<Account> accountOptional = accountRepository.findByNIP(id);
+        Account account = accountOptional.get();
+        if (account != null) {
+            return ResponseEntity.ok(account);
+        } else {
+            return ResponseEntity.notFound().build();
         }
     }
 
