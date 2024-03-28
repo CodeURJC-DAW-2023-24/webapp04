@@ -23,25 +23,30 @@ public class UserDataService {
     private UserDataRepository userDataRepository;
     @Autowired
     private AccountService accountService;
-    public boolean registerUser(String inputNIP, String firstName, String lastName, String password){
+    
+    public Object registerUser(String inputNIP, String firstName, String lastName, String password, String confirmPassword){
         Optional<Account> accountOptional = accountService.getUserByNIP(inputNIP);
         if (accountOptional.isPresent()){
-            return false;
+            return "Account already exists";
         } else {
-            Account account = new Account();
-            account.setNIP(inputNIP);
-            String iban = generateIBAN();
-            account.setIBAN(iban);
-            account.setName(firstName);
-            account.setSurname(lastName);
-            accountService.createAccount(account);
-            UserData userData = new UserData();
-            userData.setUsername(inputNIP);
-            PasswordEncoder passwordEncoder = passwordEncoder();
-            userData.setPassword(passwordEncoder.encode(password));
-            userData.setRole("USER");
-            userDataRepository.save(userData);
-            return true;
+            if (password.equals(confirmPassword)) {
+                Account account = new Account();
+                account.setNIP(inputNIP);
+                String iban = generateIBAN();
+                account.setIBAN(iban);
+                account.setName(firstName);
+                account.setSurname(lastName);
+                accountService.createAccount(account);
+                UserData userData = new UserData();
+                userData.setUsername(inputNIP);
+                PasswordEncoder passwordEncoder = passwordEncoder();
+                userData.setPassword(passwordEncoder.encode(password));
+                userData.setRole("USER");
+                userDataRepository.save(userData);
+                return account;
+            } else {
+                return "Error with confirm password";
+            }
         }
     }
 
