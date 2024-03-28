@@ -1,5 +1,6 @@
 #!/bin/bash
 
 docker build -t cristian1a/urjc_bank -f ../docker/Dockerfile ../
-docker push cristian1a/urjc_bank
+docker tag cristian1a/urjc_bank cristian1a/urjc_bank:latest
+docker push cristian1a/urjc_bank:latest
 docker compose up
