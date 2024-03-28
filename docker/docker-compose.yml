@@ -14,14 +14,12 @@ services:
 
   web:
     image: cristian1a/urjc_bank:latest
-    ports:
-      - "8443:8443"
     depends_on:
       - db
     environment:
       SPRING_DATASOURCE_URL: jdbc:mysql://db:3306/urjc_bank
       SPRING_DATASOURCE_USERNAME: root
       SPRING_DATASOURCE_PASSWORD: password
-
+    restart: on-failure
 volumes:
   db_data:
