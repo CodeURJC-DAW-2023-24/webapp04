@@ -7,6 +7,6 @@ RUN mvn clean package -DskipTests
 
 # Execution
 FROM openjdk:17-jdk-slim
-WORKDIR /usr/src/app
-COPY --from=builder /project/target/*.jar /usr/src/app
+WORKDIR /usr/src/app/target
+COPY --from=builder /project/target/*.jar /usr/src/app/target/app.jar
 CMD ["java", "-jar", "app.jar"]
