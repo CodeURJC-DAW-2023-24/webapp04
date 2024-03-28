@@ -30,7 +30,7 @@ public class TransferService {
         }
         return processedTransferList;
     }
-    public void addTransaction(String username, String receiverIBAN, int amount){
+    public Object addTransaction(String username, String receiverIBAN, int amount){
         Optional<Account> accountOptional = accountRepository.findByNIP(username);
         if (accountOptional.isPresent()){
             String accountIBAN = accountOptional.get().getIBAN();
@@ -45,7 +45,9 @@ public class TransferService {
             String formattedDateTime = currentDateTime.format(formatter);
             transfer.setDate(formattedDateTime);
             transferRepository.save(transfer);
+            return transfer;
         }
+        return "user not exists";
     }
     public void loadAllTransfers(String pathToCSV){
         CSVReader transferCsvReader = new CSVReader(pathToCSV);
