@@ -12,7 +12,6 @@ import webapp4.main.repository.AccountRepository;
 import webapp4.main.repository.TransferRepository;
 import webapp4.main.service.TransferService;
 import webapp4.main.service.UserDataService;
-import webapp4.main.service.ImageService;
 
 import javax.servlet.http.HttpServletRequest;
 import java.io.IOException;
