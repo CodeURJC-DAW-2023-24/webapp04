@@ -16,6 +16,7 @@ import webapp4.main.service.UserDataService;
 import javax.servlet.http.HttpServletRequest;
 import java.io.IOException;
 import java.net.URI;
+import java.util.Collection;
 import java.util.Optional;
 
 
@@ -57,6 +58,12 @@ public class RestTransferController {
         } else {
             return ResponseEntity.notFound().build();
         }
+    }
+
+    @GetMapping("/api/transfers")
+    public ResponseEntity<Collection<Transfer>> getAllTransfer(){
+        Collection<Transfer> allTransfers = transferRepository.findAll();
+        return ResponseEntity.ok(allTransfers);
     }
 
 }
