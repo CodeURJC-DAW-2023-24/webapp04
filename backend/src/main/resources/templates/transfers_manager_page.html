@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  {{>../static/head}}
+
+<body>
+<!-- ======= Header ======= -->
+<header id="header" class="d-flex align-items-center">
+    <div class="container d-flex align-items-center justify-content-between">
+        <h1 class="logo"><a href="/logout">URJC Bank</a></h1>
+        <!--<a href="index.html" class="logo"><img src="/URJC_Bank/public/assets/img/URJC_bank.png" alt="" class="img-fluid"></a> -->
+        <nav id="navbar" class="navbar">
+            <ul>
+                <li><a class="nav-link scrollto" href="/profile_manager">Home</a></li>
+                <li><a class="nav-link scrollto active" href="/transfers_manager">Transfers</a></li>
+                <li><a class="nav-link scrollto" href="/account">Users</a></li>
+                <li><a class="nav-link scrollto " href="/logout">Log Out</a></li>
+            </ul>
+        </nav>
+    </div>
+</header>
+  <div class="app">
+    <div class="body">
+      <div class="wrapper">
+        <div class="app-body-main-content">
+        <div class="wrapper">
+          <section class="transfer-section">
+            <div class="transfer-section-header">
+              <h2>Latest transfers (ALL CLIENTS)</h2>
+            </div>
+            <!-- get list of transfers: select * from transfer -->
+            <div class="transfers">
+            </div>
+            <button id="transfer_button">Load more</button>
+          </section>
+        </div>
+      </div>
+    </div>
+    </div>
+  </div>
+
+  {{>../static/short_footer}}
+
+  <script src="https://unpkg.com/phosphor-icons"></script>
+
+  <!-- Vendor JS Files -->
+  <script src="public/assets/vendor/aos/aos.js"></script>
+  <script src="public/assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <script src="public/assets/vendor/glightbox/js/glightbox.min.js"></script>
+  <script src="public/assets/vendor/isotope-layout/isotope.pkgd.min.js"></script>
+  <script src="public/assets/vendor/swiper/swiper-bundle.min.js"></script>
+  <script src="public/assets/vendor/php-email-form/validate.js"></script>
+<script src="public/js/admin_ajax.js"></script>
+</body>
+
+</html>

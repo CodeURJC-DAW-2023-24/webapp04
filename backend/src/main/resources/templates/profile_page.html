@@ -5,8 +5,23 @@
 
 <body>
 
-{{>../static/profile_header}}
+<!-- ======= Header ======= -->
+<header id="header" class="d-flex align-items-center">
+    <div class="container d-flex align-items-center justify-content-between">
 
+        <h1 class="logo"><a href="/logout">URJC Bank</a></h1>
+        <!--<a href="index.html" class="logo"><img src="/URJC_Bank/public/assets/img/URJC_bank.png" alt="" class="img-fluid"></a> -->
+
+        <nav id="navbar" class="navbar">
+            <ul>
+                <li><a class="nav-link scrollto active" href="/profile">Home</a></li>
+                <li><a class="nav-link scrollto" href="/transfer">Make a transfer</a></li>
+                <li><a class="nav-link scrollto" href="/loan_request">Calculate loan</a></li>
+                <li><a class="nav-link scrollto " href="/logout">Log Out</a></li>
+            </ul>
+        </nav>
+    </div>
+</header>
   <div class="app">
     <div class="body">
       <div class="wrapper">
@@ -15,9 +30,11 @@
             <div class="tiles">
               <article class="tile">
                 <div class="tile-header">
-                <h3>
-                  <span>{{client_iban}}</span>
-                  <span>{{client_name}}</span>
+                <h3 class="image-container">
+                  <img id="client_pic" src="" class="img-fluid half-size" alt="" style="height: 50%;">
+                  <span id="client_iban">{{client_iban}}</span>
+                  <span>Bienvenido, {{client_name}}</span>
+                  <span>Tu balance actual es de {{client_balance}} €</span>
                 </h3>
               </div>
             </article>
@@ -29,35 +46,9 @@
               <h2>Latest transfers</h2>
             </div>
             <div class="transfers">
-              {{#transfer_list}}
-              <div class="transfer">
-                <div class="transfer-logo">
-                  <img src="https://assets.codepen.io/285131/apple.svg" />
-                </div>
-                <dl class="transfer-details">
-                  <div>
-                    <dt>{{senderIBAN}}</dt>
-                    <dd>Sender</dd>
-                  </div>
-                  <div>
-                    <dt>{{receiverIBAN}}</dt>
-                    <dd>Receiver</dd>
-                  </div>
-                  <div>
-                    <dt>{{date}}</dt>
-                    <dd>Date payment</dd>
-                  </div>
-                  <div>
-                    <dt>{{transferType}}</dt>
-                    <dd>T Type</dd>
-                  </div>
-                </dl>
-                <div class="transfer-number">
-                    {{amount}} €
-                </div>
-              </div>
-              {{/transfer_list}}
+                <p id="no_transfers_performed">No se han realizado transferencias</p>
             </div>
+            <button id="profile_button">Load more</button>
           </section>
         </div>
       </div>
@@ -68,12 +59,14 @@
   <script src="https://unpkg.com/phosphor-icons"></script>
 
   <!-- Vendor JS Files -->
-  <script src="../assets/vendor/aos/aos.js"></script>
-  <script src="../assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-  <script src="../assets/vendor/glightbox/js/glightbox.min.js"></script>
-  <script src="../assets/vendor/isotope-layout/isotope.pkgd.min.js"></script>
-  <script src="../assets/vendor/swiper/swiper-bundle.min.js"></script>
-  <script src="../assets/vendor/php-email-form/validate.js"></script>
+  <script src="public/assets/vendor/aos/aos.js"></script>
+  <script src="public/assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <script src="public/assets/vendor/glightbox/js/glightbox.min.js"></script>
+  <script src="public/assets/vendor/isotope-layout/isotope.pkgd.min.js"></script>
+  <script src="public/assets/vendor/swiper/swiper-bundle.min.js"></script>
+  <script src="public/assets/vendor/php-email-form/validate.js"></script>
+  <script src="public/js/profile_ajax.js"></script>
+  <script src="public/js/profile_pic_loader.js"></script>
 </body>
 
 

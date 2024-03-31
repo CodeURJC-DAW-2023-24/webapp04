@@ -4,7 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="072cea6f-8d20-4292-b10f-19e0c5f1ef3e" name="Changes" comment="DBInitializer update 2&#10;- Solved all data insertion related issues" />
+    <list default="true" id="072cea6f-8d20-4292-b10f-19e0c5f1ef3e" name="Changes" comment="Updated ProfileController&#10;- Added else clause to check if ajax is asking for more transfer data than it exists." />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -13,6 +13,7 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
+        <option value="HTML File" />
         <option value="Class" />
       </list>
     </option>
@@ -20,7 +21,7 @@
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$" value="main" />
+        <entry key="$PROJECT_DIR$" value="docker" />
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -46,6 +47,7 @@
     "Application.BackendApplication.executor": "Run",
     "Application.main.controller.BackendApplication.executor": "Run",
     "Application.webapp4.main.BackendApplication.executor": "Run",
+    "DefaultHtmlFileTemplate": "HTML File",
     "JUnit.CSVReaderTest.executor": "Run",
     "JUnit.CSVReaderTest.getFirstElementTest.executor": "Run",
     "JUnit.CSVReaderTest.nonNullListTest.executor": "Run",
@@ -56,11 +58,20 @@
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "git-widget-placeholder": "database",
+    "SONARLINT_PRECOMMIT_ANALYSIS": "true",
+    "git-widget-placeholder": "main",
     "kotlin-language-version-configured": "true",
-    "last_opened_file_path": "/home/cris/Documents/3GIS - Desarrollo de Aplicaciones Web/DAW-Repo"
+    "last_opened_file_path": "/home/cris/Documents/3GIS - Desarrollo de Aplicaciones Web/webapp04/backend/src/main/resources/static/public/assets/img"
   }
 }]]></component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/backend/src/main/resources/static/public/assets/img" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/backend/src/main/resources/static" />
+    </key>
+  </component>
   <component name="RunManager" selected="Application.BackendApplication">
     <configuration name="BackendApplication" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="webapp4.main.BackendApplication" />
@@ -140,10 +151,10 @@
     <recent_temporary>
       <list>
         <item itemvalue="Application.BackendApplication" />
+        <item itemvalue="JUnit.DBInitializerTest" />
+        <item itemvalue="JUnit.CSVReaderTest.nonNullListTest" />
         <item itemvalue="JUnit.CSVReaderTest.getFirstElementTest" />
         <item itemvalue="JUnit.CSVReaderTest" />
-        <item itemvalue="JUnit.CSVReaderTest.nonNullListTest" />
-        <item itemvalue="JUnit.DBInitializerTest" />
       </list>
     </recent_temporary>
   </component>
@@ -179,13 +190,112 @@
       <option name="project" value="LOCAL" />
       <updated>1708548038593</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="ProfileController update&#10;- Error 405 still not solved">
+      <option name="closed" value="true" />
+      <created>1709464097114</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1709464097114</updated>
+    </task>
+    <task id="LOCAL-00004" summary="Fixed error 405 while login&#10;- Updated ProfileController">
+      <option name="closed" value="true" />
+      <created>1709466866768</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1709466866768</updated>
+    </task>
+    <task id="LOCAL-00005" summary="TRANSFERS&#10;Several details added to profile page&#10;- Added client's current balance&#10;- Sorted client's transaction history&#10;- Updated navigation bar from private area&#10;- Added logic on tranfer page">
+      <option name="closed" value="true" />
+      <created>1709474576643</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1709474576643</updated>
+    </task>
+    <task id="LOCAL-00006" summary="Major update&#10;- Added unmerged content">
+      <option name="closed" value="true" />
+      <created>1709484467094</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1709484467094</updated>
+    </task>
+    <task id="LOCAL-00007" summary="CALCULATE LOAN&#10;Changes:&#10;- Updated nav bar&#10;- Added charts to loan page&#10;- Added AJAX to loan page">
+      <option name="closed" value="true" />
+      <created>1709495437915</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1709495437915</updated>
+    </task>
+    <task id="LOCAL-00008" summary="Download profile images from DB&#10;- Added js code for requesting the download of profile pics in profile_page.html">
+      <option name="closed" value="true" />
+      <created>1709557880548</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1709557880548</updated>
+    </task>
+    <task id="LOCAL-00009" summary="resize image">
+      <option name="closed" value="true" />
+      <created>1709559573919</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1709559573919</updated>
+    </task>
+    <task id="LOCAL-00010" summary="Added service classes&#10;- Added TransferService&#10;- Added LoanService&#10;- Updated AccountService">
+      <option name="closed" value="true" />
+      <created>1710840246975</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1710840246975</updated>
+    </task>
+    <task id="LOCAL-00011" summary="Updated DBInitializer">
+      <option name="closed" value="true" />
+      <created>1710841538561</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1710841538561</updated>
+    </task>
+    <task id="LOCAL-00012" summary="Updated ProfileController&#10;- Added else clause to check if ajax is asking for more transfer data than it exists.">
+      <option name="closed" value="true" />
+      <created>1711536275270</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1711536275270</updated>
+    </task>
+    <task id="LOCAL-00013" summary="Updated ProfileController&#10;- Added else clause to check if ajax is asking for more transfer data than it exists.">
+      <option name="closed" value="true" />
+      <created>1711536296928</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1711536296928</updated>
+    </task>
+    <option name="localTasksCounter" value="14" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
     <MESSAGE value="DBInitializer update&#10;- Non-functional version of the project&#10;Some errors regarding db data insertion are still unsolved" />
     <MESSAGE value="DBInitializer update 2&#10;- Solved all data insertion related issues" />
-    <option name="LAST_COMMIT_MESSAGE" value="DBInitializer update 2&#10;- Solved all data insertion related issues" />
+    <MESSAGE value="ProfileController update&#10;- Error 405 still not solved" />
+    <MESSAGE value="Fixed error 405 while login&#10;- Updated ProfileController" />
+    <MESSAGE value="TRANSFERS&#10;Several details added to profile page&#10;- Added client's current balance&#10;- Sorted client's transaction history&#10;- Updated navigation bar from private area&#10;- Added logic on tranfer page" />
+    <MESSAGE value="Major update" />
+    <MESSAGE value="Major update&#10;- Added unmerged content" />
+    <MESSAGE value="CALCULATE LOAN&#10;Changes:&#10;- Updated nav bar&#10;- Added charts to loan page&#10;- Added AJAX to loan page" />
+    <MESSAGE value="Download profile images from DB&#10;- Added js code for requesting the download of profile pics in profile_page.html" />
+    <MESSAGE value="resize image" />
+    <MESSAGE value="Added service classes&#10;- Added TransferService&#10;- Added LoanService&#10;- Updated AccountService" />
+    <MESSAGE value="Updated DBInitializer" />
+    <MESSAGE value="Updated ProfileController&#10;- Added else clause to check if ajax is asking for more transfer data than it exists." />
+    <option name="LAST_COMMIT_MESSAGE" value="Updated ProfileController&#10;- Added else clause to check if ajax is asking for more transfer data than it exists." />
   </component>
 </project>

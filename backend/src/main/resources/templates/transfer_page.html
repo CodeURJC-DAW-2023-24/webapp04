@@ -3,19 +3,26 @@
 
 {{>../static/head}}
 
-<style>
-  body {
-      background-image: url('../assets/img/river-8540767_1920.jpg'); /* Reemplaza 'ruta/de/tu/imagen.jpg' con la ruta de tu imagen */
-      background-size: cover; /* Para cubrir todo el fondo */
-      background-position: center; /* Para centrar la imagen */
-  }
-</style>
-
 <body>
 
 <!-- ======= Header ======= -->
-{{>../static/profile_header}}
+<!-- ======= Header ======= -->
+<header id="header" class="d-flex align-items-center">
+    <div class="container d-flex align-items-center justify-content-between">
 
+        <h1 class="logo"><a href="/logout">URJC Bank</a></h1>
+        <!--<a href="index.html" class="logo"><img src="/URJC_Bank/public/assets/img/URJC_bank.png" alt="" class="img-fluid"></a> -->
+
+        <nav id="navbar" class="navbar">
+            <ul>
+                <li><a class="nav-link scrollto" href="/profile">Home</a></li>
+                <li><a class="nav-link scrollto active" href="/transfer">Make a transfer</a></li>
+                <li><a class="nav-link scrollto" href="/loan_request">Calculate loan</a></li>
+                <li><a class="nav-link scrollto " href="/logout">Log Out</a></li>
+            </ul>
+        </nav>
+    </div>
+</header>
 <main id="main">
   <section class="inner-page">
     <div class="container">
@@ -24,30 +31,19 @@
           <div class="card shadow-lg border-0 rounded-lg mt-5">
             <div class="card-header bg-danger"><h3 class="text-center font-weight-light my-4" style="color: white;">Transfer</h3></div>
             <div class="card-body">
-              <form>
+
+              <form action="/transfer_processing" method="post">
                 <div class="form-floating mb-3">
-                  <input class="form-control" id="inputUser" type="text" placeholder="" />
-                  <label for="inputEmail">Payee</label>
+                  <input class="form-control" name="receiver_iban" id="receiver_iban" type="text" placeholder="" />
+                  <label for="receiver_iban">Payee's IBAN</label>
                 </div>
 
                 <div class="form-floating mb-3">
-                  <input class="form-control" id="inputUser" type="text" placeholder="" />
-                  <label for="inputEmail">Amount (€)</label>
+                  <input class="form-control" name="amount" id="amount" type="text" placeholder="" />
+                  <label for="amount">Amount (€)</label>
                 </div>
-
-                <div class="form-floating mb-3">
-                  <input class="form-control" id="inputUser" type="text" placeholder="" />
-                  <label for="inputEmail">Message (optional)</label>
-                </div>
-
-                <!--
-                <div class="form-check mb-3">
-                    <input class="form-check-input" id="inputRememberPassword" type="checkbox" value="" />
-                    <label class="form-check-label" for="inputRememberPassword">Remember Password</label>
-                </div>
-                -->
                 <div class="d-flex flex-column align-items-center justify-content-between mt-4 mb-0">
-                  <a class="btn btn-danger" href="profile_page.html">Continue</a>
+                  <input class="btn btn-danger" type="submit" value="Continue"/>
                 </div>
               </form>
             </div>
@@ -65,15 +61,15 @@
 <div id="preloader"></div>
 
 <!-- Vendor JS Files -->
-<script src="../public/ssets/vendor/aos/aos.js"></script>
-<script src="../public/assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-<script src="../public/assets/vendor/glightbox/js/glightbox.min.js"></script>
-<script src="../public/assets/vendor/isotope-layout/isotope.pkgd.min.js"></script>
-<script src="../public/assets/vendor/swiper/swiper-bundle.min.js"></script>
-<script src="../public/assets/vendor/php-email-form/validate.js"></script>
+<script src="public/public/ssets/vendor/aos/aos.js"></script>
+<script src="public/public/assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+<script src="public/public/assets/vendor/glightbox/js/glightbox.min.js"></script>
+<script src="public/public/assets/vendor/isotope-layout/isotope.pkgd.min.js"></script>
+<script src="public/public/assets/vendor/swiper/swiper-bundle.min.js"></script>
+<script src="public/public/assets/vendor/php-email-form/validate.js"></script>
 
 <!-- Template Main JS File -->
-<script src="../js/main.js"></script>
+<script src="public/js/main.js"></script>
 
 </body>
 

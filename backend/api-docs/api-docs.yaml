@@ -1,0 +1,173 @@
+openapi: 3.0.1
+info:
+  title: Banking Application API
+  version: v1
+servers:
+  - url: http://localhost:8443
+    description: Local server
+paths:
+  /api/accounts:
+    post:
+      summary: Create a new account
+      operationId: createAccount
+      tags:
+        - rest-account-controller
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/CreateAccountRequest"
+      responses:
+        "201":
+          description: Account created successfully
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Account"
+        "400":
+          description: Bad request
+        "500":
+          description: Internal server error
+
+  /api/accounts/{id}:
+    get:
+      summary: Get an account by ID
+      operationId: getAccountById
+      tags:
+        - rest-account-controller
+      parameters:
+        - in: path
+          name: id
+          required: true
+          description: ID of the account to retrieve
+          schema:
+            type: string
+      responses:
+        "200":
+          description: Account details retrieved successfully
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Account"
+        "404":
+          description: Account not found
+        "500":
+          description: Internal server error
+
+  /api/transfers:
+    post:
+      summary: Create a new transfer
+      operationId: createTransfer
+      tags:
+        - rest-transfer-controller
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/CreateTransferRequest"
+      responses:
+        "201":
+          description: Transfer created successfully
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Transfer"
+        "400":
+          description: Bad request
+        "404":
+          description: User not found
+        "500":
+          description: Internal server error
+
+    get:
+      summary: Get all transfers
+      operationId: getAllTransfers
+      tags:
+        - rest-transfer-controller
+      responses:
+        "200":
+          description: List of all transfers
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/Transfer"
+        "500":
+          description: Internal server error
+
+components:
+  schemas:
+    Account:
+      type: object
+      properties:
+        id:
+          type: string
+          description: The unique identifier for the account
+        firstName:
+          type: string
+          description: The first name of the account holder
+        lastName:
+          type: string
+          description: The last name of the account holder
+        balance:
+          type: number
+          description: The current balance of the account
+      required:
+        - id
+        - firstName
+        - lastName
+        - balance
+
+    Transfer:
+      type: object
+      properties:
+        id:
+          type: string
+          description: The unique identifier for the transfer
+        sender:
+          type: string
+          description: The sender's account ID
+        receiver:
+          type: string
+          description: The receiver's account ID
+        amount:
+          type: number
+          description: The amount transferred
+        timestamp:
+          type: string
+          format: date-time
+          description: The timestamp when the transfer occurred
+      required:
+        - id
+        - sender
+        - receiver
+        - amount
+        - timestamp
+
+    CreateAccountRequest:
+      type: object
+      properties:
+        firstName:
+          type: string
+        lastName:
+          type: string
+      required:
+        - firstName
+        - lastName
+
+    CreateTransferRequest:
+      type: object
+      properties:
+        sender:
+          type: string
+        receiver:
+          type: string
+        amount:
+          type: number
+      required:
+        - sender
+        - receiver
+        - amount

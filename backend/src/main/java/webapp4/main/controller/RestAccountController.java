@@ -1,0 +1,205 @@
+package webapp4.main.controller;
+
+import static org.springframework.web.servlet.support.ServletUriComponentsBuilder.fromCurrentRequest;
+
+import java.io.IOException;
+import java.net.URI;
+import java.sql.Blob;
+import java.sql.SQLException;
+import java.util.Optional;
+
+import javax.sql.rowset.serial.SerialException;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpHeaders;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
+import org.springframework.http.ResponseEntity;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.DeleteMapping;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.multipart.MultipartFile;
+
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.media.Content;
+import io.swagger.v3.oas.annotations.media.Schema;
+import io.swagger.v3.oas.annotations.responses.ApiResponse;
+import webapp4.main.model.Account;
+import webapp4.main.repository.AccountRepository;
+import webapp4.main.service.AccountService;
+import webapp4.main.service.UserDataService;
+
+@RestController
+public class RestAccountController {
+
+
+    @Autowired
+    private UserDataService userDataService;
+    @Autowired
+    private AccountRepository accountRepository;
+    @Autowired
+    private AccountService accountService;
+
+
+    @Operation (summary = "Create New Account")
+    @ApiResponse(
+            responseCode = "200",
+            description = "Account Created",
+            content = @Content(mediaType = "application/json", schema = @Schema(implementation = Account.class))
+    )
+    @ApiResponse(responseCode = "404", description = "Account not Found", content = @Content)
+    @ApiResponse(responseCode = "500", description = "Internal server error", content = @Content)
+    @ApiResponse(responseCode = "400", description = "Bad request", content = @Content)
+    @PostMapping("/api/accounts")
+    public ResponseEntity<?> createAccount(Model model, @RequestParam String inputUser, @RequestParam String firstName, @RequestParam String lastName, @RequestParam String inputPassword, @RequestParam String confirmPassword) {
+        Object registerUser = userDataService.registerUser(inputUser, firstName, lastName, inputPassword, confirmPassword);
+        if (registerUser instanceof Account){
+            Account account = (Account) registerUser;
+            URI location = fromCurrentRequest().path("/{id}")
+                    .buildAndExpand(account.getNIP()).toUri();
+            return ResponseEntity.created(location).body(account);
+        } else {
+            String errorMessage = (String) registerUser;
+            if (errorMessage.equals("Account already exists")){
+                return  ResponseEntity.status(HttpStatus.CONFLICT).body("Account already exists");
+            } else{
+                return ResponseEntity.badRequest().body("Error with confirm Password");
+            }
+        }
+    }
+    @Operation (summary = "Get an account by id")
+    @ApiResponse(
+            responseCode = "200",
+            description = "Found the Account",
+            content = @Content(mediaType = "application/json", schema = @Schema(implementation = Account.class))
+    )
+    @ApiResponse(responseCode = "404", description = "Account not found", content = @Content)
+    @ApiResponse(responseCode = "500", description = "Internal server error", content = @Content)
+    @ApiResponse(responseCode = "400", description = "Bad request", content = @Content)
+    @GetMapping("/api/accounts/{id}")
+    public ResponseEntity<Account> getAccount(@PathVariable String id){
+        Optional<Account> accountOptional = accountRepository.findByNIP(id);
+        Account account = accountOptional.get();
+        if (account != null) {
+            return ResponseEntity.ok(account);
+        } else {
+            return ResponseEntity.notFound().build();
+        }
+    }
+
+    /*
+    @Operation
+    (summary = "Get an image by id")
+    @ApiResponse(
+            responseCode = "200",
+            description = "Get Image by ID",
+            content = @Content(mediaType = "application/json", schema = @Schema(implementation = Account.class))
+    )
+    @ApiResponse(responseCode = "404", description = "Form not found", content = @Content)
+    @ApiResponse(responseCode = "500", description = "Internal server error", content = @Content)
+    @ApiResponse(responseCode = "400", description = "Bad request", content = @Content)
+    @GetMapping("/api/accounts/{accountId}/image")                //this code is for get the image, the other one is to  download, u must decide which one u want to keep
+    public ResponseEntity<byte[]> getImage(@PathVariable String accountId) {
+        Optional<Account> accountOptional = accountRepository.findByNIP(accountId);
+        if (accountOptional.isPresent()) {
+            Account account = accountOptional.get();
+            Blob imageBlob = account.getImageFile();
+
+            try     {
+                byte[] imageBytes = accountService.getImageBytes(imageBlob);
+                HttpHeaders headers = new HttpHeaders();
+                headers.setContentType(MediaType.parseMediaType(MediaType.IMAGE_JPEG_VALUE));
+
+                return new ResponseEntity<>(imageBytes, headers, HttpStatus.OK);
+            } catch (SQLException | IOException e) {
+                // Manejar errores de conversión
+                return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
+            }
+        } else {
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        }
+    }*/
+    @Operation
+    (summary = "Upload image by ID")
+    @ApiResponse(
+            responseCode = "200",
+            description = "Found the form",
+            content = @Content(mediaType = "application/json", schema = @Schema(implementation = Account.class))
+    )
+    @ApiResponse(responseCode = "404", description = "Form not found", content = @Content)
+    @ApiResponse(responseCode = "500", description = "Internal server error", content = @Content)
+    @ApiResponse(responseCode = "400", description = "Bad request", content = @Content)
+    @PostMapping("/api/accounts/{accountId}/image")
+    public ResponseEntity<?> uploadImage(@PathVariable String accountId, @RequestParam MultipartFile imageFile) throws IOException, SerialException, SQLException{
+        Optional<Account> accountOptional = accountRepository.findByNIP(accountId);
+        if (accountOptional.isPresent()){
+            URI location = fromCurrentRequest().build().toUri();
+            Account account = accountOptional.get();
+            byte[] bytes = imageFile.getBytes();
+            Blob blob = new javax.sql.rowset.serial.SerialBlob(bytes);
+            account.setImageFile(blob);
+            accountRepository.save(account);
+            return ResponseEntity.created(location).build();
+        } else {
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        }
+    }
+    @Operation
+    (summary = "Delete an image by id")
+    @ApiResponse(
+            responseCode = "200",
+            description = "Image Deleted",
+            content = @Content(mediaType = "application/json", schema = @Schema(implementation = Account.class))
+    )
+    @ApiResponse(responseCode = "404", description = "Image not found", content = @Content)
+    @ApiResponse(responseCode = "500", description = "Internal server error", content = @Content)
+    @ApiResponse(responseCode = "400", description = "Bad request", content = @Content)
+    @DeleteMapping("/api/accounts/{accountId}/image")
+    public ResponseEntity<Object> deleteImage(@PathVariable String accountId) throws IOException {
+        Optional<Account> accountOptional = accountRepository.findByNIP(accountId);
+        if (accountOptional.isPresent()){
+            Account account = accountOptional.get();
+            account.setImageFile(null);
+            accountRepository.save(account);
+            return ResponseEntity.noContent().build();
+        } else {
+            return ResponseEntity.notFound().build();
+        }
+    }
+
+    @Operation      (summary = "Download image by ID")
+    @ApiResponse(
+            responseCode = "200",
+            description = "Download The image of the ID",
+            content = @Content(mediaType = "application/json", schema = @Schema(implementation = Account.class))
+    )
+    @ApiResponse(responseCode = "404", description = "Image not found", content = @Content)
+    @ApiResponse(responseCode = "500", description = "Internal server error", content = @Content)
+    @ApiResponse(responseCode = "400", description = "Bad request", content = @Content)
+    @GetMapping("/api/accounts/{accountId}/image")
+    public ResponseEntity<byte[]> downloadImage(@PathVariable String accountId) {
+        Optional<Account> accountOptional = accountRepository.findByNIP(accountId);
+        if (accountOptional.isPresent()) {
+            Account account = accountOptional.get();
+            Blob imageBlob = account.getImageFile();
+
+            try {
+                byte[] imageBytes = accountService.getImageBytes(imageBlob);
+                HttpHeaders headers = new HttpHeaders();
+                headers.setContentType(MediaType.IMAGE_JPEG);
+                return new ResponseEntity<>(imageBytes, headers, HttpStatus.OK);
+            } catch (SQLException | IOException e) {
+                return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
+            }
+        } else {
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        }
+    }
+
+
+
+}
