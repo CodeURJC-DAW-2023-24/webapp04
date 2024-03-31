@@ -49,26 +49,15 @@ public class RestSecurityConfig extends WebSecurityConfigurerAdapter {
 
 		https.antMatcher("/api/**");
 		
-        https.authorizeRequests().antMatchers("/").permitAll();
-        https.authorizeRequests().antMatchers("/login").permitAll();
-        https.authorizeRequests().antMatchers("/login_error").permitAll();
-        https.authorizeRequests().antMatchers("/logout").permitAll();
-        https.authorizeRequests().antMatchers("/chart").permitAll();
-        https.authorizeRequests().antMatchers("/password").permitAll();
-        https.authorizeRequests().antMatchers("/register").permitAll();
-        https.authorizeRequests().antMatchers("/waiting").permitAll();
-        https.authorizeRequests().antMatchers("/error_404").permitAll();
-        https.authorizeRequests().antMatchers("/error_403").permitAll();
-        https.authorizeRequests().antMatchers("/error_500").permitAll();
 
         // Private pages
-        https.authorizeRequests().antMatchers("/profile").hasAnyRole("USER");
-        https.authorizeRequests().antMatchers("/transfer").hasAnyRole("USER");
-        https.authorizeRequests().antMatchers("/data").hasAnyRole("USER");
+        https.authorizeRequests().antMatchers("/api/accounts/{id}").hasAnyRole("USER");
+        https.authorizeRequests().antMatchers("/api/accounts/{accountId}/image").hasAnyRole("USER");
+        https.authorizeRequests().antMatchers("/api/transfers/{id}").hasAnyRole("USER");
         https.authorizeRequests().antMatchers("/loan_request").hasAnyRole("USER");
         https.authorizeRequests().antMatchers("/loan_visualizer").hasAnyRole("USER");
-        https.authorizeRequests().antMatchers("/account").hasAnyRole("ADMIN");
-        https.authorizeRequests().antMatchers("/transfers_manager").hasAnyRole("ADMIN");
+	https.authorizeRequests().antMatchers("/api/transfers").hasAnyRole("ADMIN,USER");
+        https.authorizeRequests().antMatchers("/api/accounts").hasAnyRole("ADMIN");
         https.authorizeRequests().antMatchers("/profile_manager").hasAnyRole("ADMIN");
 
 
