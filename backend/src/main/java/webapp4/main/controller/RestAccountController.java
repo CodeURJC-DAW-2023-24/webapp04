@@ -12,6 +12,7 @@ import webapp4.main.repository.AccountRepository;
 import webapp4.main.service.AccountService;
 import webapp4.main.service.UserDataService;
 import java.util.Optional;
+import java.util.Collection;
 
 import javax.sql.rowset.serial.SerialBlob;
 import javax.sql.rowset.serial.SerialException;
@@ -66,6 +67,12 @@ public class RestAccountController {
         } else {
             return ResponseEntity.notFound().build();
         }
+    }
+
+    @GetMapping("/api/accounts")
+    public ResponseEntity<Collection<Account>> getAllAccounts(){
+        Collection<Account> allAccounts = accountRepository.findAll();
+        return ResponseEntity.ok(allAccounts);
     }
 
     /*@GetMapping("/api/accounts/{accountId}/image")                //this code is for get the image, the other one is to  download, u must decide which one u want to keep
