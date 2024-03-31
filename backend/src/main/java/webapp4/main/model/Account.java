@@ -8,7 +8,7 @@ import java.sql.Blob;
 public class Account {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private Long loan_id = null;
+    private Long account_id = null;
     @Column(columnDefinition = "TEXT")
     private String NIP;
     @Column(columnDefinition = "TEXT")
@@ -70,7 +70,7 @@ public class Account {
         return NIP + "has IBAN: " + IBAN;
     }
 
-    public Long getLoan_id() {
-        return loan_id;
+    public Long getAccount_id() {
+        return account_id;
     }
 }

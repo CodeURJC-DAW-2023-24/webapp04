@@ -19,6 +19,10 @@ import java.net.URI;
 import java.util.Collection;
 import java.util.Optional;
 
+import java.util.Collection;
+import java.util.List;
+import java.util.stream.Collectors;
+
 
 import static org.springframework.web.servlet.support.ServletUriComponentsBuilder.fromCurrentRequest;
 
@@ -65,5 +69,4 @@ public class RestTransferController {
         Collection<Transfer> allTransfers = transferRepository.findAll();
         return ResponseEntity.ok(allTransfers);
     }
-
 }

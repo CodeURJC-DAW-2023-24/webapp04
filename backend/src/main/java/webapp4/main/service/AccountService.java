@@ -13,10 +13,13 @@ import webapp4.main.repository.AccountRepository;
 import javax.sql.rowset.serial.SerialBlob;
 import java.io.FileInputStream;
 import java.io.IOException;
+import java.io.InputStream;
 import java.sql.Blob;
 import java.sql.SQLException;
 import java.util.List;
 import java.util.Optional;
+
+import java.io.ByteArrayOutputStream;
 
 @Service
 public class AccountService {
@@ -67,4 +70,28 @@ public class AccountService {
             throw new RuntimeException(e);
         }
     }
+
+    public byte[] getImageBytes(Blob blob) throws SQLException, IOException {
+        if (blob == null) {
+            return null;
+        }
+        
+        try (ByteArrayOutputStream outputStream = new ByteArrayOutputStream()) {
+            byte[] buffer = new byte[4096];
+            int bytesRead;
+            
+            try (InputStream inputStream = blob.getBinaryStream()) {
+                while ((bytesRead = inputStream.read(buffer)) != -1) {
+                    outputStream.write(buffer, 0, bytesRead);
+                }
+            }
+            
+            return outputStream.toByteArray();
+        }
+        
+    }
+    public Blob createBlob(byte[] bytes) throws SQLException {
+        return new SerialBlob(bytes);
+    }
+
 }

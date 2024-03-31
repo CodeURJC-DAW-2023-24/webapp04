@@ -46,6 +46,7 @@ public class RestSecurityConfig extends WebSecurityConfigurerAdapter {
 	@Override
 	protected void configure(HttpSecurity https) throws Exception {
 
+
 		https.antMatcher("/api/**");
 		
         https.authorizeRequests().antMatchers("/").permitAll();
