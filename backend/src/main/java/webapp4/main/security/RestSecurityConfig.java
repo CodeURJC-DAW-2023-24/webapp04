@@ -49,7 +49,8 @@ public class RestSecurityConfig extends WebSecurityConfigurerAdapter {
 
 		https.antMatcher("/api/**");
 		
-	https.authorizeRequests().antMatchers("/api/accounts").permitAll()t;
+	https.authorizeRequests().antMatchers("/api/accounts").permitAll();
+	https.authorizeRequests().antMatchers("/api/auth").permitAll();
 		
         // Private pages
         https.authorizeRequests().antMatchers("/api/accounts/{id}").hasAnyRole("USER");
