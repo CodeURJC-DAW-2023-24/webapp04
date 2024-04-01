@@ -278,7 +278,38 @@ To build a Docker image of the application and publish it in dockerhub follow th
 `./create_image.sh`
 ## Deploying the application in the virtual machine
 
-"Includes app URL in VM"
+Once yoy have obtained the ssh key follow the next instructions to deploy the application on the university's virtual machine:
+
+1) Access the directory where is the ssh key located
+
+2) Assign file owner the permission to write and read the ssh key
+
+* In linux: `chmod 600 ~/prAppWeb04.key`
+* In Windows: make the current user owner of the file. For further information, please consult the following links:
+
+https://github.com/microsoft/vscode-remote-release/issues/1619#issuecomment-760990038
+https://www.anujvarma.com/ssh-on-windows-permissions-for-private-key-too-open/
+
+3) Conect to the VM by typing in the command shell this command
+`ssh -i prAppWeb04.key vmuser@10.100.139.12`
+
+4) Clone [urjc_bank](https://github.com/CodeURJC-DAW-2023-24/webapp04) repository with
+   `git clone https://github.com/CodeURJC-DAW-2023-24/webapp04.git`
+
+5) Access the docker directory located in the repo you have just cloned
+   `cd webapp4/docker`
+
+6) Start the application by using
+`docker compose up -d`
+
+7) To access the application, open a browser and access the following url https://10.100.139.12:8443
+
+Sample credentials:
+* For admins:
+  * username: 00000000A
+  * password: password
+* For clients:
+  Check any user from this [CSV](backend/src/main/resources/static/data/client_credentials.csv)
 
 ## Member participation
 

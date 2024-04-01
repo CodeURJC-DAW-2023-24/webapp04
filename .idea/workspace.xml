@@ -4,9 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="072cea6f-8d20-4292-b10f-19e0c5f1ef3e" name="Changes" comment="README update">
-      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/index.pb" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/index.pb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/securityhotspotstore/index.pb" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sonarlint/securityhotspotstore/index.pb" afterDir="false" />
+    <list default="true" id="072cea6f-8d20-4292-b10f-19e0c5f1ef3e" name="Changes" comment="README - Building docker image&#10;Building docker image section updated">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
     </list>
@@ -291,7 +289,15 @@
       <option name="project" value="LOCAL" />
       <updated>1711989044915</updated>
     </task>
-    <option name="localTasksCounter" value="15" />
+    <task id="LOCAL-00015" summary="README - Building docker image&#10;Building docker image section updated">
+      <option name="closed" value="true" />
+      <created>1711990672168</created>
+      <option name="number" value="00015" />
+      <option name="presentableId" value="LOCAL-00015" />
+      <option name="project" value="LOCAL" />
+      <updated>1711990672168</updated>
+    </task>
+    <option name="localTasksCounter" value="16" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
@@ -310,6 +316,7 @@
     <MESSAGE value="Updated DBInitializer" />
     <MESSAGE value="Updated ProfileController&#10;- Added else clause to check if ajax is asking for more transfer data than it exists." />
     <MESSAGE value="README update" />
-    <option name="LAST_COMMIT_MESSAGE" value="README update" />
+    <MESSAGE value="README - Building docker image&#10;Building docker image section updated" />
+    <option name="LAST_COMMIT_MESSAGE" value="README - Building docker image&#10;Building docker image section updated" />
   </component>
 </project>
