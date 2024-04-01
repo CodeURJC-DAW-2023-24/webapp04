@@ -6,6 +6,12 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
+
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.media.Content;
+import io.swagger.v3.oas.annotations.media.Schema;
+import io.swagger.v3.oas.annotations.responses.ApiResponse;
+
 import org.springframework.http.ResponseEntity;
 import webapp4.main.model.Account;
 import webapp4.main.repository.AccountRepository;
@@ -39,7 +45,15 @@ public class RestAccountController {
     @Autowired
     private AccountService accountService;
 
-
+    @Operation (summary = "Create New Account")
+    @ApiResponse(
+            responseCode = "200",
+            description = "Account Created",
+            content = @Content(mediaType = "application/json", schema = @Schema(implementation = Account.class))
+    )
+    @ApiResponse(responseCode = "404", description = "Account not Found", content = @Content)
+    @ApiResponse(responseCode = "500", description = "Internal server error", content = @Content)
+    @ApiResponse(responseCode = "400", description = "Bad request", content = @Content)
     @PostMapping("/api/accounts")
     public ResponseEntity<?> createAccount(Model model, @RequestParam String inputUser, @RequestParam String firstName, @RequestParam String lastName, @RequestParam String inputPassword, @RequestParam String confirmPassword) {
         Object registerUser = userDataService.registerUser(inputUser, firstName, lastName, inputPassword, confirmPassword);
@@ -57,7 +71,15 @@ public class RestAccountController {
             }
         }
     }
-
+     @Operation (summary = "Get an account by id")
+    @ApiResponse(
+            responseCode = "200",
+            description = "Found the Account",
+            content = @Content(mediaType = "application/json", schema = @Schema(implementation = Account.class))
+    )
+    @ApiResponse(responseCode = "404", description = "Account not found", content = @Content)
+    @ApiResponse(responseCode = "500", description = "Internal server error", content = @Content)
+    @ApiResponse(responseCode = "400", description = "Bad request", content = @Content)
     @GetMapping("/api/accounts/{id}")
     public ResponseEntity<Account> getAccount(@PathVariable String id){
         Optional<Account> accountOptional = accountRepository.findByNIP(id);
@@ -75,7 +97,16 @@ public class RestAccountController {
         return ResponseEntity.ok(allAccounts);
     }
 
-    /*@GetMapping("/api/accounts/{accountId}/image")                //this code is for get the image, the other one is to  download, u must decide which one u want to keep
+/*  @Operation
+     @ApiResponse(
+            responseCode = "200",
+            description = "Get Image by ID",
+            content = @Content(mediaType = "application/json", schema = @Schema(implementation = Account.class))
+    )
+    @ApiResponse(responseCode = "404", description = "Form not found", content = @Content)
+    @ApiResponse(responseCode = "500", description = "Internal server error", content = @Content)
+    @ApiResponse(responseCode = "400", description = "Bad request", content = @Content)
+    @GetMapping("/api/accounts/{accountId}/image")                //this code is for get the image, the other one is to  download, u must decide which one u want to keep
     public ResponseEntity<byte[]> getImage(@PathVariable String accountId) {
         Optional<Account> accountOptional = accountRepository.findByNIP(accountId);
         if (accountOptional.isPresent()) {
@@ -96,7 +127,16 @@ public class RestAccountController {
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         }
     }*/
-
+     @Operation
+    (summary = "Upload image by ID")
+    @ApiResponse(
+            responseCode = "200",
+            description = "Found the form",
+            content = @Content(mediaType = "application/json", schema = @Schema(implementation = Account.class))
+    )
+    @ApiResponse(responseCode = "404", description = "Form not found", content = @Content)
+    @ApiResponse(responseCode = "500", description = "Internal server error", content = @Content)
+    @ApiResponse(responseCode = "400", description = "Bad request", content = @Content)
     @PostMapping("/api/accounts/{accountId}/image")
     public ResponseEntity<?> uploadImage(@PathVariable String accountId, @RequestParam MultipartFile imageFile) throws IOException, SerialException, SQLException{
         Optional<Account> accountOptional = accountRepository.findByNIP(accountId);
@@ -113,6 +153,16 @@ public class RestAccountController {
         }
     }
 
+     @Operation
+    (summary = "Delete an image by id")
+    @ApiResponse(
+            responseCode = "200",
+            description = "Image Deleted",
+            content = @Content(mediaType = "application/json", schema = @Schema(implementation = Account.class))
+    )
+    @ApiResponse(responseCode = "404", description = "Image not found", content = @Content)
+    @ApiResponse(responseCode = "500", description = "Internal server error", content = @Content)
+    @ApiResponse(responseCode = "400", description = "Bad request", content = @Content)
     @DeleteMapping("/api/accounts/{accountId}/image")
     public ResponseEntity<Object> deleteImage(@PathVariable String accountId) throws IOException {
         Optional<Account> accountOptional = accountRepository.findByNIP(accountId);
@@ -126,6 +176,15 @@ public class RestAccountController {
         }
     }
 
+     @Operation      (summary = "Download image by ID")
+    @ApiResponse(
+            responseCode = "200",
+            description = "Download The image of the ID",
+            content = @Content(mediaType = "application/json", schema = @Schema(implementation = Account.class))
+    )
+    @ApiResponse(responseCode = "404", description = "Image not found", content = @Content)
+    @ApiResponse(responseCode = "500", description = "Internal server error", content = @Content)
+    @ApiResponse(responseCode = "400", description = "Bad request", content = @Content)
     @GetMapping("/api/accounts/{accountId}/image")
     public ResponseEntity<byte[]> downloadImage(@PathVariable String accountId) {
         Optional<Account> accountOptional = accountRepository.findByNIP(accountId);
