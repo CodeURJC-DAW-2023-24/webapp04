@@ -261,10 +261,21 @@ For this phase I was responsible on making the templates for make the applicatio
 
 <>
 
-## Building the docker image
+## Building the Docker image
 
-<>
+To build a Docker image of the application and publish it in dockerhub follow the following instructions:
 
+1) [Install Docker engine on your machine](https://docs.docker.com/engine/install/)
+2) Clone [urjc_bank](https://github.com/CodeURJC-DAW-2023-24/webapp04) repository with 
+`git clone https://github.com/CodeURJC-DAW-2023-24/webapp04.git`
+3) Access the docker directory located in the repo you have just cloned
+`cd webapp4/docker`
+4) Log into your Docker account by using
+`docker login` and typing your credentials
+5) Add execution permission to *create_image.sh*
+`chmod +x create_image.sh`
+6) Run the script
+`./create_image.sh`
 ## Deploying the application in the virtual machine
 
 "Includes app URL in VM"
