@@ -49,7 +49,9 @@ public class RestSecurityConfig extends WebSecurityConfigurerAdapter {
 
 		https.antMatcher("/api/**");
 		
-
+	https.authorizeRequests().antMatchers("/api/accounts").permitAll();
+	https.authorizeRequests().antMatchers("/api/auth").permitAll();
+		
         // Private pages
         https.authorizeRequests().antMatchers("/api/accounts/{id}").hasAnyRole("USER");
         https.authorizeRequests().antMatchers("/api/accounts/{accountId}/image").hasAnyRole("USER");
@@ -57,36 +59,22 @@ public class RestSecurityConfig extends WebSecurityConfigurerAdapter {
         https.authorizeRequests().antMatchers("/loan_request").hasAnyRole("USER");
         https.authorizeRequests().antMatchers("/loan_visualizer").hasAnyRole("USER");
 	https.authorizeRequests().antMatchers("/api/transfers").hasAnyRole("ADMIN,USER");
-        https.authorizeRequests().antMatchers("/api/accounts").hasAnyRole("ADMIN");
         https.authorizeRequests().antMatchers("/profile_manager").hasAnyRole("ADMIN");
 
+	// Disable CSRF protection (it is difficult to implement in REST APIs)
+	https.csrf().disable();
 
-        // Login form
-        https.formLogin().loginPage("/login");
-        https.formLogin().usernameParameter("username");
-        https.formLogin().passwordParameter("password");
-        https.formLogin().defaultSuccessUrl("/profile_forward");
-        https.formLogin().failureUrl("/login_error");
+	// Disable Http Basic Authentication
+	https.httpBasic().disable();
+	
+	// Disable Form login Authentication
+	https.formLogin().disable();
 
-        // Logout
-        https.logout().logoutUrl("/logout");
-        https.logout().logoutSuccessUrl("/");
-
-
-		// Disable CSRF protection (it is difficult to implement in REST APIs)
-		https.csrf().disable();
-
-		// Disable Http Basic Authentication
-		https.httpBasic().disable();
-		
-		// Disable Form login Authentication
-		https.formLogin().disable();
-
-		// Avoid creating session 
-		https.sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS);
-		
-		// Add JWT Token filter
-		https.addFilterBefore(jwtRequestFilter, UsernamePasswordAuthenticationFilter.class);
+	// Avoid creating session 
+	https.sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS);
+	
+	// Add JWT Token filter
+	https.addFilterBefore(jwtRequestFilter, UsernamePasswordAuthenticationFilter.class);
 
 	}
 }
