@@ -257,9 +257,18 @@ For this phase I was responsible on making the templates for make the applicatio
 
 <>
 
-## Executing the dockerized application
+## Running the dockerized application
 
-<>
+To execute the dockerized application you must follow the next instructions:
+
+1) [Install Docker engine on your machine](https://docs.docker.com/engine/install/)
+2) Clone [urjc_bank](https://github.com/CodeURJC-DAW-2023-24/webapp04) repository with
+   `git clone https://github.com/CodeURJC-DAW-2023-24/webapp04.git`
+3) Access the docker directory located in the repo you have just cloned
+   `cd webapp4/docker`
+4) Start the application by using
+      `docker compose up`
+5) Access https://localhost:8443 in any browser
 
 ## Building the Docker image
 
@@ -315,23 +324,67 @@ Sample credentials:
 
 ### David Cereceda Catalán
 
-<>
+Task description
+
+| Nº |       Commits       |        Files        |
+|:--:|:-------------------:|:-------------------:|
+| 1  | [Description](Path) | [Description](Path) |
+| 2  | [Description](Path) | [Description](Path) |
+| 3  | [Description](Path) | [Description](Path) |
+| 4  | [Description](Path) | [Description](Path) |
+| 5  | [Description](Path) | [Description](Path) |
 
 ### Cristian Andrei Vlad
 
-<>
+Task description
+
+| Nº |       Commits       |        Files        |
+|:--:|:-------------------:|:-------------------:|
+| 1  | [Description](Path) | [Description](Path) |
+| 2  | [Description](Path) | [Description](Path) |
+| 3  | [Description](Path) | [Description](Path) |
+| 4  | [Description](Path) | [Description](Path) |
+| 5  | [Description](Path) | [Description](Path) |
+
 
 ### Julio del Junco Prieto
 
-<>
+Task description
+
+| Nº |       Commits       |        Files        |
+|:--:|:-------------------:|:-------------------:|
+| 1  | [Description](Path) | [Description](Path) |
+| 2  | [Description](Path) | [Description](Path) |
+| 3  | [Description](Path) | [Description](Path) |
+| 4  | [Description](Path) | [Description](Path) |
+| 5  | [Description](Path) | [Description](Path) |
+
 
 ### Sergio López Cuesta
 
-<>
+Task description
+
+| Nº |       Commits       |        Files        |
+|:--:|:-------------------:|:-------------------:|
+| 1  | [Description](Path) | [Description](Path) |
+| 2  | [Description](Path) | [Description](Path) |
+| 3  | [Description](Path) | [Description](Path) |
+| 4  | [Description](Path) | [Description](Path) |
+| 5  | [Description](Path) | [Description](Path) |
+
 
 ### David Paúl Limaylla Ticlavilca
 
-<>
+Task description
+
+| Nº |       Commits       |        Files        |
+|:--:|:-------------------:|:-------------------:|
+| 1  | [Description](Path) | [Description](Path) |
+| 2  | [Description](Path) | [Description](Path) |
+| 3  | [Description](Path) | [Description](Path) |
+| 4  | [Description](Path) | [Description](Path) |
+| 5  | [Description](Path) | [Description](Path) |
+
 
 <br>
 
