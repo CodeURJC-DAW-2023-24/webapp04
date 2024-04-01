@@ -350,15 +350,15 @@ On the other hand, I have also been in charge of creating service classes that a
 
 ### Julio del Junco Prieto
 
-Task description
+I was responsible for the security and adding missing parts of phase 2
 
 | Nº |       Commits       |        Files        |
 |:--:|:-------------------:|:-------------------:|
-| 1  | [Description](Path) | [Description](Path) |
-| 2  | [Description](Path) | [Description](Path) |
-| 3  | [Description](Path) | [Description](Path) |
-| 4  | [Description](Path) | [Description](Path) |
-| 5  | [Description](Path) | [Description](Path) |
+| 1  | [Adding RestSecurity](https://github.com/CodeURJC-DAW-2023-24/webapp04/commit/4b3594554fad2a5f2cc8b09aa271ab94c35d5487) | [RestSecurityConfig](https://github.com/CodeURJC-DAW-2023-24/webapp04/blob/main/backend/src/main/java/webapp4/main/security/RestSecurityConfig.java) |
+| 2  | [Correcting RestSecurity](https://github.com/CodeURJC-DAW-2023-24/webapp04/commit/358ab05b5a0612f6e353c08e11c3480ab8f981ea) | [account.js](https://github.com/CodeURJC-DAW-2023-24/webapp04/blob/main/backend/src/main/resources/static/public/js/account.js) |
+| 3  | [Adding AccountDTO](https://github.com/CodeURJC-DAW-2023-24/webapp04/commit/213002b6c7cd63eace14c6e8c5f3b68b65898ba4) | [AccountDTO](https://github.com/CodeURJC-DAW-2023-24/webapp04/blob/main/backend/src/main/java/webapp4/main/model/AccountDTO.java) |
+| 4  | [Updating AccountService](https://github.com/CodeURJC-DAW-2023-24/webapp04/commit/c63b98a9542f79fae9d312f2e5d2a2c16ae0647a) | [AccountController](https://github.com/CodeURJC-DAW-2023-24/webapp04/blob/main/backend/src/main/java/webapp4/main/controller/AccountController.java) |
+| 5  | [Updating AccountController](https://github.com/CodeURJC-DAW-2023-24/webapp04/commit/2ac42fa99ecaaf0611d7f81886f2d15e124aaf01) | [AccountService](https://github.com/CodeURJC-DAW-2023-24/webapp04/blob/main/backend/src/main/java/webapp4/main/service/AccountService.java) |
 
 
 ### Sergio López Cuesta
