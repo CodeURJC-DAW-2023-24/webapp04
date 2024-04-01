@@ -247,8 +247,49 @@ For this phase I was responsible on making the templates for make the applicatio
 [Commit_3]https://github.com/CodeURJC-DAW-2023-24/webapp04/commit/c0f6945cf8a02aa09714832f850a0230f539239a
 [Commit_4]https://github.com/CodeURJC-DAW-2023-24/webapp04/commit/a382119fc56bfd816c8ecf78ab7d2b5b50185156
 
+# PHASE 3
 
+## API REST documentation
 
+<>
+
+## Class diagram update
+
+<>
+
+## Executing the dockerized application
+
+<>
+
+## Building the docker image
+
+<>
+
+## Deploying the application in the virtual machine
+
+"Includes app URL in VM"
+
+## Member participation
+
+### David Cereceda Catalán
+
+<>
+
+### Cristian Andrei Vlad
+
+<>
+
+### Julio del Junco Prieto
+
+<>
+
+### Sergio López Cuesta
+
+<>
+
+### David Paúl Limaylla Ticlavilca
+
+<>
 
 <br>
 
