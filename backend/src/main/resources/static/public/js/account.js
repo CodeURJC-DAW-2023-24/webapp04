@@ -3,7 +3,6 @@ function loadMoreAccounts(startIndex, chunkSize) {
         .then(response => response.json())
         .then(data => {
             const accountsContainer = document.querySelector('.accounts');
-
             data.forEach(account => {
                 const accountHtml = `
                     <div class="account">
@@ -23,6 +22,9 @@ function loadMoreAccounts(startIndex, chunkSize) {
                             <div>
                                 <dt>${account.surname}</dt>
                                 <dd>Surname</dd>
+                            </div>
+                            <div>
+                                <img src="data:image/jpeg;base64,${account.imageBase64}" style="width: 50px; height: 50px;"/>
                             </div>
                         </dl>
                     </div>`;
