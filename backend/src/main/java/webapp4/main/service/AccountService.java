@@ -1,5 +1,6 @@
 package webapp4.main.service;
 
+import java.util.Base64;
 import org.jetbrains.annotations.NotNull;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -71,6 +72,10 @@ public class AccountService {
         }
     }
 
+    public String getProfilePicBase64(String clientNIP) {
+        byte[] imageBytes = getProfilePicBytes(clientNIP);
+        return Base64.getEncoder().encodeToString(imageBytes);
+    }
     public byte[] getImageBytes(Blob blob) throws SQLException, IOException {
         if (blob == null) {
             return null;
