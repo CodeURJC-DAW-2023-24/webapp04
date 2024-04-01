@@ -336,15 +336,16 @@ Task description
 
 ### Cristian Andrei Vlad
 
-Task description
+In this phase I have been the main responsible for understanding how docker works and getting the application deployed in a virtual machine using docker-compose.
+On the other hand, I have also been in charge of creating service classes that allow to abstract the functionality of the data query to the databases.  
 
-| Nº |       Commits       |        Files        |
-|:--:|:-------------------:|:-------------------:|
-| 1  | [Description](Path) | [Description](Path) |
-| 2  | [Description](Path) | [Description](Path) |
-| 3  | [Description](Path) | [Description](Path) |
-| 4  | [Description](Path) | [Description](Path) |
-| 5  | [Description](Path) | [Description](Path) |
+| Nº |                                                                                                     Commits                                                                                                      |                                                                                   Files                                                                                   |
+|:--:|:----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------:|:-------------------------------------------------------------------------------------------------------------------------------------------------------------------------:|
+| 1  |                          [Updated methods to improve the handling of relative paths](https://github.com/CodeURJC-DAW-2023-24/webapp04/commit/b3f258edec551db75698b72e572564acd4b81419)                           |                                       [Dockerfile](https://github.com/CodeURJC-DAW-2023-24/webapp04/blob/docker/docker/Dockerfile)                                        |
+| 2  |                       [Merging into main Cristian brach including all *Service classes](https://github.com/CodeURJC-DAW-2023-24/webapp04/commit/e20ff536157a9f80f5568a0eebee7b8ea290883e)                        |                               [docker-compose.yml](https://github.com/CodeURJC-DAW-2023-24/webapp04/blob/docker/docker/docker-compose.yml)                                |
+| 3  | [Final adjustments to run app on the VM](https://github.com/CodeURJC-DAW-2023-24/webapp04/commit/dc7fc27cb71bdb7f2d9119364adcdd6bb8a41b9f#diff-423deb13b7c401b1a7f41ee91c77f722e11d2f317d6a66b546524e8a04cc8b03) |                                  [create_image.sh](https://github.com/CodeURJC-DAW-2023-24/webapp04/blob/docker/docker/create_image.sh)                                   |
+| 4  |                                       [Added shell script to init MySQL](https://github.com/CodeURJC-DAW-2023-24/webapp04/commit/60113a111aab6b140f4e03b67eba54fc02db5be7)                                       | [DynamicContentController.java](https://github.com/CodeURJC-DAW-2023-24/webapp04/blob/docker/backend/src/main/java/webapp4/main/controller/DynamicContentController.java) |
+| 5  |                                   [Dcocker image creation error solved](https://github.com/CodeURJC-DAW-2023-24/webapp04/commit/7a2bc0fe2a93c7cdd687a4c91c4b65029d735ffb)                                        |   [LoanRequestController.java](https://github.com/CodeURJC-DAW-2023-24/webapp04/blob/docker/backend/src/main/java/webapp4/main/controller/LoanRequestController.java)     |
 
 
 ### Julio del Junco Prieto
