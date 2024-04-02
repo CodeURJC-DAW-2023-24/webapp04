@@ -46,7 +46,7 @@ public class RestTransferController {
 
 
     
-    @Operation  (summary = "Create transfer")
+    /*@Operation  (summary = "Create transfer")
     @ApiResponse(
             responseCode = "200",
             description = "Transfer Created",
@@ -72,7 +72,7 @@ public class RestTransferController {
             }
             return null;
         }
-    }
+    }*/
 
     
     @Operation  (summary = "Get a Transfer by ID")
@@ -132,4 +132,33 @@ public class RestTransferController {
             return ResponseEntity.badRequest().build();
         }
     }
+
+    @Operation (summary = "Make an user transfer")
+    @ApiResponse(
+            responseCode = "200",
+            description = "transfer success",
+            content = @Content(mediaType = "application/json", schema = @Schema(implementation = Transfer.class))
+    )
+    @ApiResponse(responseCode = "404", description = "Transfer Repository not found", content = @Content)
+    @ApiResponse(responseCode = "500", description = "Internal server error", content = @Content)
+    @ApiResponse(responseCode = "400", description = "Bad request", content = @Content)
+    @PostMapping("/api/accounts/{id}/transfers")
+    public ResponseEntity<?> createTransfer(Model model, HttpServletRequest request, @RequestParam String receiver_iban, @RequestParam String amount) {
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+        String username = authentication.getName();
+        Object createTransfer = transferService.addTransaction(username, receiver_iban, Integer.parseInt(amount));
+        if (createTransfer instanceof Transfer) {
+            Transfer transfer = (Transfer) createTransfer;
+            URI location = fromCurrentRequest().path("/{id}")
+                    .buildAndExpand(transfer.getTransfer_id()).toUri();
+            return ResponseEntity.created(location).body(transfer);
+        } else {
+            String errorMessage = (String) createTransfer;
+            if (errorMessage.equals("user not exists")){
+                return  ResponseEntity.badRequest().body("User not exists");
+            }
+            return null;
+        }
+    }
+
 }

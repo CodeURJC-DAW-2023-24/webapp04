@@ -57,10 +57,10 @@ public class RestSecurityConfig extends WebSecurityConfigurerAdapter {
         https.authorizeRequests().antMatchers("/api/accounts/{id}").hasAnyRole("USER");
         https.authorizeRequests().antMatchers("/api/accounts/{id}/image").hasAnyRole("USER");
 	https.authorizeRequests().antMatchers("/api/accounts/{id}/transfers").hasAnyRole("USER");
-        https.authorizeRequests().antMatchers("/api/transfers/{id}").hasAnyRole("USER");
+        https.authorizeRequests().antMatchers("/api/transfers/{id}").hasAnyRole("ADMIN");
         https.authorizeRequests().antMatchers("/loan_request").hasAnyRole("USER");
         https.authorizeRequests().antMatchers("/loan_visualizer").hasAnyRole("USER");
-	https.authorizeRequests().antMatchers("/api/transfers").hasAnyRole("ADMIN,USER");
+	https.authorizeRequests().antMatchers("/api/transfers").hasAnyRole("ADMIN");
         https.authorizeRequests().antMatchers("/profile_manager").hasAnyRole("ADMIN");
 
 	// Disable CSRF protection (it is difficult to implement in REST APIs)

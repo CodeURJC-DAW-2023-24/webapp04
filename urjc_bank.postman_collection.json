@@ -1,0 +1,321 @@
+{
+	"info": {
+		"_postman_id": "d99fb9f2-285e-4ab9-992a-7450eaebe769",
+		"name": "urjc_bank",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "33952141"
+	},
+	"item": [
+		{
+			"name": "getAllTransfersAdmin",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": []
+				},
+				"url": {
+					"raw": "https://localhost:8443/api/transfers",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "8443",
+					"path": [
+						"api",
+						"transfers"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "getImageUser",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "yI9zDcX9gFoXVHaW14iwOz7rpM9XCKum0HkqaTp0t%2BCufhkbr3dks7wfQPV%2BW5YlcZ8lQKjzsXa3oQEFJZMA4JGGVu1OEnvW4ffa1w%2Bowzrhb9qBxAEdogyUtstSsmRLLLxicjUgsr1Ed43r6AmlijizqYcbQX0hVdgvQt4zK9dfxwoJfSg8dvF3JPBFE8xlPRL7flU0irBTcLOtHnat4Js7V3UajlxdhFjhSQJ8zW0UE3s7%2FvATQbpIWm%2FHlYR8",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": []
+				},
+				"url": {
+					"raw": "https://localhost:8443/api/accounts/66213438A/image",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "8443",
+					"path": [
+						"api",
+						"accounts",
+						"66213438A",
+						"image"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "postImageUser",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "yI9zDcX9gFoXVHaW14iwOz7rpM9XCKum0HkqaTp0t%2BCufhkbr3dks7wfQPV%2BW5YlcZ8lQKjzsXa3oQEFJZMA4JGGVu1OEnvW4ffa1w%2Bowzrhb9qBxAEdogyUtstSsmRLLLxicjUgsr1Ed43r6AmlijizqYcbQX0hVdgvQt4zK9dfxwoJfSg8dvF3JPBFE8xlPRL7flU0irBTcLOtHnat4Js7V3UajlxdhFjhSQJ8zW0UE3s7%2FvATQbpIWm%2FHlYR8",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "imageFIle",
+							"type": "file",
+							"src": "postman-cloud:///1eeef9ae-1766-49a0-8f29-a9a16c4f3abd"
+						}
+					]
+				},
+				"url": {
+					"raw": "https://localhost:8443/api/accounts/66213438A/image",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "8443",
+					"path": [
+						"api",
+						"accounts",
+						"66213438A",
+						"image"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "deleteImageUser",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "https://localhost:8443/api/accounts/66213438A/image",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "8443",
+					"path": [
+						"api",
+						"accounts",
+						"66213438A",
+						"image"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "getAllMyTransfersUser",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://localhost:8443/api/accounts/66213438A/transfers",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "8443",
+					"path": [
+						"api",
+						"accounts",
+						"66213438A",
+						"transfers"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "getTransferUser",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://localhost:8443/api/transfers/76",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "8443",
+					"path": [
+						"api",
+						"transfers",
+						"76"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "postTransferUser",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "receiver_iban",
+							"value": "ES27 0069 9428 3115 3864 5491",
+							"type": "text"
+						},
+						{
+							"key": "amount",
+							"value": "50",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "https://localhost:8443/api/accounts/66213438A/transfers",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "8443",
+					"path": [
+						"api",
+						"accounts",
+						"66213438A",
+						"transfers"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "postLoginUser",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"username\": \"66213438A\",\n    \"password\": \"password\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://localhost:8443/api/auth/login",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "8443",
+					"path": [
+						"api",
+						"auth",
+						"login"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "postLogOutUser",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"url": {
+					"raw": "https://localhost:8443/api/auth/logout",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "8443",
+					"path": [
+						"api",
+						"auth",
+						"logout"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "postAccountNoUser",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "inputUser",
+							"value": "12345678A",
+							"type": "text"
+						},
+						{
+							"key": "firstName",
+							"value": "david",
+							"type": "text"
+						},
+						{
+							"key": "lastName",
+							"value": "Cereceda",
+							"type": "text"
+						},
+						{
+							"key": "inputPassword",
+							"value": "password",
+							"type": "text"
+						},
+						{
+							"key": "confirmPassword",
+							"value": "password",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "https://localhost:8443/api/accounts",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "8443",
+					"path": [
+						"api",
+						"accounts"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
