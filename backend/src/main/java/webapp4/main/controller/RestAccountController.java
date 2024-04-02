@@ -1,5 +1,6 @@
 package webapp4.main.controller;
 
+import org.apache.tomcat.util.net.openssl.ciphers.Authentication;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.ui.Model;
@@ -13,6 +14,8 @@ import io.swagger.v3.oas.annotations.media.Schema;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
 
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.core.context.SecurityContextHolder;
+
 import webapp4.main.model.Account;
 import webapp4.main.repository.AccountRepository;
 import webapp4.main.service.AccountService;
@@ -97,7 +100,7 @@ public class RestAccountController {
         return ResponseEntity.ok(allAccounts);
     }
 
-/*  @Operation
+@Operation
      @ApiResponse(
             responseCode = "200",
             description = "Get Image by ID",
@@ -106,27 +109,36 @@ public class RestAccountController {
     @ApiResponse(responseCode = "404", description = "Form not found", content = @Content)
     @ApiResponse(responseCode = "500", description = "Internal server error", content = @Content)
     @ApiResponse(responseCode = "400", description = "Bad request", content = @Content)
-    @GetMapping("/api/accounts/{accountId}/image")                //this code is for get the image, the other one is to  download, u must decide which one u want to keep
+    @GetMapping("/api/accounts/{accountId}/image")
     public ResponseEntity<byte[]> getImage(@PathVariable String accountId) {
-        Optional<Account> accountOptional = accountRepository.findByNIP(accountId);
+        org.springframework.security.core.Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+        String username = authentication.getName();
+        Optional<Account> accountOptional = accountRepository.findByNIP(username);
+
         if (accountOptional.isPresent()) {
-            Account account = accountOptional.get();
-            Blob imageBlob = account.getImageFile();
-
-            try     {
-                byte[] imageBytes = accountService.getImageBytes(imageBlob);
-                HttpHeaders headers = new HttpHeaders();
-                headers.setContentType(MediaType.parseMediaType(MediaType.IMAGE_JPEG_VALUE));
-
-                return new ResponseEntity<>(imageBytes, headers, HttpStatus.OK);
-            } catch (SQLException | IOException e) {
-                // Manejar errores de conversión
-                return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
+            if(accountId.equals(username)){
+                Account account = accountOptional.get();
+                Blob imageBlob = account.getImageFile();
+    
+                try {
+                    byte[] imageBytes = accountService.getImageBytes(imageBlob);
+                    HttpHeaders headers = new HttpHeaders();
+                    headers.setContentType(MediaType.parseMediaType(MediaType.IMAGE_JPEG_VALUE));
+    
+                    return new ResponseEntity<>(imageBytes, headers, HttpStatus.OK);
+                } catch (SQLException | IOException e) {
+                    // Manejar errores de conversión
+                    return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
+                }
+            }else{
+                return ResponseEntity.badRequest().build();
             }
         } else {
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         }
-    }*/
+    }
+
+
      @Operation
     (summary = "Upload image by ID")
     @ApiResponse(
@@ -139,15 +151,21 @@ public class RestAccountController {
     @ApiResponse(responseCode = "400", description = "Bad request", content = @Content)
     @PostMapping("/api/accounts/{accountId}/image")
     public ResponseEntity<?> uploadImage(@PathVariable String accountId, @RequestParam MultipartFile imageFile) throws IOException, SerialException, SQLException{
-        Optional<Account> accountOptional = accountRepository.findByNIP(accountId);
+        org.springframework.security.core.Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+        String username = authentication.getName();
+        Optional<Account> accountOptional = accountRepository.findByNIP(username);
         if (accountOptional.isPresent()){
-            URI location = fromCurrentRequest().build().toUri();
-            Account account = accountOptional.get();
-            byte[] bytes = imageFile.getBytes();
-            Blob blob = new javax.sql.rowset.serial.SerialBlob(bytes);
-            account.setImageFile(blob);
-            accountRepository.save(account);
-            return ResponseEntity.created(location).build();
+            if(accountId.equals(username)){
+                URI location = fromCurrentRequest().build().toUri();
+                Account account = accountOptional.get();
+                byte[] bytes = imageFile.getBytes();
+                Blob blob = new javax.sql.rowset.serial.SerialBlob(bytes);
+                account.setImageFile(blob);
+                accountRepository.save(account);
+                return ResponseEntity.created(location).build();
+            }else{
+                return ResponseEntity.badRequest().build();
+            }
         } else {
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         }
@@ -165,45 +183,21 @@ public class RestAccountController {
     @ApiResponse(responseCode = "400", description = "Bad request", content = @Content)
     @DeleteMapping("/api/accounts/{accountId}/image")
     public ResponseEntity<Object> deleteImage(@PathVariable String accountId) throws IOException {
-        Optional<Account> accountOptional = accountRepository.findByNIP(accountId);
+        org.springframework.security.core.Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+        String username = authentication.getName();
+        Optional<Account> accountOptional = accountRepository.findByNIP(username);
         if (accountOptional.isPresent()){
-            Account account = accountOptional.get();
-            account.setImageFile(null);
-            accountRepository.save(account);
-            return ResponseEntity.noContent().build();
+            if(accountId.equals(username)){
+                Account account = accountOptional.get();
+                account.setImageFile(null);
+                accountRepository.save(account);
+                return ResponseEntity.noContent().build();
+            }else{
+                return ResponseEntity.badRequest().build();    
+            }
         } else {
             return ResponseEntity.notFound().build();
         }
     }
-
-     @Operation      (summary = "Download image by ID")
-    @ApiResponse(
-            responseCode = "200",
-            description = "Download The image of the ID",
-            content = @Content(mediaType = "application/json", schema = @Schema(implementation = Account.class))
-    )
-    @ApiResponse(responseCode = "404", description = "Image not found", content = @Content)
-    @ApiResponse(responseCode = "500", description = "Internal server error", content = @Content)
-    @ApiResponse(responseCode = "400", description = "Bad request", content = @Content)
-    @GetMapping("/api/accounts/{accountId}/image")
-    public ResponseEntity<byte[]> downloadImage(@PathVariable String accountId) {
-        Optional<Account> accountOptional = accountRepository.findByNIP(accountId);
-        if (accountOptional.isPresent()) {
-            Account account = accountOptional.get();
-            Blob imageBlob = account.getImageFile();
-
-            try {
-                byte[] imageBytes = accountService.getImageBytes(imageBlob);
-                HttpHeaders headers = new HttpHeaders();
-                headers.setContentType(MediaType.IMAGE_JPEG);
-                return new ResponseEntity<>(imageBytes, headers, HttpStatus.OK);
-            } catch (SQLException | IOException e) {
-                return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
-            }
-        } else {
-            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
-        }
-    }
-
 
 }
