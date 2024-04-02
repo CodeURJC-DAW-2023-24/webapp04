@@ -1,5 +1,6 @@
 package webapp4.main.service;
 
+import java.util.Base64;
 import org.jetbrains.annotations.NotNull;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.io.ClassPathResource;
@@ -19,6 +20,8 @@ import java.sql.Blob;
 import java.sql.SQLException;
 import java.util.List;
 import java.util.Optional;
+
+import java.io.ByteArrayOutputStream;
 
 @Service
 public class AccountService {
@@ -69,4 +72,32 @@ public class AccountService {
             throw new RuntimeException(e);
         }
     }
+
+    public String getProfilePicBase64(String clientNIP) {
+        byte[] imageBytes = getProfilePicBytes(clientNIP);
+        return Base64.getEncoder().encodeToString(imageBytes);
+    }
+    public byte[] getImageBytes(Blob blob) throws SQLException, IOException {
+        if (blob == null) {
+            return null;
+        }
+        
+        try (ByteArrayOutputStream outputStream = new ByteArrayOutputStream()) {
+            byte[] buffer = new byte[4096];
+            int bytesRead;
+            
+            try (InputStream inputStream = blob.getBinaryStream()) {
+                while ((bytesRead = inputStream.read(buffer)) != -1) {
+                    outputStream.write(buffer, 0, bytesRead);
+                }
+            }
+            
+            return outputStream.toByteArray();
+        }
+        
+    }
+    public Blob createBlob(byte[] bytes) throws SQLException {
+        return new SerialBlob(bytes);
+    }
+
 }

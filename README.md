@@ -247,7 +247,146 @@ For this phase I was responsible on making the templates for make the applicatio
 [Commit_3]https://github.com/CodeURJC-DAW-2023-24/webapp04/commit/c0f6945cf8a02aa09714832f850a0230f539239a
 [Commit_4]https://github.com/CodeURJC-DAW-2023-24/webapp04/commit/a382119fc56bfd816c8ecf78ab7d2b5b50185156
 
+# PHASE 3
 
+## API REST documentation
+
+<>
+
+## Class diagram update
+
+<>![image](https://github.com/CodeURJC-DAW-2023-24/webapp04/assets/73952564/dfac254f-85ac-4c29-9065-e71c59e0874c)
+
+
+## Running the dockerized application
+
+To execute the dockerized application you must follow the next instructions:
+
+1) [Install Docker engine on your machine](https://docs.docker.com/engine/install/)
+2) Clone [urjc_bank](https://github.com/CodeURJC-DAW-2023-24/webapp04) repository with
+   `git clone https://github.com/CodeURJC-DAW-2023-24/webapp04.git`
+3) Access the docker directory located in the repo you have just cloned
+   `cd webapp4/docker`
+4) Start the application by using
+      `docker compose up`
+5) Access https://localhost:8443 in any browser
+
+## Building the Docker image
+
+To build a Docker image of the application and publish it in dockerhub follow the following instructions:
+
+1) [Install Docker engine on your machine](https://docs.docker.com/engine/install/)
+2) Clone [urjc_bank](https://github.com/CodeURJC-DAW-2023-24/webapp04) repository with 
+`git clone https://github.com/CodeURJC-DAW-2023-24/webapp04.git`
+3) Access the docker directory located in the repo you have just cloned
+`cd webapp4/docker`
+4) Log into your Docker account by using
+`docker login` and typing your credentials
+5) Add execution permission to *create_image.sh*
+`chmod +x create_image.sh`
+6) Run the script
+`./create_image.sh`
+## Deploying the application in the virtual machine
+
+Once yoy have obtained the ssh key follow the next instructions to deploy the application on the university's virtual machine:
+
+1) Access the directory where is the ssh key located
+
+2) Assign file owner the permission to write and read the ssh key
+
+* In linux: `chmod 600 ~/prAppWeb04.key`
+* In Windows: make the current user owner of the file. For further information, please consult the following links:
+
+https://github.com/microsoft/vscode-remote-release/issues/1619#issuecomment-760990038
+https://www.anujvarma.com/ssh-on-windows-permissions-for-private-key-too-open/
+
+3) Conect to the VM by typing in the command shell this command
+`ssh -i prAppWeb04.key vmuser@10.100.139.12`
+
+4) Clone [urjc_bank](https://github.com/CodeURJC-DAW-2023-24/webapp04) repository with
+   `git clone https://github.com/CodeURJC-DAW-2023-24/webapp04.git`
+
+5) Access the docker directory located in the repo you have just cloned
+   `cd webapp4/docker`
+
+6) Start the application by using
+`docker compose up -d`
+
+7) To access the application, open a browser and access the following url https://10.100.139.12:8443
+
+Sample credentials:
+* For admins:
+  * username: 00000000A
+  * password: password
+* For clients:
+  Check any user from this [CSV](backend/src/main/resources/static/data/client_credentials.csv)
+
+## Member participation
+
+### David Cereceda Catalán
+
+In this phase I have been mainly in charge of making the Rest API
+
+| Nº |       Commits       |        Files        |
+|:--:|:-------------------:|:-------------------:|
+| 1  | [Added RestAccountController](https://github.com/CodeURJC-DAW-2023-24/webapp04/commit/64190ed8523a315f264b9939f96ec9aaf0da9bf3) | [RestAccountController.java](https://github.com/CodeURJC-DAW-2023-24/webapp04/blob/main/backend/src/main/java/webapp4/main/controller/RestAccountController.java) |
+| 2  | [Added RestTransferController](https://github.com/CodeURJC-DAW-2023-24/webapp04/commit/663c10e99e15a3c2b0589a3cea7b232ee7d100a3) | [RestTransferController.java](https://github.com/CodeURJC-DAW-2023-24/webapp04/blob/main/backend/src/main/java/webapp4/main/controller/RestTransferController.java) |
+| 3  | [Update UserDataService.java](https://github.com/CodeURJC-DAW-2023-24/webapp04/commit/77f68fd40e2720295aca7d082582df5f7e3b2640) | [UserDataService.java](https://github.com/CodeURJC-DAW-2023-24/webapp04/blob/main/backend/src/main/java/webapp4/main/service/UserDataService.java) |
+| 4  | [Update RestTransferController.java](https://github.com/CodeURJC-DAW-2023-24/webapp04/commit/cd07354d6e5cfa1a655766506acdd6b3f0a60288) | [TransferService.java](https://github.com/CodeURJC-DAW-2023-24/webapp04/blob/main/backend/src/main/java/webapp4/main/service/TransferService.java) |
+| 5  | [Update RestAccountController.java](https://github.com/CodeURJC-DAW-2023-24/webapp04/commit/24b72d8b6a0887eea2e7887c849574baebd42c04) | [ProfileController.java](https://github.com/CodeURJC-DAW-2023-24/webapp04/blob/main/backend/src/main/java/webapp4/main/controller/ProfileController.java) |
+
+### Cristian Andrei Vlad
+
+In this phase I have been the main responsible for understanding how docker works and getting the application deployed in a virtual machine using docker-compose.
+On the other hand, I have also been in charge of creating service classes that allow to abstract the functionality of the data query to the databases.  
+
+| Nº |                                                                                                     Commits                                                                                                      |                                                                                   Files                                                                                   |
+|:--:|:----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------:|:-------------------------------------------------------------------------------------------------------------------------------------------------------------------------:|
+| 1  |                          [Updated methods to improve the handling of relative paths](https://github.com/CodeURJC-DAW-2023-24/webapp04/commit/b3f258edec551db75698b72e572564acd4b81419)                           |                                       [Dockerfile](https://github.com/CodeURJC-DAW-2023-24/webapp04/blob/docker/docker/Dockerfile)                                        |
+| 2  |                       [Merging into main Cristian brach including all *Service classes](https://github.com/CodeURJC-DAW-2023-24/webapp04/commit/e20ff536157a9f80f5568a0eebee7b8ea290883e)                        |                               [docker-compose.yml](https://github.com/CodeURJC-DAW-2023-24/webapp04/blob/docker/docker/docker-compose.yml)                                |
+| 3  | [Final adjustments to run app on the VM](https://github.com/CodeURJC-DAW-2023-24/webapp04/commit/dc7fc27cb71bdb7f2d9119364adcdd6bb8a41b9f#diff-423deb13b7c401b1a7f41ee91c77f722e11d2f317d6a66b546524e8a04cc8b03) |                                  [create_image.sh](https://github.com/CodeURJC-DAW-2023-24/webapp04/blob/docker/docker/create_image.sh)                                   |
+| 4  |                                       [Added shell script to init MySQL](https://github.com/CodeURJC-DAW-2023-24/webapp04/commit/60113a111aab6b140f4e03b67eba54fc02db5be7)                                       | [DynamicContentController.java](https://github.com/CodeURJC-DAW-2023-24/webapp04/blob/docker/backend/src/main/java/webapp4/main/controller/DynamicContentController.java) |
+| 5  |                                   [Dcocker image creation error solved](https://github.com/CodeURJC-DAW-2023-24/webapp04/commit/7a2bc0fe2a93c7cdd687a4c91c4b65029d735ffb)                                        |   [LoanRequestController.java](https://github.com/CodeURJC-DAW-2023-24/webapp04/blob/docker/backend/src/main/java/webapp4/main/controller/LoanRequestController.java)     |
+
+
+### Julio del Junco Prieto
+
+I was responsible for the security and adding missing parts of phase 2
+
+| Nº |       Commits       |        Files        |
+|:--:|:-------------------:|:-------------------:|
+| 1  | [Adding RestSecurity](https://github.com/CodeURJC-DAW-2023-24/webapp04/commit/4b3594554fad2a5f2cc8b09aa271ab94c35d5487) | [RestSecurityConfig](https://github.com/CodeURJC-DAW-2023-24/webapp04/blob/main/backend/src/main/java/webapp4/main/security/RestSecurityConfig.java) |
+| 2  | [Correcting RestSecurity](https://github.com/CodeURJC-DAW-2023-24/webapp04/commit/358ab05b5a0612f6e353c08e11c3480ab8f981ea) | [account.js](https://github.com/CodeURJC-DAW-2023-24/webapp04/blob/main/backend/src/main/resources/static/public/js/account.js) |
+| 3  | [Adding AccountDTO](https://github.com/CodeURJC-DAW-2023-24/webapp04/commit/213002b6c7cd63eace14c6e8c5f3b68b65898ba4) | [AccountDTO](https://github.com/CodeURJC-DAW-2023-24/webapp04/blob/main/backend/src/main/java/webapp4/main/model/AccountDTO.java) |
+| 4  | [Updating AccountService](https://github.com/CodeURJC-DAW-2023-24/webapp04/commit/c63b98a9542f79fae9d312f2e5d2a2c16ae0647a) | [AccountController](https://github.com/CodeURJC-DAW-2023-24/webapp04/blob/main/backend/src/main/java/webapp4/main/controller/AccountController.java) |
+| 5  | [Updating AccountController](https://github.com/CodeURJC-DAW-2023-24/webapp04/commit/2ac42fa99ecaaf0611d7f81886f2d15e124aaf01) | [AccountService](https://github.com/CodeURJC-DAW-2023-24/webapp04/blob/main/backend/src/main/java/webapp4/main/service/AccountService.java) |
+
+
+### Sergio López Cuesta
+
+Task description
+
+| Nº |       Commits       |        Files        |
+|:--:|:-------------------:|:-------------------:|
+| 1  | [Created RestLoginController]([Path](https://github.com/CodeURJC-DAW-2023-24/webapp04/commit/7e26329ab1f6d108986b4c0d63cad72458a62563)) | [RestAuthController.java]([Path](https://github.com/CodeURJC-DAW-2023-24/webapp04/blob/rama-Ser/backend/src/main/java/webapp4/main/controller/RestLoginController.java)) |
+| 2  | [Added doc to RestAccountController]([Path](https://github.com/CodeURJC-DAW-2023-24/webapp04/commit/362b0e450b6d0566b8e7f71f23eddbc2b8be31fc)) | [RestAccountController.java]([[Path](https://github.com/CodeURJC-DAW-2023-24/webapp04/blob/main/backend/src/main/java/webapp4/main/controller/RestAccountController.java)](https://github.com/CodeURJC-DAW-2023-24/webapp04/blob/rama-Ser/backend/src/main/java/webapp4/main/controller/RestAccountController.java)) |
+| 3 | [Added doc to RestTransferController]([Path](https://github.com/CodeURJC-DAW-2023-24/webapp04/commit/362b0e450b6d0566b8e7f71f23eddbc2b8be31fc)) | [RestTransferController.java]([[Path](https://github.com/CodeURJC-DAW-2023-24/webapp04/blob/main/backend/src/main/java/webapp4/main/controller/RestTransferController.java)](https://github.com/CodeURJC-DAW-2023-24/webapp04/blob/rama-Ser/backend/src/main/java/webapp4/main/controller/RestTransferController.java)) |
+| 4  | [Added yaml model and Docs]([Path](https://github.com/CodeURJC-DAW-2023-24/webapp04/commit/362b0e450b6d0566b8e7f71f23eddbc2b8be31fc)) | [api-docs.yaml]([Path](https://github.com/CodeURJC-DAW-2023-24/webapp04/blob/rama-Ser/backend/api-docs/api-docs.yaml)) |
+| 5  | [Swagger Dependencies]([Path](https://github.com/CodeURJC-DAW-2023-24/webapp04/commit/0115a56baecc5ba74b8ebbf870180c680c37c36d)) | [pom.xml]([Path](https://github.com/CodeURJC-DAW-2023-24/webapp04/blob/rama-Ser/backend/pom.xml)) |
+
+
+
+### David Paúl Limaylla Ticlavilca
+
+Task description
+
+| Nº |       Commits       |        Files        |
+|:--:|:-------------------:|:-------------------:|
+| 1  | [RestAuthController]([https://github.com/CodeURJC-DAW-2023-24/webapp04/commit/a40b0d7372d7ae75f527983b9c8c444f75b6721c](https://github.com/CodeURJC-DAW-2023-24/webapp04/commit/b2441436d38690eb7e0c7cb580bb122c8487a503)) | [AuthController](backend/src/main/java/webapp4/main/controller/AuthController.java) |
+| 2  | [get-post-delete image completed ((roles) security is not working)]([https://github.com/CodeURJC-DAW-2023-24/webapp04/commit/6f511cadbda7557b886cc3cb7f579f9878434cbb)) | [RestAccountController](backend/src/main/java/webapp4/main/controller/RestAccountController.java) |
+| 3  | [images operations updated]([Path](https://github.com/CodeURJC-DAW-2023-24/webapp04/commit/06ff02f32de10187402409add900bbc3687a684d)) | [RestAccountController](backend/src/main/java/webapp4/main/controller/RestAccountController.java) |
+| 4  | [images operation + file .json + security file + operation account upd…]([Path](https://github.com/CodeURJC-DAW-2023-24/webapp04/commit/68acf02a4f77800937f6be4233e6ea716fc7642e)) | [urjc_bank.postman_collection.json](urjc_bank.postman_collection.json) |
+| 5  | [authCony cd /home/david/Escritorio/DAW-GIT/webapp04 ; /usr/bin/env /h…]([Path](https://github.com/CodeURJC-DAW-2023-24/webapp04/commit/b2441436d38690eb7e0c7cb580bb122c8487a503)) | [backend/src/main/java/webapp4/main/controller/AuthController.java](backend/src/main/java/webapp4/main/controller/AuthController.java) |
 
 
 <br>

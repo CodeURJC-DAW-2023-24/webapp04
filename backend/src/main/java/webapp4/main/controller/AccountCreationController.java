@@ -14,6 +14,7 @@ import webapp4.main.repository.UserDataRepository;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import java.util.Random;
+import webapp4.main.service.UserDataService;
 
 
 import java.security.SecureRandom;
@@ -22,10 +23,9 @@ import java.util.Optional;
 @Controller
 public class AccountCreationController {
 
+
     @Autowired
-    private AccountRepository accountRepository;
-    @Autowired
-    private UserDataRepository userDataRepository;
+    private UserDataService userDataService;
     @GetMapping("/register")
     public String register(Model model){
         return "register_page";
@@ -36,42 +36,12 @@ public class AccountCreationController {
 
     @RequestMapping("/create_account")
     public String createAccount(Model model, @RequestParam String inputUser, @RequestParam String firstName, @RequestParam String lastName, @RequestParam String inputPassword, @RequestParam String confirmPassword) {
-        Optional<Account> accountOptional = accountRepository.findByNIP(inputUser);
-        if (accountOptional.isPresent()){
-            System.out.println("Account already exists");
-            return "redirect:/register";
+        Object registerUser = userDataService.registerUser(inputUser, firstName, lastName, inputPassword, confirmPassword);
+        if (registerUser instanceof Account){
+            return "redirect:/profile";
         } else {
-            if (inputPassword.equals(confirmPassword)) {
-                Account account = new Account();
-                account.setNIP(inputUser);
-                String iban = generateIBAN();
-                account.setIBAN(iban);
-                account.setName(firstName);
-                account.setSurname(lastName);
-                accountRepository.save(account);
-                UserData userData = new UserData();
-                userData.setUsername(inputUser);
-                PasswordEncoder passwordEncoder = passwordEncoder();
-                userData.setPassword(passwordEncoder.encode(inputPassword));
-                userData.setRole("USER");
-                userDataRepository.save(userData);
-                return "redirect:/profile";
-            } else {
-                return "redirect:/register_page";
-            }
+            return "redirect:/register";
         }
     }
-    private String generateIBAN() {
-        String countryCode = "ES";
-        int ibanLength = 24;
-        StringBuilder ibanBuilder = new StringBuilder(countryCode);
-        Random random = new Random();
-        for (int i = 0; i < ibanLength - countryCode.length(); i++) {
-            if ((ibanLength + 2 - i) % 4 == 0){
-                ibanBuilder.append(" ");
-            }
-            ibanBuilder.append(random.nextInt(10));
-        }
-        return ibanBuilder.toString();
-    }
+
 }
