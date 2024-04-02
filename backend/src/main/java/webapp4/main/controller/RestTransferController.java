@@ -41,6 +41,8 @@ public class RestTransferController {
     private TransferService transferService;
     @Autowired
     private TransferRepository transferRepository;
+    @Autowired
+    private AccountRepository accountRepository;
 
 
     
@@ -106,5 +108,28 @@ public class RestTransferController {
     public ResponseEntity<Collection<Transfer>> getAllTransfer(){
         Collection<Transfer> allTransfers = transferRepository.findAll();
         return ResponseEntity.ok(allTransfers);
+    }
+
+    @Operation (summary = "Get all user transfers")
+    @ApiResponse(
+            responseCode = "200",
+            description = "Found the form",
+            content = @Content(mediaType = "application/json", schema = @Schema(implementation = Transfer.class))
+    )
+    @ApiResponse(responseCode = "404", description = "Transfer Repository not found", content = @Content)
+    @ApiResponse(responseCode = "500", description = "Internal server error", content = @Content)
+    @ApiResponse(responseCode = "400", description = "Bad request", content = @Content)
+    @GetMapping("/api/accounts/{id}/transfers")
+    public ResponseEntity<Collection<Transfer>> getAllUserTransfer(@PathVariable String id){
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+        String username = authentication.getName();
+        if (id.equals(username)) {
+            Optional<Account> accountOptional = accountRepository.findByNIP(id);
+            String accountIBAN = accountOptional.get().getIBAN();
+            Collection<Transfer> userTransfers = transferRepository.findBySenderOrReceiverContaining(accountIBAN);
+            return ResponseEntity.ok(userTransfers);
+        } else {
+            return ResponseEntity.badRequest().build();
+        }
     }
 }
