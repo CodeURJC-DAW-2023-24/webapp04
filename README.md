@@ -380,11 +380,14 @@ Task description
 
 | Nº |       Commits       |        Files        |
 |:--:|:-------------------:|:-------------------:|
-| 1  | [Description](Path) | [Description](Path) |
-| 2  | [Description](Path) | [Description](Path) |
-| 3  | [Description](Path) | [Description](Path) |
-| 4  | [Description](Path) | [Description](Path) |
-| 5  | [Description](Path) | [Description](Path) |
+| 1  | [RestAuthController]([https://github.com/CodeURJC-DAW-2023-24/webapp04/commit/a40b0d7372d7ae75f527983b9c8c444f75b6721c](https://github.com/CodeURJC-DAW-2023-24/webapp04/commit/b2441436d38690eb7e0c7cb580bb122c8487a503)) | [AuthController](backend/src/main/java/webapp4/main/controller/AuthController.java) |
+| 2  | [get-post-delete image completed ((roles) security is not working)]([https://github.com/CodeURJC-DAW-2023-24/webapp04/commit/6f511cadbda7557b886cc3cb7f579f9878434cbb)) | [RestAccountController](backend/src/main/java/webapp4/main/controller/RestAccountController.java) |
+| 3  | [images operations updated
+]([Path](https://github.com/CodeURJC-DAW-2023-24/webapp04/commit/06ff02f32de10187402409add900bbc3687a684d)) | [RestAccountController](backend/src/main/java/webapp4/main/controller/RestAccountController.java) |
+| 4  | [images operation + file .json + security file + operation account upd…
+]([Path](https://github.com/CodeURJC-DAW-2023-24/webapp04/commit/68acf02a4f77800937f6be4233e6ea716fc7642e)) | [urjc_bank.postman_collection.json](urjc_bank.postman_collection.json) |
+| 5  | [authCony cd /home/david/Escritorio/DAW-GIT/webapp04 ; /usr/bin/env /h…
+]([Path](https://github.com/CodeURJC-DAW-2023-24/webapp04/commit/b2441436d38690eb7e0c7cb580bb122c8487a503)) | [backend/src/main/java/webapp4/main/controller/AuthController.java](backend/src/main/java/webapp4/main/controller/AuthController.java) |
 
 
 <br>
