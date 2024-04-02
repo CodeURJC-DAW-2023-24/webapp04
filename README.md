@@ -324,7 +324,7 @@ Sample credentials:
 
 ### David Cereceda Catalán
 
-Task description
+In this phase I have been mainly in charge of making the Rest API
 
 | Nº |       Commits       |        Files        |
 |:--:|:-------------------:|:-------------------:|
