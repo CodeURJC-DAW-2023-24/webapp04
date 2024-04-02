@@ -18,9 +18,9 @@ public class DBInitializer {
     private UserDataService userDataService;
     @PostConstruct
     public void init() {
-        loanService.loadAllLoans("backend/src/main/resources/static/data/loans_data.csv");
-        accountService.loadAllAccounts("backend/src/main/resources/static/data/client_data.csv");
-        transferService.loadAllTransfers("backend/src/main/resources/static/data/transfers_data.csv");
-        userDataService.loadAllCLientData("backend/src/main/resources/static/data/client_credentials.csv");
+        loanService.loadAllLoans("static/data/loans_data.csv");
+        accountService.loadAllAccounts("static/data/client_data.csv");
+        transferService.loadAllTransfers("static/data/transfers_data.csv");
+        userDataService.loadAllCLientData("static/data/client_credentials.csv");
     }
 }
