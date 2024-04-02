@@ -255,7 +255,8 @@ For this phase I was responsible on making the templates for make the applicatio
 
 ## Class diagram update
 
-<>
+<>![image](https://github.com/CodeURJC-DAW-2023-24/webapp04/assets/73952564/dfac254f-85ac-4c29-9065-e71c59e0874c)
+
 
 ## Running the dockerized application
 
@@ -367,11 +368,12 @@ Task description
 
 | Nº |       Commits       |        Files        |
 |:--:|:-------------------:|:-------------------:|
-| 1  | [Description](Path) | [Description](Path) |
-| 2  | [Description](Path) | [Description](Path) |
-| 3  | [Description](Path) | [Description](Path) |
-| 4  | [Description](Path) | [Description](Path) |
-| 5  | [Description](Path) | [Description](Path) |
+| 1  | [Created RestLoginController]([Path](https://github.com/CodeURJC-DAW-2023-24/webapp04/commit/7e26329ab1f6d108986b4c0d63cad72458a62563)) | [RestAuthController.java]([Path](https://github.com/CodeURJC-DAW-2023-24/webapp04/blob/rama-Ser/backend/src/main/java/webapp4/main/controller/RestLoginController.java)) |
+| 2  | [Added doc to RestAccountController]([Path](https://github.com/CodeURJC-DAW-2023-24/webapp04/commit/362b0e450b6d0566b8e7f71f23eddbc2b8be31fc)) | [RestAccountController.java]([[Path](https://github.com/CodeURJC-DAW-2023-24/webapp04/blob/main/backend/src/main/java/webapp4/main/controller/RestAccountController.java)](https://github.com/CodeURJC-DAW-2023-24/webapp04/blob/rama-Ser/backend/src/main/java/webapp4/main/controller/RestAccountController.java)) |
+| 3 | [Added doc to RestTransferController]([Path](https://github.com/CodeURJC-DAW-2023-24/webapp04/commit/362b0e450b6d0566b8e7f71f23eddbc2b8be31fc)) | [RestTransferController.java]([[Path](https://github.com/CodeURJC-DAW-2023-24/webapp04/blob/main/backend/src/main/java/webapp4/main/controller/RestTransferController.java)](https://github.com/CodeURJC-DAW-2023-24/webapp04/blob/rama-Ser/backend/src/main/java/webapp4/main/controller/RestTransferController.java)) |
+| 4  | [Added yaml model and Docs]([Path](https://github.com/CodeURJC-DAW-2023-24/webapp04/commit/362b0e450b6d0566b8e7f71f23eddbc2b8be31fc)) | [api-docs.yaml]([Path](https://github.com/CodeURJC-DAW-2023-24/webapp04/blob/rama-Ser/backend/api-docs/api-docs.yaml)) |
+| 5  | [Swagger Dependencies]([Path](https://github.com/CodeURJC-DAW-2023-24/webapp04/commit/0115a56baecc5ba74b8ebbf870180c680c37c36d)) | [pom.xml]([Path](https://github.com/CodeURJC-DAW-2023-24/webapp04/blob/rama-Ser/backend/pom.xml)) |
+
 
 
 ### David Paúl Limaylla Ticlavilca
