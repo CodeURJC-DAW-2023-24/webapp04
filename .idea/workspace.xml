@@ -4,9 +4,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="072cea6f-8d20-4292-b10f-19e0c5f1ef3e" name="Changes" comment="README - Running the dockerized app&#10;Running the dockerized app section updated">
+    <list default="true" id="072cea6f-8d20-4292-b10f-19e0c5f1ef3e" name="Changes" comment="Docker error solved">
+      <change afterPath="$PROJECT_DIR$/docker/db_data/binlog.000003" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/docker/db_data/binlog.000004" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/docker/db_data/binlog.000005" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -24,7 +26,7 @@
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$" value="docker" />
+        <entry key="$PROJECT_DIR$" value="main" />
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -51,6 +53,7 @@
     &quot;Application.main.controller.BackendApplication.executor&quot;: &quot;Run&quot;,
     &quot;Application.webapp4.main.BackendApplication.executor&quot;: &quot;Run&quot;,
     &quot;DefaultHtmlFileTemplate&quot;: &quot;HTML File&quot;,
+    &quot;JUnit.BackendApplicationTests.executor&quot;: &quot;Run&quot;,
     &quot;JUnit.CSVReaderTest.executor&quot;: &quot;Run&quot;,
     &quot;JUnit.CSVReaderTest.getFirstElementTest.executor&quot;: &quot;Run&quot;,
     &quot;JUnit.CSVReaderTest.nonNullListTest.executor&quot;: &quot;Run&quot;,
@@ -62,7 +65,7 @@
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
     &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
     &quot;SONARLINT_PRECOMMIT_ANALYSIS&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;docker&quot;,
     &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
     &quot;last_opened_file_path&quot;: &quot;/home/cris/Documents/3GIS - Desarrollo de Aplicaciones Web/webapp04/backend/src/main/resources/static/public/assets/img&quot;
   }
@@ -89,6 +92,21 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="BackendApplicationTests" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="backend" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="main.backend.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="main.backend" />
+      <option name="MAIN_CLASS_NAME" value="main.backend.BackendApplicationTests" />
+      <option name="TEST_OBJECT" value="class" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="CSVReaderTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="backend" />
       <extension name="coverage">
@@ -100,22 +118,6 @@
       <option name="PACKAGE_NAME" value="main.backend" />
       <option name="MAIN_CLASS_NAME" value="main.backend.CSVReaderTest" />
       <option name="TEST_OBJECT" value="class" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="CSVReaderTest.getFirstElementTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="backend" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="main.backend.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="main.backend" />
-      <option name="MAIN_CLASS_NAME" value="main.backend.CSVReaderTest" />
-      <option name="METHOD_NAME" value="getFirstElementTest" />
-      <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -154,10 +156,10 @@
     <recent_temporary>
       <list>
         <item itemvalue="Application.BackendApplication" />
+        <item itemvalue="JUnit.BackendApplicationTests" />
+        <item itemvalue="JUnit.CSVReaderTest" />
         <item itemvalue="JUnit.DBInitializerTest" />
         <item itemvalue="JUnit.CSVReaderTest.nonNullListTest" />
-        <item itemvalue="JUnit.CSVReaderTest.getFirstElementTest" />
-        <item itemvalue="JUnit.CSVReaderTest" />
       </list>
     </recent_temporary>
   </component>
@@ -265,55 +267,23 @@
       <option name="project" value="LOCAL" />
       <updated>1710841538561</updated>
     </task>
-    <task id="LOCAL-00012" summary="Updated ProfileController&#10;- Added else clause to check if ajax is asking for more transfer data than it exists.">
+    <task id="LOCAL-00012" summary="Error unsolved&#10;- Cannot run web container, does not detect mysql db">
       <option name="closed" value="true" />
-      <created>1711536275270</created>
+      <created>1711626526243</created>
       <option name="number" value="00012" />
       <option name="presentableId" value="LOCAL-00012" />
       <option name="project" value="LOCAL" />
-      <updated>1711536275270</updated>
+      <updated>1711626526243</updated>
     </task>
-    <task id="LOCAL-00013" summary="Updated ProfileController&#10;- Added else clause to check if ajax is asking for more transfer data than it exists.">
+    <task id="LOCAL-00013" summary="Docker error solved">
       <option name="closed" value="true" />
-      <created>1711536296928</created>
+      <created>1711633584676</created>
       <option name="number" value="00013" />
       <option name="presentableId" value="LOCAL-00013" />
       <option name="project" value="LOCAL" />
-      <updated>1711536296928</updated>
+      <updated>1711633584676</updated>
     </task>
-    <task id="LOCAL-00014" summary="README update">
-      <option name="closed" value="true" />
-      <created>1711989044915</created>
-      <option name="number" value="00014" />
-      <option name="presentableId" value="LOCAL-00014" />
-      <option name="project" value="LOCAL" />
-      <updated>1711989044915</updated>
-    </task>
-    <task id="LOCAL-00015" summary="README - Building docker image&#10;Building docker image section updated">
-      <option name="closed" value="true" />
-      <created>1711990672168</created>
-      <option name="number" value="00015" />
-      <option name="presentableId" value="LOCAL-00015" />
-      <option name="project" value="LOCAL" />
-      <updated>1711990672168</updated>
-    </task>
-    <task id="LOCAL-00016" summary="README - Deploying app in VM&#10;Deploying app in VM section updated">
-      <option name="closed" value="true" />
-      <created>1711992735336</created>
-      <option name="number" value="00016" />
-      <option name="presentableId" value="LOCAL-00016" />
-      <option name="project" value="LOCAL" />
-      <updated>1711992735336</updated>
-    </task>
-    <task id="LOCAL-00017" summary="README - Running the dockerized app&#10;Running the dockerized app section updated">
-      <option name="closed" value="true" />
-      <created>1711993913732</created>
-      <option name="number" value="00017" />
-      <option name="presentableId" value="LOCAL-00017" />
-      <option name="project" value="LOCAL" />
-      <updated>1711993913732</updated>
-    </task>
-    <option name="localTasksCounter" value="18" />
+    <option name="localTasksCounter" value="14" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
@@ -330,11 +300,8 @@
     <MESSAGE value="resize image" />
     <MESSAGE value="Added service classes&#10;- Added TransferService&#10;- Added LoanService&#10;- Updated AccountService" />
     <MESSAGE value="Updated DBInitializer" />
-    <MESSAGE value="Updated ProfileController&#10;- Added else clause to check if ajax is asking for more transfer data than it exists." />
-    <MESSAGE value="README update" />
-    <MESSAGE value="README - Building docker image&#10;Building docker image section updated" />
-    <MESSAGE value="README - Deploying app in VM&#10;Deploying app in VM section updated" />
-    <MESSAGE value="README - Running the dockerized app&#10;Running the dockerized app section updated" />
-    <option name="LAST_COMMIT_MESSAGE" value="README - Running the dockerized app&#10;Running the dockerized app section updated" />
+    <MESSAGE value="Error unsolved&#10;- Cannot run web container, does not detect mysql db" />
+    <MESSAGE value="Docker error solved" />
+    <option name="LAST_COMMIT_MESSAGE" value="Docker error solved" />
   </component>
 </project>
