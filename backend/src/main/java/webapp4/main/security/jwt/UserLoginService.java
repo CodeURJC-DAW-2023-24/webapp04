@@ -1,10 +1,5 @@
 package webapp4.main.security.jwt;
 
-import javax.servlet.http.Cookie;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.ResponseEntity;
@@ -16,12 +11,16 @@ import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.stereotype.Service;
 
+import javax.servlet.http.Cookie;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
+
 @Service
-public class UserLoginService {
-	
+public class UserLoginService{
 	@Autowired
 	private AuthenticationManager authenticationManager;
-	
+
 	@Autowired
 	private UserDetailsService userDetailsService;
 
@@ -31,17 +30,13 @@ public class UserLoginService {
 	@Autowired
 	private JwtCookieManager cookieUtil;
 
-	public ResponseEntity<AuthResponse> login(LoginRequest loginRequest, String encryptedAccessToken, String 
-			encryptedRefreshToken) {
-		
+	public ResponseEntity<AuthResponse> login(LoginRequest loginRequest, String encryptedAccessToken, String encryptedRefreshToken){
 		Authentication authentication = authenticationManager.authenticate(
-				new UsernamePasswordAuthenticationToken(loginRequest.getUsername(), loginRequest.getPassword()));
-
+				new UsernamePasswordAuthenticationToken(loginRequest.getUsername(), loginRequest.getPassword())
+		);
 		SecurityContextHolder.getContext().setAuthentication(authentication);
-
 		String accessToken = SecurityCipher.decrypt(encryptedAccessToken);
 		String refreshToken = SecurityCipher.decrypt(encryptedRefreshToken);
-		
 		String username = loginRequest.getUsername();
 		UserDetails user = userDetailsService.loadUserByUsername(username);
 
@@ -76,11 +71,11 @@ public class UserLoginService {
 	}
 
 	public ResponseEntity<AuthResponse> refresh(String encryptedRefreshToken) {
-		
+
 		String refreshToken = SecurityCipher.decrypt(encryptedRefreshToken);
-		
+
 		Boolean refreshTokenValid = jwtTokenProvider.validateToken(refreshToken);
-		
+
 		if (!refreshTokenValid) {
 			AuthResponse loginResponse = new AuthResponse(AuthResponse.Status.FAILURE,
 					"Invalid refresh token !");
@@ -89,7 +84,7 @@ public class UserLoginService {
 
 		String username = jwtTokenProvider.getUsername(refreshToken);
 		UserDetails user = userDetailsService.loadUserByUsername(username);
-				
+
 		Token newAccessToken = jwtTokenProvider.generateToken(user);
 		HttpHeaders responseHeaders = new HttpHeaders();
 		responseHeaders.add(HttpHeaders.SET_COOKIE, cookieUtil
@@ -101,7 +96,7 @@ public class UserLoginService {
 	}
 
 	public String getUserName() {
-		
+
 		Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
 
 		return authentication.getName();
