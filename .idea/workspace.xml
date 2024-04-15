@@ -4,8 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="072cea6f-8d20-4292-b10f-19e0c5f1ef3e" name="Changes" comment="RestLoginController update">
+    <list default="true" id="072cea6f-8d20-4292-b10f-19e0c5f1ef3e" name="Changes" comment="jwt package update 2">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/src/main/java/webapp4/main/controller/auth/RestLoginController.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/java/webapp4/main/controller/auth/RestLoginController.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -28,18 +29,18 @@
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
-  <component name="GitHubPullRequestSearchHistory"><![CDATA[{
-  "lastFilter": {
-    "state": "OPEN",
-    "assignee": "Cristian1A"
+  <component name="GitHubPullRequestSearchHistory">{
+  &quot;lastFilter&quot;: {
+    &quot;state&quot;: &quot;OPEN&quot;,
+    &quot;assignee&quot;: &quot;Cristian1A&quot;
   }
-}]]></component>
-  <component name="GithubPullRequestsUISettings"><![CDATA[{
-  "selectedUrlAndAccountId": {
-    "url": "https://github.com/CodeURJC-DAW-2023-24/webapp04.git",
-    "accountId": "7acf7224-f255-4019-ae04-142143c76302"
+}</component>
+  <component name="GithubPullRequestsUISettings">{
+  &quot;selectedUrlAndAccountId&quot;: {
+    &quot;url&quot;: &quot;https://github.com/CodeURJC-DAW-2023-24/webapp04.git&quot;,
+    &quot;accountId&quot;: &quot;7acf7224-f255-4019-ae04-142143c76302&quot;
   }
-}]]></component>
+}</component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
   </component>
@@ -293,7 +294,15 @@
       <option name="project" value="LOCAL" />
       <updated>1713109799031</updated>
     </task>
-    <option name="localTasksCounter" value="15" />
+    <task id="LOCAL-00015" summary="jwt package update">
+      <option name="closed" value="true" />
+      <created>1713173518438</created>
+      <option name="number" value="00015" />
+      <option name="presentableId" value="LOCAL-00015" />
+      <option name="project" value="LOCAL" />
+      <updated>1713173518438</updated>
+    </task>
+    <option name="localTasksCounter" value="16" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
@@ -313,6 +322,8 @@
     <MESSAGE value="Error unsolved&#10;- Cannot run web container, does not detect mysql db" />
     <MESSAGE value="Docker error solved" />
     <MESSAGE value="RestLoginController update" />
-    <option name="LAST_COMMIT_MESSAGE" value="RestLoginController update" />
+    <MESSAGE value="jwt package update" />
+    <MESSAGE value="jwt package update 2" />
+    <option name="LAST_COMMIT_MESSAGE" value="jwt package update 2" />
   </component>
 </project>
