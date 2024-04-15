@@ -17,7 +17,8 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 @Service
-public class UserLoginService{
+public class UserLoginService {
+
 	@Autowired
 	private AuthenticationManager authenticationManager;
 
@@ -30,13 +31,17 @@ public class UserLoginService{
 	@Autowired
 	private JwtCookieManager cookieUtil;
 
-	public ResponseEntity<AuthResponse> login(LoginRequest loginRequest, String encryptedAccessToken, String encryptedRefreshToken){
+	public ResponseEntity<AuthResponse> login(LoginRequest loginRequest, String encryptedAccessToken, String
+			encryptedRefreshToken) {
+
 		Authentication authentication = authenticationManager.authenticate(
-				new UsernamePasswordAuthenticationToken(loginRequest.getUsername(), loginRequest.getPassword())
-		);
+				new UsernamePasswordAuthenticationToken(loginRequest.getUsername(), loginRequest.getPassword()));
+
 		SecurityContextHolder.getContext().setAuthentication(authentication);
+
 		String accessToken = SecurityCipher.decrypt(encryptedAccessToken);
 		String refreshToken = SecurityCipher.decrypt(encryptedRefreshToken);
+
 		String username = loginRequest.getUsername();
 		UserDetails user = userDetailsService.loadUserByUsername(username);
 
