@@ -1,4 +1,12 @@
 
-\
-java:S11928"FDefine a constant instead of duplicating this literal "ADMIN" 4 times.(ãú‹‘
-t	java:S120"ZRename this package name to match the regular expression '^[a-z_]+(\.[a-z_][a-z0-9_]*)*$'.(šæ»Êýÿÿÿÿ
+Ž
+java:S1192>"FDefine a constant instead of duplicating this literal "ADMIN" 3 times.(ÒåµÓüÿÿÿÿ8Àä¤‰î1J$9c7a39c5-30cf-40bc-95c7-4baf0fe2e121
+š	java:S120"ZRename this package name to match the regular expression '^[a-z_]+(\.[a-z_][a-z0-9_]*)*$'.(šæ»ÊýÿÿÿÿJ$4baefff7-bcb8-458b-8546-4d66ef70a225
+…
+java:S6813"BRemove this field injection and use constructor injection instead.(êæÄÞ8˜å¤‰î1J$ff44711a-9d39-4c7c-a5f2-2f6c97c8b829
+…
+java:S6813"BRemove this field injection and use constructor injection instead.(êæÄÞ8™å¤‰î1J$90737a12-3627-457b-befd-18bdc06223fc
+…
+java:S6813"BRemove this field injection and use constructor injection instead.(êæÄÞ8šå¤‰î1J$0071fcdc-e7a6-44ad-8781-afd14ec79636
+ˆ
+java:S1128"@Remove this unused import 'org.springframework.http.HttpMethod'.(Ê¨Ä¡øÿÿÿÿ8ôå¤‰î1J$665a2bed-704c-44ad-af88-899213046da7

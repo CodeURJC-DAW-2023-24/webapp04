@@ -41,3 +41,5 @@ Q.idea/sonarlint/securityhotspotstore/7/d/7d7f519d5ba3296a761b5c957eb9493c7b2290
 Q.idea/sonarlint/securityhotspotstore/8/f/8f0923afea1d21803d4775a57d30d15976a000f6,a/d/ad8e26f8b0089f1d5c04053a468ffeea72740729
 {
 Kbackend/src/main/java/webapp4/main/security/jwt/UnauthorizedHandlerJwt.java,4/3/436d58c0f9d2f6fb13a0be11cb0ef3443561ba0e
+s
+Cbackend/src/main/java/webapp4/main/security/RestSecurityConfig.java,5/6/56a3a04f99ac362b39a1f7f33e042448476d0de4
