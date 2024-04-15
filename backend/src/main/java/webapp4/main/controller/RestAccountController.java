@@ -127,6 +127,9 @@ public class RestAccountController {
             if(accountId.equals(username)){
                 Account account = accountOptional.get();
                 Blob imageBlob = account.getImageFile();
+                if (imageBlob == null){
+                    return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+                }
     
                 try {
                     byte[] imageBytes = accountService.getImageBytes(imageBlob);
