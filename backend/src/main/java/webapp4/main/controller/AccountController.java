@@ -39,12 +39,7 @@ public class AccountController {
     public List<AccountDTO> accountManager(@RequestParam int startIndex, @RequestParam int chunkSize) {
         int endIndex = Math.min(startIndex + chunkSize, allAccounts.size());
         return allAccounts.subList(startIndex, endIndex).stream().map(account -> {
-            AccountDTO dto = new AccountDTO();
-            dto.setNip(account.getNIP());
-            dto.setIban(account.getIBAN());
-            dto.setName(account.getName());
-            dto.setSurname(account.getSurname());
-            dto.setImageBase64(accountService.getProfilePicBase64(account.getNIP()));
+            AccountDTO dto = accountService.accountToDTO(account);
             return dto;
         }).collect(Collectors.toList());
     }

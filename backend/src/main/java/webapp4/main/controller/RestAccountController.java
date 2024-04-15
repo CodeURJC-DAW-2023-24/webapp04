@@ -1,8 +1,9 @@
 package webapp4.main.controller;
 
-import org.apache.tomcat.util.net.openssl.ciphers.Authentication;
+import org.jetbrains.annotations.NotNull;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
+import org.springframework.security.core.Authentication;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
@@ -17,9 +18,15 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.context.SecurityContextHolder;
 
 import webapp4.main.model.Account;
+import webapp4.main.model.AccountDTO;
+import webapp4.main.model.ImagelessAccount;
+import webapp4.main.model.Transfer;
 import webapp4.main.repository.AccountRepository;
 import webapp4.main.service.AccountService;
 import webapp4.main.service.UserDataService;
+
+import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.Optional;
 import java.util.Collection;
 
@@ -78,26 +85,27 @@ public class RestAccountController {
     @ApiResponse(
             responseCode = "200",
             description = "Found the Account",
-            content = @Content(mediaType = "application/json", schema = @Schema(implementation = Account.class))
+            content = @Content(mediaType = "application/json", schema = @Schema(implementation = AccountDTO.class))
     )
     @ApiResponse(responseCode = "404", description = "Account not found", content = @Content)
     @ApiResponse(responseCode = "500", description = "Internal server error", content = @Content)
     @ApiResponse(responseCode = "400", description = "Bad request", content = @Content)
     @GetMapping("/api/accounts/{id}")
-    public ResponseEntity<Account> getAccount(@PathVariable String id){
-        Optional<Account> accountOptional = accountRepository.findByNIP(id);
-        Account account = accountOptional.get();
-        if (account != null) {
-            return ResponseEntity.ok(account);
-        } else {
-            return ResponseEntity.notFound().build();
-        }
-    }
-
-    @GetMapping("/api/accounts")
-    public ResponseEntity<Collection<Account>> getAllAccounts(){
-        Collection<Account> allAccounts = accountRepository.findAll();
-        return ResponseEntity.ok(allAccounts);
+    public ResponseEntity<ImagelessAccount> getAccount(@PathVariable String id){
+         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+         String username = authentication.getName();
+         if (id.equals(username)) {
+            Optional<Account> accountOptional = accountRepository.findByNIP(id);
+            if (accountOptional.isPresent()) {
+                Account account = accountOptional.get();
+                ImagelessAccount imagelessAccount = accountService.accountWithoutImage(account);
+                return ResponseEntity.ok().body(imagelessAccount);
+            } else {
+                return ResponseEntity.notFound().build();
+            }
+         } else {
+             return ResponseEntity.badRequest().build();
+         }
     }
 
 @Operation
@@ -127,7 +135,6 @@ public class RestAccountController {
     
                     return new ResponseEntity<>(imageBytes, headers, HttpStatus.OK);
                 } catch (SQLException | IOException e) {
-                    // Manejar errores de conversión
                     return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
                 }
             }else{
@@ -199,5 +206,20 @@ public class RestAccountController {
             return ResponseEntity.notFound().build();
         }
     }
-
+    @Operation (summary = "Get all accounts")
+    @ApiResponse(
+            responseCode = "200",
+            description = "Found the form",
+            content = @Content(mediaType = "application/json", schema = @Schema(implementation = Account.class))
+    )
+    @ApiResponse(responseCode = "404", description = "Account Repository not found", content = @Content)
+    @ApiResponse(responseCode = "500", description = "Internal server error", content = @Content)
+    @ApiResponse(responseCode = "400", description = "Bad request", content = @Content)
+    @GetMapping("/api/accounts")
+    public ResponseEntity<Collection<ImagelessAccount>> getAllAccounts(){
+        Collection<ImagelessAccount> imagelessAccounts = new ArrayList<>();
+        Collection<Account> allAccounts = accountRepository.findAll();
+        allAccounts.forEach(account -> imagelessAccounts.add(accountService.accountWithoutImage(account)));
+        return ResponseEntity.ok(imagelessAccounts);
+    }
 }

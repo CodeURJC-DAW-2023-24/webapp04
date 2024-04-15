@@ -10,6 +10,8 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import webapp4.main.csv_editor.CSVReader;
 import webapp4.main.model.Account;
+import webapp4.main.model.AccountDTO;
+import webapp4.main.model.ImagelessAccount;
 import webapp4.main.repository.AccountRepository;
 
 import javax.sql.rowset.serial.SerialBlob;
@@ -98,6 +100,23 @@ public class AccountService {
     }
     public Blob createBlob(byte[] bytes) throws SQLException {
         return new SerialBlob(bytes);
+    }
+    public AccountDTO accountToDTO(Account account){
+        AccountDTO dto = new AccountDTO();
+        dto.setNip(account.getNIP());
+        dto.setIban(account.getIBAN());
+        dto.setName(account.getName());
+        dto.setSurname(account.getSurname());
+        dto.setImageBase64(getProfilePicBase64(account.getNIP()));
+        return dto;
+    }
+    public ImagelessAccount accountWithoutImage(Account account){
+        ImagelessAccount imagelessAccount = new ImagelessAccount();
+        imagelessAccount.setNip(account.getNIP());
+        imagelessAccount.setIban(account.getIBAN());
+        imagelessAccount.setName(account.getName());
+        imagelessAccount.setSurname(account.getSurname());
+        return imagelessAccount;
     }
 
 }
