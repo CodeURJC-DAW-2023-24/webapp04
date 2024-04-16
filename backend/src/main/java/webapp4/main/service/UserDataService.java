@@ -36,6 +36,7 @@ public class UserDataService {
                 account.setIBAN(iban);
                 account.setName(firstName);
                 account.setSurname(lastName);
+                account.setBalance(0);
                 accountService.createAccount(account);
                 UserData userData = new UserData();
                 userData.setUsername(inputNIP);
