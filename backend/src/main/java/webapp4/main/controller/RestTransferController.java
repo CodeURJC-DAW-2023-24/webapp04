@@ -158,6 +158,12 @@ public class RestTransferController {
                 if (errorMessage.equals("user not exists")) {
                     return ResponseEntity.badRequest().body("User not exists");
                 }
+                if (errorMessage.equals("not enough balance")) {
+                    return ResponseEntity.badRequest().body("there is not enough balance");
+                }
+                if (errorMessage.equals("negative transfer")) {
+                    return ResponseEntity.badRequest().body("you can't create negative transfers");
+                }
                 return null;
             }
         } else {

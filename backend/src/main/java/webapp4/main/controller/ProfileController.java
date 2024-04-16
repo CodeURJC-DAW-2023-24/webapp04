@@ -63,10 +63,9 @@ public class ProfileController {
                 for (Transfer transfer : transferList) {
                     ProcessedTransfer processedTransfer = new ProcessedTransfer(transfer, accountIBAN);
                     processedTransferList.add(processedTransfer);
-                    balance += processedTransfer.getAmount();
                 }
                 // --- Setting client's balance ---
-                model.addAttribute("client_balance", balance);
+                model.addAttribute("client_balance", accountOptional.get().getBalance());
             } else {
                 System.out.println("USER NOT FOUND");
             }
