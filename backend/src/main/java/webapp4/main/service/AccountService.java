@@ -60,6 +60,7 @@ public class AccountService {
             account.setIBAN(accRecords.get(i).get(1));
             account.setName(accRecords.get(i).get(2));
             account.setSurname(accRecords.get(i).get(3));
+            account.setBalance(Integer.parseInt(accRecords.get(i).get(4)));
             setClientImage(account, "static/Client_profile_pics/" + account.getNIP() + ".jpeg");
             accountRepository.save(account);
         }
