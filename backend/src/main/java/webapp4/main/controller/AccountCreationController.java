@@ -4,21 +4,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import webapp4.main.model.Account;
-import webapp4.main.model.UserData;
-import webapp4.main.repository.AccountRepository;
-import webapp4.main.repository.UserDataRepository;
-import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
-import org.springframework.security.crypto.password.PasswordEncoder;
-import java.util.Random;
 import webapp4.main.service.UserDataService;
 
-
-import java.security.SecureRandom;
-import java.util.Optional;
 
 @Controller
 public class AccountCreationController {
@@ -29,9 +19,6 @@ public class AccountCreationController {
     @GetMapping("/register")
     public String register(Model model){
         return "register_page";
-    }
-    private PasswordEncoder passwordEncoder() {
-        return new BCryptPasswordEncoder(10, new SecureRandom());
     }
 
     @RequestMapping("/create_account")

@@ -4,9 +4,6 @@ import java.util.Base64;
 import org.jetbrains.annotations.NotNull;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.io.ClassPathResource;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.MediaType;
-import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import webapp4.main.csv_editor.CSVReader;
 import webapp4.main.model.Account;
@@ -15,7 +12,6 @@ import webapp4.main.model.ImagelessAccount;
 import webapp4.main.repository.AccountRepository;
 
 import javax.sql.rowset.serial.SerialBlob;
-import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.sql.Blob;

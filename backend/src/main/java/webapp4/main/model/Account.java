@@ -7,7 +7,7 @@ import java.sql.Blob;
 @Entity
 public class Account {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long account_id = null;
     @Column(columnDefinition = "TEXT")
     private String NIP;

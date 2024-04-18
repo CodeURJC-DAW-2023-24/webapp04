@@ -12,7 +12,6 @@ import webapp4.main.security.jwt.AuthResponse;
 import webapp4.main.security.jwt.LoginRequest;
 import webapp4.main.security.jwt.UserLoginService;
 
-import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 

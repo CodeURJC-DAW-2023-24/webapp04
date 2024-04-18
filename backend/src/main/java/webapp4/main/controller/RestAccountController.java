@@ -1,13 +1,11 @@
 package webapp4.main.controller;
 
-import org.jetbrains.annotations.NotNull;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.security.core.Authentication;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
-import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.media.Content;
@@ -20,21 +18,17 @@ import org.springframework.security.core.context.SecurityContextHolder;
 import webapp4.main.model.Account;
 import webapp4.main.model.AccountDTO;
 import webapp4.main.model.ImagelessAccount;
-import webapp4.main.model.Transfer;
 import webapp4.main.repository.AccountRepository;
 import webapp4.main.service.AccountService;
 import webapp4.main.service.UserDataService;
 
 import java.util.ArrayList;
-import java.util.Iterator;
 import java.util.Optional;
 import java.util.Collection;
 
-import javax.sql.rowset.serial.SerialBlob;
 import javax.sql.rowset.serial.SerialException;
 
 import java.io.IOException;
-import java.net.MalformedURLException;
 import java.net.URI;
 import java.sql.Blob;
 import java.sql.SQLException;

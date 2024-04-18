@@ -6,6 +6,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import webapp4.main.service.LoanService;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 
 import javax.servlet.http.HttpSession;
 import java.util.List;
@@ -32,6 +34,9 @@ public class LoanRequestController {
         model.addAttribute("reason", loanTypes[Integer.parseInt(inputExpenseType)]);
         model.addAttribute("amount", amount);
         model.addAttribute("interest", interestRate);
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+        String username = authentication.getName();
+        loanService.addLoan(username, amount, installments);
         return "loan_visualizer_page";
     }
     @GetMapping("/data")

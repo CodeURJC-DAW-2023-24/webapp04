@@ -1,6 +1,5 @@
 package webapp4.main.service;
 
-import org.jetbrains.annotations.NotNull;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import webapp4.main.csv_editor.CSVReader;
@@ -9,17 +8,18 @@ import webapp4.main.model.Loan;
 import webapp4.main.repository.AccountRepository;
 import webapp4.main.repository.LoanRepository;
 
-import javax.sql.rowset.serial.SerialBlob;
-import java.io.FileInputStream;
-import java.io.IOException;
-import java.sql.SQLException;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Optional;
 
 @Service
 public class LoanService {
+    @Autowired
+    private AccountRepository accountRepository;
     @Autowired
     private LoanRepository loanRepository;
     public static final String[] loanTypes = {
@@ -61,14 +61,30 @@ public class LoanService {
             loanRepository.save(loan);
         }
     }
-    private void setClientImage(@NotNull Account bankClient, String imagePath){
-        try {
-            FileInputStream fis = new FileInputStream(imagePath);
-            byte[] imageBin = fis.readAllBytes();
-            SerialBlob serialBlob = new SerialBlob(imageBin);
-            bankClient.setImageFile(serialBlob);
-        } catch (IOException | SQLException e) {
-            throw new RuntimeException(e);
+
+    public Object addLoan(String username, int amount, int periods){
+        Optional<Account> accountOptional = accountRepository.findByNIP(username);
+        if (accountOptional.isPresent()){
+            String accountNIP = accountOptional.get().getNIP();
+            if (amount < 0){
+                return "negative amount";
+            }
+            if (periods < 1){
+                return "negative periods";
+            }
+            // Adding to the DB the loan
+            Loan loan = new Loan();
+            loan.setClientID(accountNIP);
+            loan.setAmount(amount);
+            loan.setInterest_rate(interestRate);
+            loan.setPeriods(periods);
+            LocalDateTime currentDateTime = LocalDateTime.now();
+            DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-M-d HH:mm");
+            String formattedDateTime = currentDateTime.format(formatter);
+            loan.setDate(formattedDateTime);
+            loanRepository.save(loan);
+            return loan;
         }
+        return "user not exists";
     }
 }

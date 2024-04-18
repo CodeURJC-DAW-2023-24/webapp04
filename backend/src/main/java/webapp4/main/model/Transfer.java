@@ -5,7 +5,7 @@ import javax.persistence.*;
 @Entity
 public class Transfer {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long transfer_id = null;
     @Column(columnDefinition = "TEXT")
     private String senderIBAN;
