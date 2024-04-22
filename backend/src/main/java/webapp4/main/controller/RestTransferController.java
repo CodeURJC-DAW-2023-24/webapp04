@@ -118,11 +118,13 @@ public class RestTransferController {
     @ApiResponse(responseCode = "500", description = "Internal server error", content = @Content)
     @ApiResponse(responseCode = "400", description = "Bad request", content = @Content)
     @PostMapping("/api/accounts/{id}/transfers")
-    public ResponseEntity<?> createTransfer(Model model, HttpServletRequest request, @RequestParam String receiver_iban, @RequestParam String amount, @PathVariable String id) {
+    public ResponseEntity<?> createTransfer(Model model, HttpServletRequest request, @RequestBody Transfer transferJSON, @PathVariable String id) {
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
         String username = authentication.getName();
         if (id.equals(username)) {
-            Object createTransfer = transferService.addTransaction(username, receiver_iban, Integer.parseInt(amount));
+            String receiver_iban = transferJSON.getReceiverIBAN();
+            int amount = transferJSON.getAmount();
+            Object createTransfer = transferService.addTransaction(username, receiver_iban, amount);
             if (createTransfer instanceof Transfer) {
                 Transfer transfer = (Transfer) createTransfer;
                 URI location = fromCurrentRequest().path("/{id}")
