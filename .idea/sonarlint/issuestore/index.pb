@@ -43,3 +43,9 @@ Q.idea/sonarlint/securityhotspotstore/8/f/8f0923afea1d21803d4775a57d30d15976a000
 Kbackend/src/main/java/webapp4/main/security/jwt/UnauthorizedHandlerJwt.java,4/3/436d58c0f9d2f6fb13a0be11cb0ef3443561ba0e
 s
 Cbackend/src/main/java/webapp4/main/security/RestSecurityConfig.java,5/6/56a3a04f99ac362b39a1f7f33e042448476d0de4
+F
+docker/create_image.sh,9/2/92aa733bd0f70cb83f92377ec84ee8e9588ed8c8
+A
+docker/Dockerfile,8/f/8ffde13df31f212345642ccfa4755f3bd99e7e61
+I
+docker/docker-compose.yml,3/f/3fe733692645251b38d6ef0a55b2d48c3a1cf387

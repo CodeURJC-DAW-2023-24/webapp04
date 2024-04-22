@@ -37,6 +37,7 @@ import org.springframework.http.MediaType;
 
 import static org.springframework.web.servlet.support.ServletUriComponentsBuilder.fromCurrentRequest;
 
+@CrossOrigin(origins = "*")
 @RestController
 public class RestAccountController {
 

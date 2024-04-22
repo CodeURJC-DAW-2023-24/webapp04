@@ -17,6 +17,7 @@ import javax.servlet.http.HttpServletResponse;
 
 @RestController
 @RequestMapping("/api")
+@CrossOrigin(origins = "*")
 public class RestLoginController {
     @Autowired
     private UserLoginService userService;

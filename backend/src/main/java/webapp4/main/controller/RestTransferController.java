@@ -33,6 +33,7 @@ import java.util.stream.Collectors;
 
 import static org.springframework.web.servlet.support.ServletUriComponentsBuilder.fromCurrentRequest;
 
+@CrossOrigin(origins = "*")
 @RestController
 public class RestTransferController {
 
