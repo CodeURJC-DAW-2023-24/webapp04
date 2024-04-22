@@ -1,6 +1,9 @@
 package webapp4.main.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Sort;
 import org.springframework.security.core.Authentication;
 
 
@@ -38,7 +41,7 @@ public class RestLoanController {
     private LoanService loanService;
     
     private static final float interestRate = 7.5f;
-
+    /* 
     @Operation (summary = "Get all user loans")
     @ApiResponse(
             responseCode = "200",
@@ -59,6 +62,35 @@ public class RestLoanController {
             return ResponseEntity.badRequest().build();
         }
     }
+    */
+    @Operation(summary = "Get paginated user loans")
+    @ApiResponse(
+        responseCode = "200",
+        description = "Found the loans",
+        content = @Content(mediaType = "application/json", schema = @Schema(implementation = Loan.class))
+    )
+    @ApiResponse(responseCode = "404", description = "Loan Repository not found", content = @Content)
+    @ApiResponse(responseCode = "500", description = "Internal server error", content = @Content)
+    @ApiResponse(responseCode = "400", description = "Bad request", content = @Content)
+    @GetMapping("/api/accounts/{id}/loans")
+    public ResponseEntity<Page<Loan>> getAllUserLoans(
+        @PathVariable String id,
+        @RequestParam(value = "page", defaultValue = "0") int page,
+        @RequestParam(value = "size", defaultValue = "10") int size
+    ) {
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+        String username = authentication.getName();
+        if (id.equals(username)) {
+
+            PageRequest pageRequest = PageRequest.of(page, size);
+            Page<Loan> userLoans = loanRepository.findAll(pageRequest);
+            
+            return ResponseEntity.ok(userLoans);
+        } else {
+            return ResponseEntity.badRequest().build();
+        }   
+    }
+
 
     @Operation (summary = "Calculate a loan for user")
     @ApiResponse(

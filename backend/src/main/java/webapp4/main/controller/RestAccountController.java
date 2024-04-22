@@ -1,6 +1,10 @@
 package webapp4.main.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
+
 import org.springframework.http.HttpStatus;
 import org.springframework.security.core.Authentication;
 import org.springframework.ui.Model;
@@ -218,5 +222,29 @@ public class RestAccountController {
         Collection<Account> allAccounts = accountRepository.findAll();
         allAccounts.forEach(account -> imagelessAccounts.add(accountService.accountWithoutImage(account)));
         return ResponseEntity.ok(imagelessAccounts);
+    }
+    @Operation(summary = "Get paginated accounts")
+@ApiResponse(
+    responseCode = "200",
+    description = "Found the accounts",
+    content = @Content(mediaType = "application/json", schema = @Schema(implementation = ImagelessAccount.class))
+)
+    @ApiResponse(responseCode = "404", description = "Account Repository not found", content = @Content)
+    @ApiResponse(responseCode = "500", description = "Internal server error", content = @Content)
+    @ApiResponse(responseCode = "400", description = "Bad request", content = @Content)
+    @GetMapping("/api/accounts/paged")
+    public ResponseEntity<Page<ImagelessAccount>> getAllAccountsPaged(
+        @RequestParam(defaultValue = "0") int page,
+        @RequestParam(defaultValue = "10") int size
+    ) {
+        Pageable pageable = PageRequest.of(page, size);
+
+    // Obtener la página de cuentas
+        Page<Account> accountPage = accountRepository.findAll(pageable);
+
+    // Convertir las cuentas a ImagelessAccount
+        Page<ImagelessAccount> imagelessAccountPage = accountPage.map(account -> accountService.accountWithoutImage(account));
+
+        return ResponseEntity.ok(imagelessAccountPage);
     }
 }
