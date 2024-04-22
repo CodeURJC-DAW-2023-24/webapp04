@@ -1,14 +1,14 @@
 
 Ž
-java:S1192M"FDefine a constant instead of duplicating this literal "ADMIN" 3 times.(ÒåµÓüÿÿÿÿ8ÉÆÛ‰î1J$55d1ce9b-16f3-4bf3-b9af-9ba895e2bbe3
-¡	java:S120"ZRename this package name to match the regular expression '^[a-z_]+(\.[a-z_][a-z0-9_]*)*$'.(šæ»Êýÿÿÿÿ8ÍÆÛ‰î1J$a30c32f7-a64d-40f4-9820-0207c5016087
+java:S1192M"FDefine a constant instead of duplicating this literal "ADMIN" 3 times.(ÒåµÓüÿÿÿÿ8ÉÆÛ‰î1J$996137c8-fc0d-46fd-94df-fe0e234ec591
+¡	java:S120"ZRename this package name to match the regular expression '^[a-z_]+(\.[a-z_][a-z0-9_]*)*$'.(šæ»Êýÿÿÿÿ8ÍÆÛ‰î1J$687e9b05-a3c3-4f45-a852-111ccc18e9b9
 …
-java:S6813"BRemove this field injection and use constructor injection instead.(êæÄÞ8äÆÛ‰î1J$79b30730-1a67-43e1-9a3f-b0162bd35285
+java:S6813"BRemove this field injection and use constructor injection instead.(êæÄÞ8äÆÛ‰î1J$4e079a6a-432e-4cd7-91c2-d48d34671a52
 …
-java:S6813"BRemove this field injection and use constructor injection instead.(êæÄÞ8äÆÛ‰î1J$1d9072bd-9210-40e5-9b90-a4ed9f699355
+java:S6813"BRemove this field injection and use constructor injection instead.(êæÄÞ8äÆÛ‰î1J$5e3ef5c9-7539-4ceb-8e4e-0019d640aaf2
 …
-java:S6813"BRemove this field injection and use constructor injection instead.(êæÄÞ8äÆÛ‰î1J$62556581-a935-4a3d-b8b3-5a042d0b11d2
+java:S6813"BRemove this field injection and use constructor injection instead.(êæÄÞ8äÆÛ‰î1J$38d17ca2-90db-4733-8e92-6b041e49a2a8
 …
-java:S6813""BRemove this field injection and use constructor injection instead.(êæÄÞ8õæÜ‰î1J$ff02da82-2b5b-4c81-bd85-ef5a75403887
+java:S6813""BRemove this field injection and use constructor injection instead.(êæÄÞ8õæÜ‰î1J$4b3300f0-793b-448b-b65b-4198b99f5816
 ˆ
-java:S1128"@Remove this unused import 'org.springframework.http.HttpMethod'.(Ê¨Ä¡øÿÿÿÿ8ßŒÝ‰î1J$3a1323ca-5b17-456d-8c40-33b5c79a002e
+java:S1128"@Remove this unused import 'org.springframework.http.HttpMethod'.(Ê¨Ä¡øÿÿÿÿ8ßŒÝ‰î1J$f296db6d-5145-4a34-b7c5-d22bab87daa9
