@@ -17,6 +17,7 @@ import io.swagger.v3.oas.annotations.media.Schema;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
 
 import org.springframework.http.ResponseEntity;
+import webapp4.main.model.CreateAccountRequest;
 import org.springframework.security.core.context.SecurityContextHolder;
 
 import webapp4.main.model.Account;
@@ -63,7 +64,12 @@ public class RestAccountController {
     @ApiResponse(responseCode = "500", description = "Internal server error", content = @Content)
     @ApiResponse(responseCode = "400", description = "Bad request", content = @Content)
     @PostMapping("/api/accounts")
-    public ResponseEntity<?> createAccount(Model model, @RequestParam String inputUser, @RequestParam String firstName, @RequestParam String lastName, @RequestParam String inputPassword, @RequestParam String confirmPassword) {
+    public ResponseEntity<?> createAccount(Model model, @RequestBody CreateAccountRequest accountJSON) {
+        String inputUser = accountJSON.getInputUser();
+        String firstName = accountJSON.getName();
+        String lastName = accountJSON.getSurname();
+        String inputPassword = accountJSON.getPassword();
+        String confirmPassword = accountJSON.getConfirmPassword();
         Object registerUser = userDataService.registerUser(inputUser, firstName, lastName, inputPassword, confirmPassword);
         if (registerUser instanceof Account){
             Account account = (Account) registerUser;
