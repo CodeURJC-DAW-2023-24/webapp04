@@ -32,6 +32,7 @@ import javax.servlet.http.HttpServletRequest;
 
 import static org.springframework.web.servlet.support.ServletUriComponentsBuilder.fromCurrentRequest;
 
+@CrossOrigin(origins = "*")
 @RestController
 public class RestLoanController {
 
@@ -39,9 +40,9 @@ public class RestLoanController {
     private LoanRepository loanRepository;
     @Autowired
     private LoanService loanService;
-    
+
     private static final float interestRate = 7.5f;
-    /* 
+    /*
     @Operation (summary = "Get all user loans")
     @ApiResponse(
             responseCode = "200",
@@ -65,18 +66,18 @@ public class RestLoanController {
     */
     @Operation(summary = "Get paginated user loans")
     @ApiResponse(
-        responseCode = "200",
-        description = "Found the loans",
-        content = @Content(mediaType = "application/json", schema = @Schema(implementation = Loan.class))
+            responseCode = "200",
+            description = "Found the loans",
+            content = @Content(mediaType = "application/json", schema = @Schema(implementation = Loan.class))
     )
     @ApiResponse(responseCode = "404", description = "Loan Repository not found", content = @Content)
     @ApiResponse(responseCode = "500", description = "Internal server error", content = @Content)
     @ApiResponse(responseCode = "400", description = "Bad request", content = @Content)
     @GetMapping("/api/accounts/{id}/loans")
     public ResponseEntity<Page<Loan>> getAllUserLoans(
-        @PathVariable String id,
-        @RequestParam(value = "page", defaultValue = "0") int page,
-        @RequestParam(value = "size", defaultValue = "10") int size
+            @PathVariable String id,
+            @RequestParam(value = "page", defaultValue = "0") int page,
+            @RequestParam(value = "size", defaultValue = "10") int size
     ) {
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
         String username = authentication.getName();
@@ -84,11 +85,11 @@ public class RestLoanController {
 
             PageRequest pageRequest = PageRequest.of(page, size);
             Page<Loan> userLoans = loanRepository.findAll(pageRequest);
-            
+
             return ResponseEntity.ok(userLoans);
         } else {
             return ResponseEntity.badRequest().build();
-        }   
+        }
     }
 
 
@@ -110,8 +111,8 @@ public class RestLoanController {
         if(createLoan instanceof Loan){
             Loan loan = (Loan) createLoan;
             URI location = fromCurrentRequest().path("/{id}")
-                            .buildAndExpand(loan.getLoan_id()).toUri();
-                    return ResponseEntity.created(location).body(loan);
+                    .buildAndExpand(loan.getLoan_id()).toUri();
+            return ResponseEntity.created(location).body(loan);
 
         } else {
             String errorMessage = (String) createLoan;

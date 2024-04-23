@@ -12,6 +12,7 @@ import webapp4.main.model.AccountDTO;
 import webapp4.main.repository.AccountRepository;
 import webapp4.main.service.AccountService;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -38,7 +39,12 @@ public class AccountController {
     public List<AccountDTO> accountManager(@RequestParam int startIndex, @RequestParam int chunkSize) {
         int endIndex = Math.min(startIndex + chunkSize, allAccounts.size());
         return allAccounts.subList(startIndex, endIndex).stream().map(account -> {
-            AccountDTO dto = accountService.accountToDTO(account);
+            AccountDTO dto = new AccountDTO();
+            dto.setNip(account.getNIP());
+            dto.setIban(account.getIBAN());
+            dto.setName(account.getName());
+            dto.setSurname(account.getSurname());
+            dto.setImageBase64(accountService.getProfilePicBase64(account.getNIP()));
             return dto;
         }).collect(Collectors.toList());
     }

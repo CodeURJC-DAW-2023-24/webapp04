@@ -2,6 +2,7 @@
 package webapp4.main.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
@@ -22,6 +23,8 @@ import java.security.Principal;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
+import java.sql.Blob;
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
@@ -56,13 +59,14 @@ public class ProfileController {
                 // --- Setting transfer list ---
                 List<Transfer> transferList = transferRepository.findBySenderOrReceiverContaining(accountIBAN);
                 processedTransferList = new ArrayList<>();
-                //int balance = 0;
+                int balance = 0;
                 for (Transfer transfer : transferList) {
                     ProcessedTransfer processedTransfer = new ProcessedTransfer(transfer, accountIBAN);
                     processedTransferList.add(processedTransfer);
+                    balance += processedTransfer.getAmount();
                 }
                 // --- Setting client's balance ---
-                model.addAttribute("client_balance", accountOptional.get().getBalance());
+                model.addAttribute("client_balance", balance);
             } else {
                 System.out.println("USER NOT FOUND");
             }

@@ -26,10 +26,9 @@ import java.util.Optional;
 
 import static org.springframework.web.servlet.support.ServletUriComponentsBuilder.fromCurrentRequest;
 
+@CrossOrigin(origins = "*")
 @RestController
 public class RestTransferController {
-
-
     @Autowired
     private TransferService transferService;
     @Autowired
@@ -37,7 +36,7 @@ public class RestTransferController {
     @Autowired
     private AccountRepository accountRepository;
 
-    
+
     @Operation  (summary = "Get a Transfer by ID")
     @ApiResponse(
             responseCode = "200",
@@ -57,7 +56,7 @@ public class RestTransferController {
             return ResponseEntity.notFound().build();
         }
     }
-    
+
     @Operation (summary = "Get all transfers")
     @ApiResponse(
             responseCode = "200",
@@ -73,14 +72,14 @@ public class RestTransferController {
         return ResponseEntity.ok(allTransfers);
     }
 
-     @GetMapping("/api/transfers/paged")
+    @GetMapping("/api/transfers/paged")
     public ResponseEntity<Page<Transfer>> getAllTransfersPaged(
-        @RequestParam(defaultValue = "0") int page,
-        @RequestParam(defaultValue = "10") int size
-) {
+            @RequestParam(defaultValue = "0") int page,
+            @RequestParam(defaultValue = "10") int size
+    ) {
         PageRequest pageRequest = PageRequest.of(page, size);
         Page<Transfer> transfers = transferRepository.findAll(pageRequest);
-    
+
         return ResponseEntity.ok(transfers);
     }
 
@@ -147,5 +146,4 @@ public class RestTransferController {
             return ResponseEntity.badRequest().build();
         }
     }
-
 }
