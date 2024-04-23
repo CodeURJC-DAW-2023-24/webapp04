@@ -3,6 +3,7 @@ package webapp4.main.controller;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.ui.Model;
@@ -72,14 +73,9 @@ public class RestTransferController {
         return ResponseEntity.ok(allTransfers);
     }
 
-    @GetMapping("/api/transfers/paged")
-    public ResponseEntity<Page<Transfer>> getAllTransfersPaged(
-            @RequestParam(defaultValue = "0") int page,
-            @RequestParam(defaultValue = "10") int size
-    ) {
-        PageRequest pageRequest = PageRequest.of(page, size);
-        Page<Transfer> transfers = transferRepository.findAll(pageRequest);
-
+   @GetMapping("/api/transfers/paged")
+    public ResponseEntity<Page<Transfer>> getAllTransfersPaged(Pageable page) {
+        Page<Transfer> transfers = transferRepository.findAll(page);
         return ResponseEntity.ok(transfers);
     }
 
