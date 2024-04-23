@@ -238,18 +238,9 @@ public class RestAccountController {
     @ApiResponse(responseCode = "500", description = "Internal server error", content = @Content)
     @ApiResponse(responseCode = "400", description = "Bad request", content = @Content)
     @GetMapping("/api/accounts/paged")
-    public ResponseEntity<Page<ImagelessAccount>> getAllAccountsPaged(
-            @RequestParam(defaultValue = "0") int page,
-            @RequestParam(defaultValue = "10") int size
-    ) {
-        Pageable pageable = PageRequest.of(page, size);
-
-        // Obtener la página de cuentas
-        Page<Account> accountPage = accountRepository.findAll(pageable);
-
-        // Convertir las cuentas a ImagelessAccount
+    public ResponseEntity<Page<ImagelessAccount>> getAllAccountsPaged(Pageable page) {
+        Page<Account> accountPage = accountRepository.findAll(page);
         Page<ImagelessAccount> imagelessAccountPage = accountPage.map(account -> accountService.accountWithoutImage(account));
-
         return ResponseEntity.ok(imagelessAccountPage);
     }
 }
