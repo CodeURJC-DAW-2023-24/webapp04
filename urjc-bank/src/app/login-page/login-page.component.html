@@ -46,18 +46,18 @@
               <div class="card shadow-lg border-0 rounded-lg mt-5">
                   <div class="card-header bg-danger"><h3 class="text-center font-weight-light my-4" style="color: white;">Access</h3></div>
                   <div class="card-body">
-                      <form method='post' action='/login'>
-                          <div class="form-floating mb-3">
-                              <input class="form-control" name="username" id="inputUser" type="text" placeholder="User" />
+                        <form method="post">
+                          <div class="form-group form-floating mb-3">
+                              <input #username class="form-control" name="username"id="username" type="text" placeholder="User" />
                               <label for="inputUser">User</label>
                               <pre>NIF, NIE, Passport or Anonymous card</pre>
                           </div>
-                          <div class="form-floating mb-3">
-                              <input class="form-control" name="password" id="inputPassword" type="password" placeholder="Password" />
+                          <div class="form-group form-floating mb-3">
+                              <input #password class="form-control" name="password" id="password" type="password" placeholder="Password" />
                               <label for="inputPassword">Password</label>
                           </div>
                           <div class="d-flex flex-column align-items-center justify-content-between mt-4 mb-0">
-                              <input class="btn btn-danger" type="submit" value="Log In"/>
+                              <input (click)="onSubmit(username.value, password.value)" class="btn btn-danger" type="submit" value="Log In"/>
                               <hr>
                               <a class="small" href="/password">Forgot Password?</a>
                           </div>
