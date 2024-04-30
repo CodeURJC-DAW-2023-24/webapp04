@@ -6,89 +6,88 @@ servers:
 - url: http://localhost:8443
   description: Generated server url
 paths:
-  /api/refresh:
+  /api/auth/refresh:
     post:
       tags:
-      - rest-login-controller
-      summary: Checks if the user logged in is the same as the user in the token
-      operationId: refreshToken
+      - rest-auth-controller
+      summary: Refresh Token
+      operationId: refresh
       parameters:
-      - name: refreshToken
+      - name: RefreshToken
         in: cookie
-        required: false
+        required: true
         schema:
           type: string
       responses:
-        "403":
-          description: Forbidden
-          content:
-            application/json: {}
-        "200":
-          description: User is logged in
-          content:
-            application/json: {}
         "401":
           description: Unauthorized
-          content:
-            application/json: {}
         "400":
           description: Bad request
-          content:
-            application/json: {}
-  /api/logout:
-    post:
-      tags:
-      - rest-login-controller
-      summary: Logs out the user
-      operationId: logOut
-      responses:
         "200":
-          description: User is logged out
+          description: Token refreshed
           content:
-            application/json: {}
-  /api/login:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AuthResponse'
+        "500":
+          description: Internal server error
+  /api/auth/logout:
     post:
       tags:
-      - rest-login-controller
-      summary: User login through form
-      operationId: loginForm_1
+      - rest-auth-controller
+      summary: Logout
+      operationId: logout
+      responses:
+        "401":
+          description: Unauthorized
+        "403":
+          description: Forbidden
+        "200":
+          description: Logout successful
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AuthResponse'
+        "500":
+          description: Internal server error
+  /api/auth/login:
+    post:
+      tags:
+      - rest-auth-controller
+      summary: Login
+      operationId: login
       parameters:
-      - name: accessToken
+      - name: AccessToken
         in: cookie
         required: false
         schema:
           type: string
-      - name: refreshToken
+      - name: RefreshToken
         in: cookie
         required: false
         schema:
           type: string
       requestBody:
         content:
-          application/x-www-form-urlencoded:
-            schema:
-              $ref: '#/components/schemas/LoginRequest'
           application/json:
             schema:
               $ref: '#/components/schemas/LoginRequest'
         required: true
       responses:
-        "200":
-          description: User logged in successfully
-          content:
-            application/json: {}
-        "403":
-          description: Forbidden
-          content:
-            application/json: {}
         "401":
           description: Unauthorized
-          content:
-            application/json: {}
+        "403":
+          description: Forbidden
         "400":
           description: Bad request
+        "500":
+          description: Internal server error
+        "200":
+          description: Login successful
           content:
-            application/json: {}
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AuthResponse'
   /api/accounts:
     get:
       tags:
@@ -96,29 +95,49 @@ paths:
       summary: Get all accounts
       operationId: getAllAccounts
       responses:
-        "400":
-          description: Bad request
         "404":
           description: Account Repository not found
-        "500":
-          description: Internal server error
         "200":
           description: Found the form
           content:
             application/json:
               schema:
                 $ref: '#/components/schemas/Account'
+        "400":
+          description: Bad request
+        "500":
+          description: Internal server error
     post:
       tags:
       - rest-account-controller
       summary: Create New Account
       operationId: createAccount
-      requestBody:
-        content:
-          application/json:
-            schema:
-              $ref: '#/components/schemas/CreateAccountRequest'
+      parameters:
+      - name: inputUser
+        in: query
         required: true
+        schema:
+          type: string
+      - name: firstName
+        in: query
+        required: true
+        schema:
+          type: string
+      - name: lastName
+        in: query
+        required: true
+        schema:
+          type: string
+      - name: inputPassword
+        in: query
+        required: true
+        schema:
+          type: string
+      - name: confirmPassword
+        in: query
+        required: true
+        schema:
+          type: string
       responses:
         "200":
           description: Account Created
@@ -126,10 +145,10 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/Account'
-        "400":
-          description: Bad request
         "404":
           description: Account not Found
+        "400":
+          description: Bad request
         "500":
           description: Internal server error
   /api/accounts/{id}/transfers:
@@ -144,14 +163,7 @@ paths:
         required: true
         schema:
           type: string
-      - name: page
-        in: query
-        required: true
-        schema:
-          $ref: '#/components/schemas/Pageable'
       responses:
-        "400":
-          description: Bad request
         "200":
           description: Found the form
           content:
@@ -160,6 +172,8 @@ paths:
                 $ref: '#/components/schemas/Transfer'
         "404":
           description: Transfer Repository not found
+        "400":
+          description: Bad request
         "500":
           description: Internal server error
     post:
@@ -168,22 +182,26 @@ paths:
       summary: Make an user transfer
       operationId: createTransfer
       parameters:
+      - name: receiver_iban
+        in: query
+        required: true
+        schema:
+          type: string
+      - name: amount
+        in: query
+        required: true
+        schema:
+          type: string
       - name: id
         in: path
         required: true
         schema:
           type: string
-      requestBody:
-        content:
-          application/json:
-            schema:
-              $ref: '#/components/schemas/Transfer'
-        required: true
       responses:
-        "400":
-          description: Bad request
         "404":
           description: Transfer Repository not found
+        "400":
+          description: Bad request
         "500":
           description: Internal server error
         "200":
@@ -196,43 +214,32 @@ paths:
     get:
       tags:
       - rest-loan-controller
-      summary: Get paginated user loans
-      operationId: getAllUserLoans
+      summary: Get all user loans
+      operationId: getAllUserTransfer_1
       parameters:
-      - name: page
-        in: query
-        required: true
-        schema:
-          $ref: '#/components/schemas/Pageable'
       - name: id
         in: path
         required: true
         schema:
           type: string
       responses:
-        "400":
-          description: Bad request
         "200":
-          description: Found the loans
+          description: Found the form
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/Loan'
+                $ref: '#/components/schemas/Transfer'
+        "404":
+          description: Transfer Repository not found
+        "400":
+          description: Bad request
         "500":
           description: Internal server error
-        "404":
-          description: Loan Repository not found
     post:
       tags:
       - rest-loan-controller
       summary: Calculate a loan for user
       operationId: createLoan
-      parameters:
-      - name: id
-        in: path
-        required: true
-        schema:
-          type: string
       requestBody:
         content:
           application/json:
@@ -240,6 +247,8 @@ paths:
               $ref: '#/components/schemas/Loan'
         required: true
       responses:
+        "404":
+          description: Loan Repository not found
         "400":
           description: Bad request
         "500":
@@ -250,8 +259,6 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/Transfer'
-        "404":
-          description: Loan Repository not found
   /api/accounts/{accountId}/image:
     get:
       tags:
@@ -264,16 +271,16 @@ paths:
         schema:
           type: string
       responses:
-        "400":
-          description: Bad request
-        "404":
-          description: Form not found
         "200":
           description: Get Image by ID
           content:
             application/json:
               schema:
                 $ref: '#/components/schemas/Account'
+        "400":
+          description: Bad request
+        "404":
+          description: Form not found
         "500":
           description: Internal server error
     post:
@@ -299,18 +306,18 @@ paths:
                   type: string
                   format: binary
       responses:
-        "400":
-          description: Bad request
-        "404":
-          description: Form not found
-        "500":
-          description: Internal server error
         "200":
           description: Found the form
           content:
             application/json:
               schema:
                 $ref: '#/components/schemas/Account'
+        "400":
+          description: Bad request
+        "404":
+          description: Form not found
+        "500":
+          description: Internal server error
     delete:
       tags:
       - rest-account-controller
@@ -325,16 +332,16 @@ paths:
       responses:
         "400":
           description: Bad request
-        "404":
-          description: Image not found
-        "500":
-          description: Internal server error
         "200":
           description: Image Deleted
           content:
             application/json:
               schema:
                 $ref: '#/components/schemas/Account'
+        "500":
+          description: Internal server error
+        "404":
+          description: Image not found
   /transfers_manager_load:
     get:
       tags:
@@ -458,15 +465,7 @@ paths:
       - rest-transfer-controller
       summary: Get all transfers
       operationId: getAllTransfer
-      parameters:
-      - name: page
-        in: query
-        required: true
-        schema:
-          $ref: '#/components/schemas/Pageable'
       responses:
-        "400":
-          description: Bad request
         "200":
           description: Found the form
           content:
@@ -475,6 +474,8 @@ paths:
                 $ref: '#/components/schemas/Transfer'
         "404":
           description: Transfer Repository not found
+        "400":
+          description: Bad request
         "500":
           description: Internal server error
   /api/transfers/{id}:
@@ -493,16 +494,16 @@ paths:
       responses:
         "400":
           description: Bad request
-        "404":
-          description: Form not found
-        "500":
-          description: Internal server error
         "200":
           description: Found the Transfer
           content:
             application/json:
               schema:
                 $ref: '#/components/schemas/Transfer'
+        "404":
+          description: Form not found
+        "500":
+          description: Internal server error
   /api/accounts/{id}:
     get:
       tags:
@@ -516,43 +517,18 @@ paths:
         schema:
           type: string
       responses:
-        "400":
-          description: Bad request
-        "500":
-          description: Internal server error
-        "404":
-          description: Account not found
         "200":
           description: Found the Account
           content:
             application/json:
               schema:
                 $ref: '#/components/schemas/AccountDTO'
-  /api/accounts/paged:
-    get:
-      tags:
-      - rest-account-controller
-      summary: Get paginated accounts
-      operationId: getAllAccountsPaged
-      parameters:
-      - name: page
-        in: query
-        required: true
-        schema:
-          $ref: '#/components/schemas/Pageable'
-      responses:
+        "404":
+          description: Account not found
         "400":
           description: Bad request
-        "404":
-          description: Account Repository not found
         "500":
           description: Internal server error
-        "200":
-          description: Found the accounts
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ImagelessAccount'
   /account_load:
     get:
       tags:
@@ -582,25 +558,24 @@ paths:
                   $ref: '#/components/schemas/AccountDTO'
 components:
   schemas:
+    AuthResponse:
+      type: object
+      properties:
+        status:
+          type: string
+          enum:
+          - SUCCESS
+          - FAILURE
+        message:
+          type: string
+        error:
+          type: string
     LoginRequest:
       type: object
       properties:
         username:
           type: string
         password:
-          type: string
-    CreateAccountRequest:
-      type: object
-      properties:
-        inputUser:
-          type: string
-        name:
-          type: string
-        surname:
-          type: string
-        password:
-          type: string
-        confirmPassword:
           type: string
     Account:
       type: object
@@ -620,9 +595,9 @@ components:
           properties:
             binaryStream:
               type: object
-        nip:
-          type: string
         iban:
+          type: string
+        nip:
           type: string
     Transfer:
       type: object
@@ -658,27 +633,8 @@ components:
           format: int32
         date:
           type: string
-        loanPayments:
-          type: array
-          items:
-            $ref: '#/components/schemas/LoanPayment'
         clientID:
           type: string
-    LoanPayment:
-      type: object
-      properties:
-        period:
-          type: integer
-          format: int32
-        principal:
-          type: number
-          format: float
-        interest:
-          type: number
-          format: float
-        remainingAmount:
-          type: number
-          format: float
     ProcessedTransfer:
       type: object
       properties:
@@ -698,33 +654,6 @@ components:
           type: string
         transferType:
           type: string
-    Pageable:
-      type: object
-      properties:
-        offset:
-          type: integer
-          format: int64
-        sort:
-          $ref: '#/components/schemas/Sort'
-        pageNumber:
-          type: integer
-          format: int32
-        pageSize:
-          type: integer
-          format: int32
-        paged:
-          type: boolean
-        unpaged:
-          type: boolean
-    Sort:
-      type: object
-      properties:
-        sorted:
-          type: boolean
-        unsorted:
-          type: boolean
-        empty:
-          type: boolean
     AccountDTO:
       type: object
       properties:
@@ -737,15 +666,4 @@ components:
         surname:
           type: string
         imageBase64:
-          type: string
-    ImagelessAccount:
-      type: object
-      properties:
-        nip:
-          type: string
-        iban:
-          type: string
-        name:
-          type: string
-        surname:
           type: string
