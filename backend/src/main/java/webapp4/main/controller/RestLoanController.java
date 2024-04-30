@@ -2,9 +2,7 @@ package webapp4.main.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
-import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
-import org.springframework.data.domain.Sort;
 import org.springframework.security.core.Authentication;
 
 
@@ -12,7 +10,6 @@ import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 
 import io.swagger.v3.oas.annotations.Operation;
@@ -25,9 +22,6 @@ import webapp4.main.repository.LoanRepository;
 import webapp4.main.service.LoanService;
 
 import java.net.URI;
-import java.time.LocalDateTime;
-import java.time.format.DateTimeFormatter;
-import java.util.Collection;
 
 import javax.servlet.http.HttpServletRequest;
 
@@ -42,29 +36,7 @@ public class RestLoanController {
     @Autowired
     private LoanService loanService;
 
-    private static final float interestRate = 7.5f;
-    /*
-    @Operation (summary = "Get all user loans")
-    @ApiResponse(
-            responseCode = "200",
-            description = "Found the form",
-            content = @Content(mediaType = "application/json", schema = @Schema(implementation = Transfer.class))
-    )
-    @ApiResponse(responseCode = "404", description = "Transfer Repository not found", content = @Content)
-    @ApiResponse(responseCode = "500", description = "Internal server error", content = @Content)
-    @ApiResponse(responseCode = "400", description = "Bad request", content = @Content)
-    @GetMapping("/api/accounts/{id}/loans")
-    public ResponseEntity<Collection<Loan>> getAllUserTransfer(@PathVariable String id){
-        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
-        String username = authentication.getName();
-        if (id.equals(username)) {
-            Collection<Loan> userLoans = loanRepository.findByClientId(id);
-            return ResponseEntity.ok(userLoans);
-        } else {
-            return ResponseEntity.badRequest().build();
-        }
-    }
-    */
+    
     @Operation(summary = "Get paginated user loans")
     @ApiResponse(
             responseCode = "200",

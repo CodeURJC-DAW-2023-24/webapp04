@@ -2,7 +2,6 @@ package webapp4.main.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
-import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
@@ -22,7 +21,6 @@ import webapp4.main.service.TransferService;
 
 import javax.servlet.http.HttpServletRequest;
 import java.net.URI;
-import java.util.Collection;
 import java.util.Optional;
 
 import static org.springframework.web.servlet.support.ServletUriComponentsBuilder.fromCurrentRequest;
@@ -72,12 +70,6 @@ public class RestTransferController {
         Page<Transfer> allTransfers = transferRepository.findAll(page);
         return ResponseEntity.ok(allTransfers);
     }
-
-//   @GetMapping("/api/transfers/paged")
-//    public ResponseEntity<Page<Transfer>> getAllTransfersPaged(Pageable page) {
-//        Page<Transfer> transfers = transferRepository.findAll(page);
-//        return ResponseEntity.ok(transfers);
-//    }
 
 
     @Operation (summary = "Get all user transfers")
