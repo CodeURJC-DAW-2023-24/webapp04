@@ -5,6 +5,7 @@ import org.springframework.stereotype.Service;
 import webapp4.main.csv_editor.CSVReader;
 import webapp4.main.model.Account;
 import webapp4.main.model.Loan;
+import webapp4.main.model.LoanPayment;
 import webapp4.main.repository.AccountRepository;
 import webapp4.main.repository.LoanRepository;
 
@@ -18,13 +19,17 @@ import java.util.Optional;
 
 @Service
 public class LoanService {
+
     @Autowired
     private AccountRepository accountRepository;
+
     @Autowired
     private LoanRepository loanRepository;
+
     public static final String[] loanTypes = {
             "Housing", "Education", "Medical", "Other"
     };
+
     private static final float interestRate = 7.5f;
 
     public List<Map<String, Float>> getLoanInfo(int amount, int installments, int startIndex, int chunkSize){
@@ -46,7 +51,7 @@ public class LoanService {
             remainingAmount -= principalPayment;
         }
         return loanPayments;
-    }
+    }   
 
     public void loadAllLoans(String pathToCSV){
         CSVReader loanCsvReader = new CSVReader(pathToCSV);
@@ -58,6 +63,13 @@ public class LoanService {
             loan.setInterest_rate(Float.parseFloat(records.get(i).get(2)));
             loan.setPeriods(Integer.parseInt(records.get(i).get(3)));
             loan.setDate(records.get(i).get(4));
+
+            // Aquí creamos los pagos de préstamos asociados con el préstamo y los guardamos
+            List<LoanPayment> loanPayments = calculateLoanPayments(loan.getAmount(), loan.getPeriods());
+            loan.setLoanPayments(loanPayments);
+            for (LoanPayment loanPayment : loanPayments) {
+                loanPayment.setLoan(loan);
+            }
             loanRepository.save(loan);
         }
     }
@@ -82,9 +94,38 @@ public class LoanService {
             DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-M-d HH:mm");
             String formattedDateTime = currentDateTime.format(formatter);
             loan.setDate(formattedDateTime);
+
+            // Aquí creamos los pagos de préstamos asociados con el préstamo y los guardamos
+            List<LoanPayment> loanPayments = calculateLoanPayments(amount, periods);
+            for (LoanPayment loanPayment : loanPayments) {
+                loanPayment.setLoan(loan);
+            }
+            loan.setLoanPayments(loanPayments);
+
             loanRepository.save(loan);
             return loan;
         }
         return "user not exists";
+    }
+
+    private List<LoanPayment> calculateLoanPayments(int amount, int installments) {
+        List<LoanPayment> loanPayments = new ArrayList<>();
+        float monthlyInterestRate = interestRate / 100 / 12;
+        float remainingAmount = amount;
+        for (int i = 0; i < installments; i++) {
+            if (i >= installments) {
+                break;
+            }
+            float interestPayment = remainingAmount * monthlyInterestRate;
+            float principalPayment = (float) amount / installments;
+            LoanPayment payment = new LoanPayment();
+            payment.setPeriod(i + 1);
+            payment.setPrincipal(principalPayment);
+            payment.setInterest(interestPayment);
+            payment.setRemainingAmount(remainingAmount);
+            loanPayments.add(payment);
+            remainingAmount -= principalPayment;
+        }
+        return loanPayments;
     }
 }

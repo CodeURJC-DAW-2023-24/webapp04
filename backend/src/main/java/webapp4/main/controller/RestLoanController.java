@@ -75,19 +75,21 @@ public class RestLoanController {
     @ApiResponse(responseCode = "500", description = "Internal server error", content = @Content)
     @ApiResponse(responseCode = "400", description = "Bad request", content = @Content)
     @GetMapping("/api/accounts/{id}/loans")
-    public ResponseEntity<Page<Loan>> getAllUserLoans(Pageable page,
-        @PathVariable String id) {
+    public ResponseEntity<Page<Loan>> getAllUserLoans(Pageable page, @PathVariable String id) {
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
         String username = authentication.getName();
         if (id.equals(username)) {
-//            Collection<Loan> userLoans = loanRepository.findByClientId(id);
             Page<Loan> userLoans = loanRepository.findByClientIdPaged(id, page);
-            
+            // Iterar sobre los préstamos para cargar explícitamente los pagos de préstamos asociados
+            userLoans.forEach(loan -> {
+                loan.getLoanPayments().size(); // Esto carga los pagos de préstamos asociados
+            });
             return ResponseEntity.ok(userLoans);
         } else {
             return ResponseEntity.badRequest().build();
         }   
     }
+
 
 
     @Operation (summary = "Calculate a loan for user")

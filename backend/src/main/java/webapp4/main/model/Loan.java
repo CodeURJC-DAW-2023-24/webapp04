@@ -1,11 +1,14 @@
 package webapp4.main.model;
 
 import javax.persistence.*;
+import java.util.List;
+
 @Entity
 public class Loan {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long loan_id = null;
+
     @Column(columnDefinition = "TEXT")
     private String client_id;
     private int amount;
@@ -14,10 +17,14 @@ public class Loan {
     @Column(columnDefinition = "TEXT")
     private String date;
 
+    @OneToMany(mappedBy = "loan", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    private List<LoanPayment> loanPayments;
+
     public Loan() {
         super();
     }
 
+    // Getters y setters
 
     public Long getLoan_id() {
         return loan_id;
@@ -65,5 +72,13 @@ public class Loan {
 
     public void setDate(String date) {
         this.date = date;
+    }
+
+    public List<LoanPayment> getLoanPayments() {
+        return loanPayments;
+    }
+
+    public void setLoanPayments(List<LoanPayment> loanPayments) {
+        this.loanPayments = loanPayments;
     }
 }
