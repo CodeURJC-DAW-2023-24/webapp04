@@ -15,9 +15,9 @@ import { TopbarComponent } from './topbar/topbar.component';
 import { FooterComponent } from './footer/footer.component';
 
 const routes: Routes = [
-  { path: '/new', component: HomeComponent },
-  { path: '/new/login', component: LoginPageComponent },
-  { path: '/new/register', component: RegisterPageComponent }
+  { path: 'new', component: HomeComponent },
+  { path: 'new/login', component: LoginPageComponent },
+  { path: 'new/register', component: RegisterPageComponent }
 ];
 
 @NgModule({
@@ -30,13 +30,13 @@ const routes: Routes = [
     RegisterPageComponent,
     ShortFooterComponent,
     TopbarComponent,
-    FooterComponent // Agrega FooterComponent aquí si aún no está agregado
+    FooterComponent
   ],
   imports: [
     BrowserModule,
     FormsModule,
     HttpClientModule,
-    RouterModule.forRoot(routes) // Agrega RouterModule.forRoot() aquí para las rutas
+    RouterModule.forRoot(routes)
   ],
   providers: [],
   bootstrap: [AppComponent]
