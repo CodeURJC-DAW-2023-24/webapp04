@@ -13,11 +13,13 @@ import { RegisterPageComponent } from './register-page/register-page.component';
 import { ShortFooterComponent } from './short-footer/short-footer.component';
 import { TopbarComponent } from './topbar/topbar.component';
 import { FooterComponent } from './footer/footer.component';
+import { ProfilePageComponent } from './profile-page/profile-page.component';
 
 const routes: Routes = [
   { path: 'new', component: HomeComponent },
   { path: 'new/login', component: LoginPageComponent },
-  { path: 'new/register', component: RegisterPageComponent }
+  { path: 'new/register', component: RegisterPageComponent },
+  { path: 'new/profile', component: ProfilePageComponent}
 ];
 
 @NgModule({
@@ -30,7 +32,8 @@ const routes: Routes = [
     RegisterPageComponent,
     ShortFooterComponent,
     TopbarComponent,
-    FooterComponent
+    FooterComponent,
+    ProfilePageComponent
   ],
   imports: [
     BrowserModule,

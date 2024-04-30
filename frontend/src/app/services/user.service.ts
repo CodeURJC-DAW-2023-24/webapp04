@@ -1,24 +1,32 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpResponse } from '@angular/common/http';
+import { Router } from '@angular/router';
+
+interface LoginResponse {
+  status: string;
+  message: string;
+  error: any;
+}
 
 @Injectable({
   providedIn: 'root'
 })
 export class UserService {
 
-  constructor(private http: HttpClient) {}
-
+  constructor(private http: HttpClient, private router: Router) {}
 
   login(username: string, password: string){
-    const body = { username: username, password: password };
+    const body = { username, password };
 
-    // Realiza la petición POST a la URL /api/login con los datos proporcionados
-    this.http.post('/api/login', body).subscribe(response => {
-      console.log('Respuesta del servidor:', response);
-      // Aquí puedes manejar la respuesta del servidor
-    }, error => {
-      console.error('Error al hacer la petición:', error);
-      // Aquí puedes manejar el error
-    });
-  }
+    this.http.post('/api/login', body, { observe: 'response' }).subscribe({
+      next: (response) => {
+        console.log(response);
+        this.router.navigate(['new/profile', username]);
+      },
+      error: (error) => {
+        this.router.navigate(["/error"])
+      }
+    })
+    };
+
 }
