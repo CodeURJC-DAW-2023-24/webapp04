@@ -68,16 +68,16 @@ public class RestTransferController {
     @ApiResponse(responseCode = "500", description = "Internal server error", content = @Content)
     @ApiResponse(responseCode = "400", description = "Bad request", content = @Content)
     @GetMapping("/api/transfers")
-    public ResponseEntity<Collection<Transfer>> getAllTransfer(){
-        Collection<Transfer> allTransfers = transferRepository.findAll();
+    public ResponseEntity<Page<Transfer>> getAllTransfer(Pageable page){
+        Page<Transfer> allTransfers = transferRepository.findAll(page);
         return ResponseEntity.ok(allTransfers);
     }
 
-   @GetMapping("/api/transfers/paged")
-    public ResponseEntity<Page<Transfer>> getAllTransfersPaged(Pageable page) {
-        Page<Transfer> transfers = transferRepository.findAll(page);
-        return ResponseEntity.ok(transfers);
-    }
+//   @GetMapping("/api/transfers/paged")
+//    public ResponseEntity<Page<Transfer>> getAllTransfersPaged(Pageable page) {
+//        Page<Transfer> transfers = transferRepository.findAll(page);
+//        return ResponseEntity.ok(transfers);
+//    }
 
 
     @Operation (summary = "Get all user transfers")
@@ -90,13 +90,13 @@ public class RestTransferController {
     @ApiResponse(responseCode = "500", description = "Internal server error", content = @Content)
     @ApiResponse(responseCode = "400", description = "Bad request", content = @Content)
     @GetMapping("/api/accounts/{id}/transfers")
-    public ResponseEntity<Collection<Transfer>> getAllUserTransfer(@PathVariable String id){
+    public ResponseEntity<Page<Transfer>> getAllUserTransfer(@PathVariable String id, Pageable page){
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
         String username = authentication.getName();
         if (id.equals(username)) {
             Optional<Account> accountOptional = accountRepository.findByNIP(id);
             String accountIBAN = accountOptional.get().getIBAN();
-            Collection<Transfer> userTransfers = transferRepository.findBySenderOrReceiverContaining(accountIBAN);
+            Page<Transfer> userTransfers = transferRepository.findBySenderOrReceiverContainingPaged(accountIBAN, page);
             return ResponseEntity.ok(userTransfers);
         } else {
             return ResponseEntity.badRequest().build();

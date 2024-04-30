@@ -5,20 +5,12 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="072cea6f-8d20-4292-b10f-19e0c5f1ef3e" name="Changes" comment="Docker error solved">
-      <change afterPath="$PROJECT_DIR$/backend/src/main/java/webapp4/main/controller/auth/RestLoginController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/backend/src/main/java/webapp4/main/security/jwt/UnauthorizedHandlerJwt.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/index.pb" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/index.pb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/securityhotspotstore/index.pb" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sonarlint/securityhotspotstore/index.pb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/src/main/java/webapp4/main/controller/AccountController.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/java/webapp4/main/controller/AccountController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/src/main/java/webapp4/main/controller/AccountCreationController.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/java/webapp4/main/controller/AccountCreationController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/src/main/java/webapp4/main/controller/LoanRequestController.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/java/webapp4/main/controller/LoanRequestController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/src/main/java/webapp4/main/controller/ProfileController.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/java/webapp4/main/controller/ProfileController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/src/main/java/webapp4/main/controller/ProfileManagerController.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/java/webapp4/main/controller/ProfileManagerController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/src/main/java/webapp4/main/controller/RestAccountController.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/java/webapp4/main/controller/RestAccountController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/src/main/java/webapp4/main/controller/RestAuthController.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/backend/src/main/java/webapp4/main/controller/RestLoanController.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/java/webapp4/main/controller/RestLoanController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/backend/src/main/java/webapp4/main/controller/RestTransferController.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/java/webapp4/main/controller/RestTransferController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/src/main/java/webapp4/main/security/RestSecurityConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/java/webapp4/main/security/RestSecurityConfig.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/src/main/java/webapp4/main/repository/LoanRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/java/webapp4/main/repository/LoanRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/src/main/java/webapp4/main/repository/TransferRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/java/webapp4/main/repository/TransferRepository.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -96,7 +88,13 @@
     "SONARLINT_PRECOMMIT_ANALYSIS": "true",
     "git-widget-placeholder": "main",
     "kotlin-language-version-configured": "true",
-    "last_opened_file_path": "/home/cris/Documents/3GIS - Desarrollo de Aplicaciones Web/webapp04/backend/src/main/java/webapp4/main"
+    "last_opened_file_path": "C:/Users/usuario/IdeaProjects/webapp04_29_04",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "vue.rearranger.settings.migration": "true"
   }
 }]]></component>
   <component name="RecentsManager">
@@ -183,6 +181,13 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="BackendApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" nameIsGenerated="true">
+      <module name="backend" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="webapp4.main.BackendApplication" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <recent_temporary>
       <list>
         <item itemvalue="Application.BackendApplication" />
@@ -196,7 +201,8 @@
   <component name="SharedIndexes">
     <attachedChunks>
       <set>
-        <option value="jdk-21.0.2-openjdk-21.0.2-4caba194b151-4f524021" />
+        <option value="jdk-20.0.2-corretto-20.0.2.1-f644763e9732-27d99999" />
+        <option value="jdk-21.0.2-openjdk-21.0.2-f644763e9732-c0c073db" />
       </set>
     </attachedChunks>
   </component>
@@ -208,6 +214,9 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1708417392682</updated>
+      <workItem from="1714382802432" duration="1257000" />
+      <workItem from="1714386057187" duration="663000" />
+      <workItem from="1714460749218" duration="6342000" />
     </task>
     <task id="LOCAL-00001" summary="DBInitializer update&#10;- Non-functional version of the project&#10;Some errors regarding db data insertion are still unsolved">
       <option name="closed" value="true" />
@@ -323,6 +332,9 @@
     </task>
     <option name="localTasksCounter" value="15" />
     <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
