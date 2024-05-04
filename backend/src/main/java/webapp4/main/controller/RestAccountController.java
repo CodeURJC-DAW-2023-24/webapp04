@@ -1,12 +1,11 @@
 package webapp4.main.controller;
 
-import org.apache.tomcat.util.net.openssl.ciphers.Authentication;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
+import org.springframework.security.core.Authentication;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
-import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.media.Content;
@@ -20,14 +19,14 @@ import webapp4.main.model.Account;
 import webapp4.main.repository.AccountRepository;
 import webapp4.main.service.AccountService;
 import webapp4.main.service.UserDataService;
+
+import java.util.HashMap;
+import java.util.Map;
 import java.util.Optional;
 import java.util.Collection;
 
-import javax.sql.rowset.serial.SerialBlob;
 import javax.sql.rowset.serial.SerialException;
-
 import java.io.IOException;
-import java.net.MalformedURLException;
 import java.net.URI;
 import java.sql.Blob;
 import java.sql.SQLException;
@@ -39,8 +38,6 @@ import static org.springframework.web.servlet.support.ServletUriComponentsBuilde
 
 @RestController
 public class RestAccountController {
-
-
     @Autowired
     private UserDataService userDataService;
     @Autowired
@@ -74,6 +71,31 @@ public class RestAccountController {
             }
         }
     }
+    @Operation (summary = "Get the registered account data")
+    @ApiResponse(
+            responseCode = "200",
+            description = "Found the Account",
+            content = @Content(mediaType = "application/json", schema = @Schema(implementation = Account.class))
+    )
+    @ApiResponse(responseCode = "404", description = "Account not found", content = @Content)
+    @ApiResponse(responseCode = "500", description = "Internal server error", content = @Content)
+    @ApiResponse(responseCode = "400", description = "Bad request", content = @Content)
+    @GetMapping("/api/accounts/personal")
+    public ResponseEntity<Map<String, Object>> getRegAccount(Authentication authentication){
+        Optional<Account> accountOptional = accountRepository.findByNIP(authentication.getName());
+        if (accountOptional.isPresent()) {
+            Account account = accountOptional.get();
+            Map<String, Object> responseData = new HashMap<>();
+            responseData.put("nip", account.getNIP());
+            responseData.put("name", account.getName());
+            responseData.put("surname", account.getSurname());
+            responseData.put("iban", account.getIBAN());
+            return ResponseEntity.ok(responseData);
+        } else {
+            return ResponseEntity.notFound().build();
+        }
+    }
+
      @Operation (summary = "Get an account by id")
     @ApiResponse(
             responseCode = "200",
@@ -114,7 +136,6 @@ public class RestAccountController {
         org.springframework.security.core.Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
         String username = authentication.getName();
         Optional<Account> accountOptional = accountRepository.findByNIP(username);
-
         if (accountOptional.isPresent()) {
             if(accountId.equals(username)){
                 Account account = accountOptional.get();
@@ -122,7 +143,6 @@ public class RestAccountController {
                 if (imageBlob == null){
                     return new ResponseEntity<>(HttpStatus.NOT_FOUND);
                 }
-    
                 try {
                     byte[] imageBytes = accountService.getImageBytes(imageBlob);
                     HttpHeaders headers = new HttpHeaders();
@@ -140,7 +160,6 @@ public class RestAccountController {
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         }
     }
-
 
      @Operation
     (summary = "Upload image by ID")
@@ -202,5 +221,4 @@ public class RestAccountController {
             return ResponseEntity.notFound().build();
         }
     }
-
 }
