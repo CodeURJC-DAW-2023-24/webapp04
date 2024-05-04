@@ -10,11 +10,11 @@ export class DataService {
 
   constructor(private http: HttpClient) { }
 
-  getTransfers(accountId: string, startIndex: number, chunkSize: number): Observable<Transfer[]> {
+  getTransfers(accountId: string, page: number, size: number): Observable<Transfer[]> {
     return this.http.get<Transfer[]>(`/api/accounts/${accountId}/transfers`, {
       params: {
-        startIndex: startIndex.toString(),
-        chunkSize: chunkSize.toString()
+        page: page.toString(),
+        size: size.toString()
       }
     });
   }
