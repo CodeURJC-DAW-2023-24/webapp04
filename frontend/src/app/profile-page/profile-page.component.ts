@@ -68,4 +68,17 @@ export class ProfilePageComponent {
     console.log(startIndex);
     this.loadMoreTransfers(startIndex, chunkSize);
   }
+
+  logout(): void {
+    const body = {};
+    this.http.post('/api/logout', body, { observe: 'response' }).subscribe({
+      next: (response) => {
+        console.log('Logout exitoso');
+        this.router.navigate(['new/login']);
+      },
+      error: (error) => {
+        console.error('Error en logout:', error);
+      }
+    })
+  }
 }
