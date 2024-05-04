@@ -2,12 +2,6 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpResponse } from '@angular/common/http';
 import { Router } from '@angular/router';
 
-interface LoginResponse {
-  status: string;
-  message: string;
-  error: any;
-}
-
 @Injectable({
   providedIn: 'root'
 })
@@ -20,8 +14,9 @@ export class UserService {
 
     this.http.post('/api/login', body, { observe: 'response' }).subscribe({
       next: (response) => {
+        console.log(username);
         console.log(response);
-        this.router.navigate(['new/profile', username]);
+        this.router.navigate(['new/profile'], { queryParams: { username: username }, queryParamsHandling: 'merge' });
       },
       error: (error) => {
         this.router.navigate(["/error"])
