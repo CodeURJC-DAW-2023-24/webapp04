@@ -16,14 +16,13 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.context.SecurityContextHolder;
 
 import webapp4.main.model.Account;
+import webapp4.main.model.Transfer;
 import webapp4.main.repository.AccountRepository;
+import webapp4.main.repository.TransferRepository;
 import webapp4.main.service.AccountService;
 import webapp4.main.service.UserDataService;
 
-import java.util.HashMap;
-import java.util.Map;
-import java.util.Optional;
-import java.util.Collection;
+import java.util.*;
 
 import javax.sql.rowset.serial.SerialException;
 import java.io.IOException;
@@ -33,6 +32,7 @@ import java.sql.SQLException;
 
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.MediaType;
+import webapp4.main.transferDataUtils.ProcessedTransfer;
 
 import static org.springframework.web.servlet.support.ServletUriComponentsBuilder.fromCurrentRequest;
 
@@ -44,6 +44,8 @@ public class RestAccountController {
     private AccountRepository accountRepository;
     @Autowired
     private AccountService accountService;
+    @Autowired
+    private TransferRepository transferRepository;
 
     @Operation (summary = "Create New Account")
     @ApiResponse(
@@ -90,6 +92,15 @@ public class RestAccountController {
             responseData.put("name", account.getName());
             responseData.put("surname", account.getSurname());
             responseData.put("iban", account.getIBAN());
+            List<Transfer> transferList = transferRepository.findBySenderOrReceiverContaining(account.getIBAN());
+            ArrayList<ProcessedTransfer> processedTransferList = new ArrayList<>();
+            int balance = 0;
+            for (Transfer transfer : transferList) {
+                ProcessedTransfer processedTransfer = new ProcessedTransfer(transfer, account.getIBAN());
+                processedTransferList.add(processedTransfer);
+                balance += processedTransfer.getAmount();
+            }
+            responseData.put("balance", balance);
             return ResponseEntity.ok(responseData);
         } else {
             return ResponseEntity.notFound().build();

@@ -4,14 +4,13 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="072cea6f-8d20-4292-b10f-19e0c5f1ef3e" name="Changes" comment="RestSecurityConfig was updated 2">
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/5/6/56a3a04f99ac362b39a1f7f33e042448476d0de4" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/5/6/56a3a04f99ac362b39a1f7f33e042448476d0de4" afterDir="false" />
+    <list default="true" id="072cea6f-8d20-4292-b10f-19e0c5f1ef3e" name="Changes" comment="Added Rest Controller for /api/accounts/personal">
       <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/index.pb" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/index.pb" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/sonarlint/securityhotspotstore/index.pb" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sonarlint/securityhotspotstore/index.pb" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/backend/src/main/java/webapp4/main/controller/RestAccountController.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/java/webapp4/main/controller/RestAccountController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/src/main/java/webapp4/main/security/RestSecurityConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/java/webapp4/main/security/RestSecurityConfig.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/src/main/java/webapp4/main/controller/RestTransferController.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/java/webapp4/main/controller/RestTransferController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/src/main/java/webapp4/main/repository/TransferRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/java/webapp4/main/repository/TransferRepository.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -331,7 +330,15 @@
       <option name="project" value="LOCAL" />
       <updated>1713175696538</updated>
     </task>
-    <option name="localTasksCounter" value="19" />
+    <task id="LOCAL-00019" summary="Added Rest Controller for /api/accounts/personal">
+      <option name="closed" value="true" />
+      <created>1714837061943</created>
+      <option name="number" value="00019" />
+      <option name="presentableId" value="LOCAL-00019" />
+      <option name="project" value="LOCAL" />
+      <updated>1714837061943</updated>
+    </task>
+    <option name="localTasksCounter" value="20" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -366,6 +373,7 @@
     <MESSAGE value="jwt package update 2" />
     <MESSAGE value="RestSecurityConfig was updated" />
     <MESSAGE value="RestSecurityConfig was updated 2" />
-    <option name="LAST_COMMIT_MESSAGE" value="RestSecurityConfig was updated 2" />
+    <MESSAGE value="Added Rest Controller for /api/accounts/personal" />
+    <option name="LAST_COMMIT_MESSAGE" value="Added Rest Controller for /api/accounts/personal" />
   </component>
 </project>
