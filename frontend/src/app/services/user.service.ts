@@ -16,7 +16,7 @@ export class UserService {
       next: (response) => {
         console.log(username);
         console.log(response);
-        this.router.navigate(['new/profile'], { queryParams: { username: username }, queryParamsHandling: 'merge' });
+        this.router.navigate(['new/profile']);
       },
       error: (error) => {
         this.router.navigate(["/error"])

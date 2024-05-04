@@ -27,10 +27,10 @@ export class ProfilePageComponent {
     this.http.get('/api/accounts/personal', { observe: 'response' }).subscribe({
       next: (response) => {
         if (response.body) {
-          const data = response.body as any; // Utilizamos any para manejar cualquier estructura de datos
-        this.client_name = data.name + data.surname;
+          const data = response.body as any;
+        this.client_name = data.name + " " + data.surname;
         this.client_iban = data.iban;
-        this.client_balance = data.balance || 0; // Si la propiedad balance no está presente, establecemos un valor predeterminado
+        this.client_balance = data.balance || 0;
         console.log("Everything is OK");
         }
       },
