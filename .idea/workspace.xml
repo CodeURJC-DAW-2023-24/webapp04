@@ -4,22 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="072cea6f-8d20-4292-b10f-19e0c5f1ef3e" name="Changes" comment="Added Rest Controller for /api/accounts/personal">
-      <change afterPath="$PROJECT_DIR$/backend/src/main/java/webapp4/main/controller/HealthRestController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/backend/src/main/java/webapp4/main/transferDataUtils/TransferRequest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/5/6/56a3a04f99ac362b39a1f7f33e042448476d0de4" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/5/6/56a3a04f99ac362b39a1f7f33e042448476d0de4" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/7/b/7ba94f91599292313304bdeb01baf1baa45681f5" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/7/b/7ba94f91599292313304bdeb01baf1baa45681f5" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/index.pb" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/index.pb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/securityhotspotstore/index.pb" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sonarlint/securityhotspotstore/index.pb" afterDir="false" />
+    <list default="true" id="072cea6f-8d20-4292-b10f-19e0c5f1ef3e" name="Changes" comment="Transfers in angular update 3">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/src/main/java/webapp4/main/controller/RestAccountController.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/java/webapp4/main/controller/RestAccountController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/backend/src/main/java/webapp4/main/controller/RestTransferController.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/java/webapp4/main/controller/RestTransferController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/src/main/java/webapp4/main/security/RestSecurityConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/java/webapp4/main/security/RestSecurityConfig.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/src/main/java/webapp4/main/security/jwt/AuthResponse.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/java/webapp4/main/security/jwt/AuthResponse.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/src/main/java/webapp4/main/security/jwt/JwtCookieManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/java/webapp4/main/security/jwt/JwtCookieManager.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/src/main/java/webapp4/main/security/jwt/JwtRequestFilter.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/java/webapp4/main/security/jwt/JwtRequestFilter.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/src/main/java/webapp4/main/security/jwt/JwtTokenProvider.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/java/webapp4/main/security/jwt/JwtTokenProvider.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/src/main/java/webapp4/main/security/jwt/UserLoginService.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/java/webapp4/main/security/jwt/UserLoginService.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -347,7 +334,15 @@
       <option name="project" value="LOCAL" />
       <updated>1714837061943</updated>
     </task>
-    <option name="localTasksCounter" value="20" />
+    <task id="LOCAL-00020" summary="Transfers in angular update">
+      <option name="closed" value="true" />
+      <created>1714924715626</created>
+      <option name="number" value="00020" />
+      <option name="presentableId" value="LOCAL-00020" />
+      <option name="project" value="LOCAL" />
+      <updated>1714924715626</updated>
+    </task>
+    <option name="localTasksCounter" value="21" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -383,6 +378,8 @@
     <MESSAGE value="RestSecurityConfig was updated" />
     <MESSAGE value="RestSecurityConfig was updated 2" />
     <MESSAGE value="Added Rest Controller for /api/accounts/personal" />
-    <option name="LAST_COMMIT_MESSAGE" value="Added Rest Controller for /api/accounts/personal" />
+    <MESSAGE value="Transfers in angular update" />
+    <MESSAGE value="Transfers in angular update 3" />
+    <option name="LAST_COMMIT_MESSAGE" value="Transfers in angular update 3" />
   </component>
 </project>

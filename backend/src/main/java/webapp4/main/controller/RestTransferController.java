@@ -19,7 +19,6 @@ import webapp4.main.model.Transfer;
 import webapp4.main.repository.AccountRepository;
 import webapp4.main.repository.TransferRepository;
 import webapp4.main.service.TransferService;
-import webapp4.main.transferDataUtils.TransferRequest;
 
 import javax.servlet.http.HttpServletRequest;
 import java.net.URI;
@@ -107,13 +106,13 @@ public class RestTransferController {
     @ApiResponse(responseCode = "500", description = "Internal server error", content = @Content)
     @ApiResponse(responseCode = "400", description = "Bad request", content = @Content)
     @PostMapping("/api/make_transfer")
-    public ResponseEntity<?> createPersonalTransfer(@RequestBody TransferRequest transferRequest) {
+    public ResponseEntity<?> createPersonalTransfer(@RequestParam String receiver_iban, @RequestParam String amount) {
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
         Optional<Account> accountOptional = accountRepository.findByNIP(authentication.getName());
         if (accountOptional.isPresent()){
-            Optional<Account> receiverOptional = accountRepository.findByIBAN(transferRequest.getReceiverIban());
+            Optional<Account> receiverOptional = accountRepository.findByIBAN(receiver_iban);
             if (receiverOptional.isPresent()){
-                transferService.addTransaction(authentication.getName(), transferRequest.getReceiverIban(), Integer.parseInt(transferRequest.getAmount()));
+                transferService.addTransaction(authentication.getName(), receiver_iban, Integer.parseInt(amount));
                 return ResponseEntity.ok("Transfer success");
             }
             return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Receiver account not found");
