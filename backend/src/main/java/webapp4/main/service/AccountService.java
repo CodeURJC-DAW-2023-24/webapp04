@@ -4,16 +4,14 @@ import java.util.Base64;
 import org.jetbrains.annotations.NotNull;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.io.ClassPathResource;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.MediaType;
-import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import webapp4.main.csv_editor.CSVReader;
 import webapp4.main.model.Account;
+import webapp4.main.model.AccountDTO;
+import webapp4.main.model.ImagelessAccount;
 import webapp4.main.repository.AccountRepository;
 
 import javax.sql.rowset.serial.SerialBlob;
-import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.sql.Blob;
@@ -58,6 +56,7 @@ public class AccountService {
             account.setIBAN(accRecords.get(i).get(1));
             account.setName(accRecords.get(i).get(2));
             account.setSurname(accRecords.get(i).get(3));
+            account.setBalance(Integer.parseInt(accRecords.get(i).get(4)));
             setClientImage(account, "static/Client_profile_pics/" + account.getNIP() + ".jpeg");
             accountRepository.save(account);
         }
@@ -81,23 +80,40 @@ public class AccountService {
         if (blob == null) {
             return null;
         }
-        
+
         try (ByteArrayOutputStream outputStream = new ByteArrayOutputStream()) {
             byte[] buffer = new byte[4096];
             int bytesRead;
-            
+
             try (InputStream inputStream = blob.getBinaryStream()) {
                 while ((bytesRead = inputStream.read(buffer)) != -1) {
                     outputStream.write(buffer, 0, bytesRead);
                 }
             }
-            
+
             return outputStream.toByteArray();
         }
-        
+
     }
     public Blob createBlob(byte[] bytes) throws SQLException {
         return new SerialBlob(bytes);
+    }
+    public AccountDTO accountToDTO(Account account){
+        AccountDTO dto = new AccountDTO();
+        dto.setNip(account.getNIP());
+        dto.setIban(account.getIBAN());
+        dto.setName(account.getName());
+        dto.setSurname(account.getSurname());
+        dto.setImageBase64(getProfilePicBase64(account.getNIP()));
+        return dto;
+    }
+    public ImagelessAccount accountWithoutImage(Account account){
+        ImagelessAccount imagelessAccount = new ImagelessAccount();
+        imagelessAccount.setNip(account.getNIP());
+        imagelessAccount.setIban(account.getIBAN());
+        imagelessAccount.setName(account.getName());
+        imagelessAccount.setSurname(account.getSurname());
+        return imagelessAccount;
     }
 
 }

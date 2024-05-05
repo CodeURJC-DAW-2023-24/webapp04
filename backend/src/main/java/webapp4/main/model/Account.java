@@ -7,7 +7,7 @@ import java.sql.Blob;
 @Entity
 public class Account {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long account_id = null;
     @Column(columnDefinition = "TEXT")
     private String NIP;
@@ -17,6 +17,7 @@ public class Account {
     private String name;
     @Column(columnDefinition = "TEXT")
     private String surname;
+    private int balance;
 
     @Lob
     private Blob imageFile;
@@ -55,6 +56,24 @@ public class Account {
 
     public void setSurname(String surname) {
         this.surname = surname;
+    }
+
+    public int getBalance() {
+        return balance;
+    }
+
+    public void setBalance(int balance) {
+        this.balance = balance;
+    }
+
+    public void updateBalance(int amount){this.balance += amount;}
+
+    public boolean isTransferPosible(int amount){
+        if ((this.balance - amount) >= 0){
+            return true;
+        } else {
+            return false;
+        }
     }
 
     public Blob getImageFile() {

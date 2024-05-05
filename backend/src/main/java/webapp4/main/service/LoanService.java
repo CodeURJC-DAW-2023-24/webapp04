@@ -1,30 +1,35 @@
 package webapp4.main.service;
 
-import org.jetbrains.annotations.NotNull;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import webapp4.main.csv_editor.CSVReader;
 import webapp4.main.model.Account;
 import webapp4.main.model.Loan;
+import webapp4.main.model.LoanPayment;
 import webapp4.main.repository.AccountRepository;
 import webapp4.main.repository.LoanRepository;
 
-import javax.sql.rowset.serial.SerialBlob;
-import java.io.FileInputStream;
-import java.io.IOException;
-import java.sql.SQLException;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Optional;
 
 @Service
 public class LoanService {
+
+    @Autowired
+    private AccountRepository accountRepository;
+
     @Autowired
     private LoanRepository loanRepository;
+
     public static final String[] loanTypes = {
             "Housing", "Education", "Medical", "Other"
     };
+
     private static final float interestRate = 7.5f;
 
     public List<Map<String, Float>> getLoanInfo(int amount, int installments, int startIndex, int chunkSize){
@@ -58,17 +63,69 @@ public class LoanService {
             loan.setInterest_rate(Float.parseFloat(records.get(i).get(2)));
             loan.setPeriods(Integer.parseInt(records.get(i).get(3)));
             loan.setDate(records.get(i).get(4));
+
+            // Aquí creamos los pagos de préstamos asociados con el préstamo y los guardamos
+            List<LoanPayment> loanPayments = calculateLoanPayments(loan.getAmount(), loan.getPeriods());
+            loan.setLoanPayments(loanPayments);
+            for (LoanPayment loanPayment : loanPayments) {
+                loanPayment.setLoan(loan);
+            }
             loanRepository.save(loan);
         }
     }
-    private void setClientImage(@NotNull Account bankClient, String imagePath){
-        try {
-            FileInputStream fis = new FileInputStream(imagePath);
-            byte[] imageBin = fis.readAllBytes();
-            SerialBlob serialBlob = new SerialBlob(imageBin);
-            bankClient.setImageFile(serialBlob);
-        } catch (IOException | SQLException e) {
-            throw new RuntimeException(e);
+
+    public Object addLoan(String username, int amount, int periods){
+        Optional<Account> accountOptional = accountRepository.findByNIP(username);
+        if (accountOptional.isPresent()){
+            String accountNIP = accountOptional.get().getNIP();
+            if (amount < 0){
+                return "negative amount";
+            }
+            if (periods < 1){
+                return "negative periods";
+            }
+            // Adding to the DB the loan
+            Loan loan = new Loan();
+            loan.setClientID(accountNIP);
+            loan.setAmount(amount);
+            loan.setInterest_rate(interestRate);
+            loan.setPeriods(periods);
+            LocalDateTime currentDateTime = LocalDateTime.now();
+            DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-M-d HH:mm");
+            String formattedDateTime = currentDateTime.format(formatter);
+            loan.setDate(formattedDateTime);
+
+            // Aquí creamos los pagos de préstamos asociados con el préstamo y los guardamos
+            List<LoanPayment> loanPayments = calculateLoanPayments(amount, periods);
+            for (LoanPayment loanPayment : loanPayments) {
+                loanPayment.setLoan(loan);
+            }
+            loan.setLoanPayments(loanPayments);
+
+            loanRepository.save(loan);
+            return loan;
         }
+        return "user not exists";
+    }
+
+    private List<LoanPayment> calculateLoanPayments(int amount, int installments) {
+        List<LoanPayment> loanPayments = new ArrayList<>();
+        float monthlyInterestRate = interestRate / 100 / 12;
+        float remainingAmount = amount;
+        for (int i = 0; i < installments; i++) {
+            if (i >= installments) {
+                break;
+            }
+            float interestPayment = remainingAmount * monthlyInterestRate;
+            float principalPayment = (float) amount / installments;
+            LoanPayment payment = new LoanPayment();
+            payment.setPeriod(i + 1);
+            payment.setPrincipal(principalPayment);
+            payment.setInterest(interestPayment);
+            payment.setRemainingAmount(remainingAmount);
+            loanPayments.add(payment);
+            remainingAmount -= principalPayment;
+        }
+        return loanPayments;
     }
 }

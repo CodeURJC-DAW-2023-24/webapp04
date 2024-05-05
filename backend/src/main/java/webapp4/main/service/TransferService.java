@@ -31,23 +31,42 @@ public class TransferService {
         return processedTransferList;
     }
     public Object addTransaction(String username, String receiverIBAN, int amount){
-        Optional<Account> accountOptional = accountRepository.findByNIP(username);
-        if (accountOptional.isPresent()){
-            String accountIBAN = accountOptional.get().getIBAN();
-            // Adding to the DB the transaction
-            Transfer transfer = new Transfer();
-            transfer.setSenderIBAN(accountIBAN);
-            transfer.setReceiverIBAN(receiverIBAN);
-            transfer.setAmount(amount);
-            transfer.setTransferType("transfer");
-            LocalDateTime currentDateTime = LocalDateTime.now();
-            DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-M-d HH:mm");
-            String formattedDateTime = currentDateTime.format(formatter);
-            transfer.setDate(formattedDateTime);
-            transferRepository.save(transfer);
-            return transfer;
+        Optional<Account> senderAccountOptional = accountRepository.findByNIP(username);
+        Optional<Account> receiverAccountOptional = accountRepository.findByIBAN(receiverIBAN);
+        if (senderAccountOptional.isPresent()){
+            if (receiverAccountOptional.isPresent()) {
+                if (amount < 0){
+                    return "negative transfer";
+                }
+                Account senderAccount = senderAccountOptional.get();
+                String senderIBAN = senderAccount.getIBAN();
+                if (!senderAccount.isTransferPosible(amount)){
+                    return "not enough balance";
+                }
+                Account receiverAccount = receiverAccountOptional.get();
+                // Adding to the DB the transaction
+                Transfer transfer = new Transfer();
+                transfer.setSenderIBAN(senderIBAN);
+                transfer.setReceiverIBAN(receiverIBAN);
+                transfer.setAmount(amount);
+                transfer.setTransferType("transfer");
+                LocalDateTime currentDateTime = LocalDateTime.now();
+                DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-M-d HH:mm");
+                String formattedDateTime = currentDateTime.format(formatter);
+                transfer.setDate(formattedDateTime);
+                transferRepository.save(transfer);
+                // Updating accounts balance in DB
+                senderAccount.updateBalance(-amount);
+                receiverAccount.updateBalance(amount);
+                accountRepository.save(senderAccount);
+                accountRepository.save(receiverAccount);
+                return transfer;
+            } else {
+                return "receiver IBAN not exists";
+            }
+        } else {
+            return "user not exists";
         }
-        return "user not exists";
     }
     public void loadAllTransfers(String pathToCSV){
         CSVReader transferCsvReader = new CSVReader(pathToCSV);

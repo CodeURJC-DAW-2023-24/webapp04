@@ -4,13 +4,38 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="072cea6f-8d20-4292-b10f-19e0c5f1ef3e" name="Changes" comment="Added Rest Controller for /api/accounts/personal">
+    <list default="true" id="072cea6f-8d20-4292-b10f-19e0c5f1ef3e" name="Changes" comment="Added balance filed to responseData from controller   /api/accounts/personal">
+      <change afterPath="$PROJECT_DIR$/backend/src/main/java/webapp4/main/controller/RestLoanController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/backend/src/main/java/webapp4/main/model/CreateAccountRequest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/backend/src/main/java/webapp4/main/model/ImagelessAccount.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/backend/src/main/java/webapp4/main/model/LoanPayment.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/index.pb" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/index.pb" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/sonarlint/securityhotspotstore/index.pb" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sonarlint/securityhotspotstore/index.pb" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/src/main/java/webapp4/main/controller/AccountController.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/java/webapp4/main/controller/AccountController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/src/main/java/webapp4/main/controller/AccountCreationController.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/java/webapp4/main/controller/AccountCreationController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/src/main/java/webapp4/main/controller/ChartController.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/java/webapp4/main/controller/ChartController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/src/main/java/webapp4/main/controller/DynamicContentController.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/java/webapp4/main/controller/DynamicContentController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/src/main/java/webapp4/main/controller/ErrorConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/java/webapp4/main/controller/ErrorConfig.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/src/main/java/webapp4/main/controller/LoanRequestController.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/java/webapp4/main/controller/LoanRequestController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/src/main/java/webapp4/main/controller/LoginController.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/java/webapp4/main/controller/LoginController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/src/main/java/webapp4/main/controller/PasswordController.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/java/webapp4/main/controller/PasswordController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/src/main/java/webapp4/main/controller/ProfileController.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/java/webapp4/main/controller/ProfileController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/src/main/java/webapp4/main/controller/ProfileForwardController.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/java/webapp4/main/controller/ProfileForwardController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/src/main/java/webapp4/main/controller/ProfileManagerController.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/java/webapp4/main/controller/ProfileManagerController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/backend/src/main/java/webapp4/main/controller/RestAccountController.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/java/webapp4/main/controller/RestAccountController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/backend/src/main/java/webapp4/main/controller/RestTransferController.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/java/webapp4/main/controller/RestTransferController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/src/main/java/webapp4/main/model/Account.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/java/webapp4/main/model/Account.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/src/main/java/webapp4/main/model/AccountDTO.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/java/webapp4/main/model/AccountDTO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/src/main/java/webapp4/main/model/Loan.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/java/webapp4/main/model/Loan.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/src/main/java/webapp4/main/model/Transfer.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/java/webapp4/main/model/Transfer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/src/main/java/webapp4/main/model/UserData.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/java/webapp4/main/model/UserData.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/src/main/java/webapp4/main/repository/LoanRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/java/webapp4/main/repository/LoanRepository.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/backend/src/main/java/webapp4/main/repository/TransferRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/java/webapp4/main/repository/TransferRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/src/main/java/webapp4/main/service/AccountService.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/java/webapp4/main/service/AccountService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/src/main/java/webapp4/main/service/LoanService.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/java/webapp4/main/service/LoanService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/src/main/java/webapp4/main/service/TransferService.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/java/webapp4/main/service/TransferService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/src/main/java/webapp4/main/service/UserDataService.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/java/webapp4/main/service/UserDataService.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -85,6 +110,9 @@
   }
 }</component>
   <component name="RecentsManager">
+    <key name="CreateClassDialog.RecentsKey">
+      <recent name="webapp4.main.model" />
+    </key>
     <key name="CopyFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/backend/src/main/resources/static/public/assets/img" />
     </key>
@@ -338,7 +366,15 @@
       <option name="project" value="LOCAL" />
       <updated>1714837061943</updated>
     </task>
-    <option name="localTasksCounter" value="20" />
+    <task id="LOCAL-00020" summary="Added balance filed to responseData from controller   /api/accounts/personal">
+      <option name="closed" value="true" />
+      <created>1714843262144</created>
+      <option name="number" value="00020" />
+      <option name="presentableId" value="LOCAL-00020" />
+      <option name="project" value="LOCAL" />
+      <updated>1714843262144</updated>
+    </task>
+    <option name="localTasksCounter" value="21" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -374,6 +410,7 @@
     <MESSAGE value="RestSecurityConfig was updated" />
     <MESSAGE value="RestSecurityConfig was updated 2" />
     <MESSAGE value="Added Rest Controller for /api/accounts/personal" />
-    <option name="LAST_COMMIT_MESSAGE" value="Added Rest Controller for /api/accounts/personal" />
+    <MESSAGE value="Added balance filed to responseData from controller   /api/accounts/personal" />
+    <option name="LAST_COMMIT_MESSAGE" value="Added balance filed to responseData from controller   /api/accounts/personal" />
   </component>
 </project>
