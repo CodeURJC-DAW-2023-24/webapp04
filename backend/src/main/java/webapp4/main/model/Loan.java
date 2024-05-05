@@ -1,30 +1,45 @@
 package webapp4.main.model;
 
 import javax.persistence.*;
+import java.util.List;
 
 @Entity
 public class Loan {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long loan_id = null;
+
     @Column(columnDefinition = "TEXT")
-    private String clientID;
+    private String client_id;
     private int amount;
     private float interest_rate;
     private int periods;
     @Column(columnDefinition = "TEXT")
     private String date;
 
+    @OneToMany(mappedBy = "loan", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    private List<LoanPayment> loanPayments;
+
     public Loan() {
         super();
     }
 
-    public String getClientID() {
-        return clientID;
+    // Getters y setters
+
+    public Long getLoan_id() {
+        return loan_id;
     }
 
-    public void setClientID(String clientID) {
-        this.clientID = clientID;
+    public void setLoan_id(Long loan_id) {
+        this.loan_id = loan_id;
+    }
+
+    public String getClientID() {
+        return client_id;
+    }
+
+    public void setClientID(String client_id) {
+        this.client_id = client_id;
     }
 
     public int getAmount() {
@@ -57,5 +72,13 @@ public class Loan {
 
     public void setDate(String date) {
         this.date = date;
+    }
+
+    public List<LoanPayment> getLoanPayments() {
+        return loanPayments;
+    }
+
+    public void setLoanPayments(List<LoanPayment> loanPayments) {
+        this.loanPayments = loanPayments;
     }
 }

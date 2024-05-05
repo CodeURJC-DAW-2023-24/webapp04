@@ -1,11 +1,10 @@
 package webapp4.main.model;
 
-public class AccountDTO {
+public class ImagelessAccount {
     private String nip;
     private String iban;
     private String name;
     private String surname;
-    private String imageBase64;
 
     public String getNip() {
         return nip;
@@ -37,13 +36,5 @@ public class AccountDTO {
 
     public void setSurname(String surname) {
         this.surname = surname;
-    }
-
-    public String getImageBase64() {
-        return imageBase64;
-    }
-
-    public void setImageBase64(String imageBase64) {
-        this.imageBase64 = imageBase64;
     }
 }

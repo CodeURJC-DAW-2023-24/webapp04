@@ -23,7 +23,7 @@ public class UserDataService {
     private UserDataRepository userDataRepository;
     @Autowired
     private AccountService accountService;
-    
+
     public Object registerUser(String inputNIP, String firstName, String lastName, String password, String confirmPassword){
         Optional<Account> accountOptional = accountService.getUserByNIP(inputNIP);
         if (accountOptional.isPresent()){
@@ -36,6 +36,7 @@ public class UserDataService {
                 account.setIBAN(iban);
                 account.setName(firstName);
                 account.setSurname(lastName);
+                account.setBalance(0);
                 accountService.createAccount(account);
                 UserData userData = new UserData();
                 userData.setUsername(inputNIP);

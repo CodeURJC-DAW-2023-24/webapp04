@@ -5,7 +5,7 @@ import javax.persistence.*;
 @Entity
 public class UserData {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id = null;
     @Column(columnDefinition = "TEXT")
     private String username;
