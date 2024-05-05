@@ -14,12 +14,14 @@ import { ShortFooterComponent } from './short-footer/short-footer.component';
 import { TopbarComponent } from './topbar/topbar.component';
 import { FooterComponent } from './footer/footer.component';
 import { ProfilePageComponent } from './profile-page/profile-page.component';
+import { TransferPageComponent } from './transfer-page/transfer-page.component';
 
 const routes: Routes = [
   { path: 'new', component: HomeComponent },
   { path: 'new/login', component: LoginPageComponent },
   { path: 'new/register', component: RegisterPageComponent },
-  { path: 'new/profile', component: ProfilePageComponent}
+  { path: 'new/profile', component: ProfilePageComponent},
+  { path: 'new/transfer', component: TransferPageComponent}
 ];
 
 @NgModule({
@@ -33,7 +35,8 @@ const routes: Routes = [
     ShortFooterComponent,
     TopbarComponent,
     FooterComponent,
-    ProfilePageComponent
+    ProfilePageComponent,
+    TransferPageComponent
   ],
   imports: [
     BrowserModule,
