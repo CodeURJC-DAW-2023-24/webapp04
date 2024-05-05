@@ -27,7 +27,7 @@ public class RestSecurityConfig extends WebSecurityConfigurerAdapter {
 
 	@Autowired
 	private JwtRequestFilter jwtRequestFilter;
-	
+
 	@Autowired
 	private PasswordEncoder passwordEncoder;
 
@@ -41,7 +41,7 @@ public class RestSecurityConfig extends WebSecurityConfigurerAdapter {
 		authProvider.setPasswordEncoder(passwordEncoder);
 		return authProvider;
 	}
-	
+
 	@Override
 	protected void configure(AuthenticationManagerBuilder auth) throws Exception {
 
@@ -67,14 +67,14 @@ public class RestSecurityConfig extends WebSecurityConfigurerAdapter {
 		https.authorizeRequests().antMatchers("/api/refresh").permitAll();
 		https.authorizeRequests().antMatchers("/api/logout").permitAll();
 		https.authorizeRequests().antMatchers("/api/accounts").permitAll();
-		
-        // Private pages
-        https.authorizeRequests().antMatchers("/api/accounts/**").hasAnyRole("USER");
+
+		// Private pages
+		https.authorizeRequests().antMatchers("/api/accounts/**").hasAnyRole("USER");
 		https.authorizeRequests().antMatchers("/loan_request").hasAnyRole("USER");
 		https.authorizeRequests().antMatchers("/loan_visualizer").hasAnyRole("USER");
-        https.authorizeRequests().antMatchers("/api/transfers/{id}").hasAnyRole("ADMIN");
+		https.authorizeRequests().antMatchers("/api/transfers/{id}").hasAnyRole("ADMIN");
 		https.authorizeRequests().antMatchers("/api/transfers").hasAnyRole("ADMIN");
-        https.authorizeRequests().antMatchers("/profile_manager").hasAnyRole("ADMIN");
+		https.authorizeRequests().antMatchers("/profile_manager").hasAnyRole("ADMIN");
 
 		// Disable CSRF protection (it is difficult to implement in REST APIs)
 		https.csrf().disable();

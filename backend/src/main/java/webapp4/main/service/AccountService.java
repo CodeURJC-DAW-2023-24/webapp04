@@ -51,16 +51,22 @@ public class AccountService {
         CSVReader accountCsvReader = new CSVReader(pathToCSV);
         List<List<String>> accRecords = accountCsvReader.readLines();
         for (int i = 1; i < accRecords.size(); i++) {
+            List<String> record = accRecords.get(i);
+            if (record.size() < 5) {
+                // La fila no tiene suficientes elementos, ignórala
+                continue;
+            }
             Account account = new Account();
-            account.setNIP(accRecords.get(i).get(0));
-            account.setIBAN(accRecords.get(i).get(1));
-            account.setName(accRecords.get(i).get(2));
-            account.setSurname(accRecords.get(i).get(3));
-            account.setBalance(Integer.parseInt(accRecords.get(i).get(4)));
+            account.setNIP(record.get(0));
+            account.setIBAN(record.get(1));
+            account.setName(record.get(2));
+            account.setSurname(record.get(3));
+            account.setBalance(Integer.parseInt(record.get(4)));
             setClientImage(account, "static/Client_profile_pics/" + account.getNIP() + ".jpeg");
             accountRepository.save(account);
         }
     }
+
     public void setClientImage(@NotNull Account bankClient, String imagePath) {
         try {
             InputStream inputStream = new ClassPathResource(imagePath).getInputStream();

@@ -1,4 +1,6 @@
 
-\
-java:S11923"FDefine a constant instead of duplicating this literal "ADMIN" 3 times.(üö•þ
-t	java:S120"ZRename this package name to match the regular expression '^[a-z_]+(\.[a-z_][a-z0-9_]*)*$'.(šæ»Êýÿÿÿÿ
+‰
+java:S11923"FDefine a constant instead of duplicating this literal "ADMIN" 3 times.(üö•þ8øøºÇô1J$42c54a3b-c1bb-4ec4-a67b-b4775fcd000f
+š	java:S120"ZRename this package name to match the regular expression '^[a-z_]+(\.[a-z_][a-z0-9_]*)*$'.(šæ»ÊýÿÿÿÿJ$3a18382e-9a3c-47cb-94e5-7d3852143c21
+…
+java:S6813"BRemove this field injection and use constructor injection instead.(êæÄÞ8„þÊÄô1J$3d6dfa9c-90fd-4047-9104-8b0709f84718
