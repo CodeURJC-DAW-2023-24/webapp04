@@ -30,15 +30,15 @@ import io.jsonwebtoken.UnsupportedJwtException;
 
 @Component
 public class JwtTokenProvider {
-	
+
 	private static final Logger LOG = LoggerFactory.getLogger(JwtRequestFilter.class);
-	
+
 	@Value("${jwt.secret}")
 	private String jwtSecret;
-	
+
 	private static long JWT_EXPIRATION_IN_MS = 5400000;
 	private static Long REFRESH_TOKEN_EXPIRATION_MSEC = 10800000l;
-	
+
 	@Autowired
 	private UserDetailsService userDetailsService;
 

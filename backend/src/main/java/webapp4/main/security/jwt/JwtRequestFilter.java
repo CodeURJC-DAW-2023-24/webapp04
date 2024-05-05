@@ -22,7 +22,7 @@ import org.springframework.web.filter.OncePerRequestFilter;
 
 @Component
 public class JwtRequestFilter extends OncePerRequestFilter {
-	
+
 	private static final Logger LOG = LoggerFactory.getLogger(JwtRequestFilter.class);
 
 	@Autowired
@@ -33,22 +33,22 @@ public class JwtRequestFilter extends OncePerRequestFilter {
 
 	@Override
 	protected void doFilterInternal(HttpServletRequest request, HttpServletResponse response,
-			FilterChain filterChain) throws ServletException, IOException {
+									FilterChain filterChain) throws ServletException, IOException {
 
 		try {
 			String token = getJwtToken(request, true);
-			
+
 			if (StringUtils.hasText(token) && jwtTokenProvider.validateToken(token)) {
-				
+
 				String username = jwtTokenProvider.getUsername(token);
-				
+
 				UserDetails userDetails = userDetailsService.loadUserByUsername(username);
-				
+
 				UsernamePasswordAuthenticationToken authentication = new UsernamePasswordAuthenticationToken(
 						userDetails, null, userDetails.getAuthorities());
-				
+
 				authentication.setDetails(new WebAuthenticationDetailsSource().buildDetails(request));
-				
+
 				SecurityContextHolder.getContext().setAuthentication(authentication);
 			}
 		} catch (Exception ex) {
@@ -56,10 +56,10 @@ public class JwtRequestFilter extends OncePerRequestFilter {
 		}
 
 		filterChain.doFilter(request, response);
-	}	
+	}
 
 	private String getJwtToken(HttpServletRequest request, boolean fromCookie) {
-		
+
 		if (fromCookie) {
 			return getJwtFromCookie(request);
 		} else {
@@ -68,11 +68,11 @@ public class JwtRequestFilter extends OncePerRequestFilter {
 	}
 
 	private String getJwtFromRequest(HttpServletRequest request) {
-		
+
 		String bearerToken = request.getHeader("Authorization");
-		
+
 		if (StringUtils.hasText(bearerToken) && bearerToken.startsWith("Bearer ")) {
-		
+
 			String accessToken = bearerToken.substring(7);
 			if (accessToken == null) {
 				return null;
@@ -84,13 +84,13 @@ public class JwtRequestFilter extends OncePerRequestFilter {
 	}
 
 	private String getJwtFromCookie(HttpServletRequest request) {
-		
+
 		Cookie[] cookies = request.getCookies();
-		
+
 		if (cookies == null) {
 			return "";
 		}
-		
+
 		for (Cookie cookie : cookies) {
 			if (JwtCookieManager.ACCESS_TOKEN_COOKIE_NAME.equals(cookie.getName())) {
 				String accessToken = cookie.getValue();

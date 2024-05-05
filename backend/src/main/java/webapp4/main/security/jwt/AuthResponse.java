@@ -52,5 +52,4 @@ public class AuthResponse {
 	public String toString() {
 		return "LoginResponse [status=" + status + ", message=" + message + ", error=" + error + "]";
 	}
-
 }

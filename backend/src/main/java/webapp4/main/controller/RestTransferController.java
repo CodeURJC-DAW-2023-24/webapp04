@@ -3,6 +3,7 @@ package webapp4.main.controller;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
+import org.springframework.http.HttpStatus;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.ui.Model;
@@ -18,6 +19,7 @@ import webapp4.main.model.Transfer;
 import webapp4.main.repository.AccountRepository;
 import webapp4.main.repository.TransferRepository;
 import webapp4.main.service.TransferService;
+import webapp4.main.transferDataUtils.TransferRequest;
 
 import javax.servlet.http.HttpServletRequest;
 import java.net.URI;
@@ -27,6 +29,7 @@ import java.util.Optional;
 
 import static org.springframework.web.servlet.support.ServletUriComponentsBuilder.fromCurrentRequest;
 
+@CrossOrigin(origins = "*")
 @RestController
 public class RestTransferController {
     @Autowired
@@ -93,6 +96,32 @@ public class RestTransferController {
             return ResponseEntity.badRequest().build();
         }
     }
+
+    @Operation(summary = "Make an user transfer")
+    @ApiResponse(
+            responseCode = "200",
+            description = "transfer success",
+            content = @Content(mediaType = "application/json", schema = @Schema(implementation = Transfer.class))
+    )
+    @ApiResponse(responseCode = "404", description = "Transfer Repository not found", content = @Content)
+    @ApiResponse(responseCode = "500", description = "Internal server error", content = @Content)
+    @ApiResponse(responseCode = "400", description = "Bad request", content = @Content)
+    @PostMapping("/api/make_transfer")
+    public ResponseEntity<?> createPersonalTransfer(@RequestBody TransferRequest transferRequest) {
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+        Optional<Account> accountOptional = accountRepository.findByNIP(authentication.getName());
+        if (accountOptional.isPresent()){
+            Optional<Account> receiverOptional = accountRepository.findByIBAN(transferRequest.getReceiverIban());
+            if (receiverOptional.isPresent()){
+                transferService.addTransaction(authentication.getName(), transferRequest.getReceiverIban(), Integer.parseInt(transferRequest.getAmount()));
+                return ResponseEntity.ok("Transfer success");
+            }
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Receiver account not found");
+        } else {
+            return ResponseEntity.badRequest().build();
+        }
+    }
+
 
     @Operation (summary = "Make an user transfer")
     @ApiResponse(

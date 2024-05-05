@@ -73,6 +73,7 @@ public class RestAccountController {
             }
         }
     }
+
     @Operation (summary = "Get the registered account data")
     @ApiResponse(
             responseCode = "200",
