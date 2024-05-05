@@ -33,12 +33,13 @@ export class ProfilePageComponent {
       next: (response) => {
         if (response.body) {
           const data = response.body as any;
-        this.client_name = data.name + " " + data.surname;
-        this.client_iban = data.iban;
-        this.account_id = data.nip;
-        this.client_balance = data.balance || 0;
-        console.log("Everything is OK");
-        this.loadMoreTransfers(0, 10);
+          console.log(data);
+          this.client_name = data.name + " " + data.surname;
+          this.client_iban = data.iban;
+          this.account_id = data.nip;
+          this.client_balance = data.balance || 0;
+          console.log("Everything is OK");
+          this.loadMoreTransfers(0, 10);
         }
       },
       error: (error) => {
