@@ -12,8 +12,8 @@ export class AccountsService {
   function loadMoreAccounts(startIndex: number, chunkSize: number): Observable<Account[]> {
       return this.http.get<Account[]>(`/account_load?startIndex=${startIndex}&chunkSize=${chunkSize}`)
 
+  }
 }
-
 export interface Account {
   nip: string;
   iban: string;
