@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<app-head></app-head>
+
+<body>
+<!-- ======= Header ======= -->
+<header id="header" class="d-flex align-items-center">
+  <div class="container d-flex align-items-center justify-content-between">
+    <h1 class="logo"><a href="/logout">URJC Bank</a></h1>
+    <!--<a href="index.html" class="logo"><img src="/URJC_Bank/public/assets/img/URJC_bank.png" alt="" class="img-fluid"></a> -->
+    <nav id="navbar" class="navbar">
+      <ul>
+        <li><a class="nav-link scrollto" href="/profile_manager">Home</a></li>
+        <li><a class="nav-link scrollto " href="/transfers_manager">Transfers</a></li>
+        <li><a class="nav-link scrollto active" href="/account">Users</a></li>
+        <li><a class="nav-link scrollto " href="/logout">Log Out</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+<div class="accounts">
+  <div *ngIf="accounts.length === 0" id="no_accounts_loaded">
+    No se han cargado cuentas.
+  </div>
+  <div *ngFor="let account of accounts" class="account">
+    <dl class="account-details">
+      <div>
+        <dt>{{ account.nip }}</dt>
+        <dd>NIP</dd>
+      </div>
+      <div>
+        <dt>{{ account.iban }}</dt>
+        <dd>IBAN</dd>
+      </div>
+      <div>
+        <dt>{{ account.name }}</dt>
+        <dd>Name</dd>
+      </div>
+      <div>
+        <dt>{{ account.surname }}</dt>
+        <dd>Surname</dd>
+      </div>
+      <div>
+        <img [src]="'data:image/jpeg;base64,' + account.imageBase64" style="width: 50px; height: 50px;"/>
+      </div>
+    </dl>
+  </div>
+</div>
+
+<button id="account_button" (click)="onLoadMoreAccounts()">Cargar más cuentas</button>
+
+<!-- ======= Footer ======= -->
+<app-short-footer></app-short-footer>
+
+<script src="https://unpkg.com/phosphor-icons"></script>
+
+<!-- Vendor JS Files -->
+<script src="public/assets/vendor/aos/aos.js"></script>
+<script src="public/assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+<script src="public/assets/vendor/glightbox/js/glightbox.min.js"></script>
+<script src="public/assets/vendor/isotope-layout/isotope.pkgd.min.js"></script>
+<script src="public/assets/vendor/swiper/swiper-bundle.min.js"></script>
+<script src="public/assets/vendor/php-email-form/validate.js"></script>
+<script src="public/js/account.js"></script>
+</body>
+
+</html>

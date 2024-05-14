@@ -15,6 +15,8 @@ import { TopbarComponent } from './topbar/topbar.component';
 import { FooterComponent } from './footer/footer.component';
 import { ProfilePageComponent } from './profile-page/profile-page.component';
 import { TransferPageComponent } from './transfer-page/transfer-page.component';
+import { AccountListComponent } from './account-list/account-list.component';
+import { TransfersManagerComponent } from './transfers-manager/transfers-manager.component';
 
 const routes: Routes = [
   { path: 'new', component: HomeComponent },
@@ -36,7 +38,9 @@ const routes: Routes = [
     TopbarComponent,
     FooterComponent,
     ProfilePageComponent,
-    TransferPageComponent
+    TransferPageComponent,
+    AccountListComponent,
+    TransfersManagerComponent
   ],
   imports: [
     BrowserModule,

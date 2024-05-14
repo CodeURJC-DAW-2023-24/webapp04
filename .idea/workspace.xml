@@ -4,9 +4,22 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="072cea6f-8d20-4292-b10f-19e0c5f1ef3e" name="Changes" comment="Transfers in angular update 3">
+    <list default="true" id="072cea6f-8d20-4292-b10f-19e0c5f1ef3e" name="Changes" comment="Docker error solved">
+      <change afterPath="$PROJECT_DIR$/frontend/src/app/account-list/account-list.component.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/frontend/src/app/account-list/account-list.component.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/frontend/src/app/account-list/account-list.component.spec.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/frontend/src/app/account-list/account-list.component.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/frontend/src/app/services/account.service.spec.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/frontend/src/app/services/accounts.service.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/frontend/src/app/services/transfers-manager.service.spec.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/frontend/src/app/services/transfers-manager.service.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/frontend/src/app/transfers-manager/transfers-manager.component.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/frontend/src/app/transfers-manager/transfers-manager.component.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/frontend/src/app/transfers-manager/transfers-manager.component.spec.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/frontend/src/app/transfers-manager/transfers-manager.component.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/src/main/java/webapp4/main/controller/RestTransferController.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/java/webapp4/main/controller/RestTransferController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/angular.json" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/angular.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/app/app.module.ts" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/app/app.module.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -24,23 +37,29 @@
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$" value="Angular" />
+        <entry key="$PROJECT_DIR$" value="main" />
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="GitHubPullRequestSearchHistory">{
+  &quot;history&quot;: [
+    {
+      &quot;state&quot;: &quot;OPEN&quot;
+    }
+  ],
   &quot;lastFilter&quot;: {
-    &quot;state&quot;: &quot;OPEN&quot;,
-    &quot;assignee&quot;: &quot;Cristian1A&quot;
+    &quot;state&quot;: &quot;OPEN&quot;
   }
 }</component>
-  <component name="GithubPullRequestsUISettings">{
-  &quot;selectedUrlAndAccountId&quot;: {
-    &quot;url&quot;: &quot;https://github.com/CodeURJC-DAW-2023-24/webapp04.git&quot;,
-    &quot;accountId&quot;: &quot;7acf7224-f255-4019-ae04-142143c76302&quot;
-  }
-}</component>
+  <component name="GithubPullRequestsUISettings">
+    <option name="selectedUrlAndAccountId">
+      <UrlAndAccount>
+        <option name="accountId" value="600ce02f-3f67-429e-9aca-03ecdb49e0cd" />
+        <option name="url" value="https://github.com/CodeURJC-DAW-2023-24/webapp04.git" />
+      </UrlAndAccount>
+    </option>
+  </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
   </component>
@@ -55,33 +74,36 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "ASKED_ADD_EXTERNAL_FILES": "true",
-    "ASKED_SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "Application.BackendApplication.executor": "Run",
-    "Application.main.controller.BackendApplication.executor": "Run",
-    "Application.webapp4.main.BackendApplication.executor": "Run",
-    "DefaultHtmlFileTemplate": "HTML File",
-    "JUnit.BackendApplicationTests.executor": "Run",
-    "JUnit.CSVReaderTest.executor": "Run",
-    "JUnit.CSVReaderTest.getFirstElementTest.executor": "Run",
-    "JUnit.CSVReaderTest.nonNullListTest.executor": "Run",
-    "JUnit.CSVReaderTest.readerTest.executor": "Run",
-    "JUnit.CSVTest.myTest.executor": "Run",
-    "JUnit.DBInitializerTest.csvIsFoundTest.executor": "Run",
-    "JUnit.DBInitializerTest.executor": "Run",
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "SONARLINT_PRECOMMIT_ANALYSIS": "true",
-    "git-widget-placeholder": "Angular2",
-    "kotlin-language-version-configured": "true",
-    "last_opened_file_path": "/home/cris/Documents/3GIS - Desarrollo de Aplicaciones Web/webapp04/backend/src/main/resources/static/public/assets/img"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;ASKED_ADD_EXTERNAL_FILES&quot;: &quot;true&quot;,
+    &quot;ASKED_SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
+    &quot;Application.BackendApplication.executor&quot;: &quot;Run&quot;,
+    &quot;Application.main.controller.BackendApplication.executor&quot;: &quot;Run&quot;,
+    &quot;Application.webapp4.main.BackendApplication.executor&quot;: &quot;Run&quot;,
+    &quot;DefaultHtmlFileTemplate&quot;: &quot;HTML File&quot;,
+    &quot;JUnit.BackendApplicationTests.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.CSVReaderTest.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.CSVReaderTest.getFirstElementTest.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.CSVReaderTest.nonNullListTest.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.CSVReaderTest.readerTest.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.CSVTest.myTest.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.DBInitializerTest.csvIsFoundTest.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.DBInitializerTest.executor&quot;: &quot;Run&quot;,
+    &quot;Maven.backend [validate].executor&quot;: &quot;Run&quot;,
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
+    &quot;SONARLINT_PRECOMMIT_ANALYSIS&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;Angular2&quot;,
+    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/Julio/IdeaProjects/webapp040&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/backend/src/main/java/webapp4/main" />
       <recent name="$PROJECT_DIR$/backend/src/main/resources/static/public/assets/img" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
@@ -165,13 +187,20 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Application.BackendApplication" />
-        <item itemvalue="JUnit.BackendApplicationTests" />
-        <item itemvalue="JUnit.CSVReaderTest" />
         <item itemvalue="JUnit.DBInitializerTest" />
         <item itemvalue="JUnit.CSVReaderTest.nonNullListTest" />
+        <item itemvalue="JUnit.CSVReaderTest" />
+        <item itemvalue="JUnit.BackendApplicationTests" />
+        <item itemvalue="Application.BackendApplication" />
       </list>
     </recent_temporary>
+  </component>
+  <component name="SharedIndexes">
+    <attachedChunks>
+      <set>
+        <option value="jdk-21.0.2-openjdk-21.0.2-4caba194b151-4f524021" />
+      </set>
+    </attachedChunks>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
@@ -286,75 +315,16 @@
       <option name="project" value="LOCAL" />
       <updated>1711633584676</updated>
     </task>
-    <task id="LOCAL-00014" summary="RestLoginController update">
+    <task id="LOCAL-00014" summary="Docker error solved">
       <option name="closed" value="true" />
-      <created>1713109799031</created>
+      <created>1713174465931</created>
       <option name="number" value="00014" />
       <option name="presentableId" value="LOCAL-00014" />
       <option name="project" value="LOCAL" />
-      <updated>1713109799031</updated>
+      <updated>1713174465931</updated>
     </task>
-    <task id="LOCAL-00015" summary="jwt package update">
-      <option name="closed" value="true" />
-      <created>1713173518438</created>
-      <option name="number" value="00015" />
-      <option name="presentableId" value="LOCAL-00015" />
-      <option name="project" value="LOCAL" />
-      <updated>1713173518438</updated>
-    </task>
-    <task id="LOCAL-00016" summary="jwt package update 2">
-      <option name="closed" value="true" />
-      <created>1713174403011</created>
-      <option name="number" value="00016" />
-      <option name="presentableId" value="LOCAL-00016" />
-      <option name="project" value="LOCAL" />
-      <updated>1713174403011</updated>
-    </task>
-    <task id="LOCAL-00017" summary="RestSecurityConfig was updated">
-      <option name="closed" value="true" />
-      <created>1713174888365</created>
-      <option name="number" value="00017" />
-      <option name="presentableId" value="LOCAL-00017" />
-      <option name="project" value="LOCAL" />
-      <updated>1713174888365</updated>
-    </task>
-    <task id="LOCAL-00018" summary="RestSecurityConfig was updated 2">
-      <option name="closed" value="true" />
-      <created>1713175696538</created>
-      <option name="number" value="00018" />
-      <option name="presentableId" value="LOCAL-00018" />
-      <option name="project" value="LOCAL" />
-      <updated>1713175696538</updated>
-    </task>
-    <task id="LOCAL-00019" summary="Added Rest Controller for /api/accounts/personal">
-      <option name="closed" value="true" />
-      <created>1714837061943</created>
-      <option name="number" value="00019" />
-      <option name="presentableId" value="LOCAL-00019" />
-      <option name="project" value="LOCAL" />
-      <updated>1714837061943</updated>
-    </task>
-    <task id="LOCAL-00020" summary="Transfers in angular update">
-      <option name="closed" value="true" />
-      <created>1714924715626</created>
-      <option name="number" value="00020" />
-      <option name="presentableId" value="LOCAL-00020" />
-      <option name="project" value="LOCAL" />
-      <updated>1714924715626</updated>
-    </task>
-    <option name="localTasksCounter" value="21" />
+    <option name="localTasksCounter" value="15" />
     <servers />
-  </component>
-  <component name="Vcs.Log.Tabs.Properties">
-    <option name="TAB_STATES">
-      <map>
-        <entry key="MAIN">
-          <value>
-            <State />
-          </value>
-        </entry>
-      </map>
-    </option>
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
@@ -372,14 +342,6 @@
     <MESSAGE value="Updated DBInitializer" />
     <MESSAGE value="Error unsolved&#10;- Cannot run web container, does not detect mysql db" />
     <MESSAGE value="Docker error solved" />
-    <MESSAGE value="RestLoginController update" />
-    <MESSAGE value="jwt package update" />
-    <MESSAGE value="jwt package update 2" />
-    <MESSAGE value="RestSecurityConfig was updated" />
-    <MESSAGE value="RestSecurityConfig was updated 2" />
-    <MESSAGE value="Added Rest Controller for /api/accounts/personal" />
-    <MESSAGE value="Transfers in angular update" />
-    <MESSAGE value="Transfers in angular update 3" />
-    <option name="LAST_COMMIT_MESSAGE" value="Transfers in angular update 3" />
+    <option name="LAST_COMMIT_MESSAGE" value="Docker error solved" />
   </component>
 </project>
