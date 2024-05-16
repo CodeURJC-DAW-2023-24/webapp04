@@ -251,11 +251,11 @@ For this phase I was responsible on making the templates for make the applicatio
 
 ## API REST documentation
 
-<>
+https://localhost:8443/swagger-ui.html
 
 ## Class diagram update
 
-<>![image](https://github.com/CodeURJC-DAW-2023-24/webapp04/assets/73952564/dfac254f-85ac-4c29-9065-e71c59e0874c)
+![image](https://github.com/CodeURJC-DAW-2023-24/webapp04/assets/73952564/dfac254f-85ac-4c29-9065-e71c59e0874c)
 
 
 ## Running the dockerized application
