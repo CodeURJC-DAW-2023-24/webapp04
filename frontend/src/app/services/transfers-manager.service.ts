@@ -9,7 +9,7 @@ export class TransfersManagerService {
 
   constructor(private http: HttpClient) { }
 
-  loadMoreTransfers(startIndex: number, chunkSize: number): Observable<Account[]> {
+  loadMoreTransfers(startIndex: number, chunkSize: number): Observable<Transfer[]> {
     return this.http.get<Transfer[]>(`/api/transfers?startIndex=${startIndex}&chunkSize=${chunkSize}`);
   }
 }

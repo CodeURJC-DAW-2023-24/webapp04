@@ -1,17 +1,20 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Router, ActivatedRoute } from '@angular/router';
-import { AccountsService, Account } from './services/accounts.service';
+import { Router } from '@angular/router';
+import { AccountsService, Account } from '../services/accounts.service';
 
 @Component({
-  selector: 'app-accounts',
-  templateUrl: './accounts.component.html',
-  styleUrls: ['./accounts.component.css']
+  selector: 'app-account-list',
+  templateUrl: './account-list.component.html',
+  styleUrls: ['./account-list.component.css']
 })
-export class AccountsComponent implements OnInit {
+export class AccountListComponent implements OnInit {
   accounts: Account[] = [];
 
-  constructor(private accountsService: AccountsService) { }
+  constructor(
+    private accountsService: AccountsService,
+    private http: HttpClient,
+    private router: Router) { }
 
   ngOnInit(): void {
     this.loadInitialAccounts();
@@ -31,26 +34,16 @@ export class AccountsComponent implements OnInit {
       this.accounts = this.accounts.concat(data);
     });
   }
-}
-
-  onLoadMoreClick(): void {
-    const chunkSize = 10;
-    const startIndex = Math.floor(this.accounts.length / 10) + 1;
-    console.log(this.accounts);
-    console.log(startIndex);
-    this.loadMoreAccounts(startIndex, chunkSize);
-  }
-
   logout(): void {
     const body = {};
     this.http.post('/api/logout', body, { observe: 'response' }).subscribe({
-      next: (response) => {
+      next: response => {
         console.log('Logout exitoso');
         this.router.navigate(['new/login']);
       },
-      error: (error) => {
+      error: error => {
         console.error('Error en logout:', error);
       }
-    })
+    });
   }
 }

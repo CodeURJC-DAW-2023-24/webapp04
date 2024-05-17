@@ -23,7 +23,11 @@ const routes: Routes = [
   { path: 'new/login', component: LoginPageComponent },
   { path: 'new/register', component: RegisterPageComponent },
   { path: 'new/profile', component: ProfilePageComponent},
-  { path: 'new/transfer', component: TransferPageComponent}
+  { path: 'new/transfer', component: TransferPageComponent},
+  { path: 'new/accounts', component: AccountListComponent},
+  { path: 'new/transfers', component: TransfersManagerComponent}
+
+
 ];
 
 @NgModule({
