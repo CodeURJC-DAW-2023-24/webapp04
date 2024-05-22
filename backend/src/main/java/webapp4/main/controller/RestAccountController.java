@@ -83,6 +83,7 @@ public class RestAccountController {
             }
         }
     }
+
     @Operation (summary = "Get an account by id")
     @ApiResponse(
             responseCode = "200",

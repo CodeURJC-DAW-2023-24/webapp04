@@ -15,6 +15,7 @@ import { ShortFooterComponent } from './components/short-footer/short-footer.com
 import { TopbarComponent } from './components/topbar/topbar.component';
 import { TransferPageComponent } from './components/transfer-page/transfer-page.component';
 import { TransfersManagerComponent } from './components/transfers-manager/transfers-manager.component';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -34,7 +35,8 @@ import { TransfersManagerComponent } from './components/transfers-manager/transf
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]
