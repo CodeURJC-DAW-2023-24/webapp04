@@ -7,9 +7,9 @@ import { UserService } from '../../services/user.service';
   styleUrl: './login-page.component.css'
 })
 export class LoginPageComponent {
-  constructor(private userSerice: UserService) {}
+  constructor(private userService: UserService) {}
 
   onSubmit(username: string, password: string): void {
-    this.userSerice.login(username, password)
+    this.userService.login(username, password)
   }
 }
