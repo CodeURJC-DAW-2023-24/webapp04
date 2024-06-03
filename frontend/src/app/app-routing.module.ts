@@ -10,6 +10,8 @@ import { Error404Component } from './components/error-404/error-404.component';
 import { AccountListComponent } from './components/account-list/account-list.component';
 import { TransfersManagerComponent } from './components/transfers-manager/transfers-manager.component';
 import { TransferPageComponent } from './components/transfer-page/transfer-page.component';
+import { LoanRequestPageComponent } from './components/loan-request-page/loan-request-page.component';
+import { LoanVisualizerPageComponent } from './components/loan-visualizer-page/loan-visualizer-page.component';
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
@@ -22,6 +24,8 @@ const routes: Routes = [
   { path: 'transfer', component: TransferPageComponent },
   { path: 'transfers', component: TransfersManagerComponent },
   { path: 'accounts', component: AccountListComponent },
+  { path: 'loan_request', component: LoanRequestPageComponent},
+  {path: 'loan_visualizer', component: LoanVisualizerPageComponent },
   { path: '**', redirectTo: 'home' }
 ];
 

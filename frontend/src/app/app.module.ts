@@ -20,6 +20,8 @@ import { Error401Component } from './components/error-401/error-401.component';
 import { Error500Component } from './components/error-500/error-500.component';
 import { HeaderErrorComponent } from './components/header-error/header-error.component';
 import { Error404Component } from './components/error-404/error-404.component';
+import { LoanRequestPageComponent } from './components/loan-request-page/loan-request-page.component';
+import { LoanVisualizerPageComponent } from './components/loan-visualizer-page/loan-visualizer-page.component';
 
 @NgModule({
   declarations: [
@@ -39,7 +41,9 @@ import { Error404Component } from './components/error-404/error-404.component';
     Error401Component,
     Error500Component,
     HeaderErrorComponent,
-    Error404Component
+    Error404Component,
+    LoanRequestPageComponent,
+    LoanVisualizerPageComponent
   ],
   imports: [
     BrowserModule,
