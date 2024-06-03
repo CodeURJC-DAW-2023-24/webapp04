@@ -16,6 +16,10 @@ import { TopbarComponent } from './components/topbar/topbar.component';
 import { TransferPageComponent } from './components/transfer-page/transfer-page.component';
 import { TransfersManagerComponent } from './components/transfers-manager/transfers-manager.component';
 import { HttpClientModule } from '@angular/common/http';
+import { Error401Component } from './components/error-401/error-401.component';
+import { Error500Component } from './components/error-500/error-500.component';
+import { HeaderErrorComponent } from './components/header-error/header-error.component';
+import { Error404Component } from './components/error-404/error-404.component';
 
 @NgModule({
   declarations: [
@@ -31,7 +35,11 @@ import { HttpClientModule } from '@angular/common/http';
     ShortFooterComponent,
     TopbarComponent,
     TransferPageComponent,
-    TransfersManagerComponent
+    TransfersManagerComponent,
+    Error401Component,
+    Error500Component,
+    HeaderErrorComponent,
+    Error404Component
   ],
   imports: [
     BrowserModule,

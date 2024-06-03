@@ -11,13 +11,9 @@ export class UserService {
 
   login(username: string, password: string){
     const body = { username, password };
-    console.log(body);
-    this.router.navigate(["/profile"])
     this.http.post('/api/login', body, { observe: 'response' }).subscribe({
       next: (response) => {
-        console.log(username);
-        console.log(response);
-        this.router.navigate(['/profile']);
+        this.router.navigate(['/profile', username]);
       },
       error: (error) => {
         this.router.navigate(["/error"])
