@@ -7,6 +7,8 @@ import { ProfilePageComponent } from './components/profile-page/profile-page.com
 import { Error401Component } from './components/error-401/error-401.component';
 import { Error500Component } from './components/error-500/error-500.component';
 import { Error404Component } from './components/error-404/error-404.component';
+import { AccountListComponent } from './components/account-list/account-list.component';
+import { TransfersManagerComponent } from './components/transfers-manager/transfers-manager.component';
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
@@ -16,6 +18,9 @@ const routes: Routes = [
   { path: 'error-404', component: Error404Component},
   { path: 'error-401', component: Error401Component},
   { path: 'error-500', component: Error500Component},
+  { path: 'profile', component: ProfilePageComponent },
+  { path: 'transfers', component: TransfersManagerComponent },
+  { path: 'accounts', component: AccountListComponent },
   { path: '**', redirectTo: 'home' }
 ];
 
