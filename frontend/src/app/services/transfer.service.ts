@@ -12,17 +12,18 @@ export class TransferService {
 
   make_transfer(receiver_iban: string, amount: string){
     const body = { receiver_iban, amount };
-    
-    this.http.post('/api/make_transfer', body, { observe: 'response' }).subscribe({
+    console.log(body);
+    this.http.post('/api/accounts/transfer', body, { observe: 'response' }).subscribe({
       next: (response) => {
         console.log(response);
-        this.router.navigate(['new/profile']);
+        console.log("Transacción realizada");
       },
       error: (error) => {
         console.log("Error occurred while making transfer");
         console.log(error);
       }
     });
+    this.router.navigate(['profile'])
   }
 
 }
