@@ -93,12 +93,11 @@ public class RestAccountController {
     @ApiResponse(responseCode = "404", description = "Account not found", content = @Content)
     @ApiResponse(responseCode = "500", description = "Internal server error", content = @Content)
     @ApiResponse(responseCode = "400", description = "Bad request", content = @Content)
-    @GetMapping("/api/accounts/{id}")
-    public ResponseEntity<ImagelessAccount> getAccount(@PathVariable String id){
+    @GetMapping("/api/accounts/account")
+    public ResponseEntity<ImagelessAccount> getAccount(){
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
         String username = authentication.getName();
-        if (id.equals(username)) {
-            Optional<Account> accountOptional = accountRepository.findByNIP(id);
+        Optional<Account> accountOptional = accountRepository.findByNIP(username);
             if (accountOptional.isPresent()) {
                 Account account = accountOptional.get();
                 ImagelessAccount imagelessAccount = accountService.accountWithoutImage(account);
@@ -106,9 +105,6 @@ public class RestAccountController {
             } else {
                 return ResponseEntity.notFound().build();
             }
-        } else {
-            return ResponseEntity.badRequest().build();
-        }
     }
 
     @Operation

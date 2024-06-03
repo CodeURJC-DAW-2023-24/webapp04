@@ -13,7 +13,7 @@ export class UserService {
     const body = { username, password };
     this.http.post('/api/login', body, { observe: 'response' }).subscribe({
       next: (response) => {
-        this.router.navigate(['/profile', username]);
+        this.router.navigate(['/profile']);
       },
       error: (error) => {
         this.router.navigate(["/error"])

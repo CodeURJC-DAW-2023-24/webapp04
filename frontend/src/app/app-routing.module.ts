@@ -14,7 +14,7 @@ const routes: Routes = [
   { path: '', component: HomeComponent },
   { path: 'login', component: LoginPageComponent },
   { path: 'register', component: RegisterPageComponent },
-  { path: 'profile/:id', component: ProfilePageComponent },
+  { path: 'profile', component: ProfilePageComponent },
   { path: 'error-404', component: Error404Component},
   { path: 'error-401', component: Error401Component},
   { path: 'error-500', component: Error500Component},

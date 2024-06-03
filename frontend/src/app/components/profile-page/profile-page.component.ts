@@ -26,16 +26,11 @@ export class ProfilePageComponent {
   }
 
   ngOnInit() {
-    this.route.paramMap.subscribe(params => {
-      const userId = params.get('id');
-      if (userId) {
-        this.fetchProfileData(userId);
-      }
-    });
+    this.fetchProfileData();
   }
 
-  fetchProfileData(username: string) {
-    this.http.get(`/api/accounts/${username}`, { observe: 'response' }).subscribe({
+  fetchProfileData() {
+    this.http.get('/api/accounts/account', { observe: 'response' }).subscribe({
       next: (response) => {
         if (response.body) {
           const data = response.body as any;
