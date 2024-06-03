@@ -26,11 +26,16 @@ export class ProfilePageComponent {
   }
 
   ngOnInit() {
-    this.fetchProfileData();
+    this.route.paramMap.subscribe(params => {
+      const userId = params.get('id');
+      if (userId) {
+        this.fetchProfileData(userId);
+      }
+    });
   }
 
-  fetchProfileData() {
-    this.http.get('/api/accounts/personal', { observe: 'response' }).subscribe({
+  fetchProfileData(username: string) {
+    this.http.get(`/api/accounts/${username}`, { observe: 'response' }).subscribe({
       next: (response) => {
         if (response.body) {
           const data = response.body as any;
@@ -44,7 +49,12 @@ export class ProfilePageComponent {
         }
       },
       error: (error) => {
-        console.error('Error al obtener datos del perfil:', error);
+        if (error.status === 401){
+          this.router.navigate(['/error-401']);
+        } else{
+          console.error('Error al obtener datos del perfil:', error);
+          this.router.navigate(['/']);
+        }
       }
     });
   }
