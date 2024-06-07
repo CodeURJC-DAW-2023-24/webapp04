@@ -1,15 +1,20 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Router } from '@angular/router';
+import { Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
 })
 export class LoanService {
+  private api_url = "/api/loans";
 
-  constructor(private http: HttpClient, private router: Router) {}
+  constructor(private http: HttpClient) {}
 
-  calculateLoanPayments(amount: string, installments: string){
+  getUserLoans(): Observable<any>{
+    return this.http.get<any>(this.api_url);
+  }
 
+  calculateLoanPayments(amount: number, periods: number): Observable<any>{
+    return this.http.post<any>(this.api_url, {amount, periods});
   }
 }

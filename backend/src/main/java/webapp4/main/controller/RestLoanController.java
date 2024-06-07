@@ -6,7 +6,6 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.security.core.Authentication;
 
 
-
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -46,23 +45,21 @@ public class RestLoanController {
     @ApiResponse(responseCode = "404", description = "Loan Repository not found", content = @Content)
     @ApiResponse(responseCode = "500", description = "Internal server error", content = @Content)
     @ApiResponse(responseCode = "400", description = "Bad request", content = @Content)
-    @GetMapping("/api/accounts/{id}/loans")
-    public ResponseEntity<Page<Loan>> getAllUserLoans(Pageable page, @PathVariable String id) {
+    @GetMapping("/api/loans")
+    public ResponseEntity<Page<Loan>> getAllUserLoans(Pageable page) {
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
         String username = authentication.getName();
-        if (id.equals(username)) {
-            Page<Loan> userLoans = loanRepository.findByClientIdPaged(id, page);
-            // Iterar sobre los préstamos para cargar explícitamente los pagos de préstamos asociados
-            userLoans.forEach(loan -> {
-                loan.getLoanPayments().size(); // Esto carga los pagos de préstamos asociados
-            });
-            return ResponseEntity.ok(userLoans);
-        } else {
-            return ResponseEntity.badRequest().build();
-        }   
+
+        if (username == null || username.isEmpty()) {
+            return ResponseEntity.status(401).build();
+        }
+
+        Page<Loan> userLoans = loanRepository.findByClientIdPaged(username, page);
+        userLoans.forEach(loan -> {
+            loan.getLoanPayments().size(); 
+        });
+        return ResponseEntity.ok(userLoans);  
     }
-
-
 
     @Operation (summary = "Calculate a loan for user")
     @ApiResponse(
@@ -73,32 +70,32 @@ public class RestLoanController {
     @ApiResponse(responseCode = "404", description = "Loan Repository not found", content = @Content)
     @ApiResponse(responseCode = "500", description = "Internal server error", content = @Content)
     @ApiResponse(responseCode = "400", description = "Bad request", content = @Content)
-    @PostMapping("/api/accounts/{id}/loans")
-    public ResponseEntity<?> createLoan(Model model, HttpServletRequest request, @RequestBody Loan loanJSON, @PathVariable String id) {
+    @PostMapping("/api/loans")
+    public ResponseEntity<?> createLoan(Model model, HttpServletRequest request, @RequestBody Loan loanJSON){
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
         String username = authentication.getName();
 
-        if (id.equals(username)){
-            Object createLoan = loanService.addLoan(username, loanJSON.getAmount(), loanJSON.getPeriods());
-            if(createLoan instanceof Loan){
-                Loan loan = (Loan) createLoan;
-                URI location = fromCurrentRequest().path("/{id}")
-                        .buildAndExpand(loan.getLoan_id()).toUri();
-                return ResponseEntity.created(location).body(loan);
-
-            } else {
-                String errorMessage = (String) createLoan;
-                if (errorMessage.equals("negative amount")) {
-                    return ResponseEntity.badRequest().body("you can't create a loan with negative amount");
-                }
-                if (errorMessage.equals("negative periods")) {
-                    return ResponseEntity.badRequest().body("you can't create a loan with zero/negative periods");
-                }
-                return null;
-            }
-        } else {
-            return ResponseEntity.badRequest().build();
+        if (username == null || username.isEmpty()) {
+            return ResponseEntity.status(401).build();
         }
 
+        if (loanJSON.getAmount() <= 0) {
+            return ResponseEntity.badRequest().body("you can't create a loan with negative amount: " + loanJSON.getAmount());
+        }
+
+        if (loanJSON.getPeriods() <= 0) {
+            return ResponseEntity.badRequest().body("you can't create a loan with zero/negative periods: " + loanJSON.getPeriods());
+        }
+
+        Object createLoan = loanService.addLoan(username, loanJSON.getAmount(), loanJSON.getPeriods());
+        if(createLoan instanceof Loan){
+            Loan loan = (Loan) createLoan;
+            URI location = fromCurrentRequest().path("/{id}")
+                    .buildAndExpand(loan.getLoan_id()).toUri();
+            return ResponseEntity.created(location).body(loan);
+        } else {
+            String errorMessage = (String) createLoan;
+            return ResponseEntity.badRequest().body(errorMessage);
+        }
     }
 }
