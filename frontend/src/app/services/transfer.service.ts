@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpResponse } from '@angular/common/http';
-import { Router } from '@angular/router';
+import { HttpClient } from '@angular/common/http';
+import { Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -8,22 +8,12 @@ import { Router } from '@angular/router';
 
 export class TransferService {
 
-  constructor(private http: HttpClient, private router: Router) {}
+  private api_url = "/api/accounts/transfer";
 
-  make_transfer(receiver_iban: string, amount: string){
-    const body = { receiver_iban, amount };
-    console.log(body);
-    this.http.post('/api/accounts/transfer', body, { observe: 'response' }).subscribe({
-      next: (response) => {
-        console.log(response);
-        console.log("Transacción realizada");
-      },
-      error: (error) => {
-        console.log("Error occurred while making transfer");
-        console.log(error);
-      }
-    });
-    this.router.navigate(['profile'])
+  constructor(private http: HttpClient) {}
+
+  make_transfer(receiver_iban: string, amount: string): Observable<any>{
+    return this.http.post(this.api_url, {receiver_iban, amount});
   }
 
 }
