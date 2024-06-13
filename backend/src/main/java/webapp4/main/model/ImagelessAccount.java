@@ -5,6 +5,15 @@ public class ImagelessAccount {
     private String iban;
     private String name;
     private String surname;
+    private int balance;
+
+    public void setBalance(int balance) {
+        this.balance = balance;
+    }
+
+    public int getBalance() {
+        return balance;
+    }
 
     public String getNip() {
         return nip;

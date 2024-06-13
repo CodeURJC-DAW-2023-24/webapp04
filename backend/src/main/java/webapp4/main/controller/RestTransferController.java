@@ -2,6 +2,7 @@ package webapp4.main.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.GrantedAuthority;
@@ -58,7 +59,7 @@ public class RestTransferController {
         }
     }
 
-    @Operation (summary = "Get transfers based on user role")
+    @Operation(summary = "Get transfers based on user role")
     @ApiResponse(
             responseCode = "200",
             description = "Found the form",
@@ -68,25 +69,29 @@ public class RestTransferController {
     @ApiResponse(responseCode = "500", description = "Internal server error", content = @Content)
     @ApiResponse(responseCode = "400", description = "Bad request", content = @Content)
     @GetMapping("/api/transfers")
-    public ResponseEntity<Page<Transfer>> getTransfersBasedOnRole(Pageable page){
+    public ResponseEntity<Page<Transfer>> getTransfersBasedOnRole(
+            @RequestParam("page") int page,
+            @RequestParam("size") int size) {
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
         Collection<? extends GrantedAuthority> authorities = authentication.getAuthorities();
-
+    
+        Pageable paging = PageRequest.of(page, size);
+    
         if (authorities.stream().anyMatch(auth -> auth.getAuthority().equals("ROLE_ADMIN"))) {
-            Page<Transfer> allTransfers = transferRepository.findAll(page);
+            Page<Transfer> allTransfers = transferRepository.findAll(paging);
             return ResponseEntity.ok(allTransfers);
         } else {
-            String username = authentication.getName();
-            Optional<Account> accountOptional = accountRepository.findByNIP(username);
+            Optional<Account> accountOptional = accountRepository.findByNIP(authentication.getName());
             if (accountOptional.isPresent()) {
                 String accountIBAN = accountOptional.get().getIBAN();
-                Page<Transfer> userTransfers = transferRepository.findBySenderOrReceiverContainingPaged(accountIBAN, page);
+                Page<Transfer> userTransfers = transferRepository.findBySenderOrReceiverContainingPaged(accountIBAN, paging);
                 return ResponseEntity.ok(userTransfers);
             } else {
                 return ResponseEntity.status(HttpStatus.NOT_FOUND).build();
             }
         }
     }
+    
 
     @Operation (summary = "Make an user transfer")
     @ApiResponse(

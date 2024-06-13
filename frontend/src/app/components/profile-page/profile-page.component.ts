@@ -1,26 +1,32 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Router, ActivatedRoute } from '@angular/router';
+import { Router } from '@angular/router';
 import { Transfer } from '../../models/transfer';
-import { ProfileAjaxService } from '../../services/profile-ajax.service';
+import { TransferService } from '../../services/transfer.service';
 import { UserService } from '../../services/user.service';
 
 @Component({
   selector: 'app-profile-page',
   templateUrl: './profile-page.component.html',
-  styleUrl: './profile-page.component.css'
+  styleUrls: ['./profile-page.component.css']
 })
 
-export class ProfilePageComponent {
+export class ProfilePageComponent implements OnInit {
   client_name: string;
   client_iban: string;
   client_balance: number;
   account_id: string;
   transfers: Transfer[] = [];
+  currentPage = 0;
+  pageSize = 10;
   client_image_url: string | undefined;
 
-
-  constructor(private http: HttpClient, private router: Router, private transferService: ProfileAjaxService, private userService: UserService) {
+  constructor(
+    private http: HttpClient, 
+    private router: Router, 
+    private transferService: TransferService, 
+    private userService: UserService
+  ) {
     this.client_name = '';
     this.client_iban = '';
     this.account_id = '';
@@ -37,20 +43,18 @@ export class ProfilePageComponent {
       next: (response) => {
         if (response.body) {
           const data = response.body as any;
-          console.log(data);
           this.client_name = data.name + " " + data.surname;
           this.client_iban = data.iban;
           this.account_id = data.nip;
           this.client_balance = data.balance || 0;
-          console.log("Everything is OK");
-          this.loadMoreTransfers(0, 10);
+          this.loadMoreTransfers();
         }
       },
       error: (error) => {
-        if (error.status === 401){
+        if (error.status === 401) {
           this.router.navigate(['/error-401']);
-        } else{
-          console.error('Error al obtener datos del perfil:', error);
+        } else {
+          console.error('Error: cannot obtain profile data', error);
           this.router.navigate(['/']);
         }
       }
@@ -73,7 +77,7 @@ export class ProfilePageComponent {
     const file: File = event.target.files[0];
     if (file) {
       this.userService.uploadClientImage(file).subscribe(response => {
-        console.log('Image uploaded sucessfully');
+        console.log('Image uploaded successfully');
         this.fetchClientImage();
       }, error => {
         console.error('Error: cannot upload the new image', error);
@@ -81,38 +85,36 @@ export class ProfilePageComponent {
     }
   }
 
-  loadMoreTransfers(startIndex: number, chunkSize: number): void {
-    this.transferService.getTransfers(this.account_id, startIndex, chunkSize)
+  loadMoreTransfers(): void {
+    this.transferService.getTransfers(this.currentPage, this.pageSize)
       .subscribe((response: any) => {
-        const content = response.content;
-        if (content.length === 0) {
+        const content = response.content || [];
+        if (content.length === 0 && this.transfers.length === 0) {
           const noTransfersElement = document.getElementById("no_transfers_performed");
           if (noTransfersElement) {
-            noTransfersElement.style.display = "None";
+            noTransfersElement.style.display = "block";
           }
+        } else {
+          this.transfers = [...this.transfers, ...content];
+          this.currentPage++;
         }
-        this.transfers.push(...content);
       });
   }
 
   onLoadMoreClick(): void {
-    const chunkSize = 10;
-    const startIndex = Math.floor(this.transfers.length / 10) + 1;
-    console.log(this.transfers);
-    console.log(startIndex);
-    this.loadMoreTransfers(startIndex, chunkSize);
+    this.loadMoreTransfers();
   }
 
   logout(): void {
     const body = {};
     this.http.post('/api/logout', body, { observe: 'response' }).subscribe({
       next: (response) => {
-        console.log('Successfull logout');
+        console.log('Successful logout');
         this.router.navigate(['new/login']);
       },
       error: (error) => {
         console.error('Logout error', error);
       }
-    })
+    });
   }
 }
