@@ -55,10 +55,10 @@
                 <tbody id="loan-table-body">
                   <tr *ngFor="let payment of displayedPayments">
                     <td>{{ payment.period }}</td>
-                    <td>{{ payment.principal }}</td>
-                    <td>{{ payment.interest }}</td>
-                    <td>{{ payment.principal + payment.interest }}</td>
-                    <td>{{ payment.remainingAmount }}</td>
+                    <td>{{ payment.principal.toFixed(2) }}</td>
+                    <td>{{ payment.interest.toFixed(2) }}</td>
+                    <td>{{ (payment.principal + payment.interest).toFixed(2) }}</td>
+                    <td>{{ payment.remainingAmount.toFixed(2) }}</td>
                   </tr>
                 </tbody>
               </table>

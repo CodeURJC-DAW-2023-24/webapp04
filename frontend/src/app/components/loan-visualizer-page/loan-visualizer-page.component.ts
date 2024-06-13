@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { LoanService } from '../../services/loan.service';
 import { ActivatedRoute } from '@angular/router';
-import { Chart } from 'chart.js';
+import { Chart } from 'chart.js/auto';
 
 @Component({
   selector: 'app-loan-visualizer-page',
@@ -30,6 +30,7 @@ export class LoanVisualizerPageComponent implements OnInit {
         data => {
           this.loan = data;
           this.loanPayments = data.loanPayments;
+          this.initChart();
           this.loadMorePayments();
         }, error => {
           console.error('Error al calcular el préstamo:', error);
@@ -37,10 +38,63 @@ export class LoanVisualizerPageComponent implements OnInit {
     });
   }
 
+  initChart(): void {
+    const canvas = document.getElementById('myChart') as HTMLCanvasElement;
+    const ctx = canvas ? canvas.getContext('2d') : null;
+    
+    if (ctx) {
+      this.myChart = new Chart(ctx, {
+        type: 'bar',
+        data: {
+          labels: [],
+          datasets: [
+            {
+              label: 'Amortised Capital',
+              data: [],
+              backgroundColor: 'rgba(255, 99, 132, 0.2)',
+              borderColor: 'rgba(255, 99, 132, 1)',
+              borderWidth: 1
+            },
+            {
+              label: 'Interest',
+              data: [],
+              backgroundColor: 'rgba(54, 162, 235, 0.2)',
+              borderColor: 'rgba(54, 162, 235, 1)',
+              borderWidth: 1
+            }
+          ]
+        },
+        options: {
+          scales: {
+            y: {
+              beginAtZero: true
+            }
+          }
+        }
+      });
+    } else {
+      console.error('Could not get canvas context.');
+    }
+  }
+
+  updateChart(data: any[]): void {
+    if (this.myChart) {
+      const labels = Array.from({ length: data.length }, (_, i) => `Period ${i + 1}`);
+      const capitalData = data.map(payment => payment.principal);
+      const interestData = data.map(payment => payment.interest);
+
+      this.myChart.data.labels = labels;
+      this.myChart.data.datasets[0].data = capitalData;
+      this.myChart.data.datasets[1].data = interestData;
+      this.myChart.update();
+    }
+  }
+
   loadMorePayments(): void {
     const endIndex = this.startIndex + this.chunkSize;
     const newPayments = this.loanPayments.slice(this.startIndex, endIndex);
     this.displayedPayments = [...this.displayedPayments, ...newPayments];
+    this.updateChart(this.displayedPayments);
     this.startIndex = endIndex;
   }
 

@@ -2,7 +2,7 @@
 FROM node:18.13 AS angular
 WORKDIR /code
 COPY frontend/package*.json frontend/angular.json frontend/tsconfig*.json /code/
-RUN npm install
+RUN npm install && npm install chart.js
 COPY frontend/src /code/src
 RUN npm run build -- --configuration production --base-href=/new/
 
