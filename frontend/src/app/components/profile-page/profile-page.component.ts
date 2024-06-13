@@ -3,6 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { Router, ActivatedRoute } from '@angular/router';
 import { Transfer } from '../../models/transfer';
 import { ProfileAjaxService } from '../../services/profile-ajax.service';
+import { UserService } from '../../services/user.service';
 
 @Component({
   selector: 'app-profile-page',
@@ -16,9 +17,10 @@ export class ProfilePageComponent {
   client_balance: number;
   account_id: string;
   transfers: Transfer[] = [];
+  client_image_url: string | undefined;
 
 
-  constructor(private http: HttpClient, private route: ActivatedRoute, private router: Router, private transferService: ProfileAjaxService) {
+  constructor(private http: HttpClient, private router: Router, private transferService: ProfileAjaxService, private userService: UserService) {
     this.client_name = '';
     this.client_iban = '';
     this.account_id = '';
@@ -27,6 +29,7 @@ export class ProfilePageComponent {
 
   ngOnInit() {
     this.fetchProfileData();
+    this.fetchClientImage();
   }
 
   fetchProfileData() {
@@ -52,6 +55,30 @@ export class ProfilePageComponent {
         }
       }
     });
+  }
+
+  fetchClientImage() {
+    this.userService.getClientImage().subscribe({
+      next: (response) => {
+        const objectURL = URL.createObjectURL(response);
+        this.client_image_url = objectURL;
+      },
+      error: (error) => {
+        console.error('Error: cannot get client`s image', error);
+      }
+    });
+  }
+
+  onImageSelected(event: any) {
+    const file: File = event.target.files[0];
+    if (file) {
+      this.userService.uploadClientImage(file).subscribe(response => {
+        console.log('Image uploaded sucessfully');
+        this.fetchClientImage();
+      }, error => {
+        console.error('Error: cannot upload the new image', error);
+      });
+    }
   }
 
   loadMoreTransfers(startIndex: number, chunkSize: number): void {
@@ -80,11 +107,11 @@ export class ProfilePageComponent {
     const body = {};
     this.http.post('/api/logout', body, { observe: 'response' }).subscribe({
       next: (response) => {
-        console.log('Logout exitoso');
+        console.log('Successfull logout');
         this.router.navigate(['new/login']);
       },
       error: (error) => {
-        console.error('Error en logout:', error);
+        console.error('Logout error', error);
       }
     })
   }
