@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { UserService } from '../../services/user.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-login-page',
@@ -7,9 +8,22 @@ import { UserService } from '../../services/user.service';
   styleUrl: './login-page.component.css'
 })
 export class LoginPageComponent {
-  constructor(private userService: UserService) {}
+  loginError: boolean = false;
+  constructor(private userService: UserService, private router: Router) {}
 
   onSubmit(username: string, password: string): void {
-    this.userService.login(username, password)
+    this.userService.login(username, password).subscribe(
+      data => {
+        this.loginError = false;
+        this.router.navigate(['/profile']);
+      },
+      error => {
+        if (error.status === 401) {
+          this.loginError = true;
+        } else {
+          this.router.navigate(['/error']);
+        }
+      }
+    );
   }
 }

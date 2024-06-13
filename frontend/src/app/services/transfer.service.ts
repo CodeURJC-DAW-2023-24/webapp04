@@ -8,7 +8,7 @@ import { Observable } from 'rxjs';
 
 export class TransferService {
 
-  private api_url = "/api/accounts/transfer";
+  private api_url = "/api/transfer";
 
   constructor(private http: HttpClient) {}
 
