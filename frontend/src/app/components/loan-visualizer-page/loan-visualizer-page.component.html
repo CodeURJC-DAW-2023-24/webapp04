@@ -6,13 +6,9 @@
 <body>
 
 <!-- ======= Header ======= -->
-<!-- ======= Header ======= -->
 <header id="header" class="d-flex align-items-center">
     <div class="container d-flex align-items-center justify-content-between">
-
         <h1 class="logo"><a href="/logout">URJC Bank</a></h1>
-        <!--<a href="index.html" class="logo"><img src="/URJC_Bank/public/assets/img/URJC_bank.png" alt="" class="img-fluid"></a> -->
-
         <nav id="navbar" class="navbar">
             <ul>
                 <li><a class="nav-link scrollto" href="/profile">Home</a></li>
@@ -57,21 +53,19 @@
                   </tr>
                 </thead>
                 <tbody id="loan-table-body">
-                  <tr *ngFor="let payment of loan.loanPayments">
+                  <tr *ngFor="let payment of displayedPayments">
                     <td>{{ payment.period }}</td>
                     <td>{{ payment.principal }}</td>
                     <td>{{ payment.interest }}</td>
-                    <td>{{ payment.totalPayment }}</td>
+                    <td>{{ payment.principal + payment.interest }}</td>
                     <td>{{ payment.remainingAmount }}</td>
                   </tr>
                 </tbody>
               </table>
-              <button id="loadMoreBtn">Load more</button>
+              <button (click)="onLoadMoreClick()">Load more</button>
             </div>
           </div>
-          
     </section>
-
 </main> <!-- End #main -->
 
 <!-- ======= Footer ======= -->

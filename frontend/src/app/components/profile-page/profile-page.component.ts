@@ -76,7 +76,8 @@ export class ProfilePageComponent implements OnInit {
   onImageSelected(event: any) {
     const file: File = event.target.files[0];
     if (file) {
-      this.userService.uploadClientImage(file).subscribe(response => {
+      this.userService.uploadClientImage(file).subscribe(
+        response => {
         console.log('Image uploaded successfully');
         this.fetchClientImage();
       }, error => {
