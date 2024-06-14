@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpParams } from '@angular/common/http';
 import { Observable } from 'rxjs';
 
 export interface Account {
@@ -16,7 +16,11 @@ export interface Account {
 export class AccountService {
   constructor(private http: HttpClient) { }
 
-  loadMoreAccounts(startIndex: number, chunkSize: number): Observable<Account[]> {
-    return this.http.get<Account[]>(`/account_load?startIndex=${startIndex}&chunkSize=${chunkSize}`);
+  loadMoreAccounts(page: number, size: number): Observable<Account[]> {
+    const params = new HttpParams()
+        .set('page', page.toString())
+        .set('size', size.toString());
+    return this.http.get<Account[]>(`/api/accounts`, { params });
   }
+
 }

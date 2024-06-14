@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpParams } from '@angular/common/http';
 import { Observable } from 'rxjs';
 
 @Injectable({
@@ -9,8 +9,11 @@ export class TransfersManagerService {
 
   constructor(private http: HttpClient) { }
 
-  loadMoreTransfers(startIndex: number, chunkSize: number): Observable<Transfer[]> {
-    return this.http.get<Transfer[]>(`/api/transfers?startIndex=${startIndex}&chunkSize=${chunkSize}`);
+  loadMoreTransfers(page: number, size: number): Observable<Transfer[]> {
+    const params = new HttpParams()
+        .set('page', page.toString())
+        .set('size', size.toString());
+    return this.http.get<Transfer[]>(`/api/transfers`, { params });
   }
 }
 

@@ -26,7 +26,7 @@ const routes: Routes = [
   { path: 'accounts', component: AccountListComponent },
   { path: 'loan_request', component: LoanRequestPageComponent},
   {path: 'loan_visualizer', component: LoanVisualizerPageComponent },
-  { path: '**', redirectTo: 'home' }
+  { path: '**', component: Error404Component }
 ];
 
 @NgModule({

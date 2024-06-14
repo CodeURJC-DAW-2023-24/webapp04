@@ -4,21 +4,12 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="072cea6f-8d20-4292-b10f-19e0c5f1ef3e" name="Changes" comment="Transfers in angular update 3">
+    <list default="true" id="072cea6f-8d20-4292-b10f-19e0c5f1ef3e" name="Changes" comment="Docker error solved">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/angular.json" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/angular.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/app/components/account-list/account-list.component.css" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/app/components/account-list/account-list.component.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/app/components/footer/footer.component.css" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/app/components/footer/footer.component.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/app/components/head/head.component.css" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/app/components/head/head.component.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/app/components/header/header.component.css" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/app/components/header/header.component.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/app/components/home/home.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/app/components/home/home.component.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/app/components/login-page/login-page.component.css" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/app/components/login-page/login-page.component.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/app/components/profile-page/profile-page.component.css" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/app/components/profile-page/profile-page.component.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/app/components/register-page/register-page.component.css" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/app/components/register-page/register-page.component.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/app/components/short-footer/short-footer.component.css" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/app/components/short-footer/short-footer.component.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/app/components/topbar/topbar.component.css" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/app/components/topbar/topbar.component.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/app/components/transfer-page/transfer-page.component.css" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/app/components/transfer-page/transfer-page.component.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/app/components/transfers-manager/transfers-manager.component.css" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/app/components/transfers-manager/transfers-manager.component.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/app/app-routing.module.ts" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/app/app-routing.module.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/app/components/login-page/login-page.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/app/components/login-page/login-page.component.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/app/services/account.service.ts" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/app/services/account.service.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/app/services/transfers-manager.service.ts" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/app/services/transfers-manager.service.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />

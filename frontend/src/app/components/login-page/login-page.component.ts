@@ -15,7 +15,11 @@ export class LoginPageComponent {
     this.userService.login(username, password).subscribe(
       data => {
         this.loginError = false;
-        this.router.navigate(['/profile']);
+        if(username == '00000000A'){
+          this.router.navigate(['/accounts']);
+        }else{
+          this.router.navigate(['/profile']);
+        }
       },
       error => {
         if (error.status === 401) {
