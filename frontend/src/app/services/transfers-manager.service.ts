@@ -13,7 +13,7 @@ export class TransfersManagerService {
     const params = new HttpParams()
         .set('page', page.toString())
         .set('size', size.toString());
-    return this.http.get<Transfer[]>(`/api/transfers`, { params });
+    return this.http.get<Transfer[]>(`/api/transferslist`, { params });
   }
 }
 

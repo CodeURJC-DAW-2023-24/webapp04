@@ -58,8 +58,27 @@ public class RestTransferController {
             return ResponseEntity.notFound().build();
         }
     }
+    @Operation(summary = "Get transfers for admin")
+    @ApiResponse(
+            responseCode = "200",
+            description = "Found the form",
+            content = @Content(mediaType = "application/json", schema = @Schema(implementation = Transfer.class))
+    )
+    @ApiResponse(responseCode = "404", description = "Transfer Repository not found", content = @Content)
+    @ApiResponse(responseCode = "500", description = "Internal server error", content = @Content)
+    @ApiResponse(responseCode = "400", description = "Bad request", content = @Content)
+    @GetMapping("/api/transferslist")
+    public ResponseEntity<Page<Transfer>> getTransfersForAdmin(
+            @RequestParam("page") int page,
+            @RequestParam("size") int size) {
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+        Collection<? extends GrantedAuthority> authorities = authentication.getAuthorities();
 
-    @Operation(summary = "Get transfers based on user role")
+        Pageable paging = PageRequest.of(page, size);
+        Page<Transfer> allTransfers = transferRepository.findAll(paging);
+        return ResponseEntity.ok(allTransfers);
+    }
+    @Operation(summary = "Get transfers for user")
     @ApiResponse(
             responseCode = "200",
             description = "Found the form",
@@ -74,24 +93,19 @@ public class RestTransferController {
             @RequestParam("size") int size) {
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
         Collection<? extends GrantedAuthority> authorities = authentication.getAuthorities();
-    
+
         Pageable paging = PageRequest.of(page, size);
-    
-        if (authorities.stream().anyMatch(auth -> auth.getAuthority().equals("ROLE_ADMIN"))) {
-            Page<Transfer> allTransfers = transferRepository.findAll(paging);
-            return ResponseEntity.ok(allTransfers);
+
+        Optional<Account> accountOptional = accountRepository.findByNIP(authentication.getName());
+        if (accountOptional.isPresent()) {
+            String accountIBAN = accountOptional.get().getIBAN();
+            Page<Transfer> userTransfers = transferRepository.findBySenderOrReceiverContainingPaged(accountIBAN, paging);
+            return ResponseEntity.ok(userTransfers);
         } else {
-            Optional<Account> accountOptional = accountRepository.findByNIP(authentication.getName());
-            if (accountOptional.isPresent()) {
-                String accountIBAN = accountOptional.get().getIBAN();
-                Page<Transfer> userTransfers = transferRepository.findBySenderOrReceiverContainingPaged(accountIBAN, paging);
-                return ResponseEntity.ok(userTransfers);
-            } else {
-                return ResponseEntity.status(HttpStatus.NOT_FOUND).build();
-            }
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).build();
         }
     }
-    
+
 
     @Operation (summary = "Make an user transfer")
     @ApiResponse(
@@ -109,7 +123,7 @@ public class RestTransferController {
 
         String receiver_iban = transferJSON.getReceiverIBAN();
         int amount = transferJSON.getAmount();
-        
+
         Object createTransfer = transferService.addTransaction(username, receiver_iban, amount);
         if (createTransfer instanceof Transfer) {
             Transfer transfer = (Transfer) createTransfer;

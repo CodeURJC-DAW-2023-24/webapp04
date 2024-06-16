@@ -10,6 +10,8 @@ import { TransfersManagerService, Transfer } from '../../services/transfers-mana
 })
 export class TransfersManagerComponent implements OnInit {
   transfers: Transfer[] = [];
+  currentPage = 0;
+  pageSize = 10;
 
   constructor(
     @Inject(TransfersManagerService) private transfersService: TransfersManagerService,
@@ -18,23 +20,28 @@ export class TransfersManagerComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    this.loadInitialTransfers();
+    this.loadMoreTransfers();
   }
 
-  loadInitialTransfers(): void {
-    this.transfersService.loadMoreTransfers(0, 10).subscribe((data: Transfer[]) => {
-      this.transfers = data;
-    });
-  }
+  loadMoreTransfers(): void {
+      this.transfersService.loadMoreTransfers(this.currentPage, this.pageSize)
+        .subscribe((response: any) => {
+          const content = response.content || [];
+          if (content.length === 0 && this.transfers.length === 0) {
+            const noTransfersElement = document.getElementById("no_transfers_performed");
+            if (noTransfersElement) {
+              noTransfersElement.style.display = "block";
+            }
+          } else {
+            this.transfers = [...this.transfers, ...content];
+            this.currentPage++;
+          }
+        });
+    }
 
-  onLoadMoreTransfers(): void {
-    const startIndex: number = this.transfers.length;
-    const chunkSize: number = 10;
-
-    this.transfersService.loadMoreTransfers(startIndex, chunkSize).subscribe((data: Transfer[]) => {
-      this.transfers = this.transfers.concat(data);
-    });
-  }
+    onLoadMoreTransfers(): void {
+      this.loadMoreTransfers();
+    }
 
   logout(): void {
     const body = {};
