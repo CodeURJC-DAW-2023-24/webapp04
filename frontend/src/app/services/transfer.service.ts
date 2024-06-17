@@ -20,7 +20,7 @@ export class TransferService {
   }
 
   make_transfer(receiver_iban: string, amount: string): Observable<any>{
-    return this.http.post(this.api_url, {receiver_iban, amount});
+    return this.http.post(this.api_url, { receiverIBAN: receiver_iban, amount });
   }
 
 }

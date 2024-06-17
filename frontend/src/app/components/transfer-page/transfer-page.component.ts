@@ -5,7 +5,7 @@ import { Router } from '@angular/router';
 @Component({
   selector: 'app-transfer-page',
   templateUrl: './transfer-page.component.html',
-  styleUrl: './transfer-page.component.css'
+  styleUrls: ['./transfer-page.component.css']
 })
 export class TransferPageComponent {
 

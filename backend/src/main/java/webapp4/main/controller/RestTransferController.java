@@ -118,30 +118,69 @@ public class RestTransferController {
     @ApiResponse(responseCode = "400", description = "Bad request", content = @Content)
     @PostMapping("/api/transfer")
     public ResponseEntity<?> createTransfer(HttpServletRequest request, @RequestBody TransferDTO transferJSON) {
-        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
-        String username = authentication.getName();
-
-        String receiver_iban = transferJSON.getReceiverIBAN();
-        int amount = transferJSON.getAmount();
-
-        Object createTransfer = transferService.addTransaction(username, receiver_iban, amount);
-        if (createTransfer instanceof Transfer) {
-            Transfer transfer = (Transfer) createTransfer;
-            URI location = fromCurrentRequest().path("/{id}")
-                    .buildAndExpand(transfer.getTransfer_id()).toUri();
-            return ResponseEntity.created(location).body(transfer);
-        } else {
-            String errorMessage = (String) createTransfer;
-            if (errorMessage.equals("user not exists")) {
-                return ResponseEntity.badRequest().body("User not exists");
+        try {
+            Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+            String username = authentication.getName();
+    
+            String receiver_iban = this.formatIBAN(transferJSON.getReceiverIBAN());
+            int amount = transferJSON.getAmount();
+    
+            if (receiver_iban == null || receiver_iban.isEmpty()) {
+                return ResponseEntity.badRequest().body("Receiver IBAN cannot be null or empty");
             }
-            if (errorMessage.equals("not enough balance")) {
-                return ResponseEntity.badRequest().body("There is not enough balance");
+    
+            if (amount <= 0) {
+                return ResponseEntity.badRequest().body("Amount must be greater than zero");
             }
-            if (errorMessage.equals("negative transfer")) {
-                return ResponseEntity.badRequest().body("You can't create negative transfers");
+    
+            Optional<Account> accountOptional = accountRepository.findByNIP(username);
+            if (accountOptional.isPresent()) {
+                Account account = accountOptional.get();
+                if (account.getIBAN() != null) {
+                    Object createTransfer = transferService.addTransaction(username, receiver_iban, amount);
+                    if (createTransfer instanceof Transfer) {
+                        Transfer transfer = (Transfer) createTransfer;
+                        URI location = fromCurrentRequest().path("/{id}")
+                                .buildAndExpand(transfer.getTransfer_id()).toUri();
+                        return ResponseEntity.created(location).body(transfer);
+                    } else {
+                        String errorMessage = (String) createTransfer;
+                        switch (errorMessage) {
+                            case "user not exists":
+                                return ResponseEntity.badRequest().body("User not exists");
+                            case "not enough balance":
+                                return ResponseEntity.badRequest().body("There is not enough balance");
+                            case "negative transfer":
+                                return ResponseEntity.badRequest().body("You can't create negative transfers");
+                            default:
+                                return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("Unknown error");
+                        }
+                    }
+                } else {
+                    return ResponseEntity.status(HttpStatus.NOT_FOUND).body("IBAN is null for the account");
+                }
+            } else {
+                return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Account not found");
             }
-            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).build();
+        } catch (Exception e) {
+            System.out.println("Error en createTransfer: " + e.getMessage());
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("Internal server error: " + e.getMessage());
         }
+    }
+
+    private String formatIBAN(String iban){
+        if (iban == null) {
+            return null;
+        }
+        iban = iban.replaceAll("\\s+", "");
+        StringBuilder formattedIBAN = new StringBuilder();
+        for (int i = 0; i < iban.length(); i += 4) {
+            if (i > 0) {
+                formattedIBAN.append(" ");
+            }
+            int endIndex = Math.min(i + 4, iban.length());
+            formattedIBAN.append(iban.substring(i, endIndex));
+        }
+        return formattedIBAN.toString();
     }
 }
