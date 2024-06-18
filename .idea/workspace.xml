@@ -4,12 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="072cea6f-8d20-4292-b10f-19e0c5f1ef3e" name="Changes" comment="Accounts list api connection works">
+    <list default="true" id="072cea6f-8d20-4292-b10f-19e0c5f1ef3e" name="Changes" comment="Transfers list api connection works">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/src/main/java/webapp4/main/controller/RestTransferController.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/java/webapp4/main/controller/RestTransferController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/app/components/account-list/account-list.component.css" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/app/components/account-list/account-list.component.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/frontend/src/app/components/account-list/account-list.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/app/components/account-list/account-list.component.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/app/components/transfers-manager/transfers-manager.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/app/components/transfers-manager/transfers-manager.component.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/app/services/transfers-manager.service.ts" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/app/services/transfers-manager.service.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -337,7 +335,15 @@
       <option name="project" value="LOCAL" />
       <updated>1718383277187</updated>
     </task>
-    <option name="localTasksCounter" value="19" />
+    <task id="LOCAL-00019" summary="Transfers list api connection works">
+      <option name="closed" value="true" />
+      <created>1718540663222</created>
+      <option name="number" value="00019" />
+      <option name="presentableId" value="LOCAL-00019" />
+      <option name="project" value="LOCAL" />
+      <updated>1718540663222</updated>
+    </task>
+    <option name="localTasksCounter" value="20" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
@@ -360,6 +366,7 @@
     <MESSAGE value="Update Account Service" />
     <MESSAGE value="Transfers in angular update 3" />
     <MESSAGE value="Accounts list api connection works" />
-    <option name="LAST_COMMIT_MESSAGE" value="Accounts list api connection works" />
+    <MESSAGE value="Transfers list api connection works" />
+    <option name="LAST_COMMIT_MESSAGE" value="Transfers list api connection works" />
   </component>
 </project>
