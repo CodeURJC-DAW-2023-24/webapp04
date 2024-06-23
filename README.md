@@ -436,15 +436,15 @@ Task description
 
 ### Cristian Andrei Vlad
 
-Task description
+In this phase I have been responsible for implementing the user related profile page, loans, transfer components, as well as to create several services and update the Dockerfile.
 
 | Nº |       Commits       |        Files        |
 |:--:|:-------------------:|:-------------------:|
-| 1 | | |
-| 2 | | |
-| 3 | | | 
-| 4 | | | 
-| 5 | | |
+| 1  |  [Transfer creation controller fixed](https://github.com/CodeURJC-DAW-2023-24/webapp04/commit/8883870ea994b0977ee2aa2035b441d28578d8bf) | [profile-page.component.ts](frontend/src/app/components/profile-page/profile-page.component.ts) |
+| 2 | [Loan page implementation](https://github.com/CodeURJC-DAW-2023-24/webapp04/commit/16cd6d8015d9a906596ba75f1d8bb634f537d119) | [user.service.ts](frontend/src/app/services/user.service.ts) |
+| 3 | [Profile image visualization and update](https://github.com/CodeURJC-DAW-2023-24/webapp04/commit/815b15643b44f99cff6fb89361811cb0270fd12e) | [loan-visualizer-page.component.ts](frontend/src/app/components/loan-visualizer-page/loan-visualizer-page.component.ts) |
+| 4 | [Loan chart](https://github.com/CodeURJC-DAW-2023-24/webapp04/commit/71952de59ad4d87e7d52d646ba6c1c51010b43ff) | [transfer.service.ts](frontend/src/app/services/transfer.service.ts) |
+| 5 | [Profile page update](https://github.com/CodeURJC-DAW-2023-24/webapp04/commit/3ff3277182cc5f5ec31685fa6d83c8968ede9089) | [Dockerfile](docker/Dockerfile) |
 
 
 ### Julio del Junco Prieto
