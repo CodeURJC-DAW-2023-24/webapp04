@@ -14,42 +14,55 @@
       <ul>
         <li><a class="nav-link scrollto" href="/profile_manager">Home</a></li>
         <li><a class="nav-link scrollto active" href="/transfers_manager">Transfers</a></li>
-        <li><a class="nav-link scrollto " href="/account">Users</a></li>
-        <li><a class="nav-link scrollto " href="/logout">Log Out</a></li>
+        <li><a class="nav-link scrollto" href="/account">Users</a></li>
+        <li><a class="nav-link scrollto" href="/logout">Log Out</a></li>
       </ul>
     </nav>
   </div>
 </header>
-<div class="transfers">
-  <div *ngIf="transfers.length === 0" id="no_transfers_performed">
-    No se han realizado transferencias.
-  </div>
-  <div *ngFor="let transfer of transfers" class="transfer">
-    <dl class="transfer-details">
-      <div class="min">
-        <dt>Sender</dt>
-        <dd>{{ transfer.senderIBAN }}</dd>
+<div class="app">
+  <div class="body">
+    <div class="wrapper">
+      <div class="app-body-main-content">
+        <div class="wrapper">
+          <section class="transfer-section">
+            <div class="transfer-section-header">
+              <h2>Latest transfers (ALL CLIENTS)</h2>
+            </div>
+            <div class="transfers">
+              <div *ngIf="transfers.length === 0" id="no_transfers_performed">
+                No se han realizado transferencias.
+              </div>
+              <div *ngFor="let transfer of transfers" class="transfer">
+                <dl class="transfer-details">
+                  <div class="min">
+                    <dt>Sender</dt>
+                    <dd>{{ transfer.senderIBAN }}</dd>
+                  </div>
+                  <div class="min">
+                    <dt>Receiver</dt>
+                    <dd>{{ transfer.receiverIBAN }}</dd>
+                  </div>
+                  <div class="max">
+                    <dt>Date payment</dt>
+                    <dd>{{ transfer.date }}</dd>
+                  </div>
+                  <div class="min">
+                    <dt>T Type</dt>
+                    <dd>{{ transfer.transferType }}</dd>
+                  </div>
+                  <div class="transfer-number">{{ transfer.amount }}€</div>
+                </dl>
+              </div>
+            </div>
+            <button id="transfer_button" (click)="onLoadMoreTransfers()">Load more transfers</button>
+          </section>
+        </div>
       </div>
-      <div class="min">
-        <dt>Receiver</dt>
-        <dd>{{ transfer.receiverIBAN }}</dd>
-      </div>
-      <div class="max">
-        <dt>Date payment</dt>
-        <dd>{{ transfer.date }}</dd>
-      </div>
-      <div class="min">
-        <dt>T Type</dt>
-        <dd>{{ transfer.transferType }}</dd>
-      </div>
-      <div class="transfer-number">{{ transfer.amount }}€</div>
-    </dl>
+    </div>
   </div>
 </div>
 
-<button id="profile_button" (click)="onLoadMoreTransfers()">Load more transfers</button>
-
-<!-- ======= Footer ======= -->
 <app-short-footer></app-short-footer>
 
 <script src="https://unpkg.com/phosphor-icons"></script>
