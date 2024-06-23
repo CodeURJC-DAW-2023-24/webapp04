@@ -23,6 +23,7 @@ import { HeaderErrorComponent } from './components/header-error/header-error.com
 import { Error404Component } from './components/error-404/error-404.component';
 import { LoanRequestPageComponent } from './components/loan-request-page/loan-request-page.component';
 import { LoanVisualizerPageComponent } from './components/loan-visualizer-page/loan-visualizer-page.component';
+import { ProfileManagerComponent } from './components/profile-manager/profile-manager.component';
 
 @NgModule({
   declarations: [
@@ -44,7 +45,8 @@ import { LoanVisualizerPageComponent } from './components/loan-visualizer-page/l
     HeaderErrorComponent,
     Error404Component,
     LoanRequestPageComponent,
-    LoanVisualizerPageComponent
+    LoanVisualizerPageComponent,
+    ProfileManagerComponent
   ],
   imports: [
     BrowserModule,
