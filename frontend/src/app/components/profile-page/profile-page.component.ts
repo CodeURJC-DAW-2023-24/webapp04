@@ -22,9 +22,9 @@ export class ProfilePageComponent implements OnInit {
   client_image_url: string | undefined;
 
   constructor(
-    private http: HttpClient, 
-    private router: Router, 
-    private transferService: TransferService, 
+    private http: HttpClient,
+    private router: Router,
+    private transferService: TransferService,
     private userService: UserService
   ) {
     this.client_name = '';
@@ -106,16 +106,10 @@ export class ProfilePageComponent implements OnInit {
     this.loadMoreTransfers();
   }
 
-  logout(): void {
-    const body = {};
-    this.http.post('/api/logout', body, { observe: 'response' }).subscribe({
-      next: (response) => {
-        console.log('Successful logout');
-        this.router.navigate(['new/login']);
-      },
-      error: (error) => {
-        console.error('Logout error', error);
-      }
-    });
-  }
+  logout(): any {
+      this.userService.logout().subscribe(
+          response => console.log('Logout successful', response),
+          error => console.error('Logout failed', error)
+      );
+    }
 }

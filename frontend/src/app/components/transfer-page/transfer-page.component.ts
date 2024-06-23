@@ -1,6 +1,8 @@
 import { Component } from '@angular/core';
 import { TransferService } from '../../services/transfer.service';
 import { Router } from '@angular/router';
+import { UserService } from '../../services/user.service';
+
 
 @Component({
   selector: 'app-transfer-page',
@@ -9,7 +11,7 @@ import { Router } from '@angular/router';
 })
 export class TransferPageComponent {
 
-  constructor(private transferService: TransferService, private router: Router) {}
+  constructor(private transferService: TransferService, private router: Router,private userService: UserService) {}
 
   onSubmit(receiver_iban: string, amount: string): void {
     console.log("Hasta aquí llega");
@@ -21,4 +23,11 @@ export class TransferPageComponent {
       error => {console.error('No se ha podido realizar la transferencia:', error);}
     );
   }
+
+  logout(): any {
+      this.userService.logout().subscribe(
+          response => console.log('Logout successful', response),
+          error => console.error('Logout failed', error)
+      );
+    }
 }

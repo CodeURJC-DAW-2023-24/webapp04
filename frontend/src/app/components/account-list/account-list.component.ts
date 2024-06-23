@@ -2,6 +2,7 @@ import { Component, OnInit, Inject } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Router } from '@angular/router';
 import { AccountService, Account } from '../../services/account.service';  // Correct import path
+import { UserService } from '../../services/user.service';
 
 @Component({
   selector: 'app-account-list',
@@ -14,7 +15,8 @@ export class AccountListComponent implements OnInit {
   constructor(
     @Inject(AccountService) private accountService: AccountService,
     private http: HttpClient,
-    private router: Router
+    private router: Router,
+    private userService: UserService
   ) { }
 
   ngOnInit(): void {
@@ -36,16 +38,10 @@ export class AccountListComponent implements OnInit {
     });
   }
 
-  logout(): void {
-    const body = {};
-    this.http.post('/api/logout', body, { observe: 'response' }).subscribe({
-      next: response => {
-        console.log('Logout successful');
-        this.router.navigate(['new/login']);
-      },
-      error: error => {
-        console.error('Error during logout:', error);
-      }
-    });
+  logout(): any {
+    this.userService.logout().subscribe(
+        response => console.log('Logout successful', response),
+        error => console.error('Logout failed', error)
+    );
   }
 }
