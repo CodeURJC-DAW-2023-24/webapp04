@@ -395,7 +395,7 @@ Task description
 
 ## Setting up the development environment
 
-To compile and execute the SPA application you must follow the next instructions:
+-To compile and execute the SPA application you must follow the next instructions:
 
 1) Make sure you have node.js instaled on your system, otherwise you can install it [from here](https://nodejs.org/en).
 2) Install Angular's CLI using npm:
@@ -414,6 +414,31 @@ The SPA will be accessible from http://localhost:4200/
 
 In order to run the SPA with docker you need to follow [the implementation instructions](#implementation_instructions)
 
+
+-Steps to Deploy the Application with Docker:
+Step 1: Access the Virtual Machine
+From your terminal, access the virtual machine of group 04 using the access key (prAppWeb24.key) and the following SSH command:
+
+bash
+ssh -i prAppWeb24.key vmuser@10.100.139.147
+
+Make sure you are in the directory that contains the key (prAppWeb24.key) when executing this command.
+
+Step 2: Run the Shell Script on the Virtual Machine
+Once inside the virtual machine, locate the shell script located in the docker folder. This script is configured to build and run the Docker container that contains the application and its necessary dependencies.
+
+Run the script from the terminal on the virtual machine:
+
+bash
+./create_image.sh
+
+Step 3: Access the Application
+After the script has successfully built and run the application, you can access it through the following link in your web browser: https://10.100.139.147:8443/new
+This link provides access to the application deployed on the virtual machine of group 04.
+
+Additional Notes
+Ensure you have the appropriate permissions and correct configuration to run the shell script and access the virtual machine.
+If you encounter connectivity or execution issues, check the network configurations and execution permissions for the script.
 
 ## Class diagram update
 
