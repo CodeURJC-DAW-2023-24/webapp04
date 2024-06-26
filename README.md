@@ -486,13 +486,13 @@ In this phase I was rresponsible of updating css, as well as implementing the ad
 
 ### Sergio López Cuesta
 
-Task description
+In this phase I was responsible to adapt the styles of the components to make them fix and adapt to the page
 
 | Nº |       Commits       |        Files        |
 |:--:|:-------------------:|:-------------------:|
 | 1 | [Create profile manager](https://github.com/CodeURJC-DAW-2023-24/webapp04/commit/ecfbf2e31581970eb8f5bdf04152dfcab4f8317e#diff-7ef561123d44d9c2736cfbbb25830a0a5d92d3de914900cc89f4889584d4e0b0) | [profile-manager.component.ts](frontend/src/app/components/profile-manager/profile-manager.component.ts) |
 | 2 | [Styles profile manager](https://github.com/CodeURJC-DAW-2023-24/webapp04/commit/ecfbf2e31581970eb8f5bdf04152dfcab4f8317e#diff-7ef561123d44d9c2736cfbbb25830a0a5d92d3de914900cc89f4889584d4e0b0) | [profile-manager.component.css](frontend/src/app/components/profile-manager/profile-manager.component.css) |
-| 3 | [Create transfer error fix](https://github.com/CodeURJC-DAW-2023-24/webapp04/commit/4434687b32524e75ff5b4ccac67b9c5d6ff68556#diff-7adce7a2f4ef716fd787331479a4e2ae3e58333c51f9de1b32c1b5514f176ebf) | [profile-manager.ts](frontend/src/app/components/transfer-page/transfer-page.component.html) |
+| 3 | [Create transfer error fix](https://github.com/CodeURJC-DAW-2023-24/webapp04/commit/4434687b32524e75ff5b4ccac67b9c5d6ff68556#diff-7adce7a2f4ef716fd787331479a4e2ae3e58333c51f9de1b32c1b5514f176ebf) | [profile-manager.component.ts](frontend/src/app/components/transfer-page/transfer-page.component.html) |
 | 4 | [loan request error fix](https://github.com/CodeURJC-DAW-2023-24/webapp04/commit/4434687b32524e75ff5b4ccac67b9c5d6ff68556#diff-7adce7a2f4ef716fd787331479a4e2ae3e58333c51f9de1b32c1b5514f176ebf) | [loan-request-page.component.html](frontend/src/app/components/profile-manager/loan-request.component.html) |
 | 5 | [styles profile](https://github.com/CodeURJC-DAW-2023-24/webapp04/commit/4434687b32524e75ff5b4ccac67b9c5d6ff68556#diff-7adce7a2f4ef716fd787331479a4e2ae3e58333c51f9de1b32c1b5514f176ebf) | [loan-request-page.component.css](frontend/src/app/components/loan-request-page/loan-request-page.component.css) |
 
