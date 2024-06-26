@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<app-head></app-head>
+<app-header-admin></app-header-admin>
+
+<body>
+  <div class="app">
+    <div class="body">
+      <div class="wrapper">
+        <div class="app-body-main-content">
+          <div class="wrapper">
+            <section class="transfer-section">
+              <div class="transfer-section-header">
+                <h2>Latest transfers (ALL CLIENTS)</h2>
+              </div>
+              <div class="transfers">
+                <div *ngIf="transfers.length === 0" id="no_transfers_performed">
+                  No se han realizado transferencias.
+                </div>
+                <div *ngFor="let transfer of transfers" class="transfer">
+                  <dl class="transfer-details">
+                    <div class="min">
+                      <dt>Sender</dt>
+                      <dd>{{ transfer.senderIBAN }}</dd>
+                    </div>
+                    <div class="min">
+                      <dt>Receiver</dt>
+                      <dd>{{ transfer.receiverIBAN }}</dd>
+                    </div>
+                    <div class="max">
+                      <dt>Date payment</dt>
+                      <dd>{{ transfer.date }}</dd>
+                    </div>
+                    <div class="min">
+                      <dt>T Type</dt>
+                      <dd>{{ transfer.transferType }}</dd>
+                    </div>
+                    <div class="transfer-number">{{ transfer.amount }}€</div>
+                  </dl>
+                </div>
+              </div>
+              <button id="transfer_button" (click)="onLoadMoreTransfers()">Load more transfers</button>
+            </section>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <app-short-footer></app-short-footer>
+
+  <script src="https://unpkg.com/phosphor-icons"></script>
+
+  <!-- Vendor JS Files -->
+  <script src="public/assets/vendor/aos/aos.js"></script>
+  <script src="public/assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <script src="public/assets/vendor/glightbox/js/glightbox.min.js"></script>
+  <script src="public/assets/vendor/isotope-layout/isotope.pkgd.min.js"></script>
+  <script src="public/assets/vendor/swiper/swiper-bundle.min.js"></script>
+  <script src="public/assets/vendor/php-email-form/validate.js"></script>
+  <script src="public/js/account.js"></script>
+</body>
+
+</html>

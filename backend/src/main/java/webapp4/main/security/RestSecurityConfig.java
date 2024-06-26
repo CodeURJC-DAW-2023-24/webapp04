@@ -4,7 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.core.annotation.Order;
-
+import org.springframework.http.HttpMethod;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.dao.DaoAuthenticationProvider;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
@@ -69,14 +69,22 @@ public class RestSecurityConfig extends WebSecurityConfigurerAdapter {
 		https.authorizeRequests().antMatchers("/api/accounts").permitAll();
 
 		// Private pages
+
+		// -> Profile
+
+		// -> Transfers
+		https.authorizeRequests().antMatchers(HttpMethod.GET, "/api/transfers/{id}").hasAnyRole("USER");
+		https.authorizeRequests().antMatchers(HttpMethod.GET, "/api/transfers").hasAnyRole("USER", "ADMIN");
+		https.authorizeRequests().antMatchers(HttpMethod.POST, "/api/transfer").hasAnyRole("USER");
+		// -> Loans
+
+		// -> Admin
 		https.authorizeRequests().antMatchers("/api/accounts/{id}").hasAnyRole("USER");
 		https.authorizeRequests().antMatchers("/api/accounts/{id}/image").hasAnyRole("USER");
-		https.authorizeRequests().antMatchers("/api/accounts/{id}/transfers").hasAnyRole("USER");
 		https.authorizeRequests().antMatchers("/loan_request").hasAnyRole("USER");
 		https.authorizeRequests().antMatchers("/loan_visualizer").hasAnyRole("USER");
-		https.authorizeRequests().antMatchers("/api/transfers/{id}").hasAnyRole("ADMIN");
-		https.authorizeRequests().antMatchers("/api/transfers").hasAnyRole("ADMIN");
 		https.authorizeRequests().antMatchers("/profile_manager").hasAnyRole("ADMIN");
+		https.authorizeRequests().antMatchers("/api/loans").hasAnyRole("USER");
 
 		// Disable CSRF protection (it is difficult to implement in REST APIs)
 		https.csrf().disable();

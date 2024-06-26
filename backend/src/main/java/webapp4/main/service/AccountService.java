@@ -113,6 +113,7 @@ public class AccountService {
         imagelessAccount.setIban(account.getIBAN());
         imagelessAccount.setName(account.getName());
         imagelessAccount.setSurname(account.getSurname());
+        imagelessAccount.setBalance(account.getBalance());
         return imagelessAccount;
     }
 

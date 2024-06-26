@@ -1,9 +1,17 @@
+# Angular compilation
+FROM node:18.13 AS angular
+WORKDIR /code
+COPY frontend/package*.json frontend/angular.json frontend/tsconfig*.json /code/
+RUN npm install && npm install chart.js
+COPY frontend/src /code/src
+RUN npm run build -- --configuration production --base-href=/new/
+
 # Compilation
 FROM maven:3.8.4-openjdk-17 AS builder
 WORKDIR /project
 COPY backend/pom.xml /project/
 COPY backend/src /project/src
-
+COPY --from=angular /code/dist/frontend/browser/ /project/src/main/resources/static/new
 RUN mvn clean package -DskipTests
 
 # Execution

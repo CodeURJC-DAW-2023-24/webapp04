@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<app-head></app-head>
+<app-header-user></app-header-user>
+
+<body>
+
+<div class="app">
+  <div class="body">
+    <div class="wrapper">
+      <div class="app-body-main-content">
+        <section class="service-section">
+          <div class="tiles">
+            <article class="tile">
+              <div class="tile-header">
+                <h3 class="image-container">
+                  <img *ngIf="client_image_url" [src]="client_image_url" alt="Client Image" style="height: 100px; width: 100px;">
+                  <br><br>
+                  <input title="Update profile picture" type="file" (change)="onImageSelected($event)">
+                  <br><br>
+                  <span id="client_iban">{{client_iban}}</span>
+                  <span> Welcome, {{client_name}}</span>
+                  <span> Your current balance is {{client_balance}} €</span>
+                </h3>
+              </div>
+            </article>
+          </div>
+        </section>
+      </div>
+          <section class="transfer-section">
+            <div class="transfer-section-header">
+              <h2>Latest transfers</h2>
+            </div>
+            <div class="transfers">
+              <div *ngFor="let transfer of transfers" class="transfer">
+                <dl class="transfer-details">
+                  <div class="min">
+                    <dt>Sender</dt>
+                    <dd>{{ transfer.senderIBAN }}</dd>
+                  </div>
+                  <div class="min">
+                    <dt>Receiver</dt>
+                    <dd>{{ transfer.receiverIBAN }}</dd>
+                  </div>
+                  <div class="max">
+                    <dt>Date payment</dt>
+                    <dd>{{ transfer.date }}</dd>
+                  </div>
+                  <div class="min">
+                    <dt>T Type</dt>
+                    <dd>{{ transfer.transferType }}</dd>
+                  </div>
+                  <div class="transfer-number">{{ transfer.amount }}€</div>
+                </dl>
+              </div>
+            </div>
+            <button id="profile_button" (click)="onLoadMoreClick()">Load more</button>
+          </section>
+      </div>
+    </div>
+</div>
+<app-short-footer></app-short-footer>
+<script src="https://unpkg.com/phosphor-icons"></script>
+
+<!-- Vendor JS Files -->
+<script src="../../assets/vendor/aos/aos.js"></script>
+<script src="../../assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+<script src="../../assets/vendor/glightbox/js/glightbox.min.js"></script>
+<script src="../../assets/vendor/isotope-layout/isotope.pkgd.min.js"></script>
+<script src="../../assets/vendor/swiper/swiper-bundle.min.js"></script>
+<script src="../../assets/vendor/php-email-form/validate.js"></script>
+<script src="../..assets/js/profile_ajax.js"></script>
+<script src="../..assets/js/profile_pic_loader.js"></script>
+</body>
+</html>
