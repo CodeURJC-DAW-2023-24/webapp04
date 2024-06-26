@@ -449,15 +449,15 @@ If you encounter connectivity or execution issues, check the network configurati
 
 ### David Cereceda Catalán
 
-Task description
+In this phase I have been responsible of implementing register page, eliminating duplicate html code by putting it in components and fixing some bugs.
 
 | Nº |       Commits       |        Files        |
 |:--:|:-------------------:|:-------------------:|
-| 1 | | |
-| 2 | | |
-| 3 | | | 
-| 4 | | | 
-| 5 | | |
+| 1 | [Implemented register page](https://github.com/CodeURJC-DAW-2023-24/webapp04/commit/a23900996bd2ff54f32ffa2486414b2eb886491a) | [register-page.component.ts](https://github.com/CodeURJC-DAW-2023-24/webapp04/blob/Angular2.1/frontend/src/app/components/register-page/register-page.component.ts) |
+| 2 | [Added header-admin and header-user components](https://github.com/CodeURJC-DAW-2023-24/webapp04/commit/237382d7a598da0c2e1da1bee928bf6de8398fc9) | [register-page.component.html](https://github.com/CodeURJC-DAW-2023-24/webapp04/blob/Angular2.1/frontend/src/app/components/register-page/register-page.component.html) |
+| 3 | [account service updated](https://github.com/CodeURJC-DAW-2023-24/webapp04/commit/78d8339314c181cdf43d6b6b69125dd2daf6ae44) | [account.service.ts](https://github.com/CodeURJC-DAW-2023-24/webapp04/blob/Angular2.1/frontend/src/app/services/account.service.ts) |
+| 4 | [Added diagram to readme](https://github.com/CodeURJC-DAW-2023-24/webapp04/commit/4081c6e494144c907a5ad65c056397b52f0e3a50) | [header-user.component.ts](https://github.com/CodeURJC-DAW-2023-24/webapp04/blob/Angular2.1/frontend/src/app/components/header-user/header-user.component.ts) | 
+| 5 | [Login-page updated](https://github.com/CodeURJC-DAW-2023-24/webapp04/commit/1eace595024e08b377015479575adced281cf0be) | [header-user.component.html](https://github.com/CodeURJC-DAW-2023-24/webapp04/blob/Angular2.1/frontend/src/app/components/header-user/header-user.component.html) |
 
 ### Cristian Andrei Vlad
 
