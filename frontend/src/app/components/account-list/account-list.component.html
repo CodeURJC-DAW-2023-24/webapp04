@@ -1,23 +1,9 @@
 <!DOCTYPE html>
 <html lang="en">
 <app-head></app-head>
+<app-header-admin></app-header-admin>
 
 <body>
-  <!-- ======= Header ======= -->
-  <header id="header" class="d-flex align-items-center">
-    <div class="container d-flex align-items-center justify-content-between">
-      <h1 class="logo"><a (click)="logout()">URJC Bank</a></h1>
-      <!--<a href="index.html" class="logo"><img src="/URJC_Bank/public/assets/img/URJC_bank.png" alt="" class="img-fluid"></a> -->
-      <nav id="navbar" class="navbar">
-        <ul>
-          <li><a class="nav-link scrollto" href="/new/profile_manager">Home</a></li>
-          <li><a class="nav-link scrollto " href="/new/transfers">Transfers</a></li>
-          <li><a class="nav-link scrollto active" href="/new/accounts">Users</a></li>
-          <li><a class="nav-link scrollto " (click)="logout()">Log Out</a></li>
-        </ul>
-      </nav>
-    </div>
-  </header>
   <div class="app">
     <div class="body">
       <div class="wrapper">
