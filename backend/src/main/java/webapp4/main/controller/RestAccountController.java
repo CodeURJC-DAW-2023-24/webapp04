@@ -210,11 +210,11 @@ public class RestAccountController {
     @ApiResponse(responseCode = "500", description = "Internal server error", content = @Content)
     @ApiResponse(responseCode = "400", description = "Bad request", content = @Content)
     @GetMapping("/api/accounts")
-    public ResponseEntity<Collection<ImagelessAccount>> getAllAccounts(){
-        Collection<ImagelessAccount> imagelessAccounts = new ArrayList<>();
+    public ResponseEntity<Collection<AccountDTO>> getAllAccounts(){
+        Collection<AccountDTO> imageAccounts = new ArrayList<>();
         Collection<Account> allAccounts = accountRepository.findAll();
-        allAccounts.forEach(account -> imagelessAccounts.add(accountService.accountWithoutImage(account)));
-        return ResponseEntity.ok(imagelessAccounts);
+        allAccounts.forEach(account -> imageAccounts.add(accountService.accountToDTO(account)));
+        return ResponseEntity.ok(imageAccounts);
     }
     @Operation(summary = "Get paginated accounts")
     @ApiResponse(
