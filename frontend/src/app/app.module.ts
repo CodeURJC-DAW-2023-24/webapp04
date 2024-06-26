@@ -24,6 +24,8 @@ import { Error404Component } from './components/error-404/error-404.component';
 import { LoanRequestPageComponent } from './components/loan-request-page/loan-request-page.component';
 import { LoanVisualizerPageComponent } from './components/loan-visualizer-page/loan-visualizer-page.component';
 import { ProfileManagerComponent } from './components/profile-manager/profile-manager.component';
+import { HeaderAdminComponent } from './components/header-admin/header-admin.component';
+import { HeaderUserComponent } from './components/header-user/header-user.component';
 
 @NgModule({
   declarations: [
@@ -46,7 +48,9 @@ import { ProfileManagerComponent } from './components/profile-manager/profile-ma
     Error404Component,
     LoanRequestPageComponent,
     LoanVisualizerPageComponent,
-    ProfileManagerComponent
+    ProfileManagerComponent,
+    HeaderAdminComponent,
+    HeaderUserComponent
   ],
   imports: [
     BrowserModule,
