@@ -479,8 +479,7 @@ In this phase I was rresponsible of updating css, as well as implementing the ad
 |:--:|:-------------------:|:-------------------:|
 | 1 | [Logout Added](https://github.com/CodeURJC-DAW-2023-24/webapp04/commit/8f003bcec7523e2ec11d1427d3d8cbfd2e98f159) | [account-list.component.ts](frontend/src/app/components/account-list/account-list.component.ts) |
 | 2 | [Accounts list api connection works](https://github.com/CodeURJC-DAW-2023-24/webapp04/commit/ff17d5ea855469561c491db06f5f5c985b568272) | [transfers-manager.component.ts](frontend/src/app/components/transfers-manager/transfers-manager.component.ts) |
-| 3 | [css AJAX updated](https://github.com/CodeURJC-DAW-2023-24/webapp04/commit/647b13ce2a1fb494567b2ec124da9bf2651710fa) | [transfers-manager.service.ts
-](frontend/src/app/services/transfers-manager.service.ts) | 
+| 3 | [css AJAX updated](https://github.com/CodeURJC-DAW-2023-24/webapp04/commit/647b13ce2a1fb494567b2ec124da9bf2651710fa) | [transfers-manager.service.ts](frontend/src/app/services/transfers-manager.service.ts) | 
 | 4 | [Css added](https://github.com/CodeURJC-DAW-2023-24/webapp04/commit/701a6771e29560305a52b16bbfa68a765ef4f968) | [account.service.ts](frontend/src/app/services/account.service.ts) | 
 | 5 | [Transfers list api connection works](https://github.com/CodeURJC-DAW-2023-24/webapp04/commit/10ffa0b6dea4f739c1092d5e569a1793e1058000) | [transfers-manager.component.html](frontend/src/app/components/transfers-manager/transfers-manager.component.html) |
 
