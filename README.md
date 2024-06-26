@@ -442,7 +442,7 @@ If you encounter connectivity or execution issues, check the network configurati
 
 ## Class diagram update
 
-![image]()
+![image](https://github.com/CodeURJC-DAW-2023-24/webapp04/assets/96200005/8470acba-59f4-4cff-9994-846cc250d687)
 
 
 ## Member participation
