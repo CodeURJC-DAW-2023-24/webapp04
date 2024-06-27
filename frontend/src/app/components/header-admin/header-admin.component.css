@@ -1,0 +1,137 @@
+/* profile-styles.css */
+
+body {
+    font-family: "Open Sans", sans-serif;
+    color: #444444;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    justify-content: space-between;
+}
+
+a {
+    color: #cc1616;
+    text-decoration: none;
+}
+
+a:hover {
+    color: #e82d2d;
+    text-decoration: none;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    font-family: "Raleway", sans-serif;
+}
+
+#header {
+    background: rgba(25, 25, 25, 0.95);
+    transition: all 0.5s;
+    z-index: 997;
+    height: 70px;
+}
+
+#header .logo {
+    font-size: 30px;
+    margin: 0;
+    padding: 0;
+    line-height: 1;
+    font-weight: 700;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+}
+
+#header .logo a {
+    color: #fff;
+}
+
+.navbar {
+    padding: 0;
+}
+
+.navbar ul {
+    margin: 0;
+    padding: 0;
+    display: flex;
+    list-style: none;
+    align-items: center;
+}
+
+.navbar li {
+    position: relative;
+}
+
+.navbar a {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 25px 15px;
+    font-size: 14px;
+    color: #fff;
+    transition: 0.3s;
+}
+
+.navbar a:hover,
+.navbar .active {
+    background: #cc1616;
+}
+
+.welcome-screen {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: calc(100vh - 140px);
+    /* Adjust based on header and footer height */
+}
+
+.welcome-message {
+    text-align: center;
+}
+
+.welcome-message h2 {
+    font-size: 2.5rem;
+    color: #191919;
+    margin-bottom: 1rem;
+}
+
+.welcome-message p {
+    font-size: 1.25rem;
+    color: #444444;
+    margin-bottom: 2rem;
+}
+
+.btn-primary {
+    background-color: #cc1616;
+    border: none;
+    color: #fff;
+    padding: 10px 20px;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.btn-primary:hover {
+    background-color: #e82d2d;
+}
+
+@media (max-width: 768px) {
+    .welcome-message h2 {
+        font-size: 2rem;
+    }
+
+    .welcome-message p {
+        font-size: 1rem;
+    }
+
+    .navbar ul {
+        display: none;
+    }
+
+    .navbar a {
+        padding: 10px 15px;
+    }
+}

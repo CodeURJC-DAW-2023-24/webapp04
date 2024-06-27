@@ -1,13 +1,13 @@
 import { Component } from '@angular/core';
+import { Router } from '@angular/router';
 import { UserService } from '../../services/user.service';
 
-
 @Component({
-  selector: 'app-header-error',
-  templateUrl: './header-error.component.html',
-  styleUrl: './header-error.component.css'
+  selector: 'app-profile-manager',
+  templateUrl: './profile-manager.component.html',
+  styleUrl: './profile-manager.component.css',
 })
-export class HeaderErrorComponent {
+export class ProfileManagerComponent {
 
   constructor(
     private userService: UserService

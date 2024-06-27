@@ -2,6 +2,7 @@ import { Component, OnInit, Inject } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Router } from '@angular/router';
 import { TransfersManagerService, Transfer } from '../../services/transfers-manager.service';
+import { UserService } from '../../services/user.service';
 
 @Component({
   selector: 'app-transfers-manager',
@@ -16,7 +17,8 @@ export class TransfersManagerComponent implements OnInit {
   constructor(
     @Inject(TransfersManagerService) private transfersService: TransfersManagerService,
     private http: HttpClient,
-    private router: Router
+    private router: Router,
+    private userService: UserService
   ) { }
 
   ngOnInit(): void {
@@ -43,16 +45,10 @@ export class TransfersManagerComponent implements OnInit {
       this.loadMoreTransfers();
     }
 
-  logout(): void {
-    const body = {};
-    this.http.post('/api/logout', body, { observe: 'response' }).subscribe({
-      next: response => {
-        console.log('Logout successful');
-        this.router.navigate(['new/login']);
-      },
-      error: error => {
-        console.error('Error during logout:', error);
-      }
-    });
+  logout(): any {
+    this.userService.logout().subscribe(
+        response => console.log('Logout successful', response),
+        error => console.error('Logout failed', error)
+    );
   }
 }

@@ -5,7 +5,7 @@ import { Router } from '@angular/router';
 @Component({
   selector: 'app-login-page',
   templateUrl: './login-page.component.html',
-  styleUrl: './login-page.component.css'
+  styleUrl: './login-page.component.css',
 })
 export class LoginPageComponent {
   loginError: boolean = false;
@@ -13,15 +13,15 @@ export class LoginPageComponent {
 
   onSubmit(username: string, password: string): void {
     this.userService.login(username, password).subscribe(
-      data => {
+      (data) => {
         this.loginError = false;
-        if(username == '00000000A'){
-          this.router.navigate(['/accounts']);
-        }else{
+        if (username == '00000000A') {
+          this.router.navigate(['/profile_manager']);
+        } else {
           this.router.navigate(['/profile']);
         }
       },
-      error => {
+      (error) => {
         if (error.status === 401) {
           this.loginError = true;
         } else {

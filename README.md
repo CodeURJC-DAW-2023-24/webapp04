@@ -2,6 +2,9 @@
 
 ![URJC Bank logo](pics/extra/URJC_bank.png)
 
+Phase 4 Features Video
+https://www.youtube.com/watch?v=RJ3Z2PvTT9Q
+
 
 <h2>Index</h2>
 
@@ -395,7 +398,7 @@ Task description
 
 ## Setting up the development environment
 
-To compile and execute the SPA application you must follow the next instructions:
+-To compile and execute the SPA application you must follow the next instructions:
 
 1) Make sure you have node.js instaled on your system, otherwise you can install it [from here](https://nodejs.org/en).
 2) Install Angular's CLI using npm:
@@ -415,24 +418,49 @@ The SPA will be accessible from http://localhost:4200/
 In order to run the SPA with docker you need to follow [the implementation instructions](#implementation_instructions)
 
 
+-Steps to Deploy the Application with Docker:
+Step 1: Access the Virtual Machine
+From your terminal, access the virtual machine of group 04 using the access key (prAppWeb24.key) and the following SSH command:
+
+bash
+ssh -i prAppWeb24.key vmuser@10.100.139.147
+
+Make sure you are in the directory that contains the key (prAppWeb24.key) when executing this command.
+
+Step 2: Run the Shell Script on the Virtual Machine
+Once inside the virtual machine, locate the shell script located in the docker folder. This script is configured to build and run the Docker container that contains the application and its necessary dependencies.
+
+Run the script from the terminal on the virtual machine:
+
+bash
+./create_image.sh
+
+Step 3: Access the Application
+After the script has successfully built and run the application, you can access it through the following link in your web browser: https://10.100.139.147:8443/new
+This link provides access to the application deployed on the virtual machine of group 04.
+
+Additional Notes
+Ensure you have the appropriate permissions and correct configuration to run the shell script and access the virtual machine.
+If you encounter connectivity or execution issues, check the network configurations and execution permissions for the script.
+
 ## Class diagram update
 
-![image]()
+![image](https://github.com/CodeURJC-DAW-2023-24/webapp04/assets/96200005/8470acba-59f4-4cff-9994-846cc250d687)
 
 
 ## Member participation
 
 ### David Cereceda Catalán
 
-Task description
+In this phase I have been responsible of implementing register page, eliminating duplicate html code by putting it in components and fixing some bugs.
 
 | Nº |       Commits       |        Files        |
 |:--:|:-------------------:|:-------------------:|
-| 1 | | |
-| 2 | | |
-| 3 | | | 
-| 4 | | | 
-| 5 | | |
+| 1 | [Implemented register page](https://github.com/CodeURJC-DAW-2023-24/webapp04/commit/a23900996bd2ff54f32ffa2486414b2eb886491a) | [register-page.component.ts](https://github.com/CodeURJC-DAW-2023-24/webapp04/blob/Angular2.1/frontend/src/app/components/register-page/register-page.component.ts) |
+| 2 | [Added header-admin and header-user components](https://github.com/CodeURJC-DAW-2023-24/webapp04/commit/237382d7a598da0c2e1da1bee928bf6de8398fc9) | [register-page.component.html](https://github.com/CodeURJC-DAW-2023-24/webapp04/blob/Angular2.1/frontend/src/app/components/register-page/register-page.component.html) |
+| 3 | [account service updated](https://github.com/CodeURJC-DAW-2023-24/webapp04/commit/78d8339314c181cdf43d6b6b69125dd2daf6ae44) | [account.service.ts](https://github.com/CodeURJC-DAW-2023-24/webapp04/blob/Angular2.1/frontend/src/app/services/account.service.ts) |
+| 4 | [Added diagram to readme](https://github.com/CodeURJC-DAW-2023-24/webapp04/commit/4081c6e494144c907a5ad65c056397b52f0e3a50) | [header-user.component.ts](https://github.com/CodeURJC-DAW-2023-24/webapp04/blob/Angular2.1/frontend/src/app/components/header-user/header-user.component.ts) | 
+| 5 | [Login-page updated](https://github.com/CodeURJC-DAW-2023-24/webapp04/commit/1eace595024e08b377015479575adced281cf0be) | [header-user.component.html](https://github.com/CodeURJC-DAW-2023-24/webapp04/blob/Angular2.1/frontend/src/app/components/header-user/header-user.component.html) |
 
 ### Cristian Andrei Vlad
 
@@ -449,28 +477,27 @@ In this phase I have been responsible for implementing the user related profile 
 
 ### Julio del Junco Prieto
 
-Task description
-
+In this phase I was rresponsible of updating css, as well as implementing the admin part and the logout logic
 | Nº |       Commits       |        Files        |
 |:--:|:-------------------:|:-------------------:|
-| 1 | | |
-| 2 | | |
-| 3 | | | 
-| 4 | | | 
-| 5 | | |
+| 1 | [Logout Added](https://github.com/CodeURJC-DAW-2023-24/webapp04/commit/8f003bcec7523e2ec11d1427d3d8cbfd2e98f159) | [account-list.component.ts](frontend/src/app/components/account-list/account-list.component.ts) |
+| 2 | [Accounts list api connection works](https://github.com/CodeURJC-DAW-2023-24/webapp04/commit/ff17d5ea855469561c491db06f5f5c985b568272) | [transfers-manager.component.ts](frontend/src/app/components/transfers-manager/transfers-manager.component.ts) |
+| 3 | [css AJAX updated](https://github.com/CodeURJC-DAW-2023-24/webapp04/commit/647b13ce2a1fb494567b2ec124da9bf2651710fa) | [transfers-manager.service.ts](frontend/src/app/services/transfers-manager.service.ts) | 
+| 4 | [Css added](https://github.com/CodeURJC-DAW-2023-24/webapp04/commit/701a6771e29560305a52b16bbfa68a765ef4f968) | [account.service.ts](frontend/src/app/services/account.service.ts) | 
+| 5 | [Transfers list api connection works](https://github.com/CodeURJC-DAW-2023-24/webapp04/commit/10ffa0b6dea4f739c1092d5e569a1793e1058000) | [transfers-manager.component.html](frontend/src/app/components/transfers-manager/transfers-manager.component.html) |
 
 
 ### Sergio López Cuesta
 
-Task description
+In this phase I was responsible to adapt the styles of the components to make them fix and adapt to the page
 
 | Nº |       Commits       |        Files        |
 |:--:|:-------------------:|:-------------------:|
-| 1 | | |
-| 2 | | |
-| 3 | | | 
-| 4 | | | 
-| 5 | | |
+| 1 | [Create profile manager](https://github.com/CodeURJC-DAW-2023-24/webapp04/commit/ecfbf2e31581970eb8f5bdf04152dfcab4f8317e#diff-7ef561123d44d9c2736cfbbb25830a0a5d92d3de914900cc89f4889584d4e0b0) | [profile-manager.component.ts](frontend/src/app/components/profile-manager/profile-manager.component.ts) |
+| 2 | [Styles profile manager](https://github.com/CodeURJC-DAW-2023-24/webapp04/commit/ecfbf2e31581970eb8f5bdf04152dfcab4f8317e#diff-7ef561123d44d9c2736cfbbb25830a0a5d92d3de914900cc89f4889584d4e0b0) | [profile-manager.component.css](frontend/src/app/components/profile-manager/profile-manager.component.css) |
+| 3 | [Create transfer error fix](https://github.com/CodeURJC-DAW-2023-24/webapp04/commit/4434687b32524e75ff5b4ccac67b9c5d6ff68556#diff-7adce7a2f4ef716fd787331479a4e2ae3e58333c51f9de1b32c1b5514f176ebf) | [profile-manager.component.ts](frontend/src/app/components/transfer-page/transfer-page.component.html) |
+| 4 | [loan request error fix](https://github.com/CodeURJC-DAW-2023-24/webapp04/commit/4434687b32524e75ff5b4ccac67b9c5d6ff68556#diff-7adce7a2f4ef716fd787331479a4e2ae3e58333c51f9de1b32c1b5514f176ebf) | [loan-request-page.component.html](frontend/src/app/components/profile-manager/loan-request.component.html) |
+| 5 | [styles profile](https://github.com/CodeURJC-DAW-2023-24/webapp04/commit/4434687b32524e75ff5b4ccac67b9c5d6ff68556#diff-7adce7a2f4ef716fd787331479a4e2ae3e58333c51f9de1b32c1b5514f176ebf) | [loan-request-page.component.css](frontend/src/app/components/loan-request-page/loan-request-page.component.css) |
 
 
 
@@ -480,15 +507,12 @@ Task description
 
 | Nº |       Commits       |        Files        |
 |:--:|:-------------------:|:-------------------:|
-| 1 | | |
-| 2 | | |
-| 3 | | | 
-| 4 | | | 
-| 5 | | |
+| 1 | [Update README.md (link youtube video added)](https://github.com/CodeURJC-DAW-2023-24/webapp04/commit/ecfbf2e31581970eb8f5bdf04152dfcab4f8317e#diff-7ef561123d44d9c2736cfbbb25830a0a5d92d3de914900cc89f4889584d4e0b0) | [README.md](README.md) |
+| 2 | [imageAccount fixed)](https://github.com/CodeURJC-DAW-2023-24/webapp04/commit/ecfbf2e31581970eb8f5bdf04152dfcab4f8317e#diff-7ef561123d44d9c2736cfbbb25830a0a5d92d3de914900cc89f4889584d4e0b0) |[RestAccountController.java](backend/src/main/java/webapp4/main/controller/RestAccountController.java) |
+| 3 | [Residuos Eliminados](https://github.com/CodeURJC-DAW-2023-24/webapp04/commit/75c9eba961311c2840b8094d2931e4c4b3da91a0) | [RestLoanController.java](backend/src/main/java/webapp4/main/controller/RestLoanController.java) |
+| 4 | [Loan Payments para hacer las gráficas hechas para APIREST](https://github.com/CodeURJC-DAW-2023-24/webapp04/commit/befd50d82d85da14cf799d59a12ec24ba841ece4) | [LoanService.java](backend/src/main/java/webapp4/main/service/LoanService.java) |
+| 5 | [Update README.md (added docker deploy)](https://github.com/CodeURJC-DAW-2023-24/webapp04/commit/ecfbf2e31581970eb8f5bdf04152dfcab4f8317e#diff-7ef561123d44d9c2736cfbbb25830a0a5d92d3de914900cc89f4889584d4e0b0) |[README.md](README.mds) |
 
-
-## Video
-[video_url]()
 
 
 

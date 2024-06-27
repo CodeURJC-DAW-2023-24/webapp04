@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
+import { UserService } from '../../services/user.service';
 
 @Component({
   selector: 'app-loan-request-page',
@@ -12,7 +13,10 @@ export class LoanRequestPageComponent {
   installments: number | null = null;
   errorMessage: string = '';
 
-  constructor(private router: Router){}
+  constructor(
+    private router: Router,
+    private userService: UserService
+){}
 
   // TODO Check that only authored users access loan request page
 
@@ -26,5 +30,11 @@ export class LoanRequestPageComponent {
     } else{
       this.router.navigate(['/loan_visualizer'], { queryParams: { amount: this.amount, periods: this.installments } })
     }
+  }
+  logout(): any {
+    this.userService.logout().subscribe(
+        response => console.log('Logout successful', response),
+        error => console.error('Logout failed', error)
+    );
   }
 }

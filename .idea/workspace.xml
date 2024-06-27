@@ -6,8 +6,23 @@
   <component name="ChangeListManager">
     <list default="true" id="072cea6f-8d20-4292-b10f-19e0c5f1ef3e" name="Changes" comment="Transfers list api connection works">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/app/components/account-list/account-list.component.css" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/app/components/account-list/account-list.component.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/frontend/src/app/components/account-list/account-list.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/app/components/account-list/account-list.component.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/app/components/account-list/account-list.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/app/components/account-list/account-list.component.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/app/components/header-error/header-error.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/app/components/header-error/header-error.component.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/app/components/header-error/header-error.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/app/components/header-error/header-error.component.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/app/components/loan-request-page/loan-request-page.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/app/components/loan-request-page/loan-request-page.component.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/app/components/loan-request-page/loan-request-page.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/app/components/loan-request-page/loan-request-page.component.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/app/components/loan-visualizer-page/loan-visualizer-page.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/app/components/loan-visualizer-page/loan-visualizer-page.component.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/app/components/loan-visualizer-page/loan-visualizer-page.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/app/components/loan-visualizer-page/loan-visualizer-page.component.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/app/components/profile-manager/profile-manager.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/app/components/profile-manager/profile-manager.component.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/app/components/profile-manager/profile-manager.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/app/components/profile-manager/profile-manager.component.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/app/components/profile-page/profile-page.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/app/components/profile-page/profile-page.component.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/app/components/profile-page/profile-page.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/app/components/profile-page/profile-page.component.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/app/components/transfer-page/transfer-page.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/app/components/transfer-page/transfer-page.component.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/app/components/transfer-page/transfer-page.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/app/components/transfer-page/transfer-page.component.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/app/components/transfers-manager/transfers-manager.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/app/components/transfers-manager/transfers-manager.component.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/app/components/transfers-manager/transfers-manager.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/app/components/transfers-manager/transfers-manager.component.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/app/services/user.service.ts" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/app/services/user.service.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />

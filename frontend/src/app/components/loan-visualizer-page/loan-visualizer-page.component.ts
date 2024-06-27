@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { LoanService } from '../../services/loan.service';
 import { ActivatedRoute } from '@angular/router';
 import { Chart } from 'chart.js/auto';
+import { UserService } from '../../services/user.service';
+
 
 @Component({
   selector: 'app-loan-visualizer-page',
@@ -19,7 +21,11 @@ export class LoanVisualizerPageComponent implements OnInit {
   chunkSize: number = 10;
   myChart: Chart | undefined;
 
-  constructor(private loanService: LoanService, private route: ActivatedRoute) {}
+  constructor(
+    private loanService: LoanService,
+    private route: ActivatedRoute,
+    private userService: UserService
+  ) {}
 
   ngOnInit(): void {
     this.route.queryParams.subscribe(params => {
@@ -41,7 +47,7 @@ export class LoanVisualizerPageComponent implements OnInit {
   initChart(): void {
     const canvas = document.getElementById('myChart') as HTMLCanvasElement;
     const ctx = canvas ? canvas.getContext('2d') : null;
-    
+
     if (ctx) {
       this.myChart = new Chart(ctx, {
         type: 'bar',
@@ -101,4 +107,11 @@ export class LoanVisualizerPageComponent implements OnInit {
   onLoadMoreClick(): void {
     this.loadMorePayments();
   }
+
+  logout(): any {
+      this.userService.logout().subscribe(
+          response => console.log('Logout successful', response),
+          error => console.error('Logout failed', error)
+      );
+    }
 }

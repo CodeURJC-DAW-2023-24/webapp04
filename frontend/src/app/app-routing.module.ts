@@ -12,25 +12,27 @@ import { TransfersManagerComponent } from './components/transfers-manager/transf
 import { TransferPageComponent } from './components/transfer-page/transfer-page.component';
 import { LoanRequestPageComponent } from './components/loan-request-page/loan-request-page.component';
 import { LoanVisualizerPageComponent } from './components/loan-visualizer-page/loan-visualizer-page.component';
+import { ProfileManagerComponent } from './components/profile-manager/profile-manager.component';
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
   { path: 'login', component: LoginPageComponent },
   { path: 'register', component: RegisterPageComponent },
   { path: 'profile', component: ProfilePageComponent },
-  { path: 'error-404', component: Error404Component},
-  { path: 'error-401', component: Error401Component},
-  { path: 'error-500', component: Error500Component},
+  { path: 'error-404', component: Error404Component },
+  { path: 'error-401', component: Error401Component },
+  { path: 'error-500', component: Error500Component },
   { path: 'transfer', component: TransferPageComponent },
   { path: 'transfers', component: TransfersManagerComponent },
   { path: 'accounts', component: AccountListComponent },
-  { path: 'loan_request', component: LoanRequestPageComponent},
-  {path: 'loan_visualizer', component: LoanVisualizerPageComponent },
-  { path: '**', component: Error404Component }
+  { path: 'loan_request', component: LoanRequestPageComponent },
+  { path: 'loan_visualizer', component: LoanVisualizerPageComponent },
+  { path: 'profile_manager', component: ProfileManagerComponent },
+  { path: '**', component: Error404Component },
 ];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
-  exports: [RouterModule]
+  exports: [RouterModule],
 })
-export class AppRoutingModule { }
+export class AppRoutingModule {}
